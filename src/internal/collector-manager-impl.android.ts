@@ -1,26 +1,25 @@
-import { CollectorManager } from "../../collector-manager";
-import { MessagingProtocol, ResultMessagingProtocol } from "../../messaging";
-import { ResultMessagingListener } from "../../messaging/android/result-messaging-listener.android";
-import { SensorCallback, SensorCallbackManager } from "../../sensor-callback-manager";
-import { AccelerometerSensorRecord } from "../record";
-import { CapabilityDiscoverer } from "../../capability-discoverer.android";
-import { NodeSet } from "../../wear-os-types.android";
-import { buildAccelerometerMessagingProtocol } from "./protocol.android";
-import { AbstractRecordMessagingListener } from "../../messaging/android/abstract-record-messaging-listener";
-import { AccelerometerRecordMessagingListener } from "./record-messaging-listener.android";
-import { MessagingClientImpl } from "../../messaging/android/messaging-client.android";
+import { CollectorManager } from "./collector-manager";
+import { SensorRecord } from "./sensor-record";
+import { MessagingProtocol, ResultMessagingProtocol } from "./messaging";
+import { MessagingClientImpl } from "./messaging/android/messaging-client.android";
+import { SensorCallback, SensorCallbackManager } from "./sensor-callback-manager";
+import { NodeSet, OnMessageReceivedListener } from "./utils/android/wear-os-types.android";
+import { CapabilityDiscoverer } from "./capability-discoverer.android";
+import { ResultMessagingListener } from "./messaging/android/result-messaging-listener.android";
 
-export class AndroidAccelerometerManager implements CollectorManager {
+export class CollectorManagerImpl<T extends SensorRecord> implements CollectorManager {
 
     private _nodes: NodeSet;
-    private _recordMessagingListener: AbstractRecordMessagingListener<AccelerometerSensorRecord>;
+    private messagingClient: MessagingClientImpl;
 
     constructor(
-        private protocol: MessagingProtocol = buildAccelerometerMessagingProtocol(),
-        private messagingClient = new MessagingClientImpl(protocol),
-        private callbackManager = new SensorCallbackManager<AccelerometerSensorRecord>("newAccelerometerRecord"),
-        private capability: string = "accelerometer-sensor",
-    ) {}
+       private protocol: MessagingProtocol,
+       private capability: string,
+       private callbackManager: SensorCallbackManager<T>,
+       private recordMessagingListener: OnMessageReceivedListener,
+    ) {
+        this.messagingClient = new MessagingClientImpl(this.protocol);
+    }
 
     async isReady(): Promise<boolean> {
         const nodes = await this.getAvailableNodes();
@@ -36,22 +35,20 @@ export class AndroidAccelerometerManager implements CollectorManager {
 
         const prepareResult = await resolutionPromise;
         if (!prepareResult) {
-            throw new Error("Could not prepare WearOS accelerometer");
+            throw new Error("Could not prepare WearOS sensor");
         }
     }
 
     async startCollecting(): Promise<void> {
         const nodes = await this.getAvailableNodes();
-        const listener = this.getRecordMessagingListener();
-        await this.messagingClient.registerMessageListener(listener);
+        await this.messagingClient.registerMessageListener(this.recordMessagingListener);
         await this.messagingClient.sendStartMessage(nodes);
     }
 
     async stopCollecting(): Promise<void> {
         const nodes = await this.getAvailableNodes();
-        const listener = this.getRecordMessagingListener();
         await this.messagingClient.sendStopMessage(nodes);
-        await this.messagingClient.removeMessageListener(listener);
+        await this.messagingClient.removeMessageListener(this.recordMessagingListener);
     }
 
     listenSensorUpdates(callback: SensorCallback) {
@@ -72,13 +69,6 @@ export class AndroidAccelerometerManager implements CollectorManager {
             this._nodes = await capabilityDiscoverer.getAvailableNodes();
         }
         return this._nodes;
-    }
-
-    private getRecordMessagingListener(): AbstractRecordMessagingListener<AccelerometerSensorRecord> {
-        if (!this._recordMessagingListener) {
-            this._recordMessagingListener = new AccelerometerRecordMessagingListener(this.protocol, this.callbackManager);
-        }
-        return this._recordMessagingListener;
     }
 
     private createResolutionPromise(protocol: ResultMessagingProtocol): Promise<boolean> {
