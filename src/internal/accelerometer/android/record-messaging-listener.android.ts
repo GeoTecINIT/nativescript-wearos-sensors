@@ -31,3 +31,17 @@ export class AccelerometerRecordMessagingListener extends AbstractRecordMessagin
         };
     }
 }
+
+let _accelerometerRecordListener = null;
+export function getAccelerometerRecordListener(
+    protocol: MessagingProtocol,
+    callback: SensorCallbackManager<AccelerometerSensorRecord>
+): OnMessageReceivedListener {
+    if (!_accelerometerRecordListener) {
+        _accelerometerRecordListener = new AccelerometerRecordMessagingListener(
+            protocol,
+            callback,
+        );
+    }
+    return _accelerometerRecordListener;
+}
