@@ -4,8 +4,8 @@ import {
     OnMessageReceivedListener,
     wearOS,
     NodeSet,
-    Node } from "../../wear-os-types.android";
-import { promisify } from "../../utils.android";
+    Node } from "../../utils/android/wear-os-types.android";
+import { promisify } from "../../utils/android/utils.android";
 import { MessagingClient } from "../messaging-client";
 import { MessagingProtocol } from "../index";
 

@@ -1,4 +1,4 @@
-import { OnMessageReceivedListener, wearOS } from "../../wear-os-types.android";
+import { OnMessageReceivedListener, wearOS } from "../../utils/android/wear-os-types.android";
 import { ResultMessagingProtocol } from "../index";
 import { decodeMessage } from "../messaging-client";
 

@@ -1,8 +1,7 @@
-import OnMessageReceivedListener = com.google.android.gms.wearable.MessageClient.OnMessageReceivedListener;
-import {wearOS} from "../../wear-os-types.android";
-import {MessagingProtocol} from "../index";
-import {SensorRecord} from "../../sensor-record";
-import {SensorCallbackManager} from "../../sensor-callback-manager";
+import { wearOS, OnMessageReceivedListener } from "../../utils/android/wear-os-types.android";
+import { MessagingProtocol } from "../index";
+import { SensorRecord } from "../../sensor-record";
+import { SensorCallbackManager } from "../../sensor-callback-manager";
 
 export abstract class AbstractRecordMessagingListener<T extends SensorRecord> implements OnMessageReceivedListener {
 

@@ -1,7 +1,7 @@
 import { android as androidApp } from "tns-core-modules/application/application";
 
 import OnCompleteListener = com.google.android.gms.tasks.OnCompleteListener;
-import { NodeSet, wearOS } from "./wear-os-types.android";
+import { NodeSet, wearOS } from "./utils/android/wear-os-types.android";
 
 export class CapabilityDiscoverer {
 

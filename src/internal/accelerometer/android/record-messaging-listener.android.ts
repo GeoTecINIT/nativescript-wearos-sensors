@@ -2,7 +2,7 @@ import { AbstractRecordMessagingListener } from "../../messaging/android/abstrac
 import { AccelerometerSensorRecord } from "../record";
 import { MessagingProtocol } from "../../messaging";
 import { SensorCallbackManager } from "../../sensor-callback-manager";
-import { wearOS } from "../../wear-os-types.android";
+import { OnMessageReceivedListener, wearOS } from "../../utils/android/wear-os-types.android";
 
 import ByteBuffer = java.nio.ByteBuffer;
 
