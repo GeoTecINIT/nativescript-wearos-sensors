@@ -2,6 +2,9 @@ import { AbstractRecordMessagingListener } from "../../messaging/android/abstrac
 import { AccelerometerSensorRecord } from "../record";
 import { MessagingProtocol } from "../../messaging";
 import { SensorCallbackManager } from "../../sensor-callback-manager";
+import { wearOS } from "../../wear-os-types.android";
+
+import ByteBuffer = java.nio.ByteBuffer;
 
 export class AccelerometerRecordMessagingListener extends AbstractRecordMessagingListener<AccelerometerSensorRecord> {
 
@@ -12,7 +15,19 @@ export class AccelerometerRecordMessagingListener extends AbstractRecordMessagin
         super(protocol, callbackManager);
     }
 
-    decodeRecord(encodedMessage: native.Array<number>): AccelerometerSensorRecord {
-        return undefined;
+    decodeRecord(messageEvent: wearOS.MessageEvent): AccelerometerSensorRecord {
+        const buff = ByteBuffer.wrap(messageEvent.getData());
+        const x = buff.getFloat();
+        const y = buff.getFloat();
+        const z = buff.getFloat();
+        const time = buff.getLong();
+
+        return {
+            deviceName: messageEvent.getSourceNodeId(),
+            timestamp: new Date(time),
+            x,
+            y,
+            z,
+        };
     }
 }

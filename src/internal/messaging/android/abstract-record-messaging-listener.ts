@@ -18,9 +18,9 @@ export abstract class AbstractRecordMessagingListener<T extends SensorRecord> im
             return;
         }
 
-        const record = this.decodeRecord(message.getData());
+        const record = this.decodeRecord(message);
         this.callbackManager.notifyAll(record);
     }
 
-    abstract decodeRecord(encodedMessage: native.Array<number>): T;
+    abstract decodeRecord(messageEvent: wearOS.MessageEvent): T;
 }
