@@ -13,10 +13,16 @@
   "repository": "<fill-your-repository-here>",
   "dependencies": {
     "@nativescript/theme": "~2.3.0",
+    "nativescript-unit-test-runner": "^0.7.0",
     "nativescript-wearos-sensors": "file:../src",
     "tns-core-modules": "~6.5.0"
   },
   "devDependencies": {
+    "@types/jasmine": "3.5.11",
+    "karma": "6.3.2",
+    "karma-jasmine": "3.3.1",
+    "karma-nativescript-launcher": "0.4.0",
+    "karma-webpack": "3.0.5",
     "nativescript-dev-webpack": "~1.5.0",
     "typescript": "~3.5.3"
   },
