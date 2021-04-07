@@ -5,11 +5,14 @@ import { NodeSet, wearOS } from "./utils/android/wear-os-types.android";
 
 export class CapabilityDiscoverer {
 
-    constructor(private capability: string) {
+    constructor(
+        private capability: string,
+        private capabilityClient= wearOS.Wearable.getCapabilityClient(androidApp.context)
+    ) {
     }
 
     public async getAvailableNodes(): Promise<NodeSet> {
-        const capability = wearOS.Wearable.getCapabilityClient(androidApp.context)
+        const capability = this.capabilityClient
             .getCapability(this.capability, wearOS.CapabilityClient.FILTER_REACHABLE);
 
         const capabilityPromise = new Promise<wearOS.CapabilityInfo>((resolve, reject) => {
@@ -18,7 +21,7 @@ export class CapabilityDiscoverer {
                     if (task.isSuccessful()) {
                         resolve(task.getResult());
                     } else {
-                        reject(task.getException());
+                        reject(task.getException().getMessage());
                     }
                 }
             }));
