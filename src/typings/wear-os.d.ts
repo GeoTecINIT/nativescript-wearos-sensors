@@ -1,10 +1,10 @@
 /// <reference path="android-declarations.d.ts"/>
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module actions {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace actions {
 					export class ItemListIntents {
 						public static class: java.lang.Class<com.google.android.gms.actions.ItemListIntents>;
 						public static ACTION_CREATE_ITEM_LIST: string;
@@ -25,11 +25,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module actions {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace actions {
 					export class NoteIntents {
 						public static class: java.lang.Class<com.google.android.gms.actions.NoteIntents>;
 						public static ACTION_CREATE_NOTE: string;
@@ -45,11 +45,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module actions {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace actions {
 					export class ReserveIntents {
 						public static class: java.lang.Class<com.google.android.gms.actions.ReserveIntents>;
 						public static ACTION_RESERVE_TAXI_RESERVATION: string;
@@ -60,11 +60,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module actions {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace actions {
 					export class SearchIntents {
 						public static class: java.lang.Class<com.google.android.gms.actions.SearchIntents>;
 						public static ACTION_SEARCH: string;
@@ -76,13 +76,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module auth {
-					export module api {
-						export module signin {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace auth {
+					export namespace api {
+						export namespace signin {
 							export class GoogleSignInAccount extends com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable implements com.google.android.gms.common.internal.ReflectedParcelable {
 								public static class: java.lang.Class<com.google.android.gms.auth.api.signin.GoogleSignInAccount>;
 								public static CREATOR: globalAndroid.os.Parcelable.Creator<com.google.android.gms.auth.api.signin.GoogleSignInAccount>;
@@ -115,13 +115,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module auth {
-					export module api {
-						export module signin {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace auth {
+					export namespace api {
+						export namespace signin {
 							export class GoogleSignInOptions extends com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable implements com.google.android.gms.common.api.Api.ApiOptions.Optional, com.google.android.gms.common.internal.ReflectedParcelable {
 								public static class: java.lang.Class<com.google.android.gms.auth.api.signin.GoogleSignInOptions>;
 								public static zar: com.google.android.gms.common.api.Scope;
@@ -146,7 +146,7 @@ declare module com {
 								public getExtensions(): java.util.ArrayList<com.google.android.gms.auth.api.signin.internal.GoogleSignInOptionsExtensionParcelable>;
 								public getScopeArray(): native.Array<com.google.android.gms.common.api.Scope>;
 							}
-							export module GoogleSignInOptions {
+							export namespace GoogleSignInOptions {
 								export class Builder {
 									public static class: java.lang.Class<com.google.android.gms.auth.api.signin.GoogleSignInOptions.Builder>;
 									public requestServerAuthCode(param0: string): com.google.android.gms.auth.api.signin.GoogleSignInOptions.Builder;
@@ -172,13 +172,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module auth {
-					export module api {
-						export module signin {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace auth {
+					export namespace api {
+						export namespace signin {
 							export class GoogleSignInOptionsExtension {
 								public static class: java.lang.Class<com.google.android.gms.auth.api.signin.GoogleSignInOptionsExtension>;
 								/**
@@ -204,14 +204,14 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module auth {
-					export module api {
-						export module signin {
-							export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace auth {
+					export namespace api {
+						export namespace signin {
+							export namespace internal {
 								export class GoogleSignInOptionsExtensionParcelable extends com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable {
 									public static class: java.lang.Class<com.google.android.gms.auth.api.signin.internal.GoogleSignInOptionsExtensionParcelable>;
 									public static CREATOR: globalAndroid.os.Parcelable.Creator<com.google.android.gms.auth.api.signin.internal.GoogleSignInOptionsExtensionParcelable>;
@@ -229,14 +229,14 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module auth {
-					export module api {
-						export module signin {
-							export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace auth {
+					export namespace api {
+						export namespace signin {
+							export namespace internal {
 								export class HashAccumulator {
 									public static class: java.lang.Class<com.google.android.gms.auth.api.signin.internal.HashAccumulator>;
 									public constructor();
@@ -253,14 +253,14 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module auth {
-					export module api {
-						export module signin {
-							export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace auth {
+					export namespace api {
+						export namespace signin {
+							export namespace internal {
 								export class Storage {
 									public static class: java.lang.Class<com.google.android.gms.auth.api.signin.internal.Storage>;
 									public getSavedRefreshToken(): string;
@@ -280,14 +280,14 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module auth {
-					export module api {
-						export module signin {
-							export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace auth {
+					export namespace api {
+						export namespace signin {
+							export namespace internal {
 								export class zaa extends globalAndroid.os.Parcelable.Creator<com.google.android.gms.auth.api.signin.internal.GoogleSignInOptionsExtensionParcelable> {
 									public static class: java.lang.Class<com.google.android.gms.auth.api.signin.internal.zaa>;
 									public constructor();
@@ -301,13 +301,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module auth {
-					export module api {
-						export module signin {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace auth {
+					export namespace api {
+						export namespace signin {
 							export class zaa {
 								public static class: java.lang.Class<com.google.android.gms.auth.api.signin.zaa>;
 								public compare(param0: any, param1: any): number;
@@ -320,13 +320,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module auth {
-					export module api {
-						export module signin {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace auth {
+					export namespace api {
+						export namespace signin {
 							export class zab extends globalAndroid.os.Parcelable.Creator<com.google.android.gms.auth.api.signin.GoogleSignInAccount> {
 								public static class: java.lang.Class<com.google.android.gms.auth.api.signin.zab>;
 								public constructor();
@@ -339,13 +339,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module auth {
-					export module api {
-						export module signin {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace auth {
+					export namespace api {
+						export namespace signin {
 							export class zac extends java.util.Comparator<com.google.android.gms.common.api.Scope> {
 								public static class: java.lang.Class<com.google.android.gms.auth.api.signin.zac>;
 							}
@@ -357,13 +357,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module auth {
-					export module api {
-						export module signin {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace auth {
+					export namespace api {
+						export namespace signin {
 							export class zad extends globalAndroid.os.Parcelable.Creator<com.google.android.gms.auth.api.signin.GoogleSignInOptions> {
 								public static class: java.lang.Class<com.google.android.gms.auth.api.signin.zad>;
 								public constructor();
@@ -376,11 +376,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
 					export class AccountPicker {
 						public static class: java.lang.Class<com.google.android.gms.common.AccountPicker>;
 						public static newChooseAccountIntent(param0: globalAndroid.accounts.Account, param1: java.util.ArrayList<globalAndroid.accounts.Account>, param2: native.Array<string>, param3: boolean, param4: string, param5: string, param6: native.Array<string>, param7: globalAndroid.os.Bundle): globalAndroid.content.Intent;
@@ -391,11 +391,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
 					export class BlockingServiceConnection {
 						public static class: java.lang.Class<com.google.android.gms.common.BlockingServiceConnection>;
 						public constructor();
@@ -410,11 +410,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
 					export class ConnectionResult extends com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable {
 						public static class: java.lang.Class<com.google.android.gms.common.ConnectionResult>;
 						public static UNKNOWN: number;
@@ -462,11 +462,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
 					export class ErrorDialogFragment {
 						public static class: java.lang.Class<com.google.android.gms.common.ErrorDialogFragment>;
 						public show(param0: globalAndroid.app.FragmentManager, param1: string): void;
@@ -482,11 +482,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
 					export class Feature extends com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable {
 						public static class: java.lang.Class<com.google.android.gms.common.Feature>;
 						public static CREATOR: globalAndroid.os.Parcelable.Creator<com.google.android.gms.common.Feature>;
@@ -506,11 +506,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
 					export class FirstPartyScopes {
 						public static class: java.lang.Class<com.google.android.gms.common.FirstPartyScopes>;
 						public static GAMES_1P: string;
@@ -521,11 +521,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
 					export class GoogleApiAvailability extends com.google.android.gms.common.GoogleApiAvailabilityLight {
 						public static class: java.lang.Class<com.google.android.gms.common.GoogleApiAvailability>;
 						public static GOOGLE_PLAY_SERVICES_VERSION_CODE: number;
@@ -557,7 +557,7 @@ declare module com {
 						public getErrorString(param0: number): string;
 						public isUserResolvableError(param0: number): boolean;
 					}
-					export module GoogleApiAvailability {
+					export namespace GoogleApiAvailability {
 						export class zaa extends com.google.android.gms.internal.base.zal {
 							public static class: java.lang.Class<com.google.android.gms.common.GoogleApiAvailability.zaa>;
 							public constructor();
@@ -573,11 +573,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
 					export class GoogleApiAvailabilityLight {
 						public static class: java.lang.Class<com.google.android.gms.common.GoogleApiAvailabilityLight>;
 						public static GOOGLE_PLAY_SERVICES_VERSION_CODE: number;
@@ -607,11 +607,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
 					export class GooglePlayServicesNotAvailableException {
 						public static class: java.lang.Class<com.google.android.gms.common.GooglePlayServicesNotAvailableException>;
 						public errorCode: number;
@@ -623,11 +623,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
 					export class GooglePlayServicesRepairableException extends com.google.android.gms.common.UserRecoverableException {
 						public static class: java.lang.Class<com.google.android.gms.common.GooglePlayServicesRepairableException>;
 						public getConnectionStatusCode(): number;
@@ -640,11 +640,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
 					export class GooglePlayServicesUtil extends com.google.android.gms.common.GooglePlayServicesUtilLight {
 						public static class: java.lang.Class<com.google.android.gms.common.GooglePlayServicesUtil>;
 						public static GMS_ERROR_DIALOG: string;
@@ -681,11 +681,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
 					export class GooglePlayServicesUtilLight {
 						public static class: java.lang.Class<com.google.android.gms.common.GooglePlayServicesUtilLight>;
 						public static GOOGLE_PLAY_SERVICES_VERSION_CODE: number;
@@ -734,11 +734,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
 					export class GoogleSignatureVerifier {
 						public static class: java.lang.Class<com.google.android.gms.common.GoogleSignatureVerifier>;
 						public isGooglePublicSignedPackage(param0: globalAndroid.content.pm.PackageInfo): boolean;
@@ -752,11 +752,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
 					export class ProGuardCanary {
 						public static class: java.lang.Class<com.google.android.gms.common.ProGuardCanary>;
 					}
@@ -766,11 +766,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
 					export class Scopes {
 						public static class: java.lang.Class<com.google.android.gms.common.Scopes>;
 						public static PROFILE: string;
@@ -811,11 +811,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
 					export class SignInButton {
 						public static class: java.lang.Class<com.google.android.gms.common.SignInButton>;
 						public static SIZE_STANDARD: number;
@@ -838,7 +838,7 @@ declare module com {
 						public setEnabled(param0: boolean): void;
 						public onClick(param0: globalAndroid.view.View): void;
 					}
-					export module SignInButton {
+					export namespace SignInButton {
 						export class ButtonSize {
 							public static class: java.lang.Class<com.google.android.gms.common.SignInButton.ButtonSize>;
 							/**
@@ -864,11 +864,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
 					export class SupportErrorDialogFragment {
 						public static class: java.lang.Class<com.google.android.gms.common.SupportErrorDialogFragment>;
 						public constructor();
@@ -884,11 +884,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
 					export class UserRecoverableException {
 						public static class: java.lang.Class<com.google.android.gms.common.UserRecoverableException>;
 						public getIntent(): globalAndroid.content.Intent;
@@ -900,12 +900,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module annotation {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace annotation {
 						export class KeepForSdk {
 							public static class: java.lang.Class<com.google.android.gms.common.annotation.KeepForSdk>;
 							/**
@@ -922,12 +922,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module annotation {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace annotation {
 						export class KeepForSdkWithFieldsAndMethods {
 							public static class: java.lang.Class<com.google.android.gms.common.annotation.KeepForSdkWithFieldsAndMethods>;
 							/**
@@ -944,12 +944,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module annotation {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace annotation {
 						export class KeepForSdkWithMembers {
 							public static class: java.lang.Class<com.google.android.gms.common.annotation.KeepForSdkWithMembers>;
 							/**
@@ -966,12 +966,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module annotation {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace annotation {
 						export class KeepName {
 							public static class: java.lang.Class<com.google.android.gms.common.annotation.KeepName>;
 							/**
@@ -988,12 +988,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
 						export class Api<O>  extends java.lang.Object {
 							public static class: java.lang.Class<com.google.android.gms.common.api.Api<any>>;
 							public constructor(param0: string, param1: com.google.android.gms.common.api.Api.AbstractClientBuilder<any,any>, param2: com.google.android.gms.common.api.Api.ClientKey<any>);
@@ -1002,7 +1002,7 @@ declare module com {
 							public zai(): com.google.android.gms.common.api.Api.AbstractClientBuilder<any,O>;
 							public getName(): string;
 						}
-						export module Api {
+						export namespace Api {
 							export abstract class AbstractClientBuilder<T, O>  extends com.google.android.gms.common.api.Api.BaseClientBuilder<any,any> {
 								public static class: java.lang.Class<com.google.android.gms.common.api.Api.AbstractClientBuilder<any,any>>;
 								public buildClient(param0: globalAndroid.content.Context, param1: globalAndroid.os.Looper, param2: com.google.android.gms.common.internal.ClientSettings, param3: any, param4: com.google.android.gms.common.api.GoogleApiClient.ConnectionCallbacks, param5: com.google.android.gms.common.api.GoogleApiClient.OnConnectionFailedListener): any;
@@ -1030,7 +1030,7 @@ declare module com {
 								});
 								public constructor();
 							}
-							export module ApiOptions {
+							export namespace ApiOptions {
 								export class HasAccountOptions implements com.google.android.gms.common.api.Api.ApiOptions.HasOptions, com.google.android.gms.common.api.Api.ApiOptions.NotRequiredOptions {
 									public static class: java.lang.Class<com.google.android.gms.common.api.Api.ApiOptions.HasAccountOptions>;
 									/**
@@ -1173,12 +1173,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
 						export class ApiException {
 							public static class: java.lang.Class<com.google.android.gms.common.api.ApiException>;
 							public mStatus: com.google.android.gms.common.api.Status;
@@ -1194,12 +1194,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
 						export class AvailabilityException {
 							public static class: java.lang.Class<com.google.android.gms.common.api.AvailabilityException>;
 							public zaj(): globalAndroid.support.v4.util.ArrayMap<com.google.android.gms.common.api.internal.zai<any>,com.google.android.gms.common.ConnectionResult>;
@@ -1214,19 +1214,19 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
 						export class Batch extends com.google.android.gms.common.api.internal.BasePendingResult<com.google.android.gms.common.api.BatchResult> {
 							public static class: java.lang.Class<com.google.android.gms.common.api.Batch>;
 							public cancel(): void;
 							public createFailedResult(param0: com.google.android.gms.common.api.Status): com.google.android.gms.common.api.BatchResult;
 							public createFailedResult(param0: com.google.android.gms.common.api.Status): any;
 						}
-						export module Batch {
+						export namespace Batch {
 							export class Builder {
 								public static class: java.lang.Class<com.google.android.gms.common.api.Batch.Builder>;
 								public build(): com.google.android.gms.common.api.Batch;
@@ -1241,12 +1241,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
 						export class BatchResult extends com.google.android.gms.common.api.Result {
 							public static class: java.lang.Class<com.google.android.gms.common.api.BatchResult>;
 							public getStatus(): com.google.android.gms.common.api.Status;
@@ -1259,12 +1259,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
 						export class BatchResultToken<R>  extends java.lang.Object {
 							public static class: java.lang.Class<com.google.android.gms.common.api.BatchResultToken<any>>;
 							public mId: number;
@@ -1276,12 +1276,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
 						export class BooleanResult extends com.google.android.gms.common.api.Result {
 							public static class: java.lang.Class<com.google.android.gms.common.api.BooleanResult>;
 							public constructor(param0: com.google.android.gms.common.api.Status, param1: boolean);
@@ -1297,12 +1297,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
 						export class CommonStatusCodes {
 							public static class: java.lang.Class<com.google.android.gms.common.api.CommonStatusCodes>;
 							public static SUCCESS_CACHE: number;
@@ -1330,12 +1330,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
 						export class DataBufferResponse<T, R>  extends com.google.android.gms.common.api.Response<any> implements com.google.android.gms.common.data.DataBuffer<any>  {
 							public static class: java.lang.Class<com.google.android.gms.common.api.DataBufferResponse<any,any>>;
 							public constructor();
@@ -1360,12 +1360,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
 						export class GoogleApi<O>  extends java.lang.Object {
 							public static class: java.lang.Class<com.google.android.gms.common.api.GoogleApi<any>>;
 							public zabm: com.google.android.gms.common.api.internal.GoogleApiManager;
@@ -1401,14 +1401,14 @@ declare module com {
 							public constructor(param0: globalAndroid.content.Context, param1: com.google.android.gms.common.api.Api<O>, param2: O, param3: com.google.android.gms.common.api.GoogleApi.Settings);
 							public doRead(param0: com.google.android.gms.common.api.internal.BaseImplementation.ApiMethodImpl<any,any>): com.google.android.gms.common.api.internal.BaseImplementation.ApiMethodImpl<any,any>;
 						}
-						export module GoogleApi {
+						export namespace GoogleApi {
 							export class Settings {
 								public static class: java.lang.Class<com.google.android.gms.common.api.GoogleApi.Settings>;
 								public static DEFAULT_SETTINGS: com.google.android.gms.common.api.GoogleApi.Settings;
 								public zabn: com.google.android.gms.common.api.internal.StatusExceptionMapper;
 								public zabo: globalAndroid.os.Looper;
 							}
-							export module Settings {
+							export namespace Settings {
 								export class Builder {
 									public static class: java.lang.Class<com.google.android.gms.common.api.GoogleApi.Settings.Builder>;
 									public constructor();
@@ -1425,12 +1425,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
 						export class GoogleApiActivity {
 							public static class: java.lang.Class<com.google.android.gms.common.api.GoogleApiActivity>;
 							public constructor();
@@ -1448,12 +1448,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
 						export abstract class GoogleApiClient {
 							public static class: java.lang.Class<com.google.android.gms.common.api.GoogleApiClient>;
 							public static DEFAULT_ACCOUNT: string;
@@ -1493,7 +1493,7 @@ declare module com {
 							public getClient(param0: com.google.android.gms.common.api.Api.AnyClientKey<any>): com.google.android.gms.common.api.Api.Client;
 							public connect(param0: number): void;
 						}
-						export module GoogleApiClient {
+						export namespace GoogleApiClient {
 							export class Builder {
 								public static class: java.lang.Class<com.google.android.gms.common.api.GoogleApiClient.Builder>;
 								public build(): com.google.android.gms.common.api.GoogleApiClient;
@@ -1550,12 +1550,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
 						export abstract class OptionalPendingResult<R>  extends com.google.android.gms.common.api.PendingResult<any> {
 							public static class: java.lang.Class<com.google.android.gms.common.api.OptionalPendingResult<any>>;
 							public constructor();
@@ -1569,12 +1569,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
 						export abstract class PendingResult<R>  extends java.lang.Object {
 							public static class: java.lang.Class<com.google.android.gms.common.api.PendingResult<any>>;
 							public constructor();
@@ -1588,7 +1588,7 @@ declare module com {
 							public setResultCallback(param0: com.google.android.gms.common.api.ResultCallback<any>): void;
 							public zam(): java.lang.Integer;
 						}
-						export module PendingResult {
+						export namespace PendingResult {
 							export class StatusListener {
 								public static class: java.lang.Class<com.google.android.gms.common.api.PendingResult.StatusListener>;
 								/**
@@ -1608,12 +1608,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
 						export class PendingResults {
 							public static class: java.lang.Class<com.google.android.gms.common.api.PendingResults>;
 							public static immediateFailedResult(param0: com.google.android.gms.common.api.Result, param1: com.google.android.gms.common.api.GoogleApiClient): com.google.android.gms.common.api.PendingResult<any>;
@@ -1624,7 +1624,7 @@ declare module com {
 							public static immediatePendingResult(param0: com.google.android.gms.common.api.Status, param1: com.google.android.gms.common.api.GoogleApiClient): com.google.android.gms.common.api.PendingResult<com.google.android.gms.common.api.Status>;
 							public static canceledPendingResult(): com.google.android.gms.common.api.PendingResult<com.google.android.gms.common.api.Status>;
 						}
-						export module PendingResults {
+						export namespace PendingResults {
 							export class zaa<R>  extends com.google.android.gms.common.api.internal.BasePendingResult<any> {
 								public static class: java.lang.Class<com.google.android.gms.common.api.PendingResults.zaa<any>>;
 								public constructor(param0: any);
@@ -1662,12 +1662,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
 						export class Releasable {
 							public static class: java.lang.Class<com.google.android.gms.common.api.Releasable>;
 							/**
@@ -1686,12 +1686,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
 						export class ResolvableApiException extends com.google.android.gms.common.api.ApiException {
 							public static class: java.lang.Class<com.google.android.gms.common.api.ResolvableApiException>;
 							public constructor(param0: com.google.android.gms.common.api.Status);
@@ -1705,12 +1705,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
 						export abstract class ResolvingResultCallbacks<R>  extends com.google.android.gms.common.api.ResultCallbacks<any> {
 							public static class: java.lang.Class<com.google.android.gms.common.api.ResolvingResultCallbacks<any>>;
 							public constructor();
@@ -1727,12 +1727,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
 						export class Response<T>  extends java.lang.Object {
 							public static class: java.lang.Class<com.google.android.gms.common.api.Response<any>>;
 							public constructor();
@@ -1747,12 +1747,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
 						export class Result {
 							public static class: java.lang.Class<com.google.android.gms.common.api.Result>;
 							/**
@@ -1771,12 +1771,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
 						export class ResultCallback<R>  extends java.lang.Object {
 							public static class: java.lang.Class<com.google.android.gms.common.api.ResultCallback<any>>;
 							/**
@@ -1795,12 +1795,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
 						export abstract class ResultCallbacks<R>  extends com.google.android.gms.common.api.ResultCallback<any> {
 							public static class: java.lang.Class<com.google.android.gms.common.api.ResultCallbacks<any>>;
 							public constructor();
@@ -1815,12 +1815,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
 						export abstract class ResultTransform<R, S>  extends java.lang.Object {
 							public static class: java.lang.Class<com.google.android.gms.common.api.ResultTransform<any,any>>;
 							public constructor();
@@ -1835,12 +1835,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
 						export class Scope extends com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable implements com.google.android.gms.common.internal.ReflectedParcelable {
 							public static class: java.lang.Class<com.google.android.gms.common.api.Scope>;
 							public static CREATOR: globalAndroid.os.Parcelable.Creator<com.google.android.gms.common.api.Scope>;
@@ -1859,12 +1859,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
 						export class Status extends com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable implements com.google.android.gms.common.api.Result, com.google.android.gms.common.internal.ReflectedParcelable {
 							public static class: java.lang.Class<com.google.android.gms.common.api.Status>;
 							public static RESULT_SUCCESS: com.google.android.gms.common.api.Status;
@@ -1899,12 +1899,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
 						export abstract class TransformedResult<R>  extends java.lang.Object {
 							public static class: java.lang.Class<com.google.android.gms.common.api.TransformedResult<any>>;
 							public constructor();
@@ -1918,12 +1918,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
 						export class UnsupportedApiCallException {
 							public static class: java.lang.Class<com.google.android.gms.common.api.UnsupportedApiCallException>;
 							public constructor(param0: com.google.android.gms.common.Feature);
@@ -1936,13 +1936,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export abstract class ActivityLifecycleObserver {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.ActivityLifecycleObserver>;
 								public onStopCallOnce(param0: java.lang.Runnable): com.google.android.gms.common.api.internal.ActivityLifecycleObserver;
@@ -1957,13 +1957,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export class ApiExceptionMapper extends com.google.android.gms.common.api.internal.StatusExceptionMapper {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.ApiExceptionMapper>;
 								public constructor();
@@ -1977,13 +1977,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export class BackgroundDetector {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.BackgroundDetector>;
 								public readCurrentStateIfPossible(param0: boolean): boolean;
@@ -2002,7 +2002,7 @@ declare module com {
 								public onActivityStopped(param0: globalAndroid.app.Activity): void;
 								public static getInstance(): com.google.android.gms.common.api.internal.BackgroundDetector;
 							}
-							export module BackgroundDetector {
+							export namespace BackgroundDetector {
 								export class BackgroundStateChangeListener {
 									public static class: java.lang.Class<com.google.android.gms.common.api.internal.BackgroundDetector.BackgroundStateChangeListener>;
 									/**
@@ -2023,18 +2023,18 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export class BaseImplementation {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.BaseImplementation>;
 								public constructor();
 							}
-							export module BaseImplementation {
+							export namespace BaseImplementation {
 								export abstract class ApiMethodImpl<R, A>  extends com.google.android.gms.common.api.internal.BasePendingResult<any> implements com.google.android.gms.common.api.internal.BaseImplementation.ResultHolder<any>  {
 									public static class: java.lang.Class<com.google.android.gms.common.api.internal.BaseImplementation.ApiMethodImpl<any,any>>;
 									public constructor();
@@ -2075,13 +2075,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export abstract class BasePendingResult<R>  extends com.google.android.gms.common.api.PendingResult<any> {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.BasePendingResult<any>>;
 								public setResultCallback(param0: com.google.android.gms.common.api.ResultCallback<any>): void;
@@ -2108,7 +2108,7 @@ declare module com {
 								public addStatusListener(param0: com.google.android.gms.common.api.PendingResult.StatusListener): void;
 								public zam(): java.lang.Integer;
 							}
-							export module BasePendingResult {
+							export namespace BasePendingResult {
 								export class CallbackHandler<R>  extends com.google.android.gms.internal.base.zal {
 									public static class: java.lang.Class<com.google.android.gms.common.api.internal.BasePendingResult.CallbackHandler<any>>;
 									public constructor();
@@ -2130,13 +2130,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export abstract class DataHolderNotifier<L>  extends com.google.android.gms.common.api.internal.ListenerHolder.Notifier<any> {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.DataHolderNotifier<any>>;
 								public onNotifyListenerFailed(): void;
@@ -2152,13 +2152,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export class DataHolderResult implements com.google.android.gms.common.api.Releasable, com.google.android.gms.common.api.Result {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.DataHolderResult>;
 								public mStatus: com.google.android.gms.common.api.Status;
@@ -2176,13 +2176,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export class GoogleApiManager {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.GoogleApiManager>;
 								public static zahw: com.google.android.gms.common.api.Status;
@@ -2202,7 +2202,7 @@ declare module com {
 								public zaa(param0: com.google.android.gms.common.api.GoogleApi<any>, param1: number, param2: com.google.android.gms.common.api.internal.BaseImplementation.ApiMethodImpl<any,any>): void;
 								public zaa(param0: com.google.android.gms.common.api.GoogleApi<any>, param1: number, param2: com.google.android.gms.common.api.internal.TaskApiCall<any,any>, param3: com.google.android.gms.tasks.TaskCompletionSource<any>, param4: com.google.android.gms.common.api.internal.StatusExceptionMapper): void;
 							}
-							export module GoogleApiManager {
+							export namespace GoogleApiManager {
 								export class zaa<O>  extends java.lang.Object {
 									public static class: java.lang.Class<com.google.android.gms.common.api.internal.GoogleApiManager.zaa<any>>;
 									public zag(param0: com.google.android.gms.common.ConnectionResult): void;
@@ -2248,13 +2248,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export class GoogleServices {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.GoogleServices>;
 								public static isMeasurementExplicitlyDisabled(): boolean;
@@ -2271,13 +2271,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export class IStatusCallback {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.IStatusCallback>;
 								/**
@@ -2289,7 +2289,7 @@ declare module com {
 								public constructor();
 								public onResult(param0: com.google.android.gms.common.api.Status): void;
 							}
-							export module IStatusCallback {
+							export namespace IStatusCallback {
 								export abstract class Stub extends com.google.android.gms.internal.base.zab implements com.google.android.gms.common.api.internal.IStatusCallback {
 									public static class: java.lang.Class<com.google.android.gms.common.api.internal.IStatusCallback.Stub>;
 									public constructor(param0: string);
@@ -2298,7 +2298,7 @@ declare module com {
 									public dispatchTransaction(param0: number, param1: globalAndroid.os.Parcel, param2: globalAndroid.os.Parcel, param3: number): boolean;
 									public static asInterface(param0: globalAndroid.os.IBinder): com.google.android.gms.common.api.internal.IStatusCallback;
 								}
-								export module Stub {
+								export namespace Stub {
 									export class zaa extends com.google.android.gms.internal.base.zaa implements com.google.android.gms.common.api.internal.IStatusCallback {
 										public static class: java.lang.Class<com.google.android.gms.common.api.internal.IStatusCallback.Stub.zaa>;
 										public onResult(param0: com.google.android.gms.common.api.Status): void;
@@ -2313,13 +2313,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export class LifecycleActivity {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.LifecycleActivity>;
 								public asObject(): any;
@@ -2338,13 +2338,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export class LifecycleCallback {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.LifecycleCallback>;
 								public mLifecycleFragment: com.google.android.gms.common.api.internal.LifecycleFragment;
@@ -2370,13 +2370,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export class LifecycleFragment {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.LifecycleFragment>;
 								/**
@@ -2406,13 +2406,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export class ListenerHolder<L>  extends java.lang.Object {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.ListenerHolder<any>>;
 								public getListenerKey(): com.google.android.gms.common.api.internal.ListenerHolder.ListenerKey<L>;
@@ -2420,7 +2420,7 @@ declare module com {
 								public notifyListener(param0: com.google.android.gms.common.api.internal.ListenerHolder.Notifier<any>): void;
 								public hasListener(): boolean;
 							}
-							export module ListenerHolder {
+							export namespace ListenerHolder {
 								export class ListenerKey<L>  extends java.lang.Object {
 									public static class: java.lang.Class<com.google.android.gms.common.api.internal.ListenerHolder.ListenerKey<any>>;
 									public hashCode(): number;
@@ -2456,13 +2456,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export class ListenerHolders {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.ListenerHolders>;
 								public static createListenerKey(param0: any, param1: string): com.google.android.gms.common.api.internal.ListenerHolder.ListenerKey<any>;
@@ -2479,13 +2479,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export class OptionalPendingResultImpl<R>  extends com.google.android.gms.common.api.OptionalPendingResult<any> {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.OptionalPendingResultImpl<any>>;
 								public setResultCallback(param0: com.google.android.gms.common.api.ResultCallback<any>): void;
@@ -2510,13 +2510,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export abstract class PendingResultFacade<A, B>  extends com.google.android.gms.common.api.PendingResult<any> {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.PendingResultFacade<any,any>>;
 							}
@@ -2528,13 +2528,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export abstract class RegisterListenerMethod<A, L>  extends java.lang.Object {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.RegisterListenerMethod<any,any>>;
 								public registerListener(param0: A, param1: com.google.android.gms.tasks.TaskCompletionSource<java.lang.Void>): void;
@@ -2553,20 +2553,20 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export class RegistrationMethods<A, L>  extends java.lang.Object {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.RegistrationMethods<any,any>>;
 								public zajy: com.google.android.gms.common.api.internal.RegisterListenerMethod<A,L>;
 								public zajz: com.google.android.gms.common.api.internal.UnregisterListenerMethod<A,L>;
 								public static builder(): com.google.android.gms.common.api.internal.RegistrationMethods.Builder<any,any>;
 							}
-							export module RegistrationMethods {
+							export namespace RegistrationMethods {
 								export class Builder<A, L>  extends java.lang.Object {
 									public static class: java.lang.Class<com.google.android.gms.common.api.internal.RegistrationMethods.Builder<any,any>>;
 									public setAutoResolveMissingFeatures(param0: boolean): com.google.android.gms.common.api.internal.RegistrationMethods.Builder<A,L>;
@@ -2589,13 +2589,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export class RemoteCall<T, U>  extends java.lang.Object {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.RemoteCall<any,any>>;
 								/**
@@ -2615,13 +2615,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export class SignInConnectionListener {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.SignInConnectionListener>;
 								/**
@@ -2641,13 +2641,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export class StatusCallback extends com.google.android.gms.common.api.internal.IStatusCallback.Stub {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.StatusCallback>;
 								public constructor(param0: com.google.android.gms.common.api.internal.BaseImplementation.ResultHolder<com.google.android.gms.common.api.Status>);
@@ -2663,13 +2663,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export class StatusExceptionMapper {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.StatusExceptionMapper>;
 								/**
@@ -2689,13 +2689,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export class StatusPendingResult extends com.google.android.gms.common.api.internal.BasePendingResult<com.google.android.gms.common.api.Status> {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.StatusPendingResult>;
 								public constructor(param0: com.google.android.gms.common.api.GoogleApiClient);
@@ -2712,13 +2712,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export abstract class TaskApiCall<A, ResultT>  extends java.lang.Object {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.TaskApiCall<any,any>>;
 								/** @deprecated */
@@ -2728,7 +2728,7 @@ declare module com {
 								public shouldAutoResolveMissingFeatures(): boolean;
 								public static builder(): com.google.android.gms.common.api.internal.TaskApiCall.Builder<any,any>;
 							}
-							export module TaskApiCall {
+							export namespace TaskApiCall {
 								export class Builder<A, ResultT>  extends java.lang.Object {
 									public static class: java.lang.Class<com.google.android.gms.common.api.internal.TaskApiCall.Builder<any,any>>;
 									public setFeatures(param0: native.Array<com.google.android.gms.common.Feature>): com.google.android.gms.common.api.internal.TaskApiCall.Builder<A,ResultT>;
@@ -2747,13 +2747,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export class TaskUtil {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.TaskUtil>;
 								public static setResultOrApiException(param0: com.google.android.gms.common.api.Status, param1: any, param2: com.google.android.gms.tasks.TaskCompletionSource<any>): void;
@@ -2770,13 +2770,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export abstract class UnregisterListenerMethod<A, L>  extends java.lang.Object {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.UnregisterListenerMethod<any,any>>;
 								public getListenerKey(): com.google.android.gms.common.api.internal.ListenerHolder.ListenerKey<L>;
@@ -2791,20 +2791,20 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export class zaa extends com.google.android.gms.common.api.internal.ActivityLifecycleObserver {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.zaa>;
 								public onStopCallOnce(param0: java.lang.Runnable): com.google.android.gms.common.api.internal.ActivityLifecycleObserver;
 								public constructor(param0: globalAndroid.app.Activity);
 								public constructor();
 							}
-							export module zaa {
+							export namespace zaa {
 								export class zaa extends com.google.android.gms.common.api.internal.LifecycleCallback {
 									public static class: java.lang.Class<com.google.android.gms.common.api.internal.zaa.zaa>;
 									public onStop(): void;
@@ -2818,13 +2818,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export class zaaa extends com.google.android.gms.tasks.OnCompleteListener<java.util.Map<com.google.android.gms.common.api.internal.zai<any>,string>> {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.zaaa>;
 								public onComplete(param0: com.google.android.gms.tasks.Task<any>): void;
@@ -2838,13 +2838,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export class zaab {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.zaab>;
 								public constructor();
@@ -2859,13 +2859,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export class zaac extends com.google.android.gms.common.api.PendingResult.StatusListener {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.zaac>;
 								public onComplete(param0: com.google.android.gms.common.api.Status): void;
@@ -2878,13 +2878,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export class zaad extends com.google.android.gms.tasks.OnCompleteListener<any> {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.zaad>;
 								public onComplete(param0: com.google.android.gms.tasks.Task<any>): void;
@@ -2897,13 +2897,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export class zaae extends com.google.android.gms.common.api.internal.zal {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.zaae>;
 								public zao(): void;
@@ -2921,13 +2921,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export class zaaf {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.zaaf>;
 								public constructor(param0: com.google.android.gms.common.api.internal.zai<any>);
@@ -2942,13 +2942,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export class zaag extends com.google.android.gms.common.api.GoogleApiClient {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.zaag>;
 								public unregisterConnectionCallbacks(param0: com.google.android.gms.common.api.GoogleApiClient.ConnectionCallbacks): void;
@@ -2981,13 +2981,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export class zaah extends com.google.android.gms.common.api.internal.zabd {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.zaah>;
 								public disconnect(): boolean;
@@ -3008,13 +3008,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export class zaai extends com.google.android.gms.common.api.internal.zabf {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.zaai>;
 								public zaan(): void;
@@ -3027,13 +3027,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export class zaaj extends com.google.android.gms.common.api.internal.zabf {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.zaaj>;
 								public zaan(): void;
@@ -3046,13 +3046,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export class zaak extends com.google.android.gms.common.api.internal.zabd {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.zaak>;
 								public zaa(param0: com.google.android.gms.common.ConnectionResult, param1: com.google.android.gms.common.api.Api<any>, param2: boolean): void;
@@ -3073,13 +3073,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export class zaal {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.zaal>;
 								public run(): void;
@@ -3092,13 +3092,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export class zaam extends com.google.android.gms.common.internal.BaseGmsClient.ConnectionProgressReportCallbacks {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.zaam>;
 								public onReportServiceBinding(param0: com.google.android.gms.common.ConnectionResult): void;
@@ -3112,13 +3112,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export class zaan extends com.google.android.gms.common.api.internal.zaau {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.zaan>;
 								public constructor(param0: java.util.Map<com.google.android.gms.common.api.Api.Client,com.google.android.gms.common.api.internal.zaam>);
@@ -3132,13 +3132,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export class zaao extends com.google.android.gms.common.api.internal.zabf {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.zaao>;
 								public zaan(): void;
@@ -3151,13 +3151,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export class zaap extends com.google.android.gms.common.api.internal.zabf {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.zaap>;
 								public zaan(): void;
@@ -3170,13 +3170,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export class zaaq extends com.google.android.gms.common.api.internal.zaau {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.zaaq>;
 								public constructor(param0: java.util.ArrayList<com.google.android.gms.common.api.Api.Client>);
@@ -3190,13 +3190,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export class zaar extends com.google.android.gms.signin.internal.zac {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.zaar>;
 								public zah(param0: com.google.android.gms.common.api.Status): void;
@@ -3213,13 +3213,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export class zaas extends com.google.android.gms.common.api.internal.zabf {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.zaas>;
 								public zaan(): void;
@@ -3232,13 +3232,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export class zaat implements com.google.android.gms.common.api.GoogleApiClient.ConnectionCallbacks, com.google.android.gms.common.api.GoogleApiClient.OnConnectionFailedListener {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.zaat>;
 								public onConnectionFailed(param0: com.google.android.gms.common.ConnectionResult): void;
@@ -3253,13 +3253,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export abstract class zaau {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.zaau>;
 								public zaan(): void;
@@ -3273,13 +3273,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export class zaav extends com.google.android.gms.common.api.internal.zabd {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.zaav>;
 								public disconnect(): boolean;
@@ -3300,13 +3300,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export class zaaw extends com.google.android.gms.common.api.GoogleApiClient implements com.google.android.gms.common.api.internal.zabt {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.zaaw>;
 								public unregisterConnectionCallbacks(param0: com.google.android.gms.common.api.GoogleApiClient.ConnectionCallbacks): void;
@@ -3354,13 +3354,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export class zaax extends com.google.android.gms.common.internal.GmsClientEventManager.GmsClientEventState {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.zaax>;
 								public getConnectionHint(): globalAndroid.os.Bundle;
@@ -3374,13 +3374,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export class zaay extends com.google.android.gms.common.api.GoogleApiClient.ConnectionCallbacks {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.zaay>;
 								public onConnected(param0: globalAndroid.os.Bundle): void;
@@ -3394,13 +3394,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export class zaaz extends com.google.android.gms.common.api.GoogleApiClient.OnConnectionFailedListener {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.zaaz>;
 								public onConnectionFailed(param0: com.google.android.gms.common.ConnectionResult): void;
@@ -3413,13 +3413,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export abstract class zab {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.zab>;
 								public zaa(param0: com.google.android.gms.common.api.Status): void;
@@ -3436,13 +3436,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export class zaba extends com.google.android.gms.common.api.ResultCallback<com.google.android.gms.common.api.Status> {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.zaba>;
 								public onResult(param0: any): void;
@@ -3455,13 +3455,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export class zabb extends com.google.android.gms.internal.base.zal {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.zabb>;
 								public handleMessage(param0: globalAndroid.os.Message): void;
@@ -3474,13 +3474,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export class zabc extends com.google.android.gms.common.api.internal.zabr {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.zabc>;
 								public zas(): void;
@@ -3493,13 +3493,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export class zabd {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.zabd>;
 								/**
@@ -3533,13 +3533,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export class zabe implements com.google.android.gms.common.api.internal.zabs, com.google.android.gms.common.api.internal.zar {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.zabe>;
 								public enqueue(param0: com.google.android.gms.common.api.internal.BaseImplementation.ApiMethodImpl<any,any>): com.google.android.gms.common.api.internal.BaseImplementation.ApiMethodImpl<any,any>;
@@ -3568,13 +3568,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export abstract class zabf {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.zabf>;
 								public zaan(): void;
@@ -3589,13 +3589,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export class zabg extends com.google.android.gms.internal.base.zal {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.zabg>;
 								public handleMessage(param0: globalAndroid.os.Message): void;
@@ -3608,13 +3608,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export class zabh {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.zabh>;
 								public static zabb(): java.util.concurrent.ExecutorService;
@@ -3627,13 +3627,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export class zabi extends com.google.android.gms.common.api.internal.BackgroundDetector.BackgroundStateChangeListener {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.zabi>;
 								public onBackgroundStateChanged(param0: boolean): void;
@@ -3646,13 +3646,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export class zabj {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.zabj>;
 								public run(): void;
@@ -3665,13 +3665,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export class zabk {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.zabk>;
 								public run(): void;
@@ -3684,13 +3684,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export class zabl {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.zabl>;
 								public run(): void;
@@ -3703,13 +3703,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export class zabm extends com.google.android.gms.common.internal.BaseGmsClient.SignOutCallbacks {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.zabm>;
 								public onSignOutComplete(): void;
@@ -3722,13 +3722,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export class zabn {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.zabn>;
 								public run(): void;
@@ -3741,13 +3741,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export class zabo {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.zabo>;
 								public run(): void;
@@ -3760,13 +3760,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export class zabp<O>  extends com.google.android.gms.common.api.internal.zaag {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.zabp<any>>;
 								public constructor(param0: com.google.android.gms.common.api.GoogleApi<any>);
@@ -3787,13 +3787,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export class zabq {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.zabq>;
 								public onReceive(param0: globalAndroid.content.Context, param1: globalAndroid.content.Intent): void;
@@ -3809,13 +3809,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export abstract class zabr {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.zabr>;
 								public constructor();
@@ -3829,13 +3829,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export class zabs {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.zabs>;
 								/**
@@ -3879,13 +3879,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export class zabt {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.zabt>;
 								/**
@@ -3909,13 +3909,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export class zabu extends com.google.android.gms.common.api.internal.zal {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.zabu>;
 								public zao(): void;
@@ -3932,13 +3932,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export class zabv {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.zabv>;
 								public zajq: com.google.android.gms.common.api.internal.zab;
@@ -3954,13 +3954,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export class zabw {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.zabw>;
 								public zajw: com.google.android.gms.common.api.internal.RegisterListenerMethod<com.google.android.gms.common.api.Api.AnyClient,any>;
@@ -3975,13 +3975,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export class zabx {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.zabx>;
 							}
@@ -3993,13 +3993,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export class zaby extends com.google.android.gms.common.api.internal.RemoteCall<any,any> {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.zaby>;
 								public accept(param0: any, param1: any): void;
@@ -4012,13 +4012,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export class zabz extends com.google.android.gms.common.api.internal.RemoteCall<any,any> {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.zabz>;
 								public accept(param0: any, param1: any): void;
@@ -4031,13 +4031,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export abstract class zac extends com.google.android.gms.common.api.internal.zab {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.zac>;
 								public zac(param0: com.google.android.gms.common.api.internal.GoogleApiManager.zaa<any>): boolean;
@@ -4052,13 +4052,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export class zaca extends com.google.android.gms.common.api.internal.RegisterListenerMethod<any,any> {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.zaca>;
 								public registerListener(param0: any, param1: com.google.android.gms.tasks.TaskCompletionSource<java.lang.Void>): void;
@@ -4071,13 +4071,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export class zacb extends com.google.android.gms.common.api.internal.UnregisterListenerMethod<any,any> {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.zacb>;
 								public unregisterListener(param0: any, param1: com.google.android.gms.tasks.TaskCompletionSource<java.lang.Boolean>): void;
@@ -4090,13 +4090,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export class zacc {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.zacc>;
 								public static zabb(): java.util.concurrent.ExecutorService;
@@ -4109,13 +4109,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export class zacd<R>  extends com.google.android.gms.common.api.PendingResult<any> {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.zacd<any>>;
 								public constructor(param0: com.google.android.gms.common.api.Status);
@@ -4138,13 +4138,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export class zace extends com.google.android.gms.signin.internal.zac implements com.google.android.gms.common.api.GoogleApiClient.ConnectionCallbacks, com.google.android.gms.common.api.GoogleApiClient.OnConnectionFailedListener {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.zace>;
 								public zag(param0: com.google.android.gms.common.api.Status): void;
@@ -4171,13 +4171,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export class zacf {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.zacf>;
 								public run(): void;
@@ -4190,13 +4190,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export class zacg {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.zacg>;
 								public run(): void;
@@ -4209,13 +4209,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export class zach {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.zach>;
 								/**
@@ -4237,13 +4237,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export class zaci {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.zaci>;
 							}
@@ -4255,13 +4255,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export class zacj extends com.google.android.gms.common.api.internal.RemoteCall<any,any> {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.zacj>;
 								public accept(param0: any, param1: any): void;
@@ -4274,13 +4274,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export class zack extends com.google.android.gms.common.api.internal.TaskApiCall<any,any> {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.zack>;
 								public doExecute(param0: any, param1: com.google.android.gms.tasks.TaskCompletionSource<any>): void;
@@ -4293,13 +4293,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export class zacl extends com.google.android.gms.tasks.Continuation<java.lang.Boolean,java.lang.Void> {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.zacl>;
 								public then(param0: com.google.android.gms.tasks.Task<any>): any;
@@ -4312,13 +4312,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export class zacm<R>  extends com.google.android.gms.common.api.TransformedResult<any> implements com.google.android.gms.common.api.ResultCallback<any>  {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.zacm<any>>;
 								public constructor(param0: java.lang.ref.WeakReference<com.google.android.gms.common.api.GoogleApiClient>);
@@ -4336,13 +4336,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export class zacn {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.zacn>;
 								public run(): void;
@@ -4355,13 +4355,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export class zaco extends com.google.android.gms.internal.base.zal {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.zaco>;
 								public constructor(param0: com.google.android.gms.common.api.internal.zacm<any>, param1: globalAndroid.os.Looper);
@@ -4378,13 +4378,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export class zacp {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.zacp>;
 								public static zakw: com.google.android.gms.common.api.Status;
@@ -4400,13 +4400,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export class zacq extends com.google.android.gms.common.api.internal.zacs {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.zacq>;
 								public zac(param0: com.google.android.gms.common.api.internal.BasePendingResult<any>): void;
@@ -4419,13 +4419,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export class zacr extends com.google.android.gms.common.api.internal.zacs {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.zacr>;
 								public binderDied(): void;
@@ -4439,13 +4439,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export class zacs {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.zacs>;
 								/**
@@ -4465,13 +4465,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export abstract class zad<T>  extends com.google.android.gms.common.api.internal.zac {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.zad<any>>;
 								public zacm: com.google.android.gms.tasks.TaskCompletionSource<any>;
@@ -4491,13 +4491,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export class zae<A>  extends com.google.android.gms.common.api.internal.zab {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.zae<any>>;
 								public zaa(param0: com.google.android.gms.common.api.Status): void;
@@ -4515,13 +4515,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export class zaf extends com.google.android.gms.common.api.internal.zad<java.lang.Void> {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.zaf>;
 								public constructor(param0: number, param1: com.google.android.gms.tasks.TaskCompletionSource<any>);
@@ -4539,13 +4539,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export class zag<ResultT>  extends com.google.android.gms.common.api.internal.zac {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.zag<any>>;
 								public zaa(param0: com.google.android.gms.common.api.Status): void;
@@ -4565,13 +4565,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export class zah extends com.google.android.gms.common.api.internal.zad<java.lang.Boolean> {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.zah>;
 								public constructor(param0: number, param1: com.google.android.gms.tasks.TaskCompletionSource<any>);
@@ -4589,13 +4589,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export class zai<O>  extends java.lang.Object {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.zai<any>>;
 								public equals(param0: any): boolean;
@@ -4612,13 +4612,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export class zaj extends com.google.android.gms.common.api.internal.zal {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.zaj>;
 								public zao(): void;
@@ -4630,7 +4630,7 @@ declare module com {
 								public onStop(): void;
 								public onStart(): void;
 							}
-							export module zaj {
+							export namespace zaj {
 								export class zaa extends com.google.android.gms.common.api.GoogleApiClient.OnConnectionFailedListener {
 									public static class: java.lang.Class<com.google.android.gms.common.api.internal.zaj.zaa>;
 									public zacw: number;
@@ -4648,13 +4648,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export class zak {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.zak>;
 								public constructor(param0: java.lang.Iterable<any>);
@@ -4670,13 +4670,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export abstract class zal extends com.google.android.gms.common.api.internal.LifecycleCallback {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.zal>;
 								public mStarted: boolean;
@@ -4702,13 +4702,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export class zam {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.zam>;
 							}
@@ -4720,13 +4720,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export class zan {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.zan>;
 								public run(): void;
@@ -4739,13 +4739,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export class zao extends com.google.android.gms.common.api.internal.zabr {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.zao>;
 								public zas(): void;
@@ -4758,13 +4758,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export class zap extends java.lang.ThreadLocal<java.lang.Boolean> {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.zap>;
 							}
@@ -4776,13 +4776,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export class zaq implements com.google.android.gms.common.api.GoogleApiClient.ConnectionCallbacks, com.google.android.gms.common.api.GoogleApiClient.OnConnectionFailedListener {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.zaq>;
 								public mApi: com.google.android.gms.common.api.Api<any>;
@@ -4800,13 +4800,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export class zar extends com.google.android.gms.common.api.GoogleApiClient.ConnectionCallbacks {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.zar>;
 								/**
@@ -4832,13 +4832,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export class zas extends com.google.android.gms.common.api.internal.zabs {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.zas>;
 								public enqueue(param0: com.google.android.gms.common.api.internal.BaseImplementation.ApiMethodImpl<any,any>): com.google.android.gms.common.api.internal.BaseImplementation.ApiMethodImpl<any,any>;
@@ -4864,13 +4864,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export class zat {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.zat>;
 								public run(): void;
@@ -4883,13 +4883,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export class zau extends com.google.android.gms.common.api.internal.zabt {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.zau>;
 								public zac(param0: com.google.android.gms.common.ConnectionResult): void;
@@ -4904,13 +4904,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export class zav extends com.google.android.gms.common.api.internal.zabt {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.zav>;
 								public zac(param0: com.google.android.gms.common.ConnectionResult): void;
@@ -4925,13 +4925,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export class zaw<O>  extends com.google.android.gms.common.api.GoogleApi<any> {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.zaw<any>>;
 								public constructor(param0: globalAndroid.app.Activity, param1: com.google.android.gms.common.api.Api<any>, param2: any, param3: com.google.android.gms.common.api.GoogleApi.Settings);
@@ -4956,13 +4956,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export class zax extends com.google.android.gms.common.api.internal.zabs {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.zax>;
 								public constructor(param0: globalAndroid.content.Context, param1: java.util.concurrent.locks.Lock, param2: globalAndroid.os.Looper, param3: com.google.android.gms.common.GoogleApiAvailabilityLight, param4: java.util.Map<com.google.android.gms.common.api.Api.AnyClientKey<any>,com.google.android.gms.common.api.Api.Client>, param5: com.google.android.gms.common.internal.ClientSettings, param6: java.util.Map<com.google.android.gms.common.api.Api<any>,java.lang.Boolean>, param7: com.google.android.gms.common.api.Api.AbstractClientBuilder<any,com.google.android.gms.signin.SignInOptions>, param8: java.util.ArrayList<com.google.android.gms.common.api.internal.zaq>, param9: com.google.android.gms.common.api.internal.zaaw, param10: boolean);
@@ -4988,13 +4988,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export class zay {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.zay>;
 							}
@@ -5006,13 +5006,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export class zaz extends com.google.android.gms.tasks.OnCompleteListener<java.util.Map<com.google.android.gms.common.api.internal.zai<any>,string>> {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.zaz>;
 								public onComplete(param0: com.google.android.gms.tasks.Task<any>): void;
@@ -5026,13 +5026,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export class zza implements com.google.android.gms.common.api.internal.LifecycleFragment {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.zza>;
 								public onResume(): void;
@@ -5059,13 +5059,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export class zzb {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.zzb>;
 								public run(): void;
@@ -5078,13 +5078,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export class zzc implements com.google.android.gms.common.api.internal.LifecycleFragment {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.zzc>;
 								public onResume(): void;
@@ -5111,13 +5111,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
-						export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
+						export namespace internal {
 							export class zzd {
 								public static class: java.lang.Class<com.google.android.gms.common.api.internal.zzd>;
 								public run(): void;
@@ -5130,12 +5130,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
 						export class zaa extends com.google.android.gms.common.api.PendingResult.StatusListener {
 							public static class: java.lang.Class<com.google.android.gms.common.api.zaa>;
 							public onComplete(param0: com.google.android.gms.common.api.Status): void;
@@ -5147,12 +5147,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
 						export class zab {
 							public static class: java.lang.Class<com.google.android.gms.common.api.zab>;
 						}
@@ -5163,12 +5163,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
 						export abstract class zac {
 							public static class: java.lang.Class<com.google.android.gms.common.api.zac>;
 							public constructor();
@@ -5181,12 +5181,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
 						export class zza extends globalAndroid.os.Parcelable.Creator<com.google.android.gms.common.api.Scope> {
 							public static class: java.lang.Class<com.google.android.gms.common.api.zza>;
 							public constructor();
@@ -5198,12 +5198,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module api {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace api {
 						export class zzb extends globalAndroid.os.Parcelable.Creator<com.google.android.gms.common.api.Status> {
 							public static class: java.lang.Class<com.google.android.gms.common.api.zzb>;
 							public constructor();
@@ -5215,12 +5215,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module config {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace config {
 						export abstract class GservicesValue<T>  extends java.lang.Object {
 							public static class: java.lang.Class<com.google.android.gms.common.config.GservicesValue<any>>;
 							public mKey: string;
@@ -5237,7 +5237,7 @@ declare module com {
 							public static value(param0: string, param1: boolean): com.google.android.gms.common.config.GservicesValue<java.lang.Boolean>;
 							public override(param0: T): void;
 						}
-						export module GservicesValue {
+						export namespace GservicesValue {
 							export class zza {
 								public static class: java.lang.Class<com.google.android.gms.common.config.GservicesValue.zza>;
 								/**
@@ -5262,12 +5262,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module config {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace config {
 						export class zza extends com.google.android.gms.common.config.GservicesValue<java.lang.Boolean> {
 							public static class: java.lang.Class<com.google.android.gms.common.config.zza>;
 						}
@@ -5278,12 +5278,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module config {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace config {
 						export class zzb extends com.google.android.gms.common.config.GservicesValue<java.lang.Long> {
 							public static class: java.lang.Class<com.google.android.gms.common.config.zzb>;
 						}
@@ -5294,12 +5294,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module config {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace config {
 						export class zzc extends com.google.android.gms.common.config.GservicesValue<java.lang.Integer> {
 							public static class: java.lang.Class<com.google.android.gms.common.config.zzc>;
 						}
@@ -5310,12 +5310,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module config {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace config {
 						export class zzd extends com.google.android.gms.common.config.GservicesValue<java.lang.Float> {
 							public static class: java.lang.Class<com.google.android.gms.common.config.zzd>;
 						}
@@ -5326,12 +5326,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module config {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace config {
 						export class zze extends com.google.android.gms.common.config.GservicesValue<string> {
 							public static class: java.lang.Class<com.google.android.gms.common.config.zze>;
 						}
@@ -5342,12 +5342,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module data {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace data {
 						export abstract class AbstractDataBuffer<T>  extends com.google.android.gms.common.data.DataBuffer<any> {
 							public static class: java.lang.Class<com.google.android.gms.common.data.AbstractDataBuffer<any>>;
 							public mDataHolder: com.google.android.gms.common.data.DataHolder;
@@ -5370,12 +5370,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module data {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace data {
 						export class BitmapTeleporter extends com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable implements com.google.android.gms.common.internal.ReflectedParcelable {
 							public static class: java.lang.Class<com.google.android.gms.common.data.BitmapTeleporter>;
 							public static CREATOR: globalAndroid.os.Parcelable.Creator<com.google.android.gms.common.data.BitmapTeleporter>;
@@ -5393,12 +5393,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module data {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace data {
 						export class DataBuffer<T>  extends java.lang.Object {
 							public static class: java.lang.Class<com.google.android.gms.common.data.DataBuffer<any>>;
 							/**
@@ -5434,12 +5434,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module data {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace data {
 						export class DataBufferIterator<T>  extends java.util.Iterator<any> {
 							public static class: java.lang.Class<com.google.android.gms.common.data.DataBufferIterator<any>>;
 							public zalj: com.google.android.gms.common.data.DataBuffer<any>;
@@ -5456,12 +5456,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module data {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace data {
 						export class DataBufferObserver {
 							public static class: java.lang.Class<com.google.android.gms.common.data.DataBufferObserver>;
 							/**
@@ -5481,7 +5481,7 @@ declare module com {
 							public onDataRangeRemoved(param0: number, param1: number): void;
 							public onDataRangeMoved(param0: number, param1: number, param2: number): void;
 						}
-						export module DataBufferObserver {
+						export namespace DataBufferObserver {
 							export class Observable {
 								public static class: java.lang.Class<com.google.android.gms.common.data.DataBufferObserver.Observable>;
 								/**
@@ -5503,12 +5503,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module data {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace data {
 						export class DataBufferObserverSet implements com.google.android.gms.common.data.DataBufferObserver, com.google.android.gms.common.data.DataBufferObserver.Observable {
 							public static class: java.lang.Class<com.google.android.gms.common.data.DataBufferObserverSet>;
 							public constructor();
@@ -5529,12 +5529,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module data {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace data {
 						export class DataBufferRef {
 							public static class: java.lang.Class<com.google.android.gms.common.data.DataBufferRef>;
 							public mDataHolder: com.google.android.gms.common.data.DataHolder;
@@ -5564,12 +5564,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module data {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace data {
 						export class DataBufferSafeParcelable<T>  extends com.google.android.gms.common.data.AbstractDataBuffer<any> {
 							public static class: java.lang.Class<com.google.android.gms.common.data.DataBufferSafeParcelable<any>>;
 							public singleRefIterator(): java.util.Iterator<any>;
@@ -5594,12 +5594,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module data {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace data {
 						export class DataBufferUtils {
 							public static class: java.lang.Class<com.google.android.gms.common.data.DataBufferUtils>;
 							public static KEY_NEXT_PAGE_TOKEN: string;
@@ -5616,12 +5616,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module data {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace data {
 						export class DataHolder extends com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable {
 							public static class: java.lang.Class<com.google.android.gms.common.data.DataHolder>;
 							public static CREATOR: globalAndroid.os.Parcelable.Creator<com.google.android.gms.common.data.DataHolder>;
@@ -5650,7 +5650,7 @@ declare module com {
 							public getByteArray(param0: string, param1: number, param2: number): native.Array<number>;
 							public getWindowIndex(param0: number): number;
 						}
-						export module DataHolder {
+						export namespace DataHolder {
 							export class Builder {
 								public static class: java.lang.Class<com.google.android.gms.common.data.DataHolder.Builder>;
 								public build(param0: number, param1: globalAndroid.os.Bundle): com.google.android.gms.common.data.DataHolder;
@@ -5670,12 +5670,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module data {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace data {
 						export abstract class EntityBuffer<T>  extends com.google.android.gms.common.data.AbstractDataBuffer<any> {
 							public static class: java.lang.Class<com.google.android.gms.common.data.EntityBuffer<any>>;
 							public singleRefIterator(): java.util.Iterator<any>;
@@ -5700,12 +5700,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module data {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace data {
 						export class Freezable<T>  extends java.lang.Object {
 							public static class: java.lang.Class<com.google.android.gms.common.data.Freezable<any>>;
 							/**
@@ -5726,12 +5726,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module data {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace data {
 						export class FreezableUtils {
 							public static class: java.lang.Class<com.google.android.gms.common.data.FreezableUtils>;
 							public constructor();
@@ -5746,12 +5746,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module data {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace data {
 						export class SingleRefDataBufferIterator<T>  extends com.google.android.gms.common.data.DataBufferIterator<any> {
 							public static class: java.lang.Class<com.google.android.gms.common.data.SingleRefDataBufferIterator<any>>;
 							public constructor(param0: com.google.android.gms.common.data.DataBuffer<any>);
@@ -5764,12 +5764,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module data {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace data {
 						export class zaa extends globalAndroid.os.Parcelable.Creator<com.google.android.gms.common.data.BitmapTeleporter> {
 							public static class: java.lang.Class<com.google.android.gms.common.data.zaa>;
 							public constructor();
@@ -5781,12 +5781,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module data {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace data {
 						export class zab extends com.google.android.gms.common.data.DataHolder.Builder {
 							public static class: java.lang.Class<com.google.android.gms.common.data.zab>;
 							public withRow(param0: globalAndroid.content.ContentValues): com.google.android.gms.common.data.DataHolder.Builder;
@@ -5799,12 +5799,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module data {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace data {
 						export class zac extends globalAndroid.os.Parcelable.Creator<com.google.android.gms.common.data.DataHolder> {
 							public static class: java.lang.Class<com.google.android.gms.common.data.zac>;
 							public constructor();
@@ -5816,12 +5816,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module images {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace images {
 						export class ImageManager {
 							public static class: java.lang.Class<com.google.android.gms.common.images.ImageManager>;
 							public loadImage(param0: globalAndroid.widget.ImageView, param1: globalAndroid.net.Uri): void;
@@ -5831,7 +5831,7 @@ declare module com {
 							public loadImage(param0: globalAndroid.widget.ImageView, param1: globalAndroid.net.Uri, param2: number): void;
 							public static create(param0: globalAndroid.content.Context): com.google.android.gms.common.images.ImageManager;
 						}
-						export module ImageManager {
+						export namespace ImageManager {
 							export class ImageReceiver {
 								public static class: java.lang.Class<com.google.android.gms.common.images.ImageManager.ImageReceiver>;
 								public zace(): void;
@@ -5876,12 +5876,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module images {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace images {
 						export class Size {
 							public static class: java.lang.Class<com.google.android.gms.common.images.Size>;
 							public getWidth(): number;
@@ -5899,12 +5899,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module images {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace images {
 						export class WebImage extends com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable {
 							public static class: java.lang.Class<com.google.android.gms.common.images.WebImage>;
 							public static CREATOR: globalAndroid.os.Parcelable.Creator<com.google.android.gms.common.images.WebImage>;
@@ -5928,12 +5928,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module images {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace images {
 						export abstract class zaa {
 							public static class: java.lang.Class<com.google.android.gms.common.images.zaa>;
 							public zamw: number;
@@ -5948,12 +5948,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module images {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace images {
 						export class zab {
 							public static class: java.lang.Class<com.google.android.gms.common.images.zab>;
 							public uri: globalAndroid.net.Uri;
@@ -5968,12 +5968,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module images {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace images {
 						export class zac extends com.google.android.gms.common.images.zaa {
 							public static class: java.lang.Class<com.google.android.gms.common.images.zac>;
 							public constructor(param0: globalAndroid.widget.ImageView, param1: globalAndroid.net.Uri);
@@ -5991,12 +5991,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module images {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace images {
 						export class zad extends com.google.android.gms.common.images.zaa {
 							public static class: java.lang.Class<com.google.android.gms.common.images.zad>;
 							public hashCode(): number;
@@ -6013,12 +6013,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module images {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace images {
 						export class zae extends globalAndroid.os.Parcelable.Creator<com.google.android.gms.common.images.WebImage> {
 							public static class: java.lang.Class<com.google.android.gms.common.images.zae>;
 							public constructor();
@@ -6030,12 +6030,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace internal {
 						export class AccountAccessor extends com.google.android.gms.common.internal.IAccountAccessor.Stub {
 							public static class: java.lang.Class<com.google.android.gms.common.internal.AccountAccessor>;
 							public getAccount(): globalAndroid.accounts.Account;
@@ -6049,12 +6049,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace internal {
 						export class AccountType {
 							public static class: java.lang.Class<com.google.android.gms.common.internal.AccountType>;
 							public static GOOGLE: string;
@@ -6066,12 +6066,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace internal {
 						export class ApiExceptionUtil {
 							public static class: java.lang.Class<com.google.android.gms.common.internal.ApiExceptionUtil>;
 							public constructor();
@@ -6084,12 +6084,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace internal {
 						export class Asserts {
 							public static class: java.lang.Class<com.google.android.gms.common.internal.Asserts>;
 							public static checkNotNull(param0: any, param1: any): void;
@@ -6107,12 +6107,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace internal {
 						export class AuthAccountRequest extends com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable {
 							public static class: java.lang.Class<com.google.android.gms.common.internal.AuthAccountRequest>;
 							public static CREATOR: globalAndroid.os.Parcelable.Creator<com.google.android.gms.common.internal.AuthAccountRequest>;
@@ -6135,12 +6135,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace internal {
 						export abstract class BaseGmsClient<T>  extends java.lang.Object {
 							public static class: java.lang.Class<com.google.android.gms.common.internal.BaseGmsClient<any>>;
 							public static CONNECT_STATE_DISCONNECTED: number;
@@ -6190,7 +6190,7 @@ declare module com {
 							public getRemoteService(param0: com.google.android.gms.common.internal.IAccountAccessor, param1: java.util.Set<com.google.android.gms.common.api.Scope>): void;
 							public requiresSignIn(): boolean;
 						}
-						export module BaseGmsClient {
+						export namespace BaseGmsClient {
 							export class BaseConnectionCallbacks {
 								public static class: java.lang.Class<com.google.android.gms.common.internal.BaseGmsClient.BaseConnectionCallbacks>;
 								/**
@@ -6293,12 +6293,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace internal {
 						export class BinderWrapper {
 							public static class: java.lang.Class<com.google.android.gms.common.internal.BinderWrapper>;
 							public static CREATOR: globalAndroid.os.Parcelable.Creator<com.google.android.gms.common.internal.BinderWrapper>;
@@ -6314,12 +6314,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace internal {
 						export class ClientIdentity extends com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable {
 							public static class: java.lang.Class<com.google.android.gms.common.internal.ClientIdentity>;
 							public static CREATOR: globalAndroid.os.Parcelable.Creator<com.google.android.gms.common.internal.ClientIdentity>;
@@ -6337,12 +6337,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace internal {
 						export class ClientSettings {
 							public static class: java.lang.Class<com.google.android.gms.common.internal.ClientSettings>;
 							public static KEY_CLIENT_SESSION_ID: string;
@@ -6364,7 +6364,7 @@ declare module com {
 							public getSignInOptions(): com.google.android.gms.signin.SignInOptions;
 							public constructor(param0: globalAndroid.accounts.Account, param1: java.util.Set<com.google.android.gms.common.api.Scope>, param2: java.util.Map<com.google.android.gms.common.api.Api<any>,com.google.android.gms.common.internal.ClientSettings.OptionalApiSettings>, param3: number, param4: globalAndroid.view.View, param5: string, param6: string, param7: com.google.android.gms.signin.SignInOptions);
 						}
-						export module ClientSettings {
+						export namespace ClientSettings {
 							export class Builder {
 								public static class: java.lang.Class<com.google.android.gms.common.internal.ClientSettings.Builder>;
 								public setGravityForPopups(param0: number): com.google.android.gms.common.internal.ClientSettings.Builder;
@@ -6392,12 +6392,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace internal {
 						export class ConnectionErrorMessages {
 							public static class: java.lang.Class<com.google.android.gms.common.internal.ConnectionErrorMessages>;
 							public static getErrorMessage(param0: globalAndroid.content.Context, param1: number): string;
@@ -6415,12 +6415,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace internal {
 						export class Constants {
 							public static class: java.lang.Class<com.google.android.gms.common.internal.Constants>;
 							public static KEY_GMS_ERROR_CODE: string;
@@ -6438,12 +6438,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace internal {
 						export abstract class DialogRedirect {
 							public static class: java.lang.Class<com.google.android.gms.common.internal.DialogRedirect>;
 							public constructor();
@@ -6460,12 +6460,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace internal {
 						export abstract class DowngradeableSafeParcel extends com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable implements com.google.android.gms.common.internal.ReflectedParcelable {
 							public static class: java.lang.Class<com.google.android.gms.common.internal.DowngradeableSafeParcel>;
 							public constructor();
@@ -6482,12 +6482,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace internal {
 						export abstract class FallbackServiceBroker extends com.google.android.gms.common.internal.IGmsServiceBroker.Stub {
 							public static class: java.lang.Class<com.google.android.gms.common.internal.FallbackServiceBroker>;
 							public constructor();
@@ -6500,12 +6500,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace internal {
 						export class GetServiceRequest extends com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable {
 							public static class: java.lang.Class<com.google.android.gms.common.internal.GetServiceRequest>;
 							public static CREATOR: globalAndroid.os.Parcelable.Creator<com.google.android.gms.common.internal.GetServiceRequest>;
@@ -6521,12 +6521,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace internal {
 						export abstract class GmsClient<T>  extends com.google.android.gms.common.internal.BaseGmsClient<any> {
 							public static class: java.lang.Class<com.google.android.gms.common.internal.GmsClient<any>>;
 							public requiresGooglePlayServices(): boolean;
@@ -6567,12 +6567,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace internal {
 						export class GmsClientEventManager {
 							public static class: java.lang.Class<com.google.android.gms.common.internal.GmsClientEventManager>;
 							public isConnectionCallbacksRegistered(param0: com.google.android.gms.common.api.GoogleApiClient.ConnectionCallbacks): boolean;
@@ -6591,7 +6591,7 @@ declare module com {
 							public enableCallbacks(): void;
 							public areCallbacksEnabled(): boolean;
 						}
-						export module GmsClientEventManager {
+						export namespace GmsClientEventManager {
 							export class GmsClientEventState {
 								public static class: java.lang.Class<com.google.android.gms.common.internal.GmsClientEventManager.GmsClientEventState>;
 								/**
@@ -6613,12 +6613,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace internal {
 						export abstract class GmsClientSupervisor {
 							public static class: java.lang.Class<com.google.android.gms.common.internal.GmsClientSupervisor>;
 							public constructor();
@@ -6628,7 +6628,7 @@ declare module com {
 							public bindService(param0: globalAndroid.content.ComponentName, param1: globalAndroid.content.ServiceConnection, param2: string): boolean;
 							public static getInstance(param0: globalAndroid.content.Context): com.google.android.gms.common.internal.GmsClientSupervisor;
 						}
-						export module GmsClientSupervisor {
+						export namespace GmsClientSupervisor {
 							export class zza {
 								public static class: java.lang.Class<com.google.android.gms.common.internal.GmsClientSupervisor.zza>;
 								public toString(): string;
@@ -6648,12 +6648,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace internal {
 						export class GmsLogger {
 							public static class: java.lang.Class<com.google.android.gms.common.internal.GmsLogger>;
 							public d(param0: string, param1: string, param2: java.lang.Throwable): void;
@@ -6683,12 +6683,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace internal {
 						export class GoogleApiAvailabilityCache {
 							public static class: java.lang.Class<com.google.android.gms.common.internal.GoogleApiAvailabilityCache>;
 							public constructor();
@@ -6703,12 +6703,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace internal {
 						export class HideFirstParty {
 							public static class: java.lang.Class<com.google.android.gms.common.internal.HideFirstParty>;
 							/**
@@ -6725,12 +6725,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace internal {
 						export class IAccountAccessor {
 							public static class: java.lang.Class<com.google.android.gms.common.internal.IAccountAccessor>;
 							/**
@@ -6742,7 +6742,7 @@ declare module com {
 							public constructor();
 							public getAccount(): globalAndroid.accounts.Account;
 						}
-						export module IAccountAccessor {
+						export namespace IAccountAccessor {
 							export abstract class Stub extends com.google.android.gms.internal.common.zzb implements com.google.android.gms.common.internal.IAccountAccessor {
 								public static class: java.lang.Class<com.google.android.gms.common.internal.IAccountAccessor.Stub>;
 								public getAccount(): globalAndroid.accounts.Account;
@@ -6750,7 +6750,7 @@ declare module com {
 								public constructor();
 								public constructor(param0: string);
 							}
-							export module Stub {
+							export namespace Stub {
 								export class zza extends com.google.android.gms.internal.common.zza implements com.google.android.gms.common.internal.IAccountAccessor {
 									public static class: java.lang.Class<com.google.android.gms.common.internal.IAccountAccessor.Stub.zza>;
 									public getAccount(): globalAndroid.accounts.Account;
@@ -6764,12 +6764,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace internal {
 						export class ICancelToken {
 							public static class: java.lang.Class<com.google.android.gms.common.internal.ICancelToken>;
 							/**
@@ -6781,7 +6781,7 @@ declare module com {
 							public constructor();
 							public cancel(): void;
 						}
-						export module ICancelToken {
+						export namespace ICancelToken {
 							export abstract class Stub extends com.google.android.gms.internal.common.zzb implements com.google.android.gms.common.internal.ICancelToken {
 								public static class: java.lang.Class<com.google.android.gms.common.internal.ICancelToken.Stub>;
 								public static asInterface(param0: globalAndroid.os.IBinder): com.google.android.gms.common.internal.ICancelToken;
@@ -6789,7 +6789,7 @@ declare module com {
 								public constructor();
 								public constructor(param0: string);
 							}
-							export module Stub {
+							export namespace Stub {
 								export class zza extends com.google.android.gms.internal.common.zza implements com.google.android.gms.common.internal.ICancelToken {
 									public static class: java.lang.Class<com.google.android.gms.common.internal.ICancelToken.Stub.zza>;
 									public cancel(): void;
@@ -6803,12 +6803,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace internal {
 						export class IGmsCallbacks {
 							public static class: java.lang.Class<com.google.android.gms.common.internal.IGmsCallbacks>;
 							/**
@@ -6822,7 +6822,7 @@ declare module com {
 							public constructor();
 							public onPostInitComplete(param0: number, param1: globalAndroid.os.IBinder, param2: globalAndroid.os.Bundle): void;
 						}
-						export module IGmsCallbacks {
+						export namespace IGmsCallbacks {
 							export abstract class zza extends com.google.android.gms.internal.common.zzb implements com.google.android.gms.common.internal.IGmsCallbacks {
 								public static class: java.lang.Class<com.google.android.gms.common.internal.IGmsCallbacks.zza>;
 								public onPostInitComplete(param0: number, param1: globalAndroid.os.IBinder, param2: globalAndroid.os.Bundle): void;
@@ -6837,12 +6837,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace internal {
 						export class IGmsServiceBroker {
 							public static class: java.lang.Class<com.google.android.gms.common.internal.IGmsServiceBroker>;
 							/**
@@ -6854,7 +6854,7 @@ declare module com {
 							public constructor();
 							public getService(param0: com.google.android.gms.common.internal.IGmsCallbacks, param1: com.google.android.gms.common.internal.GetServiceRequest): void;
 						}
-						export module IGmsServiceBroker {
+						export namespace IGmsServiceBroker {
 							export abstract class Stub implements com.google.android.gms.common.internal.IGmsServiceBroker {
 								public static class: java.lang.Class<com.google.android.gms.common.internal.IGmsServiceBroker.Stub>;
 								public constructor();
@@ -6862,7 +6862,7 @@ declare module com {
 								public asBinder(): globalAndroid.os.IBinder;
 								public onTransact(param0: number, param1: globalAndroid.os.Parcel, param2: globalAndroid.os.Parcel, param3: number): boolean;
 							}
-							export module Stub {
+							export namespace Stub {
 								export class zza extends com.google.android.gms.common.internal.IGmsServiceBroker {
 									public static class: java.lang.Class<com.google.android.gms.common.internal.IGmsServiceBroker.Stub.zza>;
 									public asBinder(): globalAndroid.os.IBinder;
@@ -6877,12 +6877,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace internal {
 						export class IResolveAccountCallbacks {
 							public static class: java.lang.Class<com.google.android.gms.common.internal.IResolveAccountCallbacks>;
 							/**
@@ -6894,7 +6894,7 @@ declare module com {
 							public constructor();
 							public onAccountResolutionComplete(param0: com.google.android.gms.common.internal.ResolveAccountResponse): void;
 						}
-						export module IResolveAccountCallbacks {
+						export namespace IResolveAccountCallbacks {
 							export abstract class Stub extends com.google.android.gms.internal.base.zab implements com.google.android.gms.common.internal.IResolveAccountCallbacks {
 								public static class: java.lang.Class<com.google.android.gms.common.internal.IResolveAccountCallbacks.Stub>;
 								public static asInterface(param0: globalAndroid.os.IBinder): com.google.android.gms.common.internal.IResolveAccountCallbacks;
@@ -6903,7 +6903,7 @@ declare module com {
 								public constructor();
 								public constructor(param0: string);
 							}
-							export module Stub {
+							export namespace Stub {
 								export class Proxy extends com.google.android.gms.internal.base.zaa implements com.google.android.gms.common.internal.IResolveAccountCallbacks {
 									public static class: java.lang.Class<com.google.android.gms.common.internal.IResolveAccountCallbacks.Stub.Proxy>;
 									public onAccountResolutionComplete(param0: com.google.android.gms.common.internal.ResolveAccountResponse): void;
@@ -6917,12 +6917,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace internal {
 						export class ISignInButtonCreator {
 							public static class: java.lang.Class<com.google.android.gms.common.internal.ISignInButtonCreator>;
 							/**
@@ -6943,12 +6943,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace internal {
 						export class ImagesContract {
 							public static class: java.lang.Class<com.google.android.gms.common.internal.ImagesContract>;
 							public static URL: string;
@@ -6962,12 +6962,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace internal {
 						export abstract class LegacyInternalGmsClient<T>  extends com.google.android.gms.common.internal.GmsClient<any> {
 							public static class: java.lang.Class<com.google.android.gms.common.internal.LegacyInternalGmsClient<any>>;
 							public onConnectedLocked(param0: any): void;
@@ -7015,12 +7015,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace internal {
 						export class LibraryVersion {
 							public static class: java.lang.Class<com.google.android.gms.common.internal.LibraryVersion>;
 							public constructor();
@@ -7034,19 +7034,19 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace internal {
 						export class Objects {
 							public static class: java.lang.Class<com.google.android.gms.common.internal.Objects>;
 							public static toStringHelper(param0: any): com.google.android.gms.common.internal.Objects.ToStringHelper;
 							public static hashCode(param0: native.Array<any>): number;
 							public static equal(param0: any, param1: any): boolean;
 						}
-						export module Objects {
+						export namespace Objects {
 							export class ToStringHelper {
 								public static class: java.lang.Class<com.google.android.gms.common.internal.Objects.ToStringHelper>;
 								public toString(): string;
@@ -7060,12 +7060,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace internal {
 						export class PendingResultUtil {
 							public static class: java.lang.Class<com.google.android.gms.common.internal.PendingResultUtil>;
 							public constructor();
@@ -7073,7 +7073,7 @@ declare module com {
 							public static toTask(param0: com.google.android.gms.common.api.PendingResult<any>, param1: com.google.android.gms.common.internal.PendingResultUtil.ResultConverter<any,any>): com.google.android.gms.tasks.Task<any>;
 							public static toResponseTask(param0: com.google.android.gms.common.api.PendingResult<any>, param1: com.google.android.gms.common.api.Response<any>): com.google.android.gms.tasks.Task<any>;
 						}
-						export module PendingResultUtil {
+						export namespace PendingResultUtil {
 							export class ResultConverter<R, T>  extends java.lang.Object {
 								public static class: java.lang.Class<com.google.android.gms.common.internal.PendingResultUtil.ResultConverter<any,any>>;
 								/**
@@ -7104,12 +7104,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace internal {
 						export class Preconditions {
 							public static class: java.lang.Class<com.google.android.gms.common.internal.Preconditions>;
 							public static checkArgument(param0: boolean): void;
@@ -7136,12 +7136,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace internal {
 						export class ReflectedParcelable {
 							public static class: java.lang.Class<com.google.android.gms.common.internal.ReflectedParcelable>;
 							/**
@@ -7158,12 +7158,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace internal {
 						export class ResolveAccountRequest extends com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable {
 							public static class: java.lang.Class<com.google.android.gms.common.internal.ResolveAccountRequest>;
 							public static CREATOR: globalAndroid.os.Parcelable.Creator<com.google.android.gms.common.internal.ResolveAccountRequest>;
@@ -7181,12 +7181,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace internal {
 						export class ResolveAccountResponse extends com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable {
 							public static class: java.lang.Class<com.google.android.gms.common.internal.ResolveAccountResponse>;
 							public static CREATOR: globalAndroid.os.Parcelable.Creator<com.google.android.gms.common.internal.ResolveAccountResponse>;
@@ -7210,12 +7210,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace internal {
 						export class ResourceUtils {
 							public static class: java.lang.Class<com.google.android.gms.common.internal.ResourceUtils>;
 						}
@@ -7226,16 +7226,16 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace internal {
 						export class ServiceSpecificExtraArgs {
 							public static class: java.lang.Class<com.google.android.gms.common.internal.ServiceSpecificExtraArgs>;
 						}
-						export module ServiceSpecificExtraArgs {
+						export namespace ServiceSpecificExtraArgs {
 							export class CastExtraArgs {
 								public static class: java.lang.Class<com.google.android.gms.common.internal.ServiceSpecificExtraArgs.CastExtraArgs>;
 								/**
@@ -7277,12 +7277,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace internal {
 						export class ShowFirstParty {
 							public static class: java.lang.Class<com.google.android.gms.common.internal.ShowFirstParty>;
 							/**
@@ -7299,12 +7299,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace internal {
 						export class SignInButtonConfig extends com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable {
 							public static class: java.lang.Class<com.google.android.gms.common.internal.SignInButtonConfig>;
 							public static CREATOR: globalAndroid.os.Parcelable.Creator<com.google.android.gms.common.internal.SignInButtonConfig>;
@@ -7323,12 +7323,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace internal {
 						export class SignInButtonCreator extends com.google.android.gms.dynamic.RemoteCreator<com.google.android.gms.common.internal.ISignInButtonCreator> {
 							public static class: java.lang.Class<com.google.android.gms.common.internal.SignInButtonCreator>;
 							public getRemoteCreator(param0: globalAndroid.os.IBinder): any;
@@ -7342,12 +7342,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace internal {
 						export class SignInButtonImpl {
 							public static class: java.lang.Class<com.google.android.gms.common.internal.SignInButtonImpl>;
 							public configure(param0: globalAndroid.content.res.Resources, param1: com.google.android.gms.common.internal.SignInButtonConfig): void;
@@ -7362,12 +7362,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace internal {
 						export class SimpleClientAdapter<T>  extends com.google.android.gms.common.internal.GmsClient<any> {
 							public static class: java.lang.Class<com.google.android.gms.common.internal.SimpleClientAdapter<any>>;
 							public getStartServiceAction(): string;
@@ -7410,12 +7410,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace internal {
 						export class StringResourceValueReader {
 							public static class: java.lang.Class<com.google.android.gms.common.internal.StringResourceValueReader>;
 							public getString(param0: string): string;
@@ -7428,12 +7428,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace internal {
 						export class ViewUtils {
 							public static class: java.lang.Class<com.google.android.gms.common.internal.ViewUtils>;
 							public static getXmlAttributeString(param0: string, param1: string, param2: globalAndroid.content.Context, param3: globalAndroid.util.AttributeSet, param4: boolean, param5: boolean, param6: string): string;
@@ -7445,13 +7445,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module internal {
-						export module constants {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace internal {
+						export namespace constants {
 							export class ListAppsActivityContract {
 								public static class: java.lang.Class<com.google.android.gms.common.internal.constants.ListAppsActivityContract>;
 								/**
@@ -7472,13 +7472,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module internal {
-						export module safeparcel {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace internal {
+						export namespace safeparcel {
 							export abstract class AbstractSafeParcelable extends com.google.android.gms.common.internal.safeparcel.SafeParcelable {
 								public static class: java.lang.Class<com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable>;
 								public describeContents(): number;
@@ -7492,13 +7492,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module internal {
-						export module safeparcel {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace internal {
+						export namespace safeparcel {
 							export class SafeParcelReader {
 								public static class: java.lang.Class<com.google.android.gms.common.internal.safeparcel.SafeParcelReader>;
 								public static createParcelable(param0: globalAndroid.os.Parcel, param1: number, param2: globalAndroid.os.Parcelable.Creator): globalAndroid.os.Parcelable;
@@ -7562,7 +7562,7 @@ declare module com {
 								public static createFloatSparseArray(param0: globalAndroid.os.Parcel, param1: number): globalAndroid.util.SparseArray<java.lang.Float>;
 								public static readFloat(param0: globalAndroid.os.Parcel, param1: number): number;
 							}
-							export module SafeParcelReader {
+							export namespace SafeParcelReader {
 								export class ParseException {
 									public static class: java.lang.Class<com.google.android.gms.common.internal.safeparcel.SafeParcelReader.ParseException>;
 									public constructor(param0: string, param1: globalAndroid.os.Parcel);
@@ -7576,13 +7576,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module internal {
-						export module safeparcel {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace internal {
+						export namespace safeparcel {
 							export class SafeParcelWriter {
 								public static class: java.lang.Class<com.google.android.gms.common.internal.safeparcel.SafeParcelWriter>;
 								public static writeIBinderArray(param0: globalAndroid.os.Parcel, param1: number, param2: native.Array<globalAndroid.os.IBinder>, param3: boolean): void;
@@ -7650,13 +7650,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module internal {
-						export module safeparcel {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace internal {
+						export namespace safeparcel {
 							export class SafeParcelable {
 								public static class: java.lang.Class<com.google.android.gms.common.internal.safeparcel.SafeParcelable>;
 								/**
@@ -7667,7 +7667,7 @@ declare module com {
 								public constructor();
 								public static NULL: string;
 							}
-							export module SafeParcelable {
+							export namespace SafeParcelable {
 								export class Class {
 									public static class: java.lang.Class<com.google.android.gms.common.internal.safeparcel.SafeParcelable.Class>;
 									/**
@@ -7766,13 +7766,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module internal {
-						export module safeparcel {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace internal {
+						export namespace safeparcel {
 							export class SafeParcelableSerializer {
 								public static class: java.lang.Class<com.google.android.gms.common.internal.safeparcel.SafeParcelableSerializer>;
 								public static serializeToString(param0: com.google.android.gms.common.internal.safeparcel.SafeParcelable): string;
@@ -7795,13 +7795,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module internal {
-						export module service {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace internal {
+						export namespace service {
 							export class Common {
 								public static class: java.lang.Class<com.google.android.gms.common.internal.service.Common>;
 								public static CLIENT_KEY: com.google.android.gms.common.api.Api.ClientKey<com.google.android.gms.common.internal.service.zai>;
@@ -7817,13 +7817,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module internal {
-						export module service {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace internal {
+						export namespace service {
 							export class zaa extends com.google.android.gms.common.internal.service.zak {
 								public static class: java.lang.Class<com.google.android.gms.common.internal.service.zaa>;
 								public zaj(param0: number): void;
@@ -7838,13 +7838,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module internal {
-						export module service {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace internal {
+						export namespace service {
 							export class zab extends com.google.android.gms.common.api.Api.AbstractClientBuilder<com.google.android.gms.common.internal.service.zai,com.google.android.gms.common.api.Api.ApiOptions.NoOptions> {
 								public static class: java.lang.Class<com.google.android.gms.common.internal.service.zab>;
 							}
@@ -7856,13 +7856,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module internal {
-						export module service {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace internal {
+						export namespace service {
 							export class zac {
 								public static class: java.lang.Class<com.google.android.gms.common.internal.service.zac>;
 								/**
@@ -7882,13 +7882,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module internal {
-						export module service {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace internal {
+						export namespace service {
 							export class zad extends com.google.android.gms.common.internal.service.zac {
 								public static class: java.lang.Class<com.google.android.gms.common.internal.service.zad>;
 								public constructor();
@@ -7902,13 +7902,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module internal {
-						export module service {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace internal {
+						export namespace service {
 							export class zae extends com.google.android.gms.common.internal.service.zah {
 								public static class: java.lang.Class<com.google.android.gms.common.internal.service.zae>;
 								public setResult(param0: any): void;
@@ -7922,13 +7922,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module internal {
-						export module service {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace internal {
+						export namespace service {
 							export class zaf extends com.google.android.gms.common.internal.service.zaa {
 								public static class: java.lang.Class<com.google.android.gms.common.internal.service.zaf>;
 								public constructor(param0: com.google.android.gms.common.api.internal.BaseImplementation.ResultHolder<com.google.android.gms.common.api.Status>);
@@ -7944,13 +7944,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module internal {
-						export module service {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace internal {
+						export namespace service {
 							export abstract class zag<R>  extends com.google.android.gms.common.api.internal.BaseImplementation.ApiMethodImpl<any,com.google.android.gms.common.internal.service.zai> {
 								public static class: java.lang.Class<com.google.android.gms.common.internal.service.zag<any>>;
 								public constructor(param0: com.google.android.gms.common.api.Api<any>, param1: com.google.android.gms.common.api.GoogleApiClient);
@@ -7972,13 +7972,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module internal {
-						export module service {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace internal {
+						export namespace service {
 							export abstract class zah extends com.google.android.gms.common.internal.service.zag<com.google.android.gms.common.api.Status> {
 								public static class: java.lang.Class<com.google.android.gms.common.internal.service.zah>;
 								public constructor(param0: com.google.android.gms.common.api.Api<any>, param1: com.google.android.gms.common.api.GoogleApiClient);
@@ -8000,13 +8000,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module internal {
-						export module service {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace internal {
+						export namespace service {
 							export class zai extends com.google.android.gms.common.internal.GmsClient<com.google.android.gms.common.internal.service.zal> {
 								public static class: java.lang.Class<com.google.android.gms.common.internal.service.zai>;
 								public constructor(param0: globalAndroid.content.Context, param1: globalAndroid.os.Handler, param2: number, param3: com.google.android.gms.common.internal.ClientSettings);
@@ -8047,13 +8047,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module internal {
-						export module service {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace internal {
+						export namespace service {
 							export class zaj {
 								public static class: java.lang.Class<com.google.android.gms.common.internal.service.zaj>;
 								/**
@@ -8073,13 +8073,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module internal {
-						export module service {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace internal {
+						export namespace service {
 							export abstract class zak extends com.google.android.gms.internal.base.zab implements com.google.android.gms.common.internal.service.zaj {
 								public static class: java.lang.Class<com.google.android.gms.common.internal.service.zak>;
 								public dispatchTransaction(param0: number, param1: globalAndroid.os.Parcel, param2: globalAndroid.os.Parcel, param3: number): boolean;
@@ -8095,13 +8095,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module internal {
-						export module service {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace internal {
+						export namespace service {
 							export class zal {
 								public static class: java.lang.Class<com.google.android.gms.common.internal.service.zal>;
 								/**
@@ -8121,13 +8121,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module internal {
-						export module service {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace internal {
+						export namespace service {
 							export class zam extends com.google.android.gms.internal.base.zaa implements com.google.android.gms.common.internal.service.zal {
 								public static class: java.lang.Class<com.google.android.gms.common.internal.service.zam>;
 								public zaa(): globalAndroid.os.Parcel;
@@ -8142,12 +8142,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace internal {
 						export class zaa extends globalAndroid.os.Parcelable.Creator<com.google.android.gms.common.internal.AuthAccountRequest> {
 							public static class: java.lang.Class<com.google.android.gms.common.internal.zaa>;
 							public constructor();
@@ -8159,12 +8159,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace internal {
 						export class zab extends globalAndroid.os.Parcelable.Creator<com.google.android.gms.common.internal.ClientIdentity> {
 							public static class: java.lang.Class<com.google.android.gms.common.internal.zab>;
 							public constructor();
@@ -8176,12 +8176,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace internal {
 						export class zac extends com.google.android.gms.common.internal.DialogRedirect {
 							public static class: java.lang.Class<com.google.android.gms.common.internal.zac>;
 							public redirect(): void;
@@ -8193,12 +8193,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace internal {
 						export class zad extends com.google.android.gms.common.internal.DialogRedirect {
 							public static class: java.lang.Class<com.google.android.gms.common.internal.zad>;
 							public redirect(): void;
@@ -8210,12 +8210,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace internal {
 						export class zae extends com.google.android.gms.common.internal.DialogRedirect {
 							public static class: java.lang.Class<com.google.android.gms.common.internal.zae>;
 							public redirect(): void;
@@ -8227,12 +8227,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace internal {
 						export class zaf extends com.google.android.gms.common.internal.BaseGmsClient.BaseConnectionCallbacks {
 							public static class: java.lang.Class<com.google.android.gms.common.internal.zaf>;
 							public onConnected(param0: globalAndroid.os.Bundle): void;
@@ -8245,12 +8245,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace internal {
 						export class zag extends com.google.android.gms.common.internal.BaseGmsClient.BaseOnConnectionFailedListener {
 							public static class: java.lang.Class<com.google.android.gms.common.internal.zag>;
 							public onConnectionFailed(param0: com.google.android.gms.common.ConnectionResult): void;
@@ -8262,12 +8262,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace internal {
 						export class zah extends com.google.android.gms.internal.base.zaa implements com.google.android.gms.common.internal.ISignInButtonCreator {
 							public static class: java.lang.Class<com.google.android.gms.common.internal.zah>;
 							public newSignInButtonFromConfig(param0: com.google.android.gms.dynamic.IObjectWrapper, param1: com.google.android.gms.common.internal.SignInButtonConfig): com.google.android.gms.dynamic.IObjectWrapper;
@@ -8280,12 +8280,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace internal {
 						export class zai extends com.google.android.gms.common.internal.PendingResultUtil.zaa {
 							public static class: java.lang.Class<com.google.android.gms.common.internal.zai>;
 							public zaf(param0: com.google.android.gms.common.api.Status): com.google.android.gms.common.api.ApiException;
@@ -8297,12 +8297,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace internal {
 						export class zaj extends com.google.android.gms.common.api.PendingResult.StatusListener {
 							public static class: java.lang.Class<com.google.android.gms.common.internal.zaj>;
 							public onComplete(param0: com.google.android.gms.common.api.Status): void;
@@ -8314,12 +8314,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace internal {
 						export class zak extends com.google.android.gms.common.internal.PendingResultUtil.ResultConverter<any,any> {
 							public static class: java.lang.Class<com.google.android.gms.common.internal.zak>;
 							public convert(param0: any): any;
@@ -8331,12 +8331,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace internal {
 						export class zal extends com.google.android.gms.common.internal.PendingResultUtil.ResultConverter<any,java.lang.Void> {
 							public static class: java.lang.Class<com.google.android.gms.common.internal.zal>;
 							public convert(param0: any): any;
@@ -8348,12 +8348,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace internal {
 						export class zam extends globalAndroid.os.Parcelable.Creator<com.google.android.gms.common.internal.ResolveAccountRequest> {
 							public static class: java.lang.Class<com.google.android.gms.common.internal.zam>;
 							public constructor();
@@ -8365,12 +8365,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace internal {
 						export class zan extends globalAndroid.os.Parcelable.Creator<com.google.android.gms.common.internal.ResolveAccountResponse> {
 							public static class: java.lang.Class<com.google.android.gms.common.internal.zan>;
 							public constructor();
@@ -8382,12 +8382,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace internal {
 						export class zao extends globalAndroid.os.Parcelable.Creator<com.google.android.gms.common.internal.SignInButtonConfig> {
 							public static class: java.lang.Class<com.google.android.gms.common.internal.zao>;
 							public constructor();
@@ -8399,12 +8399,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace internal {
 						export class zza extends globalAndroid.os.Parcelable.Creator<com.google.android.gms.common.internal.BinderWrapper> {
 							public static class: java.lang.Class<com.google.android.gms.common.internal.zza>;
 						}
@@ -8415,12 +8415,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace internal {
 						export class zzb extends com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable {
 							public static class: java.lang.Class<com.google.android.gms.common.internal.zzb>;
 							public static CREATOR: any /* globalAndroid.os.Parcelable.Creator<com.google.android.gms.common.internal.zzb>*/;
@@ -8434,12 +8434,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace internal {
 						export class zzc extends java.lang.Object /* globalAndroid.os.Parcelable.Creator<com.google.android.gms.common.internal.zzb>*/ {
 							public static class: java.lang.Class<com.google.android.gms.common.internal.zzc>;
 							public constructor();
@@ -8451,12 +8451,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace internal {
 						export class zzd extends globalAndroid.os.Parcelable.Creator<com.google.android.gms.common.internal.GetServiceRequest> {
 							public static class: java.lang.Class<com.google.android.gms.common.internal.zzd>;
 							public constructor();
@@ -8468,12 +8468,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace internal {
 						export class zze extends com.google.android.gms.common.internal.GmsClientSupervisor {
 							public static class: java.lang.Class<com.google.android.gms.common.internal.zze>;
 							public handleMessage(param0: globalAndroid.os.Message): boolean;
@@ -8485,12 +8485,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace internal {
 						export class zzf {
 							public static class: java.lang.Class<com.google.android.gms.common.internal.zzf>;
 							public constructor(param0: any /* com.google.android.gms.common.internal.zze*/, param1: any /* com.google.android.gms.common.internal.GmsClientSupervisor.zza*/);
@@ -8508,12 +8508,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace internal {
 						export class zzg {
 							public static class: java.lang.Class<com.google.android.gms.common.internal.zzg>;
 						}
@@ -8524,12 +8524,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace internal {
 						export class zzh {
 							public static class: java.lang.Class<com.google.android.gms.common.internal.zzh>;
 							public constructor(param0: string, param1: string, param2: boolean, param3: number);
@@ -8541,12 +8541,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace internal {
 						export class zzi {
 							public static class: java.lang.Class<com.google.android.gms.common.internal.zzi>;
 							/**
@@ -8565,12 +8565,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace internal {
 						export abstract class zzj extends com.google.android.gms.internal.common.zzb implements com.google.android.gms.common.internal.zzi {
 							public static class: java.lang.Class<com.google.android.gms.common.internal.zzj>;
 							public constructor();
@@ -8583,12 +8583,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace internal {
 						export class zzk extends com.google.android.gms.internal.common.zza implements com.google.android.gms.common.internal.zzi {
 							public static class: java.lang.Class<com.google.android.gms.common.internal.zzk>;
 						}
@@ -8599,12 +8599,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace internal {
 						export class zzl extends com.google.android.gms.internal.common.zza implements com.google.android.gms.common.internal.IGmsCallbacks {
 							public static class: java.lang.Class<com.google.android.gms.common.internal.zzl>;
 							public onPostInitComplete(param0: number, param1: globalAndroid.os.IBinder, param2: globalAndroid.os.Bundle): void;
@@ -8616,12 +8616,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace internal {
 						export class zzm {
 							public static class: java.lang.Class<com.google.android.gms.common.internal.zzm>;
 							/**
@@ -8639,12 +8639,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace internal {
 						export abstract class zzn extends com.google.android.gms.internal.common.zzb implements com.google.android.gms.common.internal.zzm {
 							public static class: java.lang.Class<com.google.android.gms.common.internal.zzn>;
 						}
@@ -8655,12 +8655,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace internal {
 						export class zzo extends com.google.android.gms.internal.common.zza implements com.google.android.gms.common.internal.zzm {
 							public static class: java.lang.Class<com.google.android.gms.common.internal.zzo>;
 						}
@@ -8671,12 +8671,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace internal {
 						export class zzp {
 							public static class: java.lang.Class<com.google.android.gms.common.internal.zzp>;
 						}
@@ -8687,12 +8687,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace internal {
 						export class zzq {
 							public static class: java.lang.Class<com.google.android.gms.common.internal.zzq>;
 						}
@@ -8703,12 +8703,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace internal {
 						export class zzr extends com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable {
 							public static class: java.lang.Class<com.google.android.gms.common.internal.zzr>;
 							public static CREATOR: any /* globalAndroid.os.Parcelable.Creator<com.google.android.gms.common.internal.zzr>*/;
@@ -8721,12 +8721,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace internal {
 						export class zzs extends java.lang.Object /* globalAndroid.os.Parcelable.Creator<com.google.android.gms.common.internal.zzr>*/ {
 							public static class: java.lang.Class<com.google.android.gms.common.internal.zzs>;
 							public constructor();
@@ -8738,12 +8738,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module logging {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace logging {
 						export class Logger {
 							public static class: java.lang.Class<com.google.android.gms.common.logging.Logger>;
 							public v(param0: string, param1: native.Array<any>): void;
@@ -8764,17 +8764,17 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module providers {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace providers {
 						export class PooledExecutorsProvider {
 							public static class: java.lang.Class<com.google.android.gms.common.providers.PooledExecutorsProvider>;
 							public static getInstance(): com.google.android.gms.common.providers.PooledExecutorsProvider.PooledExecutorFactory;
 						}
-						export module PooledExecutorsProvider {
+						export namespace PooledExecutorsProvider {
 							export class PooledExecutorFactory {
 								public static class: java.lang.Class<com.google.android.gms.common.providers.PooledExecutorsProvider.PooledExecutorFactory>;
 								/**
@@ -8794,12 +8794,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module providers {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace providers {
 						export class zza extends com.google.android.gms.common.providers.PooledExecutorsProvider.PooledExecutorFactory {
 							public static class: java.lang.Class<com.google.android.gms.common.providers.zza>;
 							public newSingleThreadScheduledExecutor(): java.util.concurrent.ScheduledExecutorService;
@@ -8811,12 +8811,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module server {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace server {
 						export class FavaDiagnosticsEntity extends com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable implements com.google.android.gms.common.internal.ReflectedParcelable {
 							public static class: java.lang.Class<com.google.android.gms.common.server.FavaDiagnosticsEntity>;
 							public static CREATOR: globalAndroid.os.Parcelable.Creator<com.google.android.gms.common.server.FavaDiagnosticsEntity>;
@@ -8832,13 +8832,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module server {
-						export module converter {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace server {
+						export namespace converter {
 							export class StringToIntConverter extends com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable implements com.google.android.gms.common.server.response.FastJsonResponse.FieldConverter<string,java.lang.Integer>  {
 								public static class: java.lang.Class<com.google.android.gms.common.server.converter.StringToIntConverter>;
 								public static CREATOR: globalAndroid.os.Parcelable.Creator<com.google.android.gms.common.server.converter.StringToIntConverter>;
@@ -8850,7 +8850,7 @@ declare module com {
 								public writeToParcel(param0: globalAndroid.os.Parcel, param1: number): void;
 								public convertBack(param0: any): any;
 							}
-							export module StringToIntConverter {
+							export namespace StringToIntConverter {
 								export class zaa extends com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable {
 									public static class: java.lang.Class<com.google.android.gms.common.server.converter.StringToIntConverter.zaa>;
 									public static CREATOR: globalAndroid.os.Parcelable.Creator<com.google.android.gms.common.server.converter.StringToIntConverter.zaa>;
@@ -8865,13 +8865,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module server {
-						export module converter {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace server {
+						export namespace converter {
 							export class zaa extends com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable {
 								public static class: java.lang.Class<com.google.android.gms.common.server.converter.zaa>;
 								public static CREATOR: globalAndroid.os.Parcelable.Creator<com.google.android.gms.common.server.converter.zaa>;
@@ -8887,13 +8887,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module server {
-						export module converter {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace server {
+						export namespace converter {
 							export class zab extends globalAndroid.os.Parcelable.Creator<com.google.android.gms.common.server.converter.zaa> {
 								public static class: java.lang.Class<com.google.android.gms.common.server.converter.zab>;
 								public constructor();
@@ -8906,13 +8906,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module server {
-						export module converter {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace server {
+						export namespace converter {
 							export class zac extends globalAndroid.os.Parcelable.Creator<com.google.android.gms.common.server.converter.StringToIntConverter> {
 								public static class: java.lang.Class<com.google.android.gms.common.server.converter.zac>;
 								public constructor();
@@ -8925,13 +8925,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module server {
-						export module converter {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace server {
+						export namespace converter {
 							export class zad extends globalAndroid.os.Parcelable.Creator<com.google.android.gms.common.server.converter.StringToIntConverter.zaa> {
 								public static class: java.lang.Class<com.google.android.gms.common.server.converter.zad>;
 								public constructor();
@@ -8944,13 +8944,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module server {
-						export module response {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace server {
+						export namespace response {
 							export abstract class FastJsonResponse {
 								public static class: java.lang.Class<com.google.android.gms.common.server.response.FastJsonResponse>;
 								public toString(): string;
@@ -8996,7 +8996,7 @@ declare module com {
 								public getFieldValue(param0: com.google.android.gms.common.server.response.FastJsonResponse.Field<any,any>): any;
 								public setStringInternal(param0: com.google.android.gms.common.server.response.FastJsonResponse.Field<any,any>, param1: string, param2: string): void;
 							}
-							export module FastJsonResponse {
+							export namespace FastJsonResponse {
 								export class Field<I, O>  extends com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable {
 									public static class: java.lang.Class<com.google.android.gms.common.server.response.FastJsonResponse.Field<any,any>>;
 									public zapq: number;
@@ -9055,19 +9055,19 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module server {
-						export module response {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace server {
+						export namespace response {
 							export class FastParser<T>  extends java.lang.Object {
 								public static class: java.lang.Class<com.google.android.gms.common.server.response.FastParser<any>>;
 								public constructor();
 								public parse(param0: java.io.InputStream, param1: T): void;
 							}
-							export module FastParser {
+							export namespace FastParser {
 								export class ParseException {
 									public static class: java.lang.Class<com.google.android.gms.common.server.response.FastParser.ParseException>;
 									public constructor(param0: java.lang.Throwable);
@@ -9094,13 +9094,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module server {
-						export module response {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace server {
+						export namespace response {
 							export abstract class FastSafeParcelableJsonResponse extends com.google.android.gms.common.server.response.FastJsonResponse implements com.google.android.gms.common.internal.safeparcel.SafeParcelable {
 								public static class: java.lang.Class<com.google.android.gms.common.server.response.FastSafeParcelableJsonResponse>;
 								public describeContents(): number;
@@ -9119,13 +9119,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module server {
-						export module response {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace server {
+						export namespace response {
 							export class SafeParcelResponse extends com.google.android.gms.common.server.response.FastSafeParcelableJsonResponse {
 								public static class: java.lang.Class<com.google.android.gms.common.server.response.SafeParcelResponse>;
 								public static CREATOR: globalAndroid.os.Parcelable.Creator<com.google.android.gms.common.server.response.SafeParcelResponse>;
@@ -9180,13 +9180,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module server {
-						export module response {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace server {
+						export namespace response {
 							export class zaa extends com.google.android.gms.common.server.response.FastParser.zaa<java.lang.Integer> {
 								public static class: java.lang.Class<com.google.android.gms.common.server.response.zaa>;
 								public zah(param0: com.google.android.gms.common.server.response.FastParser<any>, param1: java.io.BufferedReader): any;
@@ -9199,13 +9199,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module server {
-						export module response {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace server {
+						export namespace response {
 							export class zab extends com.google.android.gms.common.server.response.FastParser.zaa<java.lang.Long> {
 								public static class: java.lang.Class<com.google.android.gms.common.server.response.zab>;
 								public zah(param0: com.google.android.gms.common.server.response.FastParser<any>, param1: java.io.BufferedReader): any;
@@ -9218,13 +9218,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module server {
-						export module response {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace server {
+						export namespace response {
 							export class zac extends com.google.android.gms.common.server.response.FastParser.zaa<java.lang.Float> {
 								public static class: java.lang.Class<com.google.android.gms.common.server.response.zac>;
 								public zah(param0: com.google.android.gms.common.server.response.FastParser<any>, param1: java.io.BufferedReader): any;
@@ -9237,13 +9237,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module server {
-						export module response {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace server {
+						export namespace response {
 							export class zad extends com.google.android.gms.common.server.response.FastParser.zaa<java.lang.Double> {
 								public static class: java.lang.Class<com.google.android.gms.common.server.response.zad>;
 								public zah(param0: com.google.android.gms.common.server.response.FastParser<any>, param1: java.io.BufferedReader): any;
@@ -9256,13 +9256,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module server {
-						export module response {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace server {
+						export namespace response {
 							export class zae extends com.google.android.gms.common.server.response.FastParser.zaa<java.lang.Boolean> {
 								public static class: java.lang.Class<com.google.android.gms.common.server.response.zae>;
 								public zah(param0: com.google.android.gms.common.server.response.FastParser<any>, param1: java.io.BufferedReader): any;
@@ -9275,13 +9275,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module server {
-						export module response {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace server {
+						export namespace response {
 							export class zaf extends com.google.android.gms.common.server.response.FastParser.zaa<string> {
 								public static class: java.lang.Class<com.google.android.gms.common.server.response.zaf>;
 								public zah(param0: com.google.android.gms.common.server.response.FastParser<any>, param1: java.io.BufferedReader): any;
@@ -9294,13 +9294,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module server {
-						export module response {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace server {
+						export namespace response {
 							export class zag extends com.google.android.gms.common.server.response.FastParser.zaa<java.math.BigInteger> {
 								public static class: java.lang.Class<com.google.android.gms.common.server.response.zag>;
 								public zah(param0: com.google.android.gms.common.server.response.FastParser<any>, param1: java.io.BufferedReader): any;
@@ -9313,13 +9313,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module server {
-						export module response {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace server {
+						export namespace response {
 							export class zah extends com.google.android.gms.common.server.response.FastParser.zaa<java.math.BigDecimal> {
 								public static class: java.lang.Class<com.google.android.gms.common.server.response.zah>;
 								public zah(param0: com.google.android.gms.common.server.response.FastParser<any>, param1: java.io.BufferedReader): any;
@@ -9332,13 +9332,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module server {
-						export module response {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace server {
+						export namespace response {
 							export class zai extends globalAndroid.os.Parcelable.Creator<com.google.android.gms.common.server.response.FastJsonResponse.Field<any,any>> {
 								public static class: java.lang.Class<com.google.android.gms.common.server.response.zai>;
 								public constructor();
@@ -9351,13 +9351,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module server {
-						export module response {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace server {
+						export namespace response {
 							export class zaj extends globalAndroid.os.Parcelable.Creator<com.google.android.gms.common.server.response.zam> {
 								public static class: java.lang.Class<com.google.android.gms.common.server.response.zaj>;
 								public constructor();
@@ -9370,13 +9370,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module server {
-						export module response {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace server {
+						export namespace response {
 							export class zak extends com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable {
 								public static class: java.lang.Class<com.google.android.gms.common.server.response.zak>;
 								public static CREATOR: globalAndroid.os.Parcelable.Creator<com.google.android.gms.common.server.response.zak>;
@@ -9399,13 +9399,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module server {
-						export module response {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace server {
+						export namespace response {
 							export class zal extends com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable {
 								public static class: java.lang.Class<com.google.android.gms.common.server.response.zal>;
 								public static CREATOR: globalAndroid.os.Parcelable.Creator<com.google.android.gms.common.server.response.zal>;
@@ -9419,13 +9419,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module server {
-						export module response {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace server {
+						export namespace response {
 							export class zam extends com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable {
 								public static class: java.lang.Class<com.google.android.gms.common.server.response.zam>;
 								public static CREATOR: globalAndroid.os.Parcelable.Creator<com.google.android.gms.common.server.response.zam>;
@@ -9439,13 +9439,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module server {
-						export module response {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace server {
+						export namespace response {
 							export class zan extends globalAndroid.os.Parcelable.Creator<com.google.android.gms.common.server.response.zak> {
 								public static class: java.lang.Class<com.google.android.gms.common.server.response.zan>;
 								public constructor();
@@ -9458,13 +9458,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module server {
-						export module response {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace server {
+						export namespace response {
 							export class zao extends globalAndroid.os.Parcelable.Creator<com.google.android.gms.common.server.response.zal> {
 								public static class: java.lang.Class<com.google.android.gms.common.server.response.zao>;
 								public constructor();
@@ -9477,13 +9477,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module server {
-						export module response {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace server {
+						export namespace response {
 							export class zap extends globalAndroid.os.Parcelable.Creator<com.google.android.gms.common.server.response.SafeParcelResponse> {
 								public static class: java.lang.Class<com.google.android.gms.common.server.response.zap>;
 								public constructor();
@@ -9496,12 +9496,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module server {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace server {
 						export class zaa extends globalAndroid.os.Parcelable.Creator<com.google.android.gms.common.server.FavaDiagnosticsEntity> {
 							public static class: java.lang.Class<com.google.android.gms.common.server.zaa>;
 							public constructor();
@@ -9513,12 +9513,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module sqlite {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace sqlite {
 						export class CursorWrapper {
 							public static class: java.lang.Class<com.google.android.gms.common.sqlite.CursorWrapper>;
 							public setWindow(param0: globalAndroid.database.CursorWindow): void;
@@ -9534,12 +9534,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module stats {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace stats {
 						export class ConnectionTracker {
 							public static class: java.lang.Class<com.google.android.gms.common.stats.ConnectionTracker>;
 							public static getInstance(): com.google.android.gms.common.stats.ConnectionTracker;
@@ -9553,12 +9553,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module stats {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace stats {
 						export class LoggingConstants {
 							public static class: java.lang.Class<com.google.android.gms.common.stats.LoggingConstants>;
 							public static EXTRA_WAKE_LOCK_KEY: string;
@@ -9570,12 +9570,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module stats {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace stats {
 						export abstract class StatsEvent extends com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable implements com.google.android.gms.common.internal.ReflectedParcelable {
 							public static class: java.lang.Class<com.google.android.gms.common.stats.StatsEvent>;
 							public constructor();
@@ -9583,7 +9583,7 @@ declare module com {
 							public getEventType(): number;
 							public getTimeMillis(): number;
 						}
-						export module StatsEvent {
+						export namespace StatsEvent {
 							export class Types {
 								public static class: java.lang.Class<com.google.android.gms.common.stats.StatsEvent.Types>;
 								/**
@@ -9603,12 +9603,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module stats {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace stats {
 						export class StatsUtils {
 							public static class: java.lang.Class<com.google.android.gms.common.stats.StatsUtils>;
 							public constructor();
@@ -9622,12 +9622,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module stats {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace stats {
 						export class WakeLockEvent extends com.google.android.gms.common.stats.StatsEvent {
 							public static class: java.lang.Class<com.google.android.gms.common.stats.WakeLockEvent>;
 							public static CREATOR: globalAndroid.os.Parcelable.Creator<com.google.android.gms.common.stats.WakeLockEvent>;
@@ -9644,12 +9644,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module stats {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace stats {
 						export class WakeLockTracker {
 							public static class: java.lang.Class<com.google.android.gms.common.stats.WakeLockTracker>;
 							public constructor();
@@ -9666,12 +9666,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module stats {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace stats {
 						export class zza extends globalAndroid.os.Parcelable.Creator<com.google.android.gms.common.stats.WakeLockEvent> {
 							public static class: java.lang.Class<com.google.android.gms.common.stats.zza>;
 							public constructor();
@@ -9683,12 +9683,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module util {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace util {
 						export class AndroidUtilsLight {
 							public static class: java.lang.Class<com.google.android.gms.common.util.AndroidUtilsLight>;
 							public constructor();
@@ -9702,12 +9702,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module util {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace util {
 						export class ArrayUtils {
 							public static class: java.lang.Class<com.google.android.gms.common.util.ArrayUtils>;
 							public static removeAll(param0: native.Array<any>, param1: native.Array<any>): native.Array<any>;
@@ -9732,12 +9732,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module util {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace util {
 						export class Base64Utils {
 							public static class: java.lang.Class<com.google.android.gms.common.util.Base64Utils>;
 							public constructor();
@@ -9755,12 +9755,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module util {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace util {
 						export class BiConsumer<T, U>  extends java.lang.Object {
 							public static class: java.lang.Class<com.google.android.gms.common.util.BiConsumer<any,any>>;
 							/**
@@ -9779,12 +9779,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module util {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace util {
 						export class ClientLibraryUtils {
 							public static class: java.lang.Class<com.google.android.gms.common.util.ClientLibraryUtils>;
 							public static getClientVersion(param0: globalAndroid.content.Context, param1: string): number;
@@ -9797,12 +9797,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module util {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace util {
 						export class Clock {
 							public static class: java.lang.Class<com.google.android.gms.common.util.Clock>;
 							/**
@@ -9820,14 +9820,6 @@ declare module com {
 							public elapsedRealtime(): number;
 							public currentTimeMillis(): number;
 						}
-							export module  {
-						export module Clock {
-								export class CC {
-									public static class: java.lang.Class<com.google.android.gms.common.util.Clock..CC>;
-									public static currentThreadTimeMillis(param0: com.google.android.gms.common.util.Clock): number;
-								}
-							}
-						}
 					}
 				}
 			}
@@ -9835,12 +9827,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module util {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace util {
 						export class CollectionUtils {
 							public static class: java.lang.Class<com.google.android.gms.common.util.CollectionUtils>;
 							public static mutableSetOfWithSize(param0: number): java.util.Set;
@@ -9866,12 +9858,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module util {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace util {
 						export class CrashUtils {
 							public static class: java.lang.Class<com.google.android.gms.common.util.CrashUtils>;
 							public constructor();
@@ -9884,12 +9876,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module util {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace util {
 						export class DataUtils {
 							public static class: java.lang.Class<com.google.android.gms.common.util.DataUtils>;
 							public constructor();
@@ -9903,12 +9895,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module util {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace util {
 						export class DefaultClock extends com.google.android.gms.common.util.Clock {
 							public static class: java.lang.Class<com.google.android.gms.common.util.DefaultClock>;
 							public currentThreadTimeMillis(): number;
@@ -9924,12 +9916,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module util {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace util {
 						export class DeviceProperties {
 							public static class: java.lang.Class<com.google.android.gms.common.util.DeviceProperties>;
 							public static isTablet(param0: globalAndroid.content.res.Resources): boolean;
@@ -9948,12 +9940,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module util {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace util {
 						export class DynamiteApi {
 							public static class: java.lang.Class<com.google.android.gms.common.util.DynamiteApi>;
 							/**
@@ -9970,12 +9962,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module util {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace util {
 						export class GmsVersion {
 							public static class: java.lang.Class<com.google.android.gms.common.util.GmsVersion>;
 							public static VERSION_HALLOUMI: number;
@@ -9997,12 +9989,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module util {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace util {
 						export class Hex {
 							public static class: java.lang.Class<com.google.android.gms.common.util.Hex>;
 							public constructor();
@@ -10018,12 +10010,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module util {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace util {
 						export class HexDumpUtils {
 							public static class: java.lang.Class<com.google.android.gms.common.util.HexDumpUtils>;
 							public constructor();
@@ -10036,12 +10028,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module util {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace util {
 						export class HttpUtils {
 							public static class: java.lang.Class<com.google.android.gms.common.util.HttpUtils>;
 							public static parse(param0: java.net.URI, param1: string): java.util.Map<string,string>;
@@ -10053,12 +10045,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module util {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace util {
 						export class IOUtils {
 							public static class: java.lang.Class<com.google.android.gms.common.util.IOUtils>;
 							public static closeQuietly(param0: globalAndroid.os.ParcelFileDescriptor): void;
@@ -10082,12 +10074,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module util {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace util {
 						export class JsonUtils {
 							public static class: java.lang.Class<com.google.android.gms.common.util.JsonUtils>;
 							public static escapeString(param0: string): string;
@@ -10101,12 +10093,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module util {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace util {
 						export class MapUtils {
 							public static class: java.lang.Class<com.google.android.gms.common.util.MapUtils>;
 							public constructor();
@@ -10119,12 +10111,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module util {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace util {
 						export class MurmurHash3 {
 							public static class: java.lang.Class<com.google.android.gms.common.util.MurmurHash3>;
 							public static murmurhash3_x86_32(param0: native.Array<number>, param1: number, param2: number, param3: number): number;
@@ -10136,12 +10128,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module util {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace util {
 						export class NumberUtils {
 							public static class: java.lang.Class<com.google.android.gms.common.util.NumberUtils>;
 							public static parseHexLong(param0: string): number;
@@ -10153,12 +10145,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module util {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace util {
 						export class PlatformVersion {
 							public static class: java.lang.Class<com.google.android.gms.common.util.PlatformVersion>;
 							public static isAtLeastJellyBean(): boolean;
@@ -10184,12 +10176,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module util {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace util {
 						export class Predicate<T>  extends java.lang.Object {
 							public static class: java.lang.Class<com.google.android.gms.common.util.Predicate<any>>;
 							/**
@@ -10208,12 +10200,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module util {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace util {
 						export class ProcessUtils {
 							public static class: java.lang.Class<com.google.android.gms.common.util.ProcessUtils>;
 							public static getMyProcessName(): string;
@@ -10225,12 +10217,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module util {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace util {
 						export class RetainForClient {
 							public static class: java.lang.Class<com.google.android.gms.common.util.RetainForClient>;
 							/**
@@ -10247,12 +10239,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module util {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace util {
 						export class ScopeUtil {
 							public static class: java.lang.Class<com.google.android.gms.common.util.ScopeUtil>;
 							public static toScopeString(param0: java.util.Set<com.google.android.gms.common.api.Scope>): native.Array<string>;
@@ -10264,12 +10256,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module util {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace util {
 						export class SharedPreferencesUtils {
 							public static class: java.lang.Class<com.google.android.gms.common.util.SharedPreferencesUtils>;
 							/** @deprecated */
@@ -10282,12 +10274,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module util {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace util {
 						export class Strings {
 							public static class: java.lang.Class<com.google.android.gms.common.util.Strings>;
 							public static isEmptyOrWhitespace(param0: string): boolean;
@@ -10300,12 +10292,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module util {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace util {
 						export class UidVerifier {
 							public static class: java.lang.Class<com.google.android.gms.common.util.UidVerifier>;
 							public static isGooglePlayServicesUid(param0: globalAndroid.content.Context, param1: number): boolean;
@@ -10318,12 +10310,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module util {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace util {
 						export class VisibleForTesting {
 							public static class: java.lang.Class<com.google.android.gms.common.util.VisibleForTesting>;
 							/**
@@ -10340,18 +10332,18 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module util {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace util {
 						export class WorkSourceUtil {
 							public static class: java.lang.Class<com.google.android.gms.common.util.WorkSourceUtil>;
 							public static fromPackage(param0: globalAndroid.content.Context, param1: string): globalAndroid.os.WorkSource;
 							public static hasWorkSourcePermission(param0: globalAndroid.content.Context): boolean;
 							public static getNames(param0: globalAndroid.os.WorkSource): java.util.List<string>;
-							public static fromPackageAndModuleExperimentalPi(param0: globalAndroid.content.Context, param1: string, param2: string): globalAndroid.os.WorkSource;
+							public static fromPackageAndnamespaceExperimentalPi(param0: globalAndroid.content.Context, param1: string, param2: string): globalAndroid.os.WorkSource;
 						}
 					}
 				}
@@ -10360,13 +10352,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module util {
-						export module concurrent {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace util {
+						export namespace concurrent {
 							export class HandlerExecutor {
 								public static class: java.lang.Class<com.google.android.gms.common.util.concurrent.HandlerExecutor>;
 								public execute(param0: java.lang.Runnable): void;
@@ -10380,13 +10372,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module util {
-						export module concurrent {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace util {
+						export namespace concurrent {
 							export class NamedThreadFactory {
 								public static class: java.lang.Class<com.google.android.gms.common.util.concurrent.NamedThreadFactory>;
 								public constructor(param0: string);
@@ -10400,13 +10392,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module util {
-						export module concurrent {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace util {
+						export namespace concurrent {
 							export class NumberedThreadFactory {
 								public static class: java.lang.Class<com.google.android.gms.common.util.concurrent.NumberedThreadFactory>;
 								public constructor(param0: string);
@@ -10420,13 +10412,13 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module util {
-						export module concurrent {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace util {
+						export namespace concurrent {
 							export class zza {
 								public static class: java.lang.Class<com.google.android.gms.common.util.concurrent.zza>;
 								public constructor(param0: java.lang.Runnable, param1: number);
@@ -10440,12 +10432,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module util {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace util {
 						export class zza {
 							public static class: java.lang.Class<com.google.android.gms.common.util.zza>;
 						}
@@ -10456,12 +10448,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module util {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace util {
 						export class zzb {
 							public static class: java.lang.Class<com.google.android.gms.common.util.zzb>;
 						}
@@ -10472,12 +10464,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module util {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace util {
 						export class zzc {
 							public static class: java.lang.Class<com.google.android.gms.common.util.zzc>;
 							public static isMainThread(): boolean;
@@ -10489,12 +10481,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module util {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace util {
 						export class zzd {
 							public static class: java.lang.Class<com.google.android.gms.common.util.zzd>;
 							public static unescape(param0: string): string;
@@ -10506,12 +10498,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module wrappers {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace wrappers {
 						export class InstantApps {
 							public static class: java.lang.Class<com.google.android.gms.common.wrappers.InstantApps>;
 							public constructor();
@@ -10524,12 +10516,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module wrappers {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace wrappers {
 						export class PackageManagerWrapper {
 							public static class: java.lang.Class<com.google.android.gms.common.wrappers.PackageManagerWrapper>;
 							public checkCallingOrSelfPermission(param0: string): number;
@@ -10548,12 +10540,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
-					export module wrappers {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
+					export namespace wrappers {
 						export class Wrappers {
 							public static class: java.lang.Class<com.google.android.gms.common.wrappers.Wrappers>;
 							public constructor();
@@ -10566,11 +10558,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
 					export class zaa extends com.google.android.gms.tasks.Continuation<java.util.Map<com.google.android.gms.common.api.internal.zai<any>,string>,java.lang.Void> {
 						public static class: java.lang.Class<com.google.android.gms.common.zaa>;
 						public then(param0: com.google.android.gms.tasks.Task<any>): any;
@@ -10581,11 +10573,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
 					export class zza extends globalAndroid.os.Parcelable.Creator<com.google.android.gms.common.ConnectionResult> {
 						public static class: java.lang.Class<com.google.android.gms.common.zza>;
 						public constructor();
@@ -10596,11 +10588,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
 					export class zzb extends globalAndroid.os.Parcelable.Creator<com.google.android.gms.common.Feature> {
 						public static class: java.lang.Class<com.google.android.gms.common.zzb>;
 						public constructor();
@@ -10611,11 +10603,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
 					export class zzc {
 						public static class: java.lang.Class<com.google.android.gms.common.zzc>;
 					}
@@ -10625,11 +10617,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
 					export class zzd {
 						public static class: java.lang.Class<com.google.android.gms.common.zzd>;
 						public call(): any;
@@ -10640,11 +10632,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
 					export abstract class zze extends com.google.android.gms.common.internal.zzj {
 						public static class: java.lang.Class<com.google.android.gms.common.zze>;
 						public constructor();
@@ -10659,11 +10651,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
 					export class zzf extends com.google.android.gms.common.zze {
 						public static class: java.lang.Class<com.google.android.gms.common.zzf>;
 					}
@@ -10673,11 +10665,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
 					export abstract class zzg extends com.google.android.gms.common.zze {
 						public static class: java.lang.Class<com.google.android.gms.common.zzg>;
 					}
@@ -10687,11 +10679,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
 					export class zzh {
 						public static class: java.lang.Class<com.google.android.gms.common.zzh>;
 					}
@@ -10701,11 +10693,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
 					export class zzi extends com.google.android.gms.common.zzg {
 						public static class: java.lang.Class<com.google.android.gms.common.zzi>;
 					}
@@ -10715,11 +10707,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
 					export class zzj extends com.google.android.gms.common.zzg {
 						public static class: java.lang.Class<com.google.android.gms.common.zzj>;
 					}
@@ -10729,11 +10721,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
 					export class zzk extends com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable {
 						public static class: java.lang.Class<com.google.android.gms.common.zzk>;
 						public static CREATOR: any /* globalAndroid.os.Parcelable.Creator<com.google.android.gms.common.zzk>*/;
@@ -10745,11 +10737,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
 					export class zzl extends java.lang.Object /* globalAndroid.os.Parcelable.Creator<com.google.android.gms.common.zzk>*/ {
 						public static class: java.lang.Class<com.google.android.gms.common.zzl>;
 						public constructor();
@@ -10760,11 +10752,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
 					export class zzm {
 						public static class: java.lang.Class<com.google.android.gms.common.zzm>;
 					}
@@ -10774,11 +10766,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
 					export class zzn {
 						public static class: java.lang.Class<com.google.android.gms.common.zzn>;
 					}
@@ -10788,11 +10780,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module common {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace common {
 					export class zzo extends com.google.android.gms.common.zzm {
 						public static class: java.lang.Class<com.google.android.gms.common.zzo>;
 					}
@@ -10802,11 +10794,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module dynamic {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace dynamic {
 					export abstract class DeferredLifecycleHelper<T>  extends java.lang.Object {
 						public static class: java.lang.Class<com.google.android.gms.dynamic.DeferredLifecycleHelper<any>>;
 						public constructor();
@@ -10826,7 +10818,7 @@ declare module com {
 						public onStart(): void;
 						public getDelegate(): T;
 					}
-					export module DeferredLifecycleHelper {
+					export namespace DeferredLifecycleHelper {
 						export class zaa {
 							public static class: java.lang.Class<com.google.android.gms.dynamic.DeferredLifecycleHelper.zaa>;
 							/**
@@ -10847,11 +10839,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module dynamic {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace dynamic {
 					export class FragmentWrapper extends com.google.android.gms.dynamic.IFragmentWrapper.Stub {
 						public static class: java.lang.Class<com.google.android.gms.dynamic.FragmentWrapper>;
 						public static wrap(param0: globalAndroid.app.Fragment): com.google.android.gms.dynamic.FragmentWrapper;
@@ -10881,11 +10873,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module dynamic {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace dynamic {
 					export class IFragmentWrapper {
 						public static class: java.lang.Class<com.google.android.gms.dynamic.IFragmentWrapper>;
 						/**
@@ -10940,7 +10932,7 @@ declare module com {
 						public isDetached(): boolean;
 						public setUserVisibleHint(param0: boolean): void;
 					}
-					export module IFragmentWrapper {
+					export namespace IFragmentWrapper {
 						export abstract class Stub extends com.google.android.gms.internal.common.zzb implements com.google.android.gms.dynamic.IFragmentWrapper {
 							public static class: java.lang.Class<com.google.android.gms.dynamic.IFragmentWrapper.Stub>;
 							public constructor();
@@ -10966,7 +10958,7 @@ declare module com {
 							public getTargetRequestCode(): number;
 							public isInLayout(): boolean;
 						}
-						export module Stub {
+						export namespace Stub {
 							export class zza extends com.google.android.gms.internal.common.zza implements com.google.android.gms.dynamic.IFragmentWrapper {
 								public static class: java.lang.Class<com.google.android.gms.dynamic.IFragmentWrapper.Stub.zza>;
 								public setRetainInstance(param0: boolean): void;
@@ -10997,11 +10989,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module dynamic {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace dynamic {
 					export class IObjectWrapper {
 						public static class: java.lang.Class<com.google.android.gms.dynamic.IObjectWrapper>;
 						/**
@@ -11011,14 +11003,14 @@ declare module com {
 						});
 						public constructor();
 					}
-					export module IObjectWrapper {
+					export namespace IObjectWrapper {
 						export class Stub extends com.google.android.gms.internal.common.zzb implements com.google.android.gms.dynamic.IObjectWrapper {
 							public static class: java.lang.Class<com.google.android.gms.dynamic.IObjectWrapper.Stub>;
 							public constructor();
 							public static asInterface(param0: globalAndroid.os.IBinder): com.google.android.gms.dynamic.IObjectWrapper;
 							public constructor(param0: string);
 						}
-						export module Stub {
+						export namespace Stub {
 							export class zza extends com.google.android.gms.internal.common.zza implements com.google.android.gms.dynamic.IObjectWrapper {
 								public static class: java.lang.Class<com.google.android.gms.dynamic.IObjectWrapper.Stub.zza>;
 							}
@@ -11030,11 +11022,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module dynamic {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace dynamic {
 					export class LifecycleDelegate {
 						public static class: java.lang.Class<com.google.android.gms.dynamic.LifecycleDelegate>;
 						/**
@@ -11072,11 +11064,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module dynamic {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace dynamic {
 					export class ObjectWrapper<T>  extends com.google.android.gms.dynamic.IObjectWrapper.Stub {
 						public static class: java.lang.Class<com.google.android.gms.dynamic.ObjectWrapper<any>>;
 						public static unwrap(param0: com.google.android.gms.dynamic.IObjectWrapper): any;
@@ -11088,11 +11080,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module dynamic {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace dynamic {
 					export class OnDelegateCreatedListener<T>  extends java.lang.Object {
 						public static class: java.lang.Class<com.google.android.gms.dynamic.OnDelegateCreatedListener<any>>;
 						/**
@@ -11110,18 +11102,18 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module dynamic {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace dynamic {
 					export abstract class RemoteCreator<T>  extends java.lang.Object {
 						public static class: java.lang.Class<com.google.android.gms.dynamic.RemoteCreator<any>>;
 						public getRemoteCreator(param0: globalAndroid.os.IBinder): T;
 						public getRemoteCreatorInstance(param0: globalAndroid.content.Context): T;
 						public constructor(param0: string);
 					}
-					export module RemoteCreator {
+					export namespace RemoteCreator {
 						export class RemoteCreatorException {
 							public static class: java.lang.Class<com.google.android.gms.dynamic.RemoteCreator.RemoteCreatorException>;
 							public constructor(param0: string);
@@ -11134,11 +11126,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module dynamic {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace dynamic {
 					export class SupportFragmentWrapper extends com.google.android.gms.dynamic.IFragmentWrapper.Stub {
 						public static class: java.lang.Class<com.google.android.gms.dynamic.SupportFragmentWrapper>;
 						public setRetainInstance(param0: boolean): void;
@@ -11168,11 +11160,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module dynamic {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace dynamic {
 					export class zaa extends com.google.android.gms.dynamic.OnDelegateCreatedListener<any> {
 						public static class: java.lang.Class<com.google.android.gms.dynamic.zaa>;
 						public onDelegateCreated(param0: any): void;
@@ -11183,11 +11175,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module dynamic {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace dynamic {
 					export class zab extends com.google.android.gms.dynamic.DeferredLifecycleHelper.zaa {
 						public static class: java.lang.Class<com.google.android.gms.dynamic.zab>;
 						public getState(): number;
@@ -11199,11 +11191,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module dynamic {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace dynamic {
 					export class zac extends com.google.android.gms.dynamic.DeferredLifecycleHelper.zaa {
 						public static class: java.lang.Class<com.google.android.gms.dynamic.zac>;
 						public getState(): number;
@@ -11215,11 +11207,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module dynamic {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace dynamic {
 					export class zad extends com.google.android.gms.dynamic.DeferredLifecycleHelper.zaa {
 						public static class: java.lang.Class<com.google.android.gms.dynamic.zad>;
 						public getState(): number;
@@ -11231,11 +11223,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module dynamic {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace dynamic {
 					export class zae {
 						public static class: java.lang.Class<com.google.android.gms.dynamic.zae>;
 						public onClick(param0: globalAndroid.view.View): void;
@@ -11246,11 +11238,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module dynamic {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace dynamic {
 					export class zaf extends com.google.android.gms.dynamic.DeferredLifecycleHelper.zaa {
 						public static class: java.lang.Class<com.google.android.gms.dynamic.zaf>;
 						public getState(): number;
@@ -11262,11 +11254,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module dynamic {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace dynamic {
 					export class zag extends com.google.android.gms.dynamic.DeferredLifecycleHelper.zaa {
 						public static class: java.lang.Class<com.google.android.gms.dynamic.zag>;
 						public getState(): number;
@@ -11278,48 +11270,48 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module dynamite {
-					export class DynamiteModule {
-						public static class: java.lang.Class<com.google.android.gms.dynamite.DynamiteModule>;
-						public static PREFER_REMOTE: com.google.android.gms.dynamite.DynamiteModule.VersionPolicy;
-						public static PREFER_LOCAL: com.google.android.gms.dynamite.DynamiteModule.VersionPolicy;
-						public static PREFER_HIGHEST_OR_LOCAL_VERSION: com.google.android.gms.dynamite.DynamiteModule.VersionPolicy;
-						public static PREFER_HIGHEST_OR_LOCAL_VERSION_NO_FORCE_STAGING: com.google.android.gms.dynamite.DynamiteModule.VersionPolicy;
-						public static PREFER_HIGHEST_OR_REMOTE_VERSION: com.google.android.gms.dynamite.DynamiteModule.VersionPolicy;
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace dynamite {
+					export class Dynamitenamespace {
+						public static class: java.lang.Class<com.google.android.gms.dynamite.Dynamitenamespace>;
+						public static PREFER_REMOTE: com.google.android.gms.dynamite.Dynamitenamespace.VersionPolicy;
+						public static PREFER_LOCAL: com.google.android.gms.dynamite.Dynamitenamespace.VersionPolicy;
+						public static PREFER_HIGHEST_OR_LOCAL_VERSION: com.google.android.gms.dynamite.Dynamitenamespace.VersionPolicy;
+						public static PREFER_HIGHEST_OR_LOCAL_VERSION_NO_FORCE_STAGING: com.google.android.gms.dynamite.Dynamitenamespace.VersionPolicy;
+						public static PREFER_HIGHEST_OR_REMOTE_VERSION: com.google.android.gms.dynamite.Dynamitenamespace.VersionPolicy;
 						public static getRemoteVersion(param0: globalAndroid.content.Context, param1: string): number;
 						public static getLocalVersion(param0: globalAndroid.content.Context, param1: string): number;
-						public getModuleContext(): globalAndroid.content.Context;
+						public getnamespaceContext(): globalAndroid.content.Context;
 						public instantiate(param0: string): globalAndroid.os.IBinder;
-						public static load(param0: globalAndroid.content.Context, param1: com.google.android.gms.dynamite.DynamiteModule.VersionPolicy, param2: string): com.google.android.gms.dynamite.DynamiteModule;
+						public static load(param0: globalAndroid.content.Context, param1: com.google.android.gms.dynamite.Dynamitenamespace.VersionPolicy, param2: string): com.google.android.gms.dynamite.Dynamitenamespace;
 					}
-					export module DynamiteModule {
+					export namespace Dynamitenamespace {
 						export class DynamiteLoaderClassLoader {
-							public static class: java.lang.Class<com.google.android.gms.dynamite.DynamiteModule.DynamiteLoaderClassLoader>;
+							public static class: java.lang.Class<com.google.android.gms.dynamite.Dynamitenamespace.DynamiteLoaderClassLoader>;
 							public static sClassLoader: java.lang.ClassLoader;
 							public constructor();
 						}
 						export class LoadingException {
-							public static class: java.lang.Class<com.google.android.gms.dynamite.DynamiteModule.LoadingException>;
+							public static class: java.lang.Class<com.google.android.gms.dynamite.Dynamitenamespace.LoadingException>;
 						}
 						export class VersionPolicy {
-							public static class: java.lang.Class<com.google.android.gms.dynamite.DynamiteModule.VersionPolicy>;
+							public static class: java.lang.Class<com.google.android.gms.dynamite.Dynamitenamespace.VersionPolicy>;
 							/**
-							 * Constructs a new instance of the com.google.android.gms.dynamite.DynamiteModule$VersionPolicy interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
+							 * Constructs a new instance of the com.google.android.gms.dynamite.Dynamitenamespace$VersionPolicy interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 							 */
 							public constructor(implementation: {
-								zza(param0: globalAndroid.content.Context, param1: string, param2: any /* com.google.android.gms.dynamite.DynamiteModule.VersionPolicy.zza*/): any /* com.google.android.gms.dynamite.DynamiteModule.VersionPolicy.zzb*/;
+								zza(param0: globalAndroid.content.Context, param1: string, param2: any /* com.google.android.gms.dynamite.Dynamitenamespace.VersionPolicy.zza*/): any /* com.google.android.gms.dynamite.Dynamitenamespace.VersionPolicy.zzb*/;
 							});
 							public constructor();
 						}
-						export module VersionPolicy {
+						export namespace VersionPolicy {
 							export class zza {
-								public static class: java.lang.Class<com.google.android.gms.dynamite.DynamiteModule.VersionPolicy.zza>;
+								public static class: java.lang.Class<com.google.android.gms.dynamite.Dynamitenamespace.VersionPolicy.zza>;
 								/**
-								 * Constructs a new instance of the com.google.android.gms.dynamite.DynamiteModule$VersionPolicy$zza interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
+								 * Constructs a new instance of the com.google.android.gms.dynamite.Dynamitenamespace$VersionPolicy$zza interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 								 */
 								public constructor(implementation: {
 									zza(param0: globalAndroid.content.Context, param1: string, param2: boolean): number;
@@ -11329,15 +11321,15 @@ declare module com {
 								public getLocalVersion(param0: globalAndroid.content.Context, param1: string): number;
 							}
 							export class zzb {
-								public static class: java.lang.Class<com.google.android.gms.dynamite.DynamiteModule.VersionPolicy.zzb>;
+								public static class: java.lang.Class<com.google.android.gms.dynamite.Dynamitenamespace.VersionPolicy.zzb>;
 								public constructor();
 							}
 						}
 						export class zza {
-							public static class: java.lang.Class<com.google.android.gms.dynamite.DynamiteModule.zza>;
+							public static class: java.lang.Class<com.google.android.gms.dynamite.Dynamitenamespace.zza>;
 						}
-						export class zzb extends com.google.android.gms.dynamite.DynamiteModule.VersionPolicy.zza {
-							public static class: java.lang.Class<com.google.android.gms.dynamite.DynamiteModule.zzb>;
+						export class zzb extends com.google.android.gms.dynamite.Dynamitenamespace.VersionPolicy.zza {
+							public static class: java.lang.Class<com.google.android.gms.dynamite.Dynamitenamespace.zzb>;
 							public constructor(param0: number, param1: number);
 							public getLocalVersion(param0: globalAndroid.content.Context, param1: string): number;
 						}
@@ -11348,12 +11340,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module dynamite {
-					export class zza extends com.google.android.gms.dynamite.DynamiteModule.VersionPolicy.zza {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace dynamite {
+					export class zza extends com.google.android.gms.dynamite.Dynamitenamespace.VersionPolicy.zza {
 						public static class: java.lang.Class<com.google.android.gms.dynamite.zza>;
 						public getLocalVersion(param0: globalAndroid.content.Context, param1: string): number;
 					}
@@ -11363,12 +11355,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module dynamite {
-					export class zzb extends com.google.android.gms.dynamite.DynamiteModule.VersionPolicy {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace dynamite {
+					export class zzb extends com.google.android.gms.dynamite.Dynamitenamespace.VersionPolicy {
 						public static class: java.lang.Class<com.google.android.gms.dynamite.zzb>;
 					}
 				}
@@ -11377,12 +11369,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module dynamite {
-					export class zzc extends com.google.android.gms.dynamite.DynamiteModule.VersionPolicy {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace dynamite {
+					export class zzc extends com.google.android.gms.dynamite.Dynamitenamespace.VersionPolicy {
 						public static class: java.lang.Class<com.google.android.gms.dynamite.zzc>;
 					}
 				}
@@ -11391,12 +11383,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module dynamite {
-					export class zzd extends com.google.android.gms.dynamite.DynamiteModule.VersionPolicy {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace dynamite {
+					export class zzd extends com.google.android.gms.dynamite.Dynamitenamespace.VersionPolicy {
 						public static class: java.lang.Class<com.google.android.gms.dynamite.zzd>;
 					}
 				}
@@ -11405,12 +11397,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module dynamite {
-					export class zze extends com.google.android.gms.dynamite.DynamiteModule.VersionPolicy {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace dynamite {
+					export class zze extends com.google.android.gms.dynamite.Dynamitenamespace.VersionPolicy {
 						public static class: java.lang.Class<com.google.android.gms.dynamite.zze>;
 					}
 				}
@@ -11419,12 +11411,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module dynamite {
-					export class zzf extends com.google.android.gms.dynamite.DynamiteModule.VersionPolicy {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace dynamite {
+					export class zzf extends com.google.android.gms.dynamite.Dynamitenamespace.VersionPolicy {
 						public static class: java.lang.Class<com.google.android.gms.dynamite.zzf>;
 					}
 				}
@@ -11433,12 +11425,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module dynamite {
-					export class zzg extends com.google.android.gms.dynamite.DynamiteModule.VersionPolicy {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace dynamite {
+					export class zzg extends com.google.android.gms.dynamite.Dynamitenamespace.VersionPolicy {
 						public static class: java.lang.Class<com.google.android.gms.dynamite.zzg>;
 					}
 				}
@@ -11447,11 +11439,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module dynamite {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace dynamite {
 					export class zzh {
 						public static class: java.lang.Class<com.google.android.gms.dynamite.zzh>;
 						public loadClass(param0: string, param1: boolean): java.lang.Class<any>;
@@ -11462,11 +11454,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module dynamite {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace dynamite {
 					export class zzi {
 						public static class: java.lang.Class<com.google.android.gms.dynamite.zzi>;
 						/**
@@ -11487,11 +11479,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module dynamite {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace dynamite {
 					export class zzj extends com.google.android.gms.internal.common.zza implements com.google.android.gms.dynamite.zzi {
 						public static class: java.lang.Class<com.google.android.gms.dynamite.zzj>;
 					}
@@ -11501,11 +11493,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module dynamite {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace dynamite {
 					export class zzk {
 						public static class: java.lang.Class<com.google.android.gms.dynamite.zzk>;
 						/**
@@ -11523,11 +11515,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module dynamite {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace dynamite {
 					export class zzl extends com.google.android.gms.internal.common.zza implements com.google.android.gms.dynamite.zzk {
 						public static class: java.lang.Class<com.google.android.gms.dynamite.zzl>;
 					}
@@ -11537,12 +11529,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module internal {
-					export module base {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace internal {
+					export namespace base {
 						export class zaa {
 							public static class: java.lang.Class<com.google.android.gms.internal.base.zaa>;
 							public constructor(param0: globalAndroid.os.IBinder, param1: string);
@@ -11559,12 +11551,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module internal {
-					export module base {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace internal {
+					export namespace base {
 						export class zab {
 							public static class: java.lang.Class<com.google.android.gms.internal.base.zab>;
 							public asBinder(): globalAndroid.os.IBinder;
@@ -11579,12 +11571,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module internal {
-					export module base {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace internal {
+					export namespace base {
 						export class zac {
 							public static class: java.lang.Class<com.google.android.gms.internal.base.zac>;
 							public static writeBoolean(param0: globalAndroid.os.Parcel, param1: boolean): void;
@@ -11599,12 +11591,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module internal {
-					export module base {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace internal {
+					export namespace base {
 						export class zad {
 							public static class: java.lang.Class<com.google.android.gms.internal.base.zad>;
 							/**
@@ -11621,12 +11613,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module internal {
-					export module base {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace internal {
+					export namespace base {
 						export class zae {
 							public static class: java.lang.Class<com.google.android.gms.internal.base.zae>;
 							public invalidateDrawable(param0: globalAndroid.graphics.drawable.Drawable): void;
@@ -11653,12 +11645,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module internal {
-					export module base {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace internal {
+					export namespace base {
 						export class zaf {
 							public static class: java.lang.Class<com.google.android.gms.internal.base.zaf>;
 						}
@@ -11669,12 +11661,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module internal {
-					export module base {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace internal {
+					export namespace base {
 						export class zag {
 							public static class: java.lang.Class<com.google.android.gms.internal.base.zag>;
 							public setAlpha(param0: number): void;
@@ -11690,12 +11682,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module internal {
-					export module base {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace internal {
+					export namespace base {
 						export class zah {
 							public static class: java.lang.Class<com.google.android.gms.internal.base.zah>;
 							public newDrawable(): globalAndroid.graphics.drawable.Drawable;
@@ -11708,12 +11700,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module internal {
-					export module base {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace internal {
+					export namespace base {
 						export class zai {
 							public static class: java.lang.Class<com.google.android.gms.internal.base.zai>;
 							public newDrawable(): globalAndroid.graphics.drawable.Drawable;
@@ -11726,12 +11718,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module internal {
-					export module base {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace internal {
+					export namespace base {
 						export class zaj {
 							public static class: java.lang.Class<com.google.android.gms.internal.base.zaj>;
 							public onMeasure(param0: number, param1: number): void;
@@ -11747,12 +11739,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module internal {
-					export module base {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace internal {
+					export namespace base {
 						export class zak extends globalAndroid.support.v4.util.LruCache<any,globalAndroid.graphics.drawable.Drawable> {
 							public static class: java.lang.Class<com.google.android.gms.internal.base.zak>;
 							public constructor();
@@ -11764,12 +11756,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module internal {
-					export module base {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace internal {
+					export namespace base {
 						export class zal {
 							public static class: java.lang.Class<com.google.android.gms.internal.base.zal>;
 							public constructor();
@@ -11783,12 +11775,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module internal {
-					export module base {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace internal {
+					export namespace base {
 						export class zam {
 							public static class: java.lang.Class<com.google.android.gms.internal.base.zam>;
 							/**
@@ -11805,12 +11797,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module internal {
-					export module common {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace internal {
+					export namespace common {
 						export class zza {
 							public static class: java.lang.Class<com.google.android.gms.internal.common.zza>;
 							public constructor(param0: globalAndroid.os.IBinder, param1: string);
@@ -11823,12 +11815,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module internal {
-					export module common {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace internal {
+					export namespace common {
 						export class zzb {
 							public static class: java.lang.Class<com.google.android.gms.internal.common.zzb>;
 							public asBinder(): globalAndroid.os.IBinder;
@@ -11842,12 +11834,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module internal {
-					export module common {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace internal {
+					export namespace common {
 						export class zzc {
 							public static class: java.lang.Class<com.google.android.gms.internal.common.zzc>;
 							public static writeBoolean(param0: globalAndroid.os.Parcel, param1: boolean): void;
@@ -11859,12 +11851,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module internal {
-					export module common {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace internal {
+					export namespace common {
 						export class zzd {
 							public static class: java.lang.Class<com.google.android.gms.internal.common.zzd>;
 							/**
@@ -11881,12 +11873,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module internal {
-					export module common {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace internal {
+					export namespace common {
 						export class zze {
 							public static class: java.lang.Class<com.google.android.gms.internal.common.zze>;
 							public constructor();
@@ -11901,12 +11893,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module internal {
-					export module common {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace internal {
+					export namespace common {
 						export class zzf {
 							public static class: java.lang.Class<com.google.android.gms.internal.common.zzf>;
 							/**
@@ -11923,12 +11915,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module internal {
-					export module wearable {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace internal {
+					export namespace wearable {
 						export class zza {
 							public static class: java.lang.Class<com.google.android.gms.internal.wearable.zza>;
 							public constructor(param0: globalAndroid.os.IBinder, param1: string);
@@ -11944,12 +11936,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module internal {
-					export module wearable {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace internal {
+					export namespace wearable {
 						export class zzb {
 							public static class: java.lang.Class<com.google.android.gms.internal.wearable.zzb>;
 							public asBinder(): globalAndroid.os.IBinder;
@@ -11964,12 +11956,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module internal {
-					export module wearable {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace internal {
+					export namespace wearable {
 						export class zzc {
 							public static class: java.lang.Class<com.google.android.gms.internal.wearable.zzc>;
 						}
@@ -11980,12 +11972,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module internal {
-					export module wearable {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace internal {
+					export namespace wearable {
 						export class zzd {
 							public static class: java.lang.Class<com.google.android.gms.internal.wearable.zzd>;
 							/**
@@ -12002,12 +11994,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module internal {
-					export module wearable {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace internal {
+					export namespace wearable {
 						export class zze {
 							public static class: java.lang.Class<com.google.android.gms.internal.wearable.zze>;
 						}
@@ -12018,12 +12010,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module internal {
-					export module wearable {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace internal {
+					export namespace wearable {
 						export class zzf {
 							public static class: java.lang.Class<com.google.android.gms.internal.wearable.zzf>;
 							public constructor(param0: any /* com.google.android.gms.internal.wearable.zzg*/, param1: java.util.List<com.google.android.gms.wearable.Asset>);
@@ -12035,12 +12027,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module internal {
-					export module wearable {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace internal {
+					export namespace wearable {
 						export class zzg extends java.lang.Object /* com.google.android.gms.internal.wearable.zzn<com.google.android.gms.internal.wearable.zzg>*/ {
 							public static class: java.lang.Class<com.google.android.gms.internal.wearable.zzg>;
 							public constructor();
@@ -12054,12 +12046,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module internal {
-					export module wearable {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace internal {
+					export namespace wearable {
 						export class zzh extends java.lang.Object /* com.google.android.gms.internal.wearable.zzn<com.google.android.gms.internal.wearable.zzh>*/ {
 							public static class: java.lang.Class<com.google.android.gms.internal.wearable.zzh>;
 							public name: string;
@@ -12074,12 +12066,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module internal {
-					export module wearable {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace internal {
+					export namespace wearable {
 						export class zzi extends java.lang.Object /* com.google.android.gms.internal.wearable.zzn<com.google.android.gms.internal.wearable.zzi>*/ {
 							public static class: java.lang.Class<com.google.android.gms.internal.wearable.zzi>;
 							public type: number;
@@ -12094,12 +12086,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module internal {
-					export module wearable {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace internal {
+					export namespace wearable {
 						export class zzj extends java.lang.Object /* com.google.android.gms.internal.wearable.zzn<com.google.android.gms.internal.wearable.zzj>*/ {
 							public static class: java.lang.Class<com.google.android.gms.internal.wearable.zzj>;
 							public constructor();
@@ -12113,12 +12105,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module internal {
-					export module wearable {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace internal {
+					export namespace wearable {
 						export class zzk {
 							public static class: java.lang.Class<com.google.android.gms.internal.wearable.zzk>;
 							public readString(): string;
@@ -12132,12 +12124,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module internal {
-					export module wearable {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace internal {
+					export namespace wearable {
 						export class zzl {
 							public static class: java.lang.Class<com.google.android.gms.internal.wearable.zzl>;
 						}
@@ -12148,12 +12140,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module internal {
-					export module wearable {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace internal {
+					export namespace wearable {
 						export class zzm {
 							public static class: java.lang.Class<com.google.android.gms.internal.wearable.zzm>;
 						}
@@ -12164,12 +12156,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module internal {
-					export module wearable {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace internal {
+					export namespace wearable {
 						export abstract class zzn<M>  extends java.lang.Object /* com.google.android.gms.internal.wearable.zzt*/ {
 							public static class: java.lang.Class<com.google.android.gms.internal.wearable.zzn<any>>;
 							public constructor();
@@ -12181,12 +12173,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module internal {
-					export module wearable {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace internal {
+					export namespace wearable {
 						export class zzo<M, T>  extends java.lang.Object {
 							public static class: java.lang.Class<com.google.android.gms.internal.wearable.zzo<any,any>>;
 							public hashCode(): number;
@@ -12199,12 +12191,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module internal {
-					export module wearable {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace internal {
+					export namespace wearable {
 						export class zzp {
 							public static class: java.lang.Class<com.google.android.gms.internal.wearable.zzp>;
 							public hashCode(): number;
@@ -12218,12 +12210,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module internal {
-					export module wearable {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace internal {
+					export namespace wearable {
 						export class zzq {
 							public static class: java.lang.Class<com.google.android.gms.internal.wearable.zzq>;
 							public hashCode(): number;
@@ -12236,12 +12228,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module internal {
-					export module wearable {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace internal {
+					export namespace wearable {
 						export class zzr {
 							public static class: java.lang.Class<com.google.android.gms.internal.wearable.zzr>;
 							public static UTF_8: java.nio.charset.Charset;
@@ -12257,12 +12249,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module internal {
-					export module wearable {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace internal {
+					export namespace wearable {
 						export class zzs {
 							public static class: java.lang.Class<com.google.android.gms.internal.wearable.zzs>;
 							public constructor(param0: string);
@@ -12274,12 +12266,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module internal {
-					export module wearable {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace internal {
+					export namespace wearable {
 						export abstract class zzt {
 							public static class: java.lang.Class<com.google.android.gms.internal.wearable.zzt>;
 							public constructor();
@@ -12292,12 +12284,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module internal {
-					export module wearable {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace internal {
+					export namespace wearable {
 						export class zzu {
 							public static class: java.lang.Class<com.google.android.gms.internal.wearable.zzu>;
 						}
@@ -12308,12 +12300,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module internal {
-					export module wearable {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace internal {
+					export namespace wearable {
 						export class zzv {
 							public static class: java.lang.Class<com.google.android.gms.internal.wearable.zzv>;
 							public hashCode(): number;
@@ -12326,12 +12318,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module internal {
-					export module wearable {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace internal {
+					export namespace wearable {
 						export class zzw {
 							public static class: java.lang.Class<com.google.android.gms.internal.wearable.zzw>;
 						}
@@ -12342,11 +12334,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module security {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace security {
 					export class ProviderInstaller {
 						public static class: java.lang.Class<com.google.android.gms.security.ProviderInstaller>;
 						public static PROVIDER_NAME: string;
@@ -12354,7 +12346,7 @@ declare module com {
 						public static installIfNeeded(param0: globalAndroid.content.Context): void;
 						public static installIfNeededAsync(param0: globalAndroid.content.Context, param1: com.google.android.gms.security.ProviderInstaller.ProviderInstallListener): void;
 					}
-					export module ProviderInstaller {
+					export namespace ProviderInstaller {
 						export class ProviderInstallListener {
 							public static class: java.lang.Class<com.google.android.gms.security.ProviderInstaller.ProviderInstallListener>;
 							/**
@@ -12375,11 +12367,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module security {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace security {
 					export class zza extends globalAndroid.os.AsyncTask<java.lang.Void,java.lang.Void,java.lang.Integer> {
 						public static class: java.lang.Class<com.google.android.gms.security.zza>;
 					}
@@ -12389,11 +12381,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module signin {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace signin {
 					export class SignInOptions extends com.google.android.gms.common.api.Api.ApiOptions.Optional {
 						public static class: java.lang.Class<com.google.android.gms.signin.SignInOptions>;
 						public static DEFAULT: com.google.android.gms.signin.SignInOptions;
@@ -12403,10 +12395,10 @@ declare module com {
 						public isForceCodeForRefreshToken(): boolean;
 						public getHostedDomain(): string;
 						public isOfflineAccessRequested(): boolean;
-						public getAuthApiSignInModuleVersion(): java.lang.Long;
+						public getAuthApiSignInnamespaceVersion(): java.lang.Long;
 						public getRealClientLibraryVersion(): java.lang.Long;
 					}
-					export module SignInOptions {
+					export namespace SignInOptions {
 						export class zaa {
 							public static class: java.lang.Class<com.google.android.gms.signin.SignInOptions.zaa>;
 							public constructor();
@@ -12418,12 +12410,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module signin {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace signin {
+					export namespace internal {
 						export class SignInClientImpl extends com.google.android.gms.common.internal.GmsClient<com.google.android.gms.signin.internal.zaf> implements com.google.android.gms.signin.zad  {
 							public static class: java.lang.Class<com.google.android.gms.signin.internal.SignInClientImpl>;
 							public getStartServiceAction(): string;
@@ -12469,12 +12461,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module signin {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace signin {
+					export namespace internal {
 						export class zaa extends com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable implements com.google.android.gms.common.api.Result {
 							public static class: java.lang.Class<com.google.android.gms.signin.internal.zaa>;
 							public static CREATOR: globalAndroid.os.Parcelable.Creator<com.google.android.gms.signin.internal.zaa>;
@@ -12489,12 +12481,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module signin {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace signin {
+					export namespace internal {
 						export class zab extends globalAndroid.os.Parcelable.Creator<com.google.android.gms.signin.internal.zaa> {
 							public static class: java.lang.Class<com.google.android.gms.signin.internal.zab>;
 							public constructor();
@@ -12506,12 +12498,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module signin {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace signin {
+					export namespace internal {
 						export class zac extends com.google.android.gms.signin.internal.zae {
 							public static class: java.lang.Class<com.google.android.gms.signin.internal.zac>;
 							public constructor();
@@ -12529,12 +12521,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module signin {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace signin {
+					export namespace internal {
 						export class zad {
 							public static class: java.lang.Class<com.google.android.gms.signin.internal.zad>;
 							/**
@@ -12561,12 +12553,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module signin {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace signin {
+					export namespace internal {
 						export abstract class zae extends com.google.android.gms.internal.base.zab implements com.google.android.gms.signin.internal.zad {
 							public static class: java.lang.Class<com.google.android.gms.signin.internal.zae>;
 							public constructor();
@@ -12585,12 +12577,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module signin {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace signin {
+					export namespace internal {
 						export class zaf {
 							public static class: java.lang.Class<com.google.android.gms.signin.internal.zaf>;
 							/**
@@ -12613,12 +12605,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module signin {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace signin {
+					export namespace internal {
 						export class zag extends com.google.android.gms.internal.base.zaa implements com.google.android.gms.signin.internal.zaf {
 							public static class: java.lang.Class<com.google.android.gms.signin.internal.zag>;
 							public zaa(param0: com.google.android.gms.common.internal.IAccountAccessor, param1: number, param2: boolean): void;
@@ -12634,12 +12626,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module signin {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace signin {
+					export namespace internal {
 						export class zah extends com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable {
 							public static class: java.lang.Class<com.google.android.gms.signin.internal.zah>;
 							public static CREATOR: globalAndroid.os.Parcelable.Creator<com.google.android.gms.signin.internal.zah>;
@@ -12654,12 +12646,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module signin {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace signin {
+					export namespace internal {
 						export class zai extends globalAndroid.os.Parcelable.Creator<com.google.android.gms.signin.internal.zah> {
 							public static class: java.lang.Class<com.google.android.gms.signin.internal.zai>;
 							public constructor();
@@ -12671,12 +12663,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module signin {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace signin {
+					export namespace internal {
 						export class zaj extends com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable {
 							public static class: java.lang.Class<com.google.android.gms.signin.internal.zaj>;
 							public static CREATOR: globalAndroid.os.Parcelable.Creator<com.google.android.gms.signin.internal.zaj>;
@@ -12693,12 +12685,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module signin {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace signin {
+					export namespace internal {
 						export class zak extends globalAndroid.os.Parcelable.Creator<com.google.android.gms.signin.internal.zaj> {
 							public static class: java.lang.Class<com.google.android.gms.signin.internal.zak>;
 							public constructor();
@@ -12710,11 +12702,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module signin {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace signin {
 					export class zaa {
 						public static class: java.lang.Class<com.google.android.gms.signin.zaa>;
 						public static zapg: com.google.android.gms.common.api.Api.AbstractClientBuilder<com.google.android.gms.signin.internal.SignInClientImpl,com.google.android.gms.signin.SignInOptions>;
@@ -12726,11 +12718,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module signin {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace signin {
 					export class zab extends com.google.android.gms.common.api.Api.AbstractClientBuilder<com.google.android.gms.signin.internal.SignInClientImpl,com.google.android.gms.signin.SignInOptions> {
 						public static class: java.lang.Class<com.google.android.gms.signin.zab>;
 					}
@@ -12740,11 +12732,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module signin {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace signin {
 					export class zac extends com.google.android.gms.common.api.Api.AbstractClientBuilder<com.google.android.gms.signin.internal.SignInClientImpl,any> {
 						public static class: java.lang.Class<com.google.android.gms.signin.zac>;
 					}
@@ -12754,11 +12746,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module signin {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace signin {
 					export class zad extends com.google.android.gms.common.api.Api.Client {
 						public static class: java.lang.Class<com.google.android.gms.signin.zad>;
 						/**
@@ -12816,11 +12808,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module tasks {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace tasks {
 					export abstract class CancellationToken {
 						public static class: java.lang.Class<com.google.android.gms.tasks.CancellationToken>;
 						public constructor();
@@ -12833,11 +12825,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module tasks {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace tasks {
 					export class CancellationTokenSource {
 						public static class: java.lang.Class<com.google.android.gms.tasks.CancellationTokenSource>;
 						public constructor();
@@ -12850,11 +12842,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module tasks {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace tasks {
 					export class Continuation<TResult, TContinuationResult>  extends java.lang.Object {
 						public static class: java.lang.Class<com.google.android.gms.tasks.Continuation<any,any>>;
 						/**
@@ -12872,11 +12864,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module tasks {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace tasks {
 					export class OnCanceledListener {
 						public static class: java.lang.Class<com.google.android.gms.tasks.OnCanceledListener>;
 						/**
@@ -12894,11 +12886,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module tasks {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace tasks {
 					export class OnCompleteListener<TResult>  extends java.lang.Object {
 						public static class: java.lang.Class<com.google.android.gms.tasks.OnCompleteListener<any>>;
 						/**
@@ -12916,11 +12908,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module tasks {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace tasks {
 					export class OnFailureListener {
 						public static class: java.lang.Class<com.google.android.gms.tasks.OnFailureListener>;
 						/**
@@ -12938,11 +12930,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module tasks {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace tasks {
 					export class OnSuccessListener<TResult>  extends java.lang.Object {
 						public static class: java.lang.Class<com.google.android.gms.tasks.OnSuccessListener<any>>;
 						/**
@@ -12960,11 +12952,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module tasks {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace tasks {
 					export class OnTokenCanceledListener {
 						public static class: java.lang.Class<com.google.android.gms.tasks.OnTokenCanceledListener>;
 						/**
@@ -12982,11 +12974,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module tasks {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace tasks {
 					export class RuntimeExecutionException {
 						public static class: java.lang.Class<com.google.android.gms.tasks.RuntimeExecutionException>;
 						public constructor(param0: java.lang.Throwable);
@@ -12997,11 +12989,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module tasks {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace tasks {
 					export class SuccessContinuation<TResult, TContinuationResult>  extends java.lang.Object {
 						public static class: java.lang.Class<com.google.android.gms.tasks.SuccessContinuation<any,any>>;
 						/**
@@ -13019,11 +13011,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module tasks {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace tasks {
 					export abstract class Task<TResult>  extends java.lang.Object {
 						public static class: java.lang.Class<com.google.android.gms.tasks.Task<any>>;
 						public addOnFailureListener(param0: com.google.android.gms.tasks.OnFailureListener): com.google.android.gms.tasks.Task<TResult>;
@@ -13058,11 +13050,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module tasks {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace tasks {
 					export class TaskCompletionSource<TResult>  extends java.lang.Object {
 						public static class: java.lang.Class<com.google.android.gms.tasks.TaskCompletionSource<any>>;
 						public trySetResult(param0: TResult): boolean;
@@ -13079,16 +13071,16 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module tasks {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace tasks {
 					export class TaskExecutors {
 						public static class: java.lang.Class<com.google.android.gms.tasks.TaskExecutors>;
 						public static MAIN_THREAD: java.util.concurrent.Executor;
 					}
-					export module TaskExecutors {
+					export namespace TaskExecutors {
 						export class zza {
 							public static class: java.lang.Class<com.google.android.gms.tasks.TaskExecutors.zza>;
 							public constructor();
@@ -13101,11 +13093,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module tasks {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace tasks {
 					export class Tasks {
 						public static class: java.lang.Class<com.google.android.gms.tasks.Tasks>;
 						public static await(param0: com.google.android.gms.tasks.Task<any>, param1: number, param2: java.util.concurrent.TimeUnit): any;
@@ -13122,7 +13114,7 @@ declare module com {
 						public static call(param0: java.util.concurrent.Callable): com.google.android.gms.tasks.Task<any>;
 						public static whenAll(param0: native.Array<com.google.android.gms.tasks.Task<any>>): com.google.android.gms.tasks.Task<java.lang.Void>;
 					}
-					export module Tasks {
+					export namespace Tasks {
 						export class zza extends com.google.android.gms.tasks.Tasks.zzb {
 							public static class: java.lang.Class<com.google.android.gms.tasks.Tasks.zza>;
 							public onSuccess(param0: any): void;
@@ -13160,11 +13152,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module tasks {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace tasks {
 					export class zza extends com.google.android.gms.tasks.CancellationToken {
 						public static class: java.lang.Class<com.google.android.gms.tasks.zza>;
 						public isCancellationRequested(): boolean;
@@ -13177,11 +13169,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module tasks {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace tasks {
 					export class zzb extends com.google.android.gms.tasks.OnSuccessListener<java.lang.Void> {
 						public static class: java.lang.Class<com.google.android.gms.tasks.zzb>;
 						public onSuccess(param0: any): void;
@@ -13192,11 +13184,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module tasks {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace tasks {
 					export class zzc<TResult, TContinuationResult>  extends java.lang.Object /* com.google.android.gms.tasks.zzq<any>*/ {
 						public static class: java.lang.Class<com.google.android.gms.tasks.zzc<any,any>>;
 						public cancel(): void;
@@ -13209,11 +13201,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module tasks {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace tasks {
 					export class zzd {
 						public static class: java.lang.Class<com.google.android.gms.tasks.zzd>;
 						public run(): void;
@@ -13224,11 +13216,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module tasks {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace tasks {
 					export class zze<TResult, TContinuationResult>  extends java.lang.Object {
 						public static class: java.lang.Class<com.google.android.gms.tasks.zze<any,any>>;
 						public onFailure(param0: java.lang.Exception): void;
@@ -13245,11 +13237,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module tasks {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace tasks {
 					export class zzf {
 						public static class: java.lang.Class<com.google.android.gms.tasks.zzf>;
 						public run(): void;
@@ -13260,11 +13252,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module tasks {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace tasks {
 					export class zzg<TResult>  extends java.lang.Object /* com.google.android.gms.tasks.zzq<any>*/ {
 						public static class: java.lang.Class<com.google.android.gms.tasks.zzg<any>>;
 						public onComplete(param0: com.google.android.gms.tasks.Task<any>): void;
@@ -13278,11 +13270,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module tasks {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace tasks {
 					export class zzh {
 						public static class: java.lang.Class<com.google.android.gms.tasks.zzh>;
 						public run(): void;
@@ -13293,11 +13285,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module tasks {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace tasks {
 					export class zzi<TResult>  extends java.lang.Object /* com.google.android.gms.tasks.zzq<any>*/ {
 						public static class: java.lang.Class<com.google.android.gms.tasks.zzi<any>>;
 						public cancel(): void;
@@ -13310,11 +13302,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module tasks {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace tasks {
 					export class zzj {
 						public static class: java.lang.Class<com.google.android.gms.tasks.zzj>;
 						public run(): void;
@@ -13325,11 +13317,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module tasks {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace tasks {
 					export class zzk<TResult>  extends java.lang.Object /* com.google.android.gms.tasks.zzq<any>*/ {
 						public static class: java.lang.Class<com.google.android.gms.tasks.zzk<any>>;
 						public cancel(): void;
@@ -13342,11 +13334,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module tasks {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace tasks {
 					export class zzl {
 						public static class: java.lang.Class<com.google.android.gms.tasks.zzl>;
 						public run(): void;
@@ -13357,11 +13349,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module tasks {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace tasks {
 					export class zzm<TResult>  extends java.lang.Object /* com.google.android.gms.tasks.zzq<any>*/ {
 						public static class: java.lang.Class<com.google.android.gms.tasks.zzm<any>>;
 						public constructor(param0: java.util.concurrent.Executor, param1: com.google.android.gms.tasks.OnSuccessListener<any>);
@@ -13374,11 +13366,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module tasks {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace tasks {
 					export class zzn {
 						public static class: java.lang.Class<com.google.android.gms.tasks.zzn>;
 						public run(): void;
@@ -13389,11 +13381,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module tasks {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace tasks {
 					export class zzo<TResult, TContinuationResult>  extends java.lang.Object {
 						public static class: java.lang.Class<com.google.android.gms.tasks.zzo<any,any>>;
 						public constructor(param0: java.util.concurrent.Executor, param1: com.google.android.gms.tasks.SuccessContinuation<TResult,TContinuationResult>, param2: any /* com.google.android.gms.tasks.zzu<TContinuationResult>*/);
@@ -13410,11 +13402,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module tasks {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace tasks {
 					export class zzp {
 						public static class: java.lang.Class<com.google.android.gms.tasks.zzp>;
 						public run(): void;
@@ -13425,11 +13417,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module tasks {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace tasks {
 					export class zzq<TResult>  extends java.lang.Object {
 						public static class: java.lang.Class<com.google.android.gms.tasks.zzq<any>>;
 						/**
@@ -13449,11 +13441,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module tasks {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace tasks {
 					export class zzr<TResult>  extends java.lang.Object {
 						public static class: java.lang.Class<com.google.android.gms.tasks.zzr<any>>;
 					}
@@ -13463,11 +13455,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module tasks {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace tasks {
 					export class zzs extends com.google.android.gms.tasks.OnTokenCanceledListener {
 						public static class: java.lang.Class<com.google.android.gms.tasks.zzs>;
 						public onCanceled(): void;
@@ -13478,11 +13470,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module tasks {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace tasks {
 					export class zzt {
 						public static class: java.lang.Class<com.google.android.gms.tasks.zzt>;
 						public execute(param0: java.lang.Runnable): void;
@@ -13493,11 +13485,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module tasks {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace tasks {
 					export class zzu<TResult>  extends com.google.android.gms.tasks.Task<any> {
 						public static class: java.lang.Class<com.google.android.gms.tasks.zzu<any>>;
 						public setResult(param0: any): void;
@@ -13529,7 +13521,7 @@ declare module com {
 						public addOnCanceledListener(param0: com.google.android.gms.tasks.OnCanceledListener): com.google.android.gms.tasks.Task<any>;
 						public addOnCompleteListener(param0: globalAndroid.app.Activity, param1: com.google.android.gms.tasks.OnCompleteListener<any>): com.google.android.gms.tasks.Task<any>;
 					}
-					export module zzu {
+					export namespace zzu {
 						export class zza extends com.google.android.gms.common.api.internal.LifecycleCallback {
 							public static class: java.lang.Class<com.google.android.gms.tasks.zzu.zza>;
 							public onStop(): void;
@@ -13541,11 +13533,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module tasks {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace tasks {
 					export class zzv {
 						public static class: java.lang.Class<com.google.android.gms.tasks.zzv>;
 						public run(): void;
@@ -13556,11 +13548,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module tasks {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace tasks {
 					export class zzw extends com.google.android.gms.tasks.Continuation<java.lang.Void,java.util.List<any>> {
 						public static class: java.lang.Class<com.google.android.gms.tasks.zzw>;
 						public then(param0: com.google.android.gms.tasks.Task<any>): any;
@@ -13571,11 +13563,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module tasks {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace tasks {
 					export class zzx extends com.google.android.gms.tasks.Continuation<java.lang.Void,com.google.android.gms.tasks.Task<java.util.List<com.google.android.gms.tasks.Task<any>>>> {
 						public static class: java.lang.Class<com.google.android.gms.tasks.zzx>;
 						public then(param0: com.google.android.gms.tasks.Task<any>): any;
@@ -13586,11 +13578,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
 					export class Asset extends com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable implements com.google.android.gms.common.internal.ReflectedParcelable {
 						public static class: java.lang.Class<com.google.android.gms.wearable.Asset>;
 						public static CREATOR: globalAndroid.os.Parcelable.Creator<com.google.android.gms.wearable.Asset>;
@@ -13613,11 +13605,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
 					export class CapabilityApi {
 						public static class: java.lang.Class<com.google.android.gms.wearable.CapabilityApi>;
 						/**
@@ -13648,7 +13640,7 @@ declare module com {
 						public getAllCapabilities(param0: com.google.android.gms.common.api.GoogleApiClient, param1: number): com.google.android.gms.common.api.PendingResult<com.google.android.gms.wearable.CapabilityApi.GetAllCapabilitiesResult>;
 						public addCapabilityListener(param0: com.google.android.gms.common.api.GoogleApiClient, param1: com.google.android.gms.wearable.CapabilityApi.CapabilityListener, param2: string): com.google.android.gms.common.api.PendingResult<com.google.android.gms.common.api.Status>;
 					}
-					export module CapabilityApi {
+					export namespace CapabilityApi {
 						export class AddLocalCapabilityResult extends com.google.android.gms.common.api.Result {
 							public static class: java.lang.Class<com.google.android.gms.wearable.CapabilityApi.AddLocalCapabilityResult>;
 							/**
@@ -13733,11 +13725,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
 					export abstract class CapabilityClient extends com.google.android.gms.common.api.GoogleApi<com.google.android.gms.wearable.Wearable.WearableOptions> {
 						public static class: java.lang.Class<com.google.android.gms.wearable.CapabilityClient>;
 						public static ACTION_CAPABILITY_CHANGED: string;
@@ -13765,7 +13757,7 @@ declare module com {
 						public constructor(param0: globalAndroid.app.Activity, param1: com.google.android.gms.common.api.GoogleApi.Settings);
 						public removeListener(param0: com.google.android.gms.wearable.CapabilityClient.OnCapabilityChangedListener, param1: string): com.google.android.gms.tasks.Task<java.lang.Boolean>;
 					}
-					export module CapabilityClient {
+					export namespace CapabilityClient {
 						export class CapabilityFilterType {
 							public static class: java.lang.Class<com.google.android.gms.wearable.CapabilityClient.CapabilityFilterType>;
 							/**
@@ -13803,11 +13795,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
 					export class CapabilityInfo {
 						public static class: java.lang.Class<com.google.android.gms.wearable.CapabilityInfo>;
 						/**
@@ -13827,11 +13819,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
 					export class Channel {
 						public static class: java.lang.Class<com.google.android.gms.wearable.Channel>;
 						/**
@@ -13863,7 +13855,7 @@ declare module com {
 						public addListener(param0: com.google.android.gms.common.api.GoogleApiClient, param1: com.google.android.gms.wearable.ChannelApi.ChannelListener): com.google.android.gms.common.api.PendingResult<com.google.android.gms.common.api.Status>;
 						public getInputStream(param0: com.google.android.gms.common.api.GoogleApiClient): com.google.android.gms.common.api.PendingResult<com.google.android.gms.wearable.Channel.GetInputStreamResult>;
 					}
-					export module Channel {
+					export namespace Channel {
 						export class GetInputStreamResult implements com.google.android.gms.common.api.Releasable, com.google.android.gms.common.api.Result {
 							public static class: java.lang.Class<com.google.android.gms.wearable.Channel.GetInputStreamResult>;
 							/**
@@ -13901,11 +13893,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
 					export class ChannelApi {
 						public static class: java.lang.Class<com.google.android.gms.wearable.ChannelApi>;
 						/**
@@ -13922,7 +13914,7 @@ declare module com {
 						public openChannel(param0: com.google.android.gms.common.api.GoogleApiClient, param1: string, param2: string): com.google.android.gms.common.api.PendingResult<com.google.android.gms.wearable.ChannelApi.OpenChannelResult>;
 						public addListener(param0: com.google.android.gms.common.api.GoogleApiClient, param1: com.google.android.gms.wearable.ChannelApi.ChannelListener): com.google.android.gms.common.api.PendingResult<com.google.android.gms.common.api.Status>;
 					}
-					export module ChannelApi {
+					export namespace ChannelApi {
 						export class ChannelListener {
 							public static class: java.lang.Class<com.google.android.gms.wearable.ChannelApi.ChannelListener>;
 							/**
@@ -13973,11 +13965,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
 					export abstract class ChannelClient extends com.google.android.gms.common.api.GoogleApi<com.google.android.gms.wearable.Wearable.WearableOptions> {
 						public static class: java.lang.Class<com.google.android.gms.wearable.ChannelClient>;
 						public static ACTION_CHANNEL_EVENT: string;
@@ -14005,7 +13997,7 @@ declare module com {
 						public constructor(param0: globalAndroid.app.Activity, param1: com.google.android.gms.common.api.Api<any>, param2: any, param3: com.google.android.gms.common.api.GoogleApi.Settings);
 						public constructor(param0: globalAndroid.app.Activity, param1: com.google.android.gms.common.api.GoogleApi.Settings);
 					}
-					export module ChannelClient {
+					export namespace ChannelClient {
 						export class Channel {
 							public static class: java.lang.Class<com.google.android.gms.wearable.ChannelClient.Channel>;
 							/**
@@ -14047,11 +14039,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
 					export class ChannelIOException {
 						public static class: java.lang.Class<com.google.android.gms.wearable.ChannelIOException>;
 						public getCloseReason(): number;
@@ -14064,11 +14056,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
 					export class ConnectionConfiguration extends com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable implements com.google.android.gms.common.internal.ReflectedParcelable {
 						public static class: java.lang.Class<com.google.android.gms.wearable.ConnectionConfiguration>;
 						public static CREATOR: globalAndroid.os.Parcelable.Creator<com.google.android.gms.wearable.ConnectionConfiguration>;
@@ -14083,11 +14075,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
 					export class DataApi {
 						public static class: java.lang.Class<com.google.android.gms.wearable.DataApi>;
 						/**
@@ -14124,7 +14116,7 @@ declare module com {
 						public getFdForAsset(param0: com.google.android.gms.common.api.GoogleApiClient, param1: com.google.android.gms.wearable.Asset): com.google.android.gms.common.api.PendingResult<com.google.android.gms.wearable.DataApi.GetFdForAssetResult>;
 						public getDataItem(param0: com.google.android.gms.common.api.GoogleApiClient, param1: globalAndroid.net.Uri): com.google.android.gms.common.api.PendingResult<com.google.android.gms.wearable.DataApi.DataItemResult>;
 					}
-					export module DataApi {
+					export namespace DataApi {
 						export class DataItemResult extends com.google.android.gms.common.api.Result {
 							public static class: java.lang.Class<com.google.android.gms.wearable.DataApi.DataItemResult>;
 							/**
@@ -14195,11 +14187,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
 					export abstract class DataClient extends com.google.android.gms.common.api.GoogleApi<com.google.android.gms.wearable.Wearable.WearableOptions> {
 						public static class: java.lang.Class<com.google.android.gms.wearable.DataClient>;
 						public static ACTION_DATA_CHANGED: string;
@@ -14229,7 +14221,7 @@ declare module com {
 						public constructor(param0: globalAndroid.app.Activity, param1: com.google.android.gms.common.api.GoogleApi.Settings);
 						public getFdForAsset(param0: com.google.android.gms.wearable.DataItemAsset): com.google.android.gms.tasks.Task<com.google.android.gms.wearable.DataClient.GetFdForAssetResponse>;
 					}
-					export module DataClient {
+					export namespace DataClient {
 						export class FilterType {
 							public static class: java.lang.Class<com.google.android.gms.wearable.DataClient.FilterType>;
 							/**
@@ -14265,11 +14257,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
 					export class DataEvent extends com.google.android.gms.common.data.Freezable<com.google.android.gms.wearable.DataEvent> {
 						public static class: java.lang.Class<com.google.android.gms.wearable.DataEvent>;
 						/**
@@ -14295,11 +14287,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
 					export class DataEventBuffer extends com.google.android.gms.common.data.EntityBuffer<com.google.android.gms.wearable.DataEvent> implements com.google.android.gms.common.api.Result  {
 						public static class: java.lang.Class<com.google.android.gms.wearable.DataEventBuffer>;
 						public getPrimaryDataMarkerColumn(): string;
@@ -14322,11 +14314,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
 					export class DataItem extends com.google.android.gms.common.data.Freezable<com.google.android.gms.wearable.DataItem> {
 						public static class: java.lang.Class<com.google.android.gms.wearable.DataItem>;
 						/**
@@ -14354,11 +14346,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
 					export class DataItemAsset extends com.google.android.gms.common.data.Freezable<com.google.android.gms.wearable.DataItemAsset> {
 						public static class: java.lang.Class<com.google.android.gms.wearable.DataItemAsset>;
 						/**
@@ -14382,11 +14374,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
 					export class DataItemBuffer extends com.google.android.gms.common.data.EntityBuffer<com.google.android.gms.wearable.DataItem> implements com.google.android.gms.common.api.Result  {
 						public static class: java.lang.Class<com.google.android.gms.wearable.DataItemBuffer>;
 						public getPrimaryDataMarkerColumn(): string;
@@ -14409,11 +14401,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
 					export class DataMap {
 						public static class: java.lang.Class<com.google.android.gms.wearable.DataMap>;
 						public static TAG: string;
@@ -14480,11 +14472,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
 					export class DataMapItem {
 						public static class: java.lang.Class<com.google.android.gms.wearable.DataMapItem>;
 						public getDataMap(): com.google.android.gms.wearable.DataMap;
@@ -14497,11 +14489,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
 					export class MessageApi {
 						public static class: java.lang.Class<com.google.android.gms.wearable.MessageApi>;
 						/**
@@ -14523,7 +14515,7 @@ declare module com {
 						public addListener(param0: com.google.android.gms.common.api.GoogleApiClient, param1: com.google.android.gms.wearable.MessageApi.MessageListener): com.google.android.gms.common.api.PendingResult<com.google.android.gms.common.api.Status>;
 						public addListener(param0: com.google.android.gms.common.api.GoogleApiClient, param1: com.google.android.gms.wearable.MessageApi.MessageListener, param2: globalAndroid.net.Uri, param3: number): com.google.android.gms.common.api.PendingResult<com.google.android.gms.common.api.Status>;
 					}
-					export module MessageApi {
+					export namespace MessageApi {
 						export class FilterType {
 							public static class: java.lang.Class<com.google.android.gms.wearable.MessageApi.FilterType>;
 							/**
@@ -14564,11 +14556,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
 					export abstract class MessageClient extends com.google.android.gms.common.api.GoogleApi<com.google.android.gms.wearable.Wearable.WearableOptions> {
 						public static class: java.lang.Class<com.google.android.gms.wearable.MessageClient>;
 						public static ACTION_MESSAGE_RECEIVED: string;
@@ -14590,7 +14582,7 @@ declare module com {
 						public constructor(param0: globalAndroid.app.Activity, param1: com.google.android.gms.common.api.GoogleApi.Settings);
 						public addListener(param0: com.google.android.gms.wearable.MessageClient.OnMessageReceivedListener): com.google.android.gms.tasks.Task<java.lang.Void>;
 					}
-					export module MessageClient {
+					export namespace MessageClient {
 						export class FilterType {
 							public static class: java.lang.Class<com.google.android.gms.wearable.MessageClient.FilterType>;
 							/**
@@ -14619,11 +14611,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
 					export class MessageEvent {
 						public static class: java.lang.Class<com.google.android.gms.wearable.MessageEvent>;
 						/**
@@ -14647,11 +14639,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
 					export class Node {
 						public static class: java.lang.Class<com.google.android.gms.wearable.Node>;
 						/**
@@ -14673,11 +14665,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
 					export class NodeApi {
 						public static class: java.lang.Class<com.google.android.gms.wearable.NodeApi>;
 						/**
@@ -14691,7 +14683,7 @@ declare module com {
 						public getConnectedNodes(param0: com.google.android.gms.common.api.GoogleApiClient): com.google.android.gms.common.api.PendingResult<com.google.android.gms.wearable.NodeApi.GetConnectedNodesResult>;
 						public getLocalNode(param0: com.google.android.gms.common.api.GoogleApiClient): com.google.android.gms.common.api.PendingResult<com.google.android.gms.wearable.NodeApi.GetLocalNodeResult>;
 					}
-					export module NodeApi {
+					export namespace NodeApi {
 						export class GetConnectedNodesResult extends com.google.android.gms.common.api.Result {
 							public static class: java.lang.Class<com.google.android.gms.wearable.NodeApi.GetConnectedNodesResult>;
 							/**
@@ -14725,11 +14717,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
 					export abstract class NodeClient extends com.google.android.gms.common.api.GoogleApi<com.google.android.gms.wearable.Wearable.WearableOptions> {
 						public static class: java.lang.Class<com.google.android.gms.wearable.NodeClient>;
 						public constructor(param0: globalAndroid.content.Context, param1: com.google.android.gms.common.api.Api<any>, param2: any, param3: com.google.android.gms.common.api.GoogleApi.Settings);
@@ -14752,11 +14744,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
 					export class PutDataMapRequest {
 						public static class: java.lang.Class<com.google.android.gms.wearable.PutDataMapRequest>;
 						public static create(param0: string): com.google.android.gms.wearable.PutDataMapRequest;
@@ -14774,11 +14766,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
 					export class PutDataRequest extends com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable {
 						public static class: java.lang.Class<com.google.android.gms.wearable.PutDataRequest>;
 						public static WEAR_URI_SCHEME: string;
@@ -14806,11 +14798,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
 					export class Wearable {
 						public static class: java.lang.Class<com.google.android.gms.wearable.Wearable>;
 						public static DataApi: com.google.android.gms.wearable.DataApi;
@@ -14840,11 +14832,11 @@ declare module com {
 						public static getChannelClient(param0: globalAndroid.content.Context): com.google.android.gms.wearable.ChannelClient;
 						public static getNodeClient(param0: globalAndroid.app.Activity, param1: com.google.android.gms.wearable.Wearable.WearableOptions): com.google.android.gms.wearable.NodeClient;
 					}
-					export module Wearable {
+					export namespace Wearable {
 						export class WearableOptions extends com.google.android.gms.common.api.Api.ApiOptions.Optional {
 							public static class: java.lang.Class<com.google.android.gms.wearable.Wearable.WearableOptions>;
 						}
-						export module WearableOptions {
+						export namespace WearableOptions {
 							export class Builder {
 								public static class: java.lang.Class<com.google.android.gms.wearable.Wearable.WearableOptions.Builder>;
 								public setLooper(param0: globalAndroid.os.Looper): com.google.android.gms.wearable.Wearable.WearableOptions.Builder;
@@ -14859,11 +14851,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
 					export class WearableListenerService implements com.google.android.gms.wearable.CapabilityApi.CapabilityListener, com.google.android.gms.wearable.ChannelApi.ChannelListener, com.google.android.gms.wearable.DataApi.DataListener, com.google.android.gms.wearable.MessageApi.MessageListener {
 						public static class: java.lang.Class<com.google.android.gms.wearable.WearableListenerService>;
 						public static BIND_LISTENER_INTENT_ACTION: string;
@@ -14889,7 +14881,7 @@ declare module com {
 						public getLooper(): globalAndroid.os.Looper;
 						public onChannelOpened(param0: com.google.android.gms.wearable.ChannelClient.Channel): void;
 					}
-					export module WearableListenerService {
+					export namespace WearableListenerService {
 						export class zza extends com.google.android.gms.wearable.ChannelClient.ChannelCallback {
 							public static class: java.lang.Class<com.google.android.gms.wearable.WearableListenerService.zza>;
 							public onInputClosed(param0: com.google.android.gms.wearable.ChannelClient.Channel, param1: number, param2: number): void;
@@ -14917,11 +14909,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
 					export class WearableStatusCodes extends com.google.android.gms.common.api.CommonStatusCodes {
 						public static class: java.lang.Class<com.google.android.gms.wearable.WearableStatusCodes>;
 						public static TARGET_NODE_NOT_CONNECTED: number;
@@ -14941,12 +14933,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class DataItemAssetParcelable extends com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable implements com.google.android.gms.common.internal.ReflectedParcelable, com.google.android.gms.wearable.DataItemAsset {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.DataItemAssetParcelable>;
 							public static CREATOR: globalAndroid.os.Parcelable.Creator<com.google.android.gms.wearable.internal.DataItemAssetParcelable>;
@@ -14966,12 +14958,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zza extends com.google.android.gms.wearable.internal.zzel {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zza>;
 							public constructor();
@@ -14984,12 +14976,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzaa extends com.google.android.gms.wearable.CapabilityClient {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzaa>;
 							/** @deprecated */
@@ -15019,12 +15011,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzab extends com.google.android.gms.common.internal.PendingResultUtil.ResultConverter<any,any> {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzab>;
 							public convert(param0: any): any;
@@ -15037,12 +15029,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzac extends com.google.android.gms.common.internal.PendingResultUtil.ResultConverter<any,any> {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzac>;
 							public convert(param0: any): any;
@@ -15055,12 +15047,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzad {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzad>;
 						}
@@ -15071,12 +15063,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzae extends com.google.android.gms.wearable.CapabilityClient.OnCapabilityChangedListener {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzae>;
 							public onCapabilityChanged(param0: com.google.android.gms.wearable.CapabilityInfo): void;
@@ -15090,12 +15082,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzaf extends com.google.android.gms.common.api.internal.RegisterListenerMethod<com.google.android.gms.wearable.internal.zzhg,com.google.android.gms.wearable.CapabilityClient.OnCapabilityChangedListener> {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzaf>;
 						}
@@ -15106,12 +15098,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzag extends com.google.android.gms.common.api.internal.UnregisterListenerMethod<com.google.android.gms.wearable.internal.zzhg,com.google.android.gms.wearable.CapabilityClient.OnCapabilityChangedListener> {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzag>;
 						}
@@ -15122,12 +15114,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzah extends com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable implements com.google.android.gms.wearable.CapabilityInfo {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzah>;
 							public static CREATOR: any /* globalAndroid.os.Parcelable.Creator<com.google.android.gms.wearable.internal.zzah>*/;
@@ -15147,12 +15139,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzai extends java.lang.Object /* globalAndroid.os.Parcelable.Creator<com.google.android.gms.wearable.internal.zzah>*/ {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzai>;
 							public constructor();
@@ -15164,12 +15156,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzaj extends com.google.android.gms.wearable.ChannelApi {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzaj>;
 							public constructor();
@@ -15184,12 +15176,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzak extends com.google.android.gms.wearable.internal.zzn<com.google.android.gms.wearable.ChannelApi.OpenChannelResult> {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzak>;
 							public setResult(param0: any): void;
@@ -15202,12 +15194,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzal extends com.google.android.gms.wearable.internal.zzc<com.google.android.gms.wearable.ChannelApi.ChannelListener> {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzal>;
 						}
@@ -15218,12 +15210,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzam extends com.google.android.gms.wearable.ChannelApi.OpenChannelResult {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzam>;
 							public getStatus(): com.google.android.gms.common.api.Status;
@@ -15236,12 +15228,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzan extends com.google.android.gms.wearable.internal.zzn<com.google.android.gms.common.api.Status> {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzan>;
 							public setResult(param0: any): void;
@@ -15254,12 +15246,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzao extends com.google.android.gms.wearable.ChannelClient {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzao>;
 							/** @deprecated */
@@ -15293,12 +15285,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzap extends com.google.android.gms.common.internal.PendingResultUtil.ResultConverter<any,any> {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzap>;
 							public convert(param0: any): any;
@@ -15311,12 +15303,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzaq extends com.google.android.gms.common.internal.PendingResultUtil.ResultConverter<any,any> {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzaq>;
 							public convert(param0: any): any;
@@ -15329,12 +15321,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzar extends com.google.android.gms.common.internal.PendingResultUtil.ResultConverter<any,any> {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzar>;
 							public convert(param0: any): any;
@@ -15347,12 +15339,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzas extends com.google.android.gms.wearable.ChannelApi.ChannelListener {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzas>;
 							public onChannelOpened(param0: com.google.android.gms.wearable.Channel): void;
@@ -15370,12 +15362,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzat extends com.google.android.gms.common.api.internal.RegisterListenerMethod<com.google.android.gms.wearable.internal.zzhg,com.google.android.gms.wearable.ChannelClient.ChannelCallback> {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzat>;
 						}
@@ -15386,12 +15378,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzau extends com.google.android.gms.common.api.internal.UnregisterListenerMethod<com.google.android.gms.wearable.internal.zzhg,com.google.android.gms.wearable.ChannelClient.ChannelCallback> {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzau>;
 						}
@@ -15402,12 +15394,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzav {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzav>;
 						}
@@ -15418,12 +15410,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzaw extends com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzaw>;
 							public static CREATOR: any /* globalAndroid.os.Parcelable.Creator<com.google.android.gms.wearable.internal.zzaw>*/;
@@ -15439,12 +15431,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzax extends java.lang.Object /* globalAndroid.os.Parcelable.Creator<com.google.android.gms.wearable.internal.zzaw>*/ {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzax>;
 							public constructor();
@@ -15456,12 +15448,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzay extends com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable implements com.google.android.gms.wearable.Channel, com.google.android.gms.wearable.ChannelClient.Channel {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzay>;
 							public static CREATOR: any /* globalAndroid.os.Parcelable.Creator<com.google.android.gms.wearable.internal.zzay>*/;
@@ -15490,12 +15482,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzaz extends com.google.android.gms.wearable.internal.zzn<com.google.android.gms.common.api.Status> {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzaz>;
 							public setResult(param0: any): void;
@@ -15508,12 +15500,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzb<T>  extends com.google.android.gms.wearable.internal.zzn<com.google.android.gms.common.api.Status> {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzb<any>>;
 							public setResult(param0: any): void;
@@ -15526,12 +15518,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzba extends com.google.android.gms.wearable.internal.zzn<com.google.android.gms.common.api.Status> {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzba>;
 							public setResult(param0: any): void;
@@ -15544,12 +15536,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzbb extends com.google.android.gms.wearable.internal.zzn<com.google.android.gms.wearable.Channel.GetInputStreamResult> {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzbb>;
 							public setResult(param0: any): void;
@@ -15562,12 +15554,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzbc extends com.google.android.gms.wearable.internal.zzn<com.google.android.gms.wearable.Channel.GetOutputStreamResult> {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzbc>;
 							public setResult(param0: any): void;
@@ -15580,12 +15572,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzbd extends com.google.android.gms.wearable.internal.zzn<com.google.android.gms.common.api.Status> {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzbd>;
 							public setResult(param0: any): void;
@@ -15598,12 +15590,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzbe extends com.google.android.gms.wearable.internal.zzn<com.google.android.gms.common.api.Status> {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzbe>;
 							public setResult(param0: any): void;
@@ -15616,12 +15608,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzbf extends com.google.android.gms.wearable.internal.zzc<com.google.android.gms.wearable.ChannelApi.ChannelListener> {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzbf>;
 						}
@@ -15632,12 +15624,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzbg extends com.google.android.gms.wearable.Channel.GetInputStreamResult {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzbg>;
 							public getStatus(): com.google.android.gms.common.api.Status;
@@ -15651,12 +15643,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzbh extends com.google.android.gms.wearable.Channel.GetOutputStreamResult {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzbh>;
 							public getOutputStream(): java.io.OutputStream;
@@ -15670,12 +15662,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzbi extends java.lang.Object /* globalAndroid.os.Parcelable.Creator<com.google.android.gms.wearable.internal.zzay>*/ {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzbi>;
 							public constructor();
@@ -15687,12 +15679,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzbj {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzbj>;
 							public mark(param0: number): void;
@@ -15713,12 +15705,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzbk extends com.google.android.gms.wearable.internal.zzbs {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzbk>;
 						}
@@ -15729,12 +15721,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzbl {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzbl>;
 							public constructor(param0: java.io.OutputStream);
@@ -15751,12 +15743,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzbm extends com.google.android.gms.wearable.internal.zzbs {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzbm>;
 						}
@@ -15767,12 +15759,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzbn extends com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzbn>;
 							public static CREATOR: any /* globalAndroid.os.Parcelable.Creator<com.google.android.gms.wearable.internal.zzbn>*/;
@@ -15788,12 +15780,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzbo extends java.lang.Object /* globalAndroid.os.Parcelable.Creator<com.google.android.gms.wearable.internal.zzbn>*/ {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzbo>;
 							public constructor();
@@ -15805,12 +15797,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzbp extends com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzbp>;
 							public static CREATOR: any /* globalAndroid.os.Parcelable.Creator<com.google.android.gms.wearable.internal.zzbp>*/;
@@ -15826,12 +15818,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzbq extends java.lang.Object /* globalAndroid.os.Parcelable.Creator<com.google.android.gms.wearable.internal.zzbp>*/ {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzbq>;
 							public constructor();
@@ -15843,12 +15835,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzbr extends com.google.android.gms.wearable.internal.zzej {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzbr>;
 							public constructor();
@@ -15861,12 +15853,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzbs {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzbs>;
 							/**
@@ -15884,12 +15876,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzbt extends com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzbt>;
 							public static CREATOR: any /* globalAndroid.os.Parcelable.Creator<com.google.android.gms.wearable.internal.zzbt>*/;
@@ -15905,12 +15897,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzbu extends java.lang.Object /* globalAndroid.os.Parcelable.Creator<com.google.android.gms.wearable.internal.zzbt>*/ {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzbu>;
 							public constructor();
@@ -15922,12 +15914,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzbv {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzbv>;
 							public constructor();
@@ -15939,12 +15931,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzbw extends com.google.android.gms.wearable.DataApi {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzbw>;
 							public constructor();
@@ -15968,12 +15960,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzbx extends com.google.android.gms.wearable.internal.zzn<com.google.android.gms.wearable.DataApi.DataItemResult> {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzbx>;
 							public setResult(param0: any): void;
@@ -15986,12 +15978,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzby extends com.google.android.gms.wearable.internal.zzn<com.google.android.gms.wearable.DataApi.DataItemResult> {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzby>;
 							public setResult(param0: any): void;
@@ -16004,12 +15996,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzbz extends com.google.android.gms.wearable.internal.zzn<com.google.android.gms.wearable.DataItemBuffer> {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzbz>;
 							public setResult(param0: any): void;
@@ -16022,12 +16014,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzc<T>  extends java.lang.Object {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzc<any>>;
 							/**
@@ -16045,12 +16037,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzca extends com.google.android.gms.wearable.internal.zzn<com.google.android.gms.wearable.DataItemBuffer> {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzca>;
 							public setResult(param0: any): void;
@@ -16063,12 +16055,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzcb extends com.google.android.gms.wearable.internal.zzn<com.google.android.gms.wearable.DataApi.DeleteDataItemsResult> {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzcb>;
 							public setResult(param0: any): void;
@@ -16081,12 +16073,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzcc extends com.google.android.gms.wearable.internal.zzn<com.google.android.gms.wearable.DataApi.GetFdForAssetResult> {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzcc>;
 							public setResult(param0: any): void;
@@ -16099,12 +16091,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzcd extends com.google.android.gms.wearable.internal.zzn<com.google.android.gms.wearable.DataApi.GetFdForAssetResult> {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzcd>;
 							public setResult(param0: any): void;
@@ -16117,12 +16109,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzce extends com.google.android.gms.wearable.internal.zzc<com.google.android.gms.wearable.DataApi.DataListener> {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzce>;
 						}
@@ -16133,12 +16125,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzcf extends com.google.android.gms.wearable.internal.zzn<com.google.android.gms.common.api.Status> {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzcf>;
 							public setResult(param0: any): void;
@@ -16151,12 +16143,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzcg extends com.google.android.gms.wearable.DataApi.DataItemResult {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzcg>;
 							public constructor(param0: com.google.android.gms.common.api.Status, param1: com.google.android.gms.wearable.DataItem);
@@ -16170,12 +16162,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzch extends com.google.android.gms.wearable.DataApi.DeleteDataItemsResult {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzch>;
 							public getStatus(): com.google.android.gms.common.api.Status;
@@ -16189,12 +16181,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzci extends com.google.android.gms.wearable.DataApi.GetFdForAssetResult {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzci>;
 							public getStatus(): com.google.android.gms.common.api.Status;
@@ -16210,12 +16202,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzcj extends com.google.android.gms.wearable.DataClient {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzcj>;
 							public getDataItem(param0: globalAndroid.net.Uri): com.google.android.gms.tasks.Task<com.google.android.gms.wearable.DataItem>;
@@ -16249,12 +16241,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzck extends com.google.android.gms.common.internal.PendingResultUtil.ResultConverter<any,any> {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzck>;
 							public convert(param0: any): any;
@@ -16267,12 +16259,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzcl extends com.google.android.gms.common.internal.PendingResultUtil.ResultConverter<any,any> {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzcl>;
 							public convert(param0: any): any;
@@ -16285,12 +16277,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzcm extends com.google.android.gms.common.internal.PendingResultUtil.ResultConverter<any,any> {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzcm>;
 							public convert(param0: any): any;
@@ -16303,12 +16295,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzcn extends com.google.android.gms.common.internal.PendingResultUtil.ResultConverter<any,any> {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzcn>;
 							public convert(param0: any): any;
@@ -16321,12 +16313,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzco extends com.google.android.gms.common.internal.PendingResultUtil.ResultConverter<any,any> {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzco>;
 							public convert(param0: any): any;
@@ -16339,12 +16331,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzcp extends com.google.android.gms.common.internal.PendingResultUtil.ResultConverter<any,any> {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzcp>;
 							public convert(param0: any): any;
@@ -16357,12 +16349,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzcq extends com.google.android.gms.common.internal.PendingResultUtil.ResultConverter<any,any> {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzcq>;
 							public convert(param0: any): any;
@@ -16375,12 +16367,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzcr extends com.google.android.gms.common.internal.PendingResultUtil.ResultConverter<any,any> {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzcr>;
 							public convert(param0: any): any;
@@ -16393,12 +16385,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzcs extends com.google.android.gms.common.internal.PendingResultUtil.ResultConverter<any,any> {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzcs>;
 							public convert(param0: any): any;
@@ -16411,12 +16403,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzct {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzct>;
 						}
@@ -16427,12 +16419,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzcu extends com.google.android.gms.wearable.DataClient.GetFdForAssetResponse implements com.google.android.gms.common.api.Releasable {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzcu>;
 							public getInputStream(): java.io.InputStream;
@@ -16446,12 +16438,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzcv extends com.google.android.gms.common.api.internal.RegisterListenerMethod<com.google.android.gms.wearable.internal.zzhg,com.google.android.gms.wearable.DataClient.OnDataChangedListener> {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzcv>;
 						}
@@ -16462,12 +16454,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzcw extends com.google.android.gms.common.api.internal.UnregisterListenerMethod<com.google.android.gms.wearable.internal.zzhg,com.google.android.gms.wearable.DataClient.OnDataChangedListener> {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzcw>;
 						}
@@ -16478,12 +16470,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzcx extends com.google.android.gms.wearable.DataEvent {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzcx>;
 							public getDataItem(): com.google.android.gms.wearable.DataItem;
@@ -16500,12 +16492,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzcy extends com.google.android.gms.common.data.DataBufferRef implements com.google.android.gms.wearable.DataEvent {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzcy>;
 							public getDataItem(): com.google.android.gms.wearable.DataItem;
@@ -16523,12 +16515,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzcz extends com.google.android.gms.wearable.DataItemAsset {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzcz>;
 							public constructor(param0: com.google.android.gms.wearable.DataItemAsset);
@@ -16545,12 +16537,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzd extends com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzd>;
 							public static CREATOR: any /* globalAndroid.os.Parcelable.Creator<com.google.android.gms.wearable.internal.zzd>*/;
@@ -16565,12 +16557,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzda extends globalAndroid.os.Parcelable.Creator<com.google.android.gms.wearable.internal.DataItemAssetParcelable> {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzda>;
 							public constructor();
@@ -16582,12 +16574,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzdb extends com.google.android.gms.common.data.DataBufferRef implements com.google.android.gms.wearable.DataItemAsset {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzdb>;
 							public isDataValid(): boolean;
@@ -16603,12 +16595,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzdc extends com.google.android.gms.wearable.DataItem {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzdc>;
 							public getUri(): globalAndroid.net.Uri;
@@ -16627,12 +16619,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzdd extends com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable implements com.google.android.gms.wearable.DataItem {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzdd>;
 							public static CREATOR: any /* globalAndroid.os.Parcelable.Creator<com.google.android.gms.wearable.internal.zzdd>*/;
@@ -16652,12 +16644,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzde extends java.lang.Object /* globalAndroid.os.Parcelable.Creator<com.google.android.gms.wearable.internal.zzdd>*/ {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzde>;
 							public constructor();
@@ -16669,12 +16661,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzdf extends com.google.android.gms.common.data.DataBufferRef implements com.google.android.gms.wearable.DataItem {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzdf>;
 							public getUri(): globalAndroid.net.Uri;
@@ -16694,12 +16686,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzdg extends com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzdg>;
 							public static CREATOR: any /* globalAndroid.os.Parcelable.Creator<com.google.android.gms.wearable.internal.zzdg>*/;
@@ -16715,12 +16707,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzdh extends java.lang.Object /* globalAndroid.os.Parcelable.Creator<com.google.android.gms.wearable.internal.zzdg>*/ {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzdh>;
 							public constructor();
@@ -16732,12 +16724,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzdi extends com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzdi>;
 							public static CREATOR: any /* globalAndroid.os.Parcelable.Creator<com.google.android.gms.wearable.internal.zzdi>*/;
@@ -16753,12 +16745,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzdj extends java.lang.Object /* globalAndroid.os.Parcelable.Creator<com.google.android.gms.wearable.internal.zzdi>*/ {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzdj>;
 							public constructor();
@@ -16770,12 +16762,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzdk extends com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzdk>;
 							public static CREATOR: any /* globalAndroid.os.Parcelable.Creator<com.google.android.gms.wearable.internal.zzdk>*/;
@@ -16791,12 +16783,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzdl extends java.lang.Object /* globalAndroid.os.Parcelable.Creator<com.google.android.gms.wearable.internal.zzdk>*/ {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzdl>;
 							public constructor();
@@ -16808,12 +16800,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzdm extends com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzdm>;
 							public static CREATOR: any /* globalAndroid.os.Parcelable.Creator<com.google.android.gms.wearable.internal.zzdm>*/;
@@ -16829,12 +16821,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzdn extends java.lang.Object /* globalAndroid.os.Parcelable.Creator<com.google.android.gms.wearable.internal.zzdm>*/ {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzdn>;
 							public constructor();
@@ -16846,12 +16838,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzdo extends com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzdo>;
 							public static CREATOR: any /* globalAndroid.os.Parcelable.Creator<com.google.android.gms.wearable.internal.zzdo>*/;
@@ -16867,12 +16859,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzdp extends java.lang.Object /* globalAndroid.os.Parcelable.Creator<com.google.android.gms.wearable.internal.zzdo>*/ {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzdp>;
 							public constructor();
@@ -16884,12 +16876,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzdq extends java.lang.Object /* globalAndroid.os.Parcelable.Creator<com.google.android.gms.wearable.internal.zzdr>*/ {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzdq>;
 							public constructor();
@@ -16901,12 +16893,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzdr extends com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzdr>;
 							public static CREATOR: any /* globalAndroid.os.Parcelable.Creator<com.google.android.gms.wearable.internal.zzdr>*/;
@@ -16921,12 +16913,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzds extends java.lang.Object /* globalAndroid.os.Parcelable.Creator<com.google.android.gms.wearable.internal.zzdt>*/ {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzds>;
 							public constructor();
@@ -16938,12 +16930,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzdt extends com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzdt>;
 							public static CREATOR: any /* globalAndroid.os.Parcelable.Creator<com.google.android.gms.wearable.internal.zzdt>*/;
@@ -16958,12 +16950,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzdu extends java.lang.Object /* globalAndroid.os.Parcelable.Creator<com.google.android.gms.wearable.internal.zzdv>*/ {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzdu>;
 							public constructor();
@@ -16975,12 +16967,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzdv extends com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzdv>;
 							public static CREATOR: any /* globalAndroid.os.Parcelable.Creator<com.google.android.gms.wearable.internal.zzdv>*/;
@@ -16995,12 +16987,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzdw extends com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzdw>;
 							public static CREATOR: any /* globalAndroid.os.Parcelable.Creator<com.google.android.gms.wearable.internal.zzdw>*/;
@@ -17015,12 +17007,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzdx extends java.lang.Object /* globalAndroid.os.Parcelable.Creator<com.google.android.gms.wearable.internal.zzdw>*/ {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzdx>;
 							public constructor();
@@ -17032,12 +17024,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzdy extends com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzdy>;
 							public static CREATOR: any /* globalAndroid.os.Parcelable.Creator<com.google.android.gms.wearable.internal.zzdy>*/;
@@ -17052,12 +17044,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzdz extends java.lang.Object /* globalAndroid.os.Parcelable.Creator<com.google.android.gms.wearable.internal.zzdy>*/ {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzdz>;
 							public constructor();
@@ -17069,12 +17061,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zze extends java.lang.Object /* globalAndroid.os.Parcelable.Creator<com.google.android.gms.wearable.internal.zzd>*/ {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zze>;
 							public constructor();
@@ -17086,12 +17078,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzea extends com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzea>;
 							public static CREATOR: any /* globalAndroid.os.Parcelable.Creator<com.google.android.gms.wearable.internal.zzea>*/;
@@ -17107,12 +17099,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzeb extends java.lang.Object /* globalAndroid.os.Parcelable.Creator<com.google.android.gms.wearable.internal.zzea>*/ {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzeb>;
 							public constructor();
@@ -17124,12 +17116,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzec extends com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzec>;
 							public static CREATOR: any /* globalAndroid.os.Parcelable.Creator<com.google.android.gms.wearable.internal.zzec>*/;
@@ -17145,12 +17137,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzed extends java.lang.Object /* globalAndroid.os.Parcelable.Creator<com.google.android.gms.wearable.internal.zzec>*/ {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzed>;
 							public constructor();
@@ -17162,12 +17154,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzee extends com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzee>;
 							public static CREATOR: any /* globalAndroid.os.Parcelable.Creator<com.google.android.gms.wearable.internal.zzee>*/;
@@ -17183,12 +17175,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzef extends java.lang.Object /* globalAndroid.os.Parcelable.Creator<com.google.android.gms.wearable.internal.zzee>*/ {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzef>;
 							public constructor();
@@ -17200,12 +17192,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzeg extends com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzeg>;
 							public static CREATOR: any /* globalAndroid.os.Parcelable.Creator<com.google.android.gms.wearable.internal.zzeg>*/;
@@ -17221,12 +17213,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzeh extends java.lang.Object /* globalAndroid.os.Parcelable.Creator<com.google.android.gms.wearable.internal.zzeg>*/ {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzeh>;
 							public constructor();
@@ -17238,12 +17230,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzei {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzei>;
 							/**
@@ -17261,12 +17253,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export abstract class zzej extends com.google.android.gms.internal.wearable.zzb implements com.google.android.gms.wearable.internal.zzei {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzej>;
 							public constructor();
@@ -17280,12 +17272,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzek {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzek>;
 							/**
@@ -17328,12 +17320,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export abstract class zzel extends com.google.android.gms.internal.wearable.zzb implements com.google.android.gms.wearable.internal.zzek {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzel>;
 							public constructor();
@@ -17347,12 +17339,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzem {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzem>;
 							/**
@@ -17379,12 +17371,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export abstract class zzen extends com.google.android.gms.internal.wearable.zzb implements com.google.android.gms.wearable.internal.zzem {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzen>;
 							public constructor();
@@ -17399,12 +17391,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzeo extends com.google.android.gms.internal.wearable.zza implements com.google.android.gms.wearable.internal.zzem {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzeo>;
 							public onConnectedNodes(param0: any /* java.util.List<com.google.android.gms.wearable.internal.zzfo>*/): void;
@@ -17416,12 +17408,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzep {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzep>;
 							/**
@@ -17460,12 +17452,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzeq extends com.google.android.gms.internal.wearable.zza implements com.google.android.gms.wearable.internal.zzep {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzeq>;
 						}
@@ -17476,12 +17468,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzer<T>  extends java.lang.Object {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzer<any>>;
 						}
@@ -17492,12 +17484,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzes<T>  extends com.google.android.gms.wearable.internal.zzgm<com.google.android.gms.common.api.Status> {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzes<any>>;
 						}
@@ -17508,12 +17500,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzet<T>  extends com.google.android.gms.wearable.internal.zzgm<com.google.android.gms.common.api.Status> {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzet<any>>;
 						}
@@ -17524,12 +17516,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzeu extends com.google.android.gms.wearable.MessageApi {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzeu>;
 							public constructor();
@@ -17545,12 +17537,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzev extends com.google.android.gms.wearable.internal.zzn<com.google.android.gms.wearable.MessageApi.SendMessageResult> {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzev>;
 							public setResult(param0: any): void;
@@ -17563,12 +17555,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzew extends com.google.android.gms.wearable.internal.zzn<com.google.android.gms.common.api.Status> {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzew>;
 							public setResult(param0: any): void;
@@ -17581,12 +17573,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzex extends com.google.android.gms.wearable.internal.zzn<com.google.android.gms.common.api.Status> {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzex>;
 							public setResult(param0: any): void;
@@ -17599,12 +17591,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzey extends com.google.android.gms.wearable.MessageApi.SendMessageResult {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzey>;
 							public getStatus(): com.google.android.gms.common.api.Status;
@@ -17618,12 +17610,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzez extends com.google.android.gms.wearable.MessageClient {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzez>;
 							public removeListener(param0: com.google.android.gms.wearable.MessageClient.OnMessageReceivedListener): com.google.android.gms.tasks.Task<java.lang.Boolean>;
@@ -17649,12 +17641,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzf extends com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzf>;
 							public static CREATOR: any /* globalAndroid.os.Parcelable.Creator<com.google.android.gms.wearable.internal.zzf>*/;
@@ -17670,12 +17662,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzfa extends com.google.android.gms.common.internal.PendingResultUtil.ResultConverter<any,any> {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzfa>;
 							public convert(param0: any): any;
@@ -17688,12 +17680,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzfb {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzfb>;
 						}
@@ -17704,12 +17696,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzfc extends com.google.android.gms.common.api.internal.RegisterListenerMethod<com.google.android.gms.wearable.internal.zzhg,com.google.android.gms.wearable.MessageClient.OnMessageReceivedListener> {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzfc>;
 						}
@@ -17720,12 +17712,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzfd extends com.google.android.gms.common.api.internal.UnregisterListenerMethod<com.google.android.gms.wearable.internal.zzhg,com.google.android.gms.wearable.MessageClient.OnMessageReceivedListener> {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzfd>;
 						}
@@ -17736,12 +17728,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzfe extends com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable implements com.google.android.gms.wearable.MessageEvent {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzfe>;
 							public static CREATOR: any /* globalAndroid.os.Parcelable.Creator<com.google.android.gms.wearable.internal.zzfe>*/;
@@ -17761,12 +17753,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzff extends java.lang.Object /* globalAndroid.os.Parcelable.Creator<com.google.android.gms.wearable.internal.zzfe>*/ {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzff>;
 							public constructor();
@@ -17778,12 +17770,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzfg extends com.google.android.gms.wearable.NodeApi {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzfg>;
 							public constructor();
@@ -17797,12 +17789,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzfh extends com.google.android.gms.wearable.internal.zzn<com.google.android.gms.wearable.NodeApi.GetLocalNodeResult> {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzfh>;
 							public setResult(param0: any): void;
@@ -17815,12 +17807,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzfi extends com.google.android.gms.wearable.internal.zzn<com.google.android.gms.wearable.NodeApi.GetConnectedNodesResult> {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzfi>;
 							public setResult(param0: any): void;
@@ -17833,12 +17825,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzfj extends com.google.android.gms.wearable.NodeApi.GetConnectedNodesResult {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzfj>;
 							public getStatus(): com.google.android.gms.common.api.Status;
@@ -17852,12 +17844,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzfk extends com.google.android.gms.wearable.NodeApi.GetLocalNodeResult {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzfk>;
 							public getStatus(): com.google.android.gms.common.api.Status;
@@ -17871,12 +17863,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzfl extends com.google.android.gms.wearable.NodeClient {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzfl>;
 							public getConnectedNodes(): com.google.android.gms.tasks.Task<java.util.List<com.google.android.gms.wearable.Node>>;
@@ -17900,12 +17892,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzfm extends com.google.android.gms.common.internal.PendingResultUtil.ResultConverter<any,any> {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzfm>;
 							public convert(param0: any): any;
@@ -17918,12 +17910,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzfn extends com.google.android.gms.common.internal.PendingResultUtil.ResultConverter<any,any> {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzfn>;
 							public convert(param0: any): any;
@@ -17936,12 +17928,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzfo extends com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable implements com.google.android.gms.wearable.Node {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzfo>;
 							public static CREATOR: any /* globalAndroid.os.Parcelable.Creator<com.google.android.gms.wearable.internal.zzfo>*/;
@@ -17962,12 +17954,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzfp extends java.lang.Object /* globalAndroid.os.Parcelable.Creator<com.google.android.gms.wearable.internal.zzfo>*/ {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzfp>;
 							public constructor();
@@ -17979,12 +17971,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzfq extends com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzfq>;
 							public static CREATOR: any /* globalAndroid.os.Parcelable.Creator<com.google.android.gms.wearable.internal.zzfq>*/;
@@ -18000,12 +17992,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzfr extends java.lang.Object /* globalAndroid.os.Parcelable.Creator<com.google.android.gms.wearable.internal.zzfq>*/ {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzfr>;
 							public constructor();
@@ -18017,12 +18009,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzfs extends com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzfs>;
 							public static CREATOR: any /* globalAndroid.os.Parcelable.Creator<com.google.android.gms.wearable.internal.zzfs>*/;
@@ -18037,12 +18029,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzft extends java.lang.Object /* globalAndroid.os.Parcelable.Creator<com.google.android.gms.wearable.internal.zzfs>*/ {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzft>;
 							public constructor();
@@ -18054,12 +18046,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzfu extends com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzfu>;
 							public static CREATOR: any /* globalAndroid.os.Parcelable.Creator<com.google.android.gms.wearable.internal.zzfu>*/;
@@ -18075,12 +18067,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzfv extends java.lang.Object /* globalAndroid.os.Parcelable.Creator<com.google.android.gms.wearable.internal.zzfu>*/ {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzfv>;
 							public constructor();
@@ -18092,12 +18084,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzfw extends com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzfw>;
 							public static CREATOR: any /* globalAndroid.os.Parcelable.Creator<com.google.android.gms.wearable.internal.zzfw>*/;
@@ -18112,12 +18104,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzfx extends java.lang.Object /* globalAndroid.os.Parcelable.Creator<com.google.android.gms.wearable.internal.zzfw>*/ {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzfx>;
 							public constructor();
@@ -18129,12 +18121,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzfy extends com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzfy>;
 							public static CREATOR: any /* globalAndroid.os.Parcelable.Creator<com.google.android.gms.wearable.internal.zzfy>*/;
@@ -18150,12 +18142,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzfz extends java.lang.Object /* globalAndroid.os.Parcelable.Creator<com.google.android.gms.wearable.internal.zzfy>*/ {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzfz>;
 							public constructor();
@@ -18167,12 +18159,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzg extends java.lang.Object /* globalAndroid.os.Parcelable.Creator<com.google.android.gms.wearable.internal.zzf>*/ {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzg>;
 							public constructor();
@@ -18184,12 +18176,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzga extends com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzga>;
 							public static CREATOR: any /* globalAndroid.os.Parcelable.Creator<com.google.android.gms.wearable.internal.zzga>*/;
@@ -18205,12 +18197,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzgb extends java.lang.Object /* globalAndroid.os.Parcelable.Creator<com.google.android.gms.wearable.internal.zzga>*/ {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzgb>;
 							public constructor();
@@ -18222,12 +18214,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzgc extends com.google.android.gms.wearable.ChannelApi.ChannelListener {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzgc>;
 							public onChannelOpened(param0: com.google.android.gms.wearable.Channel): void;
@@ -18244,12 +18236,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzgd {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzgd>;
 						}
@@ -18260,12 +18252,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzge extends com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzge>;
 							public static CREATOR: any /* globalAndroid.os.Parcelable.Creator<com.google.android.gms.wearable.internal.zzge>*/;
@@ -18280,12 +18272,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzgf extends java.lang.Object /* globalAndroid.os.Parcelable.Creator<com.google.android.gms.wearable.internal.zzge>*/ {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzgf>;
 							public constructor();
@@ -18297,12 +18289,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzgg extends com.google.android.gms.common.api.internal.BaseImplementation.ResultHolder<com.google.android.gms.common.api.Status> {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzgg>;
 							public setResult(param0: any): void;
@@ -18315,12 +18307,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzgh extends com.google.android.gms.common.api.internal.BaseImplementation.ResultHolder<com.google.android.gms.common.api.Status> {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzgh>;
 							public setResult(param0: any): void;
@@ -18333,12 +18325,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzgi {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzgi>;
 							public constructor();
@@ -18350,12 +18342,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzgj {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzgj>;
 						}
@@ -18366,12 +18358,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzgk {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzgk>;
 						}
@@ -18382,12 +18374,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzgl extends com.google.android.gms.wearable.internal.zzgm<com.google.android.gms.wearable.CapabilityApi.AddLocalCapabilityResult> {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzgl>;
 							public constructor();
@@ -18402,12 +18394,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzgm<T>  extends java.lang.Object /* com.google.android.gms.wearable.internal.zza*/ {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzgm<any>>;
 							public constructor();
@@ -18421,12 +18413,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzgn extends com.google.android.gms.wearable.internal.zzgm<com.google.android.gms.common.api.Status> {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzgn>;
 							public constructor();
@@ -18441,12 +18433,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzgo extends com.google.android.gms.wearable.internal.zzgm<com.google.android.gms.common.api.Status> {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzgo>;
 							public constructor();
@@ -18461,12 +18453,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzgp extends com.google.android.gms.wearable.internal.zzgm<com.google.android.gms.wearable.DataApi.DeleteDataItemsResult> {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzgp>;
 							public constructor();
@@ -18481,12 +18473,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzgq extends com.google.android.gms.wearable.internal.zzgm<com.google.android.gms.wearable.CapabilityApi.GetAllCapabilitiesResult> {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzgq>;
 							public constructor();
@@ -18501,12 +18493,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzgr extends com.google.android.gms.wearable.internal.zzgm<com.google.android.gms.wearable.CapabilityApi.GetCapabilityResult> {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzgr>;
 							public constructor();
@@ -18521,12 +18513,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzgs extends com.google.android.gms.wearable.internal.zzgm<com.google.android.gms.wearable.Channel.GetInputStreamResult> {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzgs>;
 							public constructor();
@@ -18541,12 +18533,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzgt extends com.google.android.gms.wearable.internal.zzgm<com.google.android.gms.wearable.Channel.GetOutputStreamResult> {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzgt>;
 							public constructor();
@@ -18561,12 +18553,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzgu extends com.google.android.gms.wearable.internal.zzgm<com.google.android.gms.wearable.NodeApi.GetConnectedNodesResult> {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzgu>;
 							public constructor();
@@ -18581,12 +18573,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzgv extends com.google.android.gms.wearable.internal.zzgm<com.google.android.gms.wearable.DataApi.DataItemResult> {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzgv>;
 							public constructor();
@@ -18601,12 +18593,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzgw extends com.google.android.gms.wearable.internal.zzgm<com.google.android.gms.wearable.DataItemBuffer> {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzgw>;
 							public constructor();
@@ -18621,12 +18613,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzgx extends com.google.android.gms.wearable.internal.zzgm<com.google.android.gms.wearable.DataApi.GetFdForAssetResult> {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzgx>;
 							public constructor();
@@ -18641,12 +18633,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzgy extends com.google.android.gms.wearable.internal.zzgm<com.google.android.gms.wearable.NodeApi.GetLocalNodeResult> {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzgy>;
 							public constructor();
@@ -18661,12 +18653,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzgz extends com.google.android.gms.wearable.internal.zza {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzgz>;
 						}
@@ -18677,12 +18669,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzh {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzh>;
 							public constructor();
@@ -18694,12 +18686,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzha extends com.google.android.gms.wearable.internal.zzgm<com.google.android.gms.wearable.ChannelApi.OpenChannelResult> {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzha>;
 							public constructor();
@@ -18714,12 +18706,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzhb extends com.google.android.gms.wearable.internal.zzgm<com.google.android.gms.wearable.DataApi.DataItemResult> {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzhb>;
 						}
@@ -18730,12 +18722,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzhc extends com.google.android.gms.wearable.internal.zzgm<com.google.android.gms.common.api.Status> {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzhc>;
 							public constructor();
@@ -18750,12 +18742,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzhd extends com.google.android.gms.wearable.internal.zzgm<com.google.android.gms.wearable.CapabilityApi.RemoveLocalCapabilityResult> {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzhd>;
 							public constructor();
@@ -18770,12 +18762,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzhe extends com.google.android.gms.wearable.internal.zzgm<com.google.android.gms.wearable.MessageApi.SendMessageResult> {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzhe>;
 							public constructor();
@@ -18790,12 +18782,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzhf extends com.google.android.gms.wearable.internal.zzgm<com.google.android.gms.common.api.Status> {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzhf>;
 							public constructor();
@@ -18810,12 +18802,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzhg extends java.lang.Object /* com.google.android.gms.common.internal.GmsClient<com.google.android.gms.wearable.internal.zzep>*/ {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzhg>;
 							public getStartServiceAction(): string;
@@ -18857,12 +18849,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzhh extends java.util.concurrent.Callable<java.lang.Boolean> {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzhh>;
 						}
@@ -18873,12 +18865,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzhi {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzhi>;
 							public run(): void;
@@ -18890,12 +18882,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzhj {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzhj>;
 							public run(): void;
@@ -18907,12 +18899,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzhk<T>  extends java.lang.Object /* com.google.android.gms.wearable.internal.zzen*/ {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzhk<any>>;
 							public clear(): void;
@@ -18925,12 +18917,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzhl extends com.google.android.gms.common.api.internal.ListenerHolder.Notifier<com.google.android.gms.wearable.DataApi.DataListener> {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzhl>;
 							public onNotifyListenerFailed(): void;
@@ -18943,12 +18935,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzhm extends com.google.android.gms.common.api.internal.ListenerHolder.Notifier<com.google.android.gms.wearable.MessageApi.MessageListener> {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzhm>;
 							public onNotifyListenerFailed(): void;
@@ -18961,12 +18953,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzhn extends com.google.android.gms.common.api.internal.ListenerHolder.Notifier<com.google.android.gms.wearable.ChannelApi.ChannelListener> {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzhn>;
 							public onNotifyListenerFailed(): void;
@@ -18979,12 +18971,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzho extends com.google.android.gms.common.api.internal.ListenerHolder.Notifier<com.google.android.gms.wearable.CapabilityApi.CapabilityListener> {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzho>;
 							public onNotifyListenerFailed(): void;
@@ -18997,12 +18989,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzhp {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzhp>;
 						}
@@ -19013,12 +19005,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzhq {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzhq>;
 							public constructor();
@@ -19030,12 +19022,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzi extends com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzi>;
 							public static CREATOR: any /* globalAndroid.os.Parcelable.Creator<com.google.android.gms.wearable.internal.zzi>*/;
@@ -19053,12 +19045,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzj extends java.lang.Object /* globalAndroid.os.Parcelable.Creator<com.google.android.gms.wearable.internal.zzi>*/ {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzj>;
 							public constructor();
@@ -19070,12 +19062,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzk {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzk>;
 							public constructor();
@@ -19087,12 +19079,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzl extends com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzl>;
 							public static CREATOR: any /* globalAndroid.os.Parcelable.Creator<com.google.android.gms.wearable.internal.zzl>*/;
@@ -19110,12 +19102,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzm extends java.lang.Object /* globalAndroid.os.Parcelable.Creator<com.google.android.gms.wearable.internal.zzl>*/ {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzm>;
 							public constructor();
@@ -19127,12 +19119,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export abstract class zzn<R>  extends java.lang.Object /* com.google.android.gms.common.api.internal.BaseImplementation.ApiMethodImpl<any,com.google.android.gms.wearable.internal.zzhg>*/ {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzn<any>>;
 							public constructor();
@@ -19153,12 +19145,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzo extends com.google.android.gms.wearable.CapabilityApi {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzo>;
 							public constructor();
@@ -19178,12 +19170,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzp extends com.google.android.gms.wearable.internal.zzn<com.google.android.gms.wearable.CapabilityApi.GetCapabilityResult> {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzp>;
 							public setResult(param0: any): void;
@@ -19196,12 +19188,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzq extends com.google.android.gms.wearable.internal.zzn<com.google.android.gms.wearable.CapabilityApi.GetAllCapabilitiesResult> {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzq>;
 							public setResult(param0: any): void;
@@ -19214,12 +19206,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzr extends com.google.android.gms.wearable.internal.zzn<com.google.android.gms.wearable.CapabilityApi.AddLocalCapabilityResult> {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzr>;
 							public setResult(param0: any): void;
@@ -19232,12 +19224,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzs extends com.google.android.gms.wearable.internal.zzn<com.google.android.gms.wearable.CapabilityApi.RemoveLocalCapabilityResult> {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzs>;
 							public setResult(param0: any): void;
@@ -19250,12 +19242,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzt extends com.google.android.gms.wearable.internal.zzc<com.google.android.gms.wearable.CapabilityApi.CapabilityListener> {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzt>;
 						}
@@ -19266,12 +19258,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzu implements com.google.android.gms.wearable.CapabilityApi.AddLocalCapabilityResult, com.google.android.gms.wearable.CapabilityApi.RemoveLocalCapabilityResult {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzu>;
 							public getStatus(): com.google.android.gms.common.api.Status;
@@ -19284,12 +19276,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzv extends com.google.android.gms.wearable.CapabilityApi.CapabilityListener {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzv>;
 							public onCapabilityChanged(param0: com.google.android.gms.wearable.CapabilityInfo): void;
@@ -19303,12 +19295,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzw extends com.google.android.gms.wearable.CapabilityInfo {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzw>;
 							public getNodes(): java.util.Set<com.google.android.gms.wearable.Node>;
@@ -19322,12 +19314,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzx extends com.google.android.gms.wearable.CapabilityApi.GetAllCapabilitiesResult {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzx>;
 							public getStatus(): com.google.android.gms.common.api.Status;
@@ -19341,12 +19333,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzy extends com.google.android.gms.wearable.CapabilityApi.GetCapabilityResult {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzy>;
 							public getStatus(): com.google.android.gms.common.api.Status;
@@ -19360,12 +19352,12 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
-					export module internal {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
+					export namespace internal {
 						export class zzz extends com.google.android.gms.wearable.internal.zzn<com.google.android.gms.common.api.Status> {
 							public static class: java.lang.Class<com.google.android.gms.wearable.internal.zzz>;
 							public setResult(param0: any): void;
@@ -19378,11 +19370,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
 					export class zza {
 						public static class: java.lang.Class<com.google.android.gms.wearable.zza>;
 						/**
@@ -19398,11 +19390,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
 					export class zzb {
 						public static class: java.lang.Class<com.google.android.gms.wearable.zzb>;
 						/**
@@ -19418,11 +19410,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
 					export class zzc {
 						public static class: java.lang.Class<com.google.android.gms.wearable.zzc>;
 						/**
@@ -19438,11 +19430,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
 					export class zzd {
 						public static class: java.lang.Class<com.google.android.gms.wearable.zzd>;
 						/**
@@ -19458,11 +19450,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
 					export class zze extends globalAndroid.os.Parcelable.Creator<com.google.android.gms.wearable.Asset> {
 						public static class: java.lang.Class<com.google.android.gms.wearable.zze>;
 						public constructor();
@@ -19473,11 +19465,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
 					export class zzf {
 						public static class: java.lang.Class<com.google.android.gms.wearable.zzf>;
 						/**
@@ -19493,11 +19485,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
 					export class zzg extends globalAndroid.os.Parcelable.Creator<com.google.android.gms.wearable.ConnectionConfiguration> {
 						public static class: java.lang.Class<com.google.android.gms.wearable.zzg>;
 						public constructor();
@@ -19508,11 +19500,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
 					export class zzh extends globalAndroid.os.Parcelable.Creator<com.google.android.gms.wearable.PutDataRequest> {
 						public static class: java.lang.Class<com.google.android.gms.wearable.zzh>;
 						public constructor();
@@ -19523,11 +19515,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
 					export class zzi {
 						public static class: java.lang.Class<com.google.android.gms.wearable.zzi>;
 						/**
@@ -19543,11 +19535,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
 					export class zzj extends com.google.android.gms.common.api.Api.AbstractClientBuilder<com.google.android.gms.wearable.internal.zzhg,com.google.android.gms.wearable.Wearable.WearableOptions> {
 						public static class: java.lang.Class<com.google.android.gms.wearable.zzj>;
 					}
@@ -19557,11 +19549,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
 					export class zzk {
 						public static class: java.lang.Class<com.google.android.gms.wearable.zzk>;
 					}
@@ -19571,11 +19563,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
 					export class zzl {
 						public static class: java.lang.Class<com.google.android.gms.wearable.zzl>;
 						public run(): void;
@@ -19586,11 +19578,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
 					export class zzm {
 						public static class: java.lang.Class<com.google.android.gms.wearable.zzm>;
 						public run(): void;
@@ -19601,11 +19593,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
 					export class zzn {
 						public static class: java.lang.Class<com.google.android.gms.wearable.zzn>;
 						public run(): void;
@@ -19616,11 +19608,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
 					export class zzo {
 						public static class: java.lang.Class<com.google.android.gms.wearable.zzo>;
 						public run(): void;
@@ -19631,11 +19623,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
 					export class zzp {
 						public static class: java.lang.Class<com.google.android.gms.wearable.zzp>;
 						public run(): void;
@@ -19646,11 +19638,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
 					export class zzq {
 						public static class: java.lang.Class<com.google.android.gms.wearable.zzq>;
 						public run(): void;
@@ -19661,11 +19653,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
 					export class zzr {
 						public static class: java.lang.Class<com.google.android.gms.wearable.zzr>;
 						public run(): void;
@@ -19676,11 +19668,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
 					export class zzs {
 						public static class: java.lang.Class<com.google.android.gms.wearable.zzs>;
 						public run(): void;
@@ -19691,11 +19683,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
 					export class zzt {
 						public static class: java.lang.Class<com.google.android.gms.wearable.zzt>;
 						public run(): void;
@@ -19706,11 +19698,11 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module android {
-			export module gms {
-				export module wearable {
+declare namespace com {
+	export namespace google {
+		export namespace android {
+			export namespace gms {
+				export namespace wearable {
 					export class zzu {
 						public static class: java.lang.Class<com.google.android.gms.wearable.zzu>;
 						/**
@@ -19726,9 +19718,9 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module firebase {
+declare namespace com {
+	export namespace google {
+		export namespace firebase {
 			export class FirebaseApiNotAvailableException extends com.google.firebase.FirebaseException {
 				public static class: java.lang.Class<com.google.firebase.FirebaseApiNotAvailableException>;
 				/** @deprecated */
@@ -19740,9 +19732,9 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module firebase {
+declare namespace com {
+	export namespace google {
+		export namespace firebase {
 			export class FirebaseException {
 				public static class: java.lang.Class<com.google.firebase.FirebaseException>;
 				/** @deprecated */
@@ -19754,9 +19746,9 @@ declare module com {
 	}
 }
 
-declare module com {
-	export module google {
-		export module firebase {
+declare namespace com {
+	export namespace google {
+		export namespace firebase {
 			export class FirebaseExceptionMapper extends com.google.android.gms.common.api.internal.StatusExceptionMapper {
 				public static class: java.lang.Class<com.google.firebase.FirebaseExceptionMapper>;
 				public getException(param0: com.google.android.gms.common.api.Status): java.lang.Exception;
