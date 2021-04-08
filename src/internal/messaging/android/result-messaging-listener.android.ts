@@ -16,6 +16,10 @@ export class ResultMessagingListener implements OnMessageReceivedListener {
             return;
         }
 
+        if (message.getData() === null) {
+            return;
+        }
+
         const decodedMessage = decodeMessage(message.getData());
         const messageParts = decodedMessage.split('#');
         if (messageParts[0] === this.protocol.successResponse) {

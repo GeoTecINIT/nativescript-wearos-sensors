@@ -6,7 +6,7 @@ import {
     NodeSet,
     Node } from "../../utils/android/wear-os-types.android";
 import { promisify } from "../../utils/android/utils.android";
-import { MessagingClient } from "../messaging-client";
+import { encodeMessage, MessagingClient } from "../messaging-client";
 import { MessagingProtocol } from "../index";
 
 
@@ -50,7 +50,7 @@ export class MessagingClientImpl implements MessagingClient {
 
     private async sendMessage(node: Node, path: string, message?: string): Promise<void> {
         const messageArray = message ?
-            Array.from(message).map((x) => x.charCodeAt(0)) :
+            encodeMessage(message) :
             null;
 
         await promisify(

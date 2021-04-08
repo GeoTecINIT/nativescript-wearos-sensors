@@ -1,9 +1,7 @@
-import { wearOS } from "nativescript-wearos-sensors/internal/utils/android/wear-os-types.android";
 import { MessagingProtocol } from "nativescript-wearos-sensors/internal/messaging";
 import { NodeManager } from "nativescript-wearos-sensors/internal/node-manager.android";
 import { MessagingClientImpl } from "nativescript-wearos-sensors/internal/messaging/android/messaging-client.android";
-import { encodeMessage } from "nativescript-wearos-sensors/internal/messaging/messaging-client";
-import { buildFakeNode, buildFakeResolutionResult, getFakeMessagingProtocol } from ".";
+import { buildFakeMessageEvent, buildFakeNode, buildFakeResolutionResult, getFakeMessagingProtocol } from ".";
 
 describe("Node manager", () => {
     const node = buildFakeNode("node1", "node1", true);
@@ -85,26 +83,6 @@ describe("Node manager", () => {
     });
 });
 
-function buildFakeMessageEvent(
-    nodeId: string,
-    path: string,
-    message: string
-): wearOS.MessageEvent {
-    return new wearOS.MessageEvent({
-        getData(): native.Array<number> {
-            return encodeMessage(message);
-        },
-        getPath(): string {
-            return path;
-        },
-        getRequestId(): number {
-            return 53;
-        },
-        getSourceNodeId(): string {
-            return nodeId;
-        }
-    });
-}
 
 function retrieveMessagingListener(messagingClient) {
     return messagingClient.registerMessageListener.calls.mostRecent().args[0];
