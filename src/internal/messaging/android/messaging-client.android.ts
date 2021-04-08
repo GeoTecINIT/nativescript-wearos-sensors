@@ -20,38 +20,20 @@ export class MessagingClientImpl implements MessagingClient {
         this.messageClient = wearOS.Wearable.getMessageClient(androidApp.context);
     }
 
-    public async sendIsReadyMessage(nodes: NodeSet) {
-        await this.sendMessageToConnectedNodes(nodes, this.protocol.readyProtocol.messagePath);
+    public async sendIsReadyMessage(node: Node) {
+        await this.sendMessage(node, this.protocol.readyProtocol.messagePath);
     }
 
-    public async sendPrepareMessage(nodes: NodeSet) {
-        await this.sendMessageToConnectedNodes(nodes, this.protocol.prepareProtocol.messagePath);
+    public async sendPrepareMessage(node: Node) {
+        await this.sendMessage(node, this.protocol.prepareProtocol.messagePath);
     }
 
-    public async sendStartMessage(nodes: NodeSet, message?: string) {
-        await this.sendMessageToConnectedNodes(nodes, this.protocol.startMessagePath, message);
+    public async sendStartMessage(node: Node, message?: string) {
+        await this.sendMessage(node, this.protocol.startMessagePath, message);
     }
 
-    public async sendStopMessage(nodes: NodeSet, message?: string) {
-        await this.sendMessageToConnectedNodes(nodes, this.protocol.stopMessagePath, message);
-    }
-
-    private async sendMessageToConnectedNodes(nodes: NodeSet, path: string, message?: string) {
-        const iterator = nodes.iterator();
-        while (iterator.hasNext()) {
-            const node = iterator.next();
-            await this.sendMessage(node, path, message);
-        }
-    }
-
-    private async sendMessage(node: Node, path: string, message?: string): Promise<void> {
-        const messageArray = message ?
-            Array.from(message).map((x) => x.charCodeAt(0)) :
-            null;
-
-        await promisify(
-            this.messageClient.sendMessage(node.getId(), path, messageArray)
-        );
+    public async sendStopMessage(node: Node, message?: string) {
+        await this.sendMessage(node, this.protocol.stopMessagePath, message);
     }
 
     public async registerMessageListener(listener: OnMessageReceivedListener) {
@@ -63,6 +45,16 @@ export class MessagingClientImpl implements MessagingClient {
     public async removeMessageListener(listener: OnMessageReceivedListener) {
         await promisify(
             this.messageClient.removeListener(listener)
+        );
+    }
+
+    private async sendMessage(node: Node, path: string, message?: string): Promise<void> {
+        const messageArray = message ?
+            Array.from(message).map((x) => x.charCodeAt(0)) :
+            null;
+
+        await promisify(
+            this.messageClient.sendMessage(node.getId(), path, messageArray)
         );
     }
 }

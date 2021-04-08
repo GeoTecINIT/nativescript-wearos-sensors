@@ -1,8 +1,12 @@
+import { Node, OnMessageReceivedListener } from "../utils/android/wear-os-types.android";
+
 export interface MessagingClient {
-    sendIsReadyMessage(nodes);
-    sendPrepareMessage(nodes);
-    sendStartMessage(nodes, message?: string);
-    sendStopMessage(nodes, message?: string);
+    sendIsReadyMessage(node: Node);
+    sendPrepareMessage(node: Node);
+    sendStartMessage(node: Node, message?: string);
+    sendStopMessage(node: Node, message?: string);
+    registerMessageListener(listener: OnMessageReceivedListener);
+    removeMessageListener(listener: OnMessageReceivedListener);
 }
 
 export function encodeMessage(message: string): number[] {
