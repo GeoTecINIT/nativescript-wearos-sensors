@@ -24,11 +24,11 @@ export class ResultMessagingListener implements OnMessageReceivedListener {
                 success: true,
             });
         } else if (messageParts[0] === this.protocol.failureResponse) {
-            this.resolutionCallback({
-                nodeId: message.getSourceNodeId(),
-                success: false,
-                message: messageParts.length > 1 ? messageParts[1] : undefined,
-            });
+            const partialResolution = { nodeId: message.getSourceNodeId(), success: false };
+            const resolution = messageParts.length > 1 ?
+                { ...partialResolution, message: messageParts[1]} :
+                partialResolution;
+            this.resolutionCallback(resolution);
         }
     }
 }

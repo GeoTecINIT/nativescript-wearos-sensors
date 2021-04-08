@@ -3,25 +3,11 @@ import { MessagingProtocol } from "nativescript-wearos-sensors/internal/messagin
 import { NodeManager } from "nativescript-wearos-sensors/internal/node-manager.android";
 import { MessagingClientImpl } from "nativescript-wearos-sensors/internal/messaging/android/messaging-client.android";
 import { encodeMessage } from "nativescript-wearos-sensors/internal/messaging/messaging-client";
-import { buildFakeNode } from ".";
+import { buildFakeNode, buildFakeResolutionResult, getFakeMessagingProtocol } from ".";
 
 describe("Node manager", () => {
     const node = buildFakeNode("node1", "node1", true);
-    const protocol: MessagingProtocol = {
-        startMessagePath: "testStart",
-        stopMessagePath: "testStop",
-        readyProtocol: {
-            messagePath: "testReady",
-            successResponse: "testReadySuccess",
-            failureResponse: "testReadyFailure",
-        },
-        prepareProtocol: {
-            messagePath: "testPrepare",
-            successResponse: "testPrepareSuccess",
-            failureResponse: "testPrepareFailure",
-        },
-        newRecordMessagePath: "testNewRecord",
-    }
+    const protocol: MessagingProtocol = getFakeMessagingProtocol();
 
     let messagingClient;
     let nodeManager;
@@ -45,10 +31,9 @@ describe("Node manager", () => {
             )
         );
 
-        const resolutionResult = await isReady;
-        expect(resolutionResult.success).toBeTrue();
-        expect(resolutionResult.nodeId).toBe(node.getId());
-        expect(resolutionResult.message).toBeUndefined();
+        await expectAsync(isReady).toBeResolvedTo(
+            buildFakeResolutionResult(node.getId(), true)
+        );
     });
 
     it("allows to ask a not ready node if it is ready", async () => {
@@ -62,10 +47,9 @@ describe("Node manager", () => {
             )
         );
 
-        const resolutionResult = await isReady;
-        expect(resolutionResult.success).toBeFalse();
-        expect(resolutionResult.nodeId).toBe(node.getId());
-        expect(resolutionResult.message).toBeUndefined();
+        await expectAsync(isReady).toBeResolvedTo(
+            buildFakeResolutionResult(node.getId(), false)
+        );
     });
 
     it("allows to prepare a node, and it is successfully prepared", async () => {
@@ -79,7 +63,9 @@ describe("Node manager", () => {
             )
         );
 
-        await expectAsync(prepare).not.toBeRejected();
+        await expectAsync(prepare).toBeResolvedTo(
+            buildFakeResolutionResult(node.getId(), true)
+        );
     });
 
     it("allows to prepare a node, and it can't be successfully prepared", async () => {
@@ -93,8 +79,8 @@ describe("Node manager", () => {
             )
         );
 
-        await expectAsync(prepare).toBeRejectedWithError(
-            `Node ${node.getId()}(${node.getDisplayName()}): could not prepare sensor. Reason: Smartwatch exploded`
+        await expectAsync(prepare).toBeResolvedTo(
+            buildFakeResolutionResult(node.getId(), false, "Smartwatch exploded")
         );
     });
 });

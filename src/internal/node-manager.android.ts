@@ -1,14 +1,18 @@
-import { wearOS} from "./utils/android/wear-os-types.android";
+import { Node } from "./utils/android/wear-os-types.android";
 import { MessagingProtocol, ResultMessagingProtocol } from "./messaging";
 import { ResolutionResult, ResultMessagingListener } from "./messaging/android/result-messaging-listener.android";
 import { MessagingClient } from "./messaging/messaging-client";
 
 export class NodeManager {
     constructor(
-        private node: wearOS.Node,
+        private node: Node,
         private protocol: MessagingProtocol,
         private messagingClient: MessagingClient
     ) {}
+
+    getNode(): Node {
+        return this.node;
+    }
 
     getNodeId(): string {
         return this.node.getId();
@@ -22,15 +26,12 @@ export class NodeManager {
         return await resolutionPromise;
     }
 
-    async prepare(): Promise<void> {
-        const resolutionPromise = this.createResolutionPromise(this.protocol.prepareProtocol);
+    async prepare(): Promise<ResolutionResult> {
+        const resolutionPromise = this.createResolutionPromise(
+            this.protocol.prepareProtocol
+        );
         await this.messagingClient.sendPrepareMessage(this.node);
-        const resolutionResult = await resolutionPromise;
-        if (!resolutionResult.success) {
-            throw new Error(
-                `Node ${this.node.getId()}(${this.node.getDisplayName()}): could not prepare sensor. Reason: ${resolutionResult.message}`
-            );
-        }
+        return await resolutionPromise;
     }
 
     async startCollecting(): Promise<void> {
