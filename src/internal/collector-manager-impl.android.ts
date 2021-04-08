@@ -1,53 +1,90 @@
-import { CollectorManager } from "./collector-manager";
+import { CollectorManager, PrepareError } from "./collector-manager";
 import { SensorRecord } from "./sensor-record";
-import { MessagingProtocol, ResultMessagingProtocol } from "./messaging";
-import { MessagingClientImpl } from "./messaging/android/messaging-client.android";
+import { MessagingProtocol } from "./messaging";
 import { SensorCallback, SensorCallbackManager } from "./sensor-callback-manager";
-import { NodeSet, OnMessageReceivedListener } from "./utils/android/wear-os-types.android";
+import { OnMessageReceivedListener } from "./utils/android/wear-os-types.android";
 import { CapabilityDiscoverer } from "./capability-discoverer.android";
-import { ResultMessagingListener } from "./messaging/android/result-messaging-listener.android";
+import { ResolutionResult } from "./messaging/android/result-messaging-listener.android";
+import { NodeManager } from "./node-manager.android";
+import { MessagingClient } from "./messaging/messaging-client";
 
 export class CollectorManagerImpl<T extends SensorRecord> implements CollectorManager {
 
-    private _nodes: NodeSet;
-    private messagingClient: MessagingClientImpl;
+    private _nodeManagers: Map<string, NodeManager>;
+
+    private idsToBePrepared: string[] = [];
+    private idsPrepared: string[] = [];
 
     constructor(
        private protocol: MessagingProtocol,
        private capability: string,
+       private messagingClient: MessagingClient,
        private callbackManager: SensorCallbackManager<T>,
        private recordMessagingListener: OnMessageReceivedListener,
     ) {
-        this.messagingClient = new MessagingClientImpl(this.protocol);
     }
 
+    // TODO: re-think method name and signature, maybe return not ready nodes?
     async isReady(): Promise<boolean> {
         const nodes = await this.getAvailableNodes();
-        const resolutionPromise = this.createResolutionPromise(this.protocol.readyProtocol);
-        await this.messagingClient.sendIsReadyMessage(nodes);
-        return await resolutionPromise;
+        const readyPromises: Promise<ResolutionResult>[] = [];
+        nodes.forEach((node) => {
+            readyPromises.push(node.isReady());
+        });
+        const readyResolutions = await Promise.all(readyPromises);
+        readyResolutions.forEach((resolution) => {
+            if (resolution.success) {
+                this.idsPrepared.push(resolution.nodeId);
+            } else {
+                this.idsToBePrepared.push(resolution.nodeId);
+            }
+        });
+
+        return this.idsToBePrepared.length === 0;
     }
 
-    async prepare(): Promise<void> {
-        const nodes = await this.getAvailableNodes();
-        const resolutionPromise = this.createResolutionPromise(this.protocol.prepareProtocol);
-        await this.messagingClient.sendPrepareMessage(nodes);
-
-        const prepareResult = await resolutionPromise;
-        if (!prepareResult) {
-            throw new Error("Could not prepare WearOS sensor");
+    // TODO: re-think signature, maybe receive nodes to be prepared?
+    async prepare(): Promise<PrepareError[]> {
+        if (this.idsToBePrepared.length === 0) {
+            return [];
         }
+
+        const nodes = await this.getAvailableNodes();
+        const preparePromises: Promise<ResolutionResult>[] = [];
+        this.idsToBePrepared.forEach((id) => {
+            const node = nodes.get(id);
+            preparePromises.push(node.prepare());
+        });
+
+        const prepareResolutions = await Promise.all(preparePromises);
+        const prepareErrors = [];
+        prepareResolutions.forEach((resolution) => {
+            if (resolution.success) {
+                this.idsPrepared.push(resolution.nodeId);
+            } else {
+                prepareErrors.push({
+                    node: nodes.get(resolution.nodeId).getNode(),
+                    message: resolution.message,
+                });
+            }
+        });
+
+        return prepareErrors;
     }
 
     async startCollecting(): Promise<void> {
         const nodes = await this.getAvailableNodes();
         await this.messagingClient.registerMessageListener(this.recordMessagingListener);
-        await this.messagingClient.sendStartMessage(nodes);
+        for (let id of this.idsPrepared) {
+            await nodes.get(id).startCollecting();
+        }
     }
 
     async stopCollecting(): Promise<void> {
         const nodes = await this.getAvailableNodes();
-        await this.messagingClient.sendStopMessage(nodes);
+        for (let id of this.idsPrepared) {
+            await nodes.get(id).stopCollecting();
+        }
         await this.messagingClient.removeMessageListener(this.recordMessagingListener);
     }
 
@@ -63,23 +100,22 @@ export class CollectorManagerImpl<T extends SensorRecord> implements CollectorMa
         }
     }
 
-    private async getAvailableNodes(): Promise<NodeSet> {
-        if (!this._nodes) {
+    private async getAvailableNodes(): Promise<Map<string, NodeManager>> {
+        if (!this._nodeManagers) {
             const capabilityDiscoverer = new CapabilityDiscoverer(this.capability);
-            this._nodes = await capabilityDiscoverer.getAvailableNodes();
+            const nodes = await capabilityDiscoverer.getAvailableNodes();
+            this._nodeManagers = new Map<string, NodeManager>();
+            nodes.forEach((node) => {
+                this._nodeManagers.set(
+                    node.getId(),
+                    new NodeManager(
+                        node,
+                        this.protocol,
+                        this.messagingClient
+                    )
+                );
+            });
         }
-        return this._nodes;
-    }
-
-    private createResolutionPromise(protocol: ResultMessagingProtocol): Promise<boolean> {
-        return new Promise(async (resolve) => {
-            await this.messagingClient.registerMessageListener(
-                new ResultMessagingListener(
-                    protocol,
-                    () => resolve(true),
-                    () => resolve(false),
-                )
-            );
-        });
+        return this._nodeManagers;
     }
 }

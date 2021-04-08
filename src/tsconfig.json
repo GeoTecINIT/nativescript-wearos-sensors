@@ -18,7 +18,8 @@
         "noImplicitAny": false,
         "noImplicitReturns": true,
         "noImplicitUseStrict": false,
-        "noFallthroughCasesInSwitch": true
+        "noFallthroughCasesInSwitch": true,
+        "downlevelIteration": true,
     },
     "exclude": [
         "node_modules"
