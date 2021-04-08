@@ -1,5 +1,6 @@
 import { wearOS, Node } from "nativescript-wearos-sensors/internal/utils/android/wear-os-types.android";
 import { CapabilityDiscoverer } from "nativescript-wearos-sensors/internal/capability-discoverer.android";
+import { buildFakeNode } from ".";
 
 const SUPPORTED_CAPABILITY = "supportedCapability";
 const UNSUPPORTED_CAPABILITY = "unsupportedCapability";
@@ -102,18 +103,4 @@ function buildFakeTaskResult(capability: string, successful: boolean) {
             return new java.lang.Exception("Task not successful because of reasons");
         }
     };
-}
-
-function buildFakeNode(id: string, name: string, nearby: boolean): Node {
-    return new wearOS.Node({
-        getId(): string {
-            return id;
-        },
-        getDisplayName(): string {
-            return name;
-        },
-        isNearby(): boolean {
-            return nearby;
-        }
-    })
 }

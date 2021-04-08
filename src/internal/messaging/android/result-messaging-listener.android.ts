@@ -6,8 +6,7 @@ export class ResultMessagingListener implements OnMessageReceivedListener {
 
     constructor(
         private protocol: ResultMessagingProtocol,
-        private success: () => void,
-        private failure: () => void,
+        private resolutionCallback: (resolution: ResolutionResult) => void,
     ) {}
 
     onMessageReceived(message: wearOS.MessageEvent): void {
@@ -17,11 +16,25 @@ export class ResultMessagingListener implements OnMessageReceivedListener {
             return;
         }
 
-        const readyResult = decodeMessage(message.getData());
-        if (readyResult === this.protocol.successResponse) {
-            this.success();
-        } else if (readyResult === this.protocol.failureResponse) {
-            this.failure();
+        const decodedMessage = decodeMessage(message.getData());
+        const messageParts = decodedMessage.split('#');
+        if (messageParts[0] === this.protocol.successResponse) {
+            this.resolutionCallback({
+                nodeId: message.getSourceNodeId(),
+                success: true,
+            });
+        } else if (messageParts[0] === this.protocol.failureResponse) {
+            this.resolutionCallback({
+                nodeId: message.getSourceNodeId(),
+                success: false,
+                message: messageParts.length > 1 ? messageParts[1] : undefined,
+            });
         }
     }
+}
+
+export interface ResolutionResult {
+    nodeId: string;
+    success: boolean;
+    message?: string;
 }
