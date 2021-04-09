@@ -50,11 +50,15 @@ export function buildFakeResolutionResult(
 export function buildFakeMessageEvent(
     nodeId: string,
     path: string,
-    message?: string
+    message?: string | number[]
 ): wearOS.MessageEvent {
     return new wearOS.MessageEvent({
         getData(): native.Array<number> {
-            return message ? encodeMessage(message) : null;
+            return message ?
+                typeof message === "string" ?
+                    encodeMessage(message as string) :
+                    message :
+                null;
         },
         getPath(): string {
             return path;

@@ -17,6 +17,10 @@ export abstract class AbstractRecordMessagingListener<T extends SensorRecord> im
             return;
         }
 
+        if (message.getData() === null) {
+            return;
+        }
+
         const record = this.decodeRecord(message);
         this.callbackManager.notifyAll(record);
     }
