@@ -1,6 +1,6 @@
 import { Node, wearOS } from "nativescript-wearos-sensors/internal/utils/android/wear-os-types.android";
 import { MessagingProtocol } from "nativescript-wearos-sensors/internal/messaging";
-import { ResolutionResult } from "nativescript-wearos-sensors/internal/messaging/android/result-messaging-listener.android";
+import { ResolutionResult } from "nativescript-wearos-sensors/internal/messaging/android/result-messaging-service.android";
 import { encodeMessage } from "nativescript-wearos-sensors/internal/messaging/messaging-client";
 
 export function buildFakeNode(id: string, name: string, nearby: boolean): Node {

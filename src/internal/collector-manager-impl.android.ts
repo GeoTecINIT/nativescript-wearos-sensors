@@ -2,11 +2,10 @@ import { CollectorManager, PrepareError } from "./collector-manager";
 import { SensorRecord } from "./sensor-record";
 import { MessagingProtocol } from "./messaging";
 import { SensorCallback, SensorCallbackManager } from "./sensor-callback-manager";
-import { OnMessageReceivedListener } from "./utils/android/wear-os-types.android";
 import { CapabilityDiscoverer } from "./capability-discoverer.android";
-import { ResolutionResult } from "./messaging/android/result-messaging-listener.android";
 import { NodeManager } from "./node-manager.android";
 import { MessagingClient } from "./messaging/messaging-client";
+import { ResolutionResult } from "./messaging/android/result-messaging-service.android";
 
 export class CollectorManagerImpl<T extends SensorRecord> implements CollectorManager {
 
@@ -20,13 +19,16 @@ export class CollectorManagerImpl<T extends SensorRecord> implements CollectorMa
        private capability: string,
        private messagingClient: MessagingClient,
        private callbackManager: SensorCallbackManager<T>,
-       private recordMessagingListener: OnMessageReceivedListener,
     ) {
     }
 
     // TODO: re-think method name and signature, maybe return not ready nodes?
     async isReady(): Promise<boolean> {
         const nodes = await this.getAvailableNodes();
+        if (nodes.size === 0) {
+            return false;
+        }
+
         const readyPromises: Promise<ResolutionResult>[] = [];
         nodes.forEach((node) => {
             readyPromises.push(node.isReady());
@@ -74,7 +76,6 @@ export class CollectorManagerImpl<T extends SensorRecord> implements CollectorMa
 
     async startCollecting(): Promise<void> {
         const nodes = await this.getAvailableNodes();
-        await this.messagingClient.registerMessageListener(this.recordMessagingListener);
         for (let id of this.idsPrepared) {
             await nodes.get(id).startCollecting();
         }
@@ -85,7 +86,6 @@ export class CollectorManagerImpl<T extends SensorRecord> implements CollectorMa
         for (let id of this.idsPrepared) {
             await nodes.get(id).stopCollecting();
         }
-        await this.messagingClient.removeMessageListener(this.recordMessagingListener);
     }
 
     listenSensorUpdates(callback: SensorCallback) {
@@ -105,16 +105,17 @@ export class CollectorManagerImpl<T extends SensorRecord> implements CollectorMa
             const capabilityDiscoverer = new CapabilityDiscoverer(this.capability);
             const nodes = await capabilityDiscoverer.getAvailableNodes();
             this._nodeManagers = new Map<string, NodeManager>();
-            nodes.forEach((node) => {
+            const iterator = nodes.iterator();
+            while (iterator.hasNext()) {
+                const node = iterator.next();
                 this._nodeManagers.set(
                     node.getId(),
                     new NodeManager(
                         node,
-                        this.protocol,
-                        this.messagingClient
+                        this.messagingClient,
                     )
                 );
-            });
+            }
         }
         return this._nodeManagers;
     }

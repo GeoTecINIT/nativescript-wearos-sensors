@@ -2,30 +2,38 @@ import { buildFakeNode, buildFakeResolutionResult, getFakeMessagingProtocol } fr
 import { CollectorManagerImpl } from "nativescript-wearos-sensors/internal/collector-manager-impl.android";
 import { NodeManager } from "nativescript-wearos-sensors/internal/node-manager.android";
 import { MessagingClientImpl } from "nativescript-wearos-sensors/internal/messaging/android/messaging-client.android";
+import { ResultMessagingService } from "nativescript-wearos-sensors/internal/messaging/android/result-messaging-service.android";
 
 describe("Collector manager implementation", () => {
     const protocol = getFakeMessagingProtocol();
     const capability = "fakeCapability";
 
-    const messagingClient = new MessagingClientImpl(protocol);
+    const messagingClient = new MessagingClientImpl(protocol, new ResultMessagingService());
 
     const node1 = buildFakeNode("node1", "node1", true);
     const node2 = buildFakeNode("node2", "node2", true);
     const node3 = buildFakeNode("node3", "node3", true);
     const nodes = new Map([
-        [ node1.getId(), new NodeManager(node1, protocol, messagingClient)],
-        [ node2.getId(), new NodeManager(node2, protocol, messagingClient)],
-        [ node3.getId(), new NodeManager(node3, protocol, messagingClient)]
+        [ node1.getId(), new NodeManager(node1, messagingClient)],
+        [ node2.getId(), new NodeManager(node2, messagingClient)],
+        [ node3.getId(), new NodeManager(node3, messagingClient)]
     ]);
 
     let collectorManager;
 
     beforeEach(() => {
-        collectorManager = new CollectorManagerImpl(protocol, capability, messagingClient, null, null);
+        collectorManager = new CollectorManagerImpl(protocol, capability, messagingClient, null);
         spyOn<any>(collectorManager, "getAvailableNodes").and.resolveTo(nodes);
     });
 
-    it("allows to check is all available nodes are ready, and they are", async () => {
+    it("isReady returns false when there are no available nodes", async() => {
+        collectorManager.getAvailableNodes.and.resolveTo(new Map());
+
+        const allReady = await collectorManager.isReady();
+        expect(allReady).toBeFalse();
+    });
+
+    it("allows to check if all available nodes are ready, and they are", async () => {
         nodes.forEach((node) => {
             spyOn(node, "isReady").and.resolveTo(
                 buildFakeResolutionResult(node.getNodeId(), true)
@@ -38,7 +46,7 @@ describe("Collector manager implementation", () => {
         expect(collectorManager.idsToBePrepared).toEqual([]);
     });
 
-    it("allows to check is all available nodes are ready, but not all are ready", async () => {
+    it("allows to check if all available nodes are ready, but not all are ready", async () => {
         nodes.forEach((node) => {
             spyOn(node, "isReady").and.resolveTo(
                 node.getNode() === node2 ?
@@ -131,7 +139,6 @@ describe("Collector manager implementation", () => {
             );
             spyOn(node, "startCollecting").and.callFake(() => Promise.resolve());
         });
-        spyOn(messagingClient, "registerMessageListener").and.callFake(() => Promise.resolve());
 
         await collectorManager.isReady();
         await collectorManager.prepare();
@@ -161,7 +168,6 @@ describe("Collector manager implementation", () => {
             );
             spyOn(node, "stopCollecting").and.callFake(() => Promise.resolve());
         });
-        spyOn(messagingClient, "removeMessageListener").and.callFake(() => Promise.resolve());
 
         await collectorManager.isReady();
         await collectorManager.prepare();
