@@ -1,36 +1,35 @@
 import { buildFakeMessageEvent, getFakeMessagingProtocol } from "../..";
-import { AccelerometerRecordMessagingListener } from "nativescript-wearos-sensors/internal/accelerometer/android/record-messaging-listener.android";
 import { AccelerometerSensorRecord } from "nativescript-wearos-sensors/internal/accelerometer/record";
+import { AccelerometerRecordMessagingService } from "nativescript-wearos-sensors/internal/accelerometer/android/record-messaging-service.android";
 
-describe("Accelerometer record messaging listener", () => {
+describe("Accelerometer record messaging service", () => {
     const nodeId = "testNode";
     const protocol = getFakeMessagingProtocol();
 
     let callbackManager;
-    let recordMessagingListener: AccelerometerRecordMessagingListener;
+    let recordMessagingService: AccelerometerRecordMessagingService;
 
     beforeEach(() => {
         callbackManager = jasmine.createSpyObj("callbackManagerSpy", ['notifyAll']);
-        recordMessagingListener = new AccelerometerRecordMessagingListener(
-            protocol,
-            callbackManager
-        );
-        spyOn(recordMessagingListener, "decodeRecord").and.callThrough();
+        recordMessagingService = new AccelerometerRecordMessagingService();
+        recordMessagingService.setProtocol(protocol);
+        recordMessagingService.setCallbackManager(callbackManager);
+        spyOn(recordMessagingService, "decodeRecord").and.callThrough();
     });
 
     it("does nothing when receives a messages with an unknown protocol", () => {
         const messageEvent = buildFakeMessageEvent(nodeId, "unknownProtocol");
-        recordMessagingListener.onMessageReceived(messageEvent);
+        recordMessagingService.onMessageReceived(messageEvent);
 
-        expect(recordMessagingListener.decodeRecord).not.toHaveBeenCalled();
+        expect(recordMessagingService.decodeRecord).not.toHaveBeenCalled();
         expect(callbackManager.notifyAll).not.toHaveBeenCalled();
     });
 
     it("does nothing when receives a messages without data", () => {
         const messageEvent = buildFakeMessageEvent(nodeId, protocol.newRecordMessagePath);
-        recordMessagingListener.onMessageReceived(messageEvent);
+        recordMessagingService.onMessageReceived(messageEvent);
 
-        expect(recordMessagingListener.decodeRecord).not.toHaveBeenCalled();
+        expect(recordMessagingService.decodeRecord).not.toHaveBeenCalled();
         expect(callbackManager.notifyAll).not.toHaveBeenCalled();
     });
 
@@ -46,7 +45,7 @@ describe("Accelerometer record messaging listener", () => {
             buildFakeEncodedMessage(fakeAccelerometerData)
         );
 
-        const record = recordMessagingListener.decodeRecord(messageEvent);
+        const record = recordMessagingService.decodeRecord(messageEvent);
         expect(record.deviceName).toEqual(expectedRecord.deviceName);
         expect(record.timestamp).toEqual(expectedRecord.timestamp);
         expect(record.x).toBeCloseTo(expectedRecord.x, 6);
@@ -62,9 +61,9 @@ describe("Accelerometer record messaging listener", () => {
             buildFakeEncodedMessage(fakeAccelerometerData)
         );
 
-        recordMessagingListener.onMessageReceived(messageEvent);
+        recordMessagingService.onMessageReceived(messageEvent);
 
-        expect(recordMessagingListener.decodeRecord).toHaveBeenCalledWith(messageEvent);
+        expect(recordMessagingService.decodeRecord).toHaveBeenCalledWith(messageEvent);
         expect(callbackManager.notifyAll).toHaveBeenCalled();
     });
 })
