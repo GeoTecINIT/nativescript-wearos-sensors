@@ -1,12 +1,16 @@
 <Page
-    navigatingTo="onNavigatingTo" 
+    navigatingTo="onNavigatingTo"
     xmlns="http://schemas.nativescript.org/tns.xsd">
-    
+
     <ActionBar>
-        <Label text="Home"></Label>
+        <Label text="Demo"></Label>
     </ActionBar>
 
-    <GridLayout>
+    <StackLayout>
         <!-- Add your page content here -->
-    </GridLayout>
+        <Button text="Send isReady" tap="{{ onSendIsReadyTap }}"></Button>
+        <Button text="Send prepare" tap="{{ onSendPrepareTap }}"></Button>
+        <Button text="Send start" tap="{{ onSendStartTap }}"></Button>
+        <Button text="Send stop" tap="{{ onSendStopTap }}"></Button>
+    </StackLayout>
 </Page>

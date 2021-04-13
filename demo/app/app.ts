@@ -1,4 +1,7 @@
 import * as app from "tns-core-modules/application";
+import { wearosSensors } from "../../src/wearos-sensors.android";
+
+wearosSensors.init();
 
 app.run({ moduleName: "app-root" });
 
