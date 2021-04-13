@@ -1,15 +1,22 @@
-import { OnMessageReceivedListener, wearOS } from "../../utils/android/wear-os-types.android";
-import { ResultMessagingProtocol } from "../index";
+import { wearOS } from "../../utils/android/wear-os-types.android";
 import { decodeMessage } from "../messaging-client";
+import { ResultMessagingProtocol } from "../index";
+import WearableListenerServiceDelegate = es.uji.geotec.wearos_sensors.messaging.WearableListenerServiceDelegate;
 
-export class ResultMessagingListener implements OnMessageReceivedListener {
+export class ResultMessagingService implements WearableListenerServiceDelegate {
 
-    constructor(
-        private protocol: ResultMessagingProtocol,
-        private resolutionCallback: (resolution: ResolutionResult) => void,
-    ) {}
+    private protocol: ResultMessagingProtocol;
+    private resolutionCallback: (resolution: ResolutionResult) => void;
 
-    onMessageReceived(message: wearOS.MessageEvent): void {
+    public setProtocol(protocol) {
+        this.protocol = protocol;
+    }
+
+    public setResolutionCallback(resolutionCallback) {
+        this.resolutionCallback = resolutionCallback;
+    }
+
+    public onMessageReceived(message: wearOS.MessageEvent) {
         const messagePath = message.getPath();
 
         if (messagePath !== this.protocol.messagePath) {
@@ -41,4 +48,14 @@ export interface ResolutionResult {
     nodeId: string;
     success: boolean;
     message?: string;
+}
+
+// FIXME: will this work with multiple sensors? Maybe one instance per sensor will be needed
+let _instance: ResultMessagingService;
+export function getResultMessagingService(): ResultMessagingService {
+    if (!_instance) {
+        _instance = new ResultMessagingService();
+    }
+
+    return _instance;
 }

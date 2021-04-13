@@ -1,12 +1,11 @@
-import { Node, OnMessageReceivedListener } from "../utils/android/wear-os-types.android";
+import { Node } from "../utils/android/wear-os-types.android";
+import { ResolutionResult } from "./android/result-messaging-service.android";
 
 export interface MessagingClient {
-    sendIsReadyMessage(node: Node);
-    sendPrepareMessage(node: Node);
+    sendIsReadyMessageAndWaitForResolution(node: Node): Promise<ResolutionResult>;
+    sendPrepareMessageAndWaitForResolution(node: Node): Promise<ResolutionResult>;
     sendStartMessage(node: Node, message?: string);
     sendStopMessage(node: Node, message?: string);
-    registerMessageListener(listener: OnMessageReceivedListener);
-    removeMessageListener(listener: OnMessageReceivedListener);
 }
 
 export function encodeMessage(message: string): number[] {

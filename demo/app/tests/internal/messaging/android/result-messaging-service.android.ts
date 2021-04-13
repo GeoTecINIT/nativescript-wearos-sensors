@@ -1,8 +1,8 @@
 import { ResultMessagingProtocol } from "nativescript-wearos-sensors/internal/messaging";
-import { ResultMessagingListener } from "nativescript-wearos-sensors/internal/messaging/android/result-messaging-listener.android";
 import { buildFakeMessageEvent, buildFakeResolutionResult } from "../..";
+import { ResultMessagingService } from "nativescript-wearos-sensors/internal/messaging/android/result-messaging-service.android";
 
-describe("Result Messaging Listener", () => {
+describe("Result Messaging Service", () => {
     const nodeId = "testNode";
     const protocol: ResultMessagingProtocol = {
         messagePath: "testPath",
@@ -12,33 +12,32 @@ describe("Result Messaging Listener", () => {
     const unknownPath = "unknownPath";
 
     let resolutionCallback;
-    let resultMessagingListener: ResultMessagingListener;
+    let resultMessagingService: ResultMessagingService;
 
     beforeEach(() => {
         resolutionCallback = jasmine.createSpy("resolutionCallbackSpy");
-        resultMessagingListener = new ResultMessagingListener(
-            protocol,
-            resolutionCallback
-        );
+        resultMessagingService = new ResultMessagingService();
+        resultMessagingService.setProtocol(protocol);
+        resultMessagingService.setResolutionCallback(resolutionCallback);
     })
 
     it("does nothing if receives a message with an unknown protocol", () => {
         const messageEvent = buildFakeMessageEvent(nodeId, unknownPath);
-        resultMessagingListener.onMessageReceived(messageEvent);
+        resultMessagingService.onMessageReceived(messageEvent);
 
         expect(resolutionCallback).not.toHaveBeenCalled();
     });
 
     it("does nothing when receives a message without data", () => {
         const messageEvent = buildFakeMessageEvent(nodeId, protocol.messagePath);
-        resultMessagingListener.onMessageReceived(messageEvent);
+        resultMessagingService.onMessageReceived(messageEvent);
 
         expect(resolutionCallback).not.toHaveBeenCalled();
     });
 
     it("does nothing when receives a message with data not following the protocol", () => {
         const messageEvent = buildFakeMessageEvent(nodeId, protocol.messagePath, "random message");
-        resultMessagingListener.onMessageReceived(messageEvent);
+        resultMessagingService.onMessageReceived(messageEvent);
 
         expect(resolutionCallback).not.toHaveBeenCalled();
     });
@@ -46,7 +45,7 @@ describe("Result Messaging Listener", () => {
     it("receives a success message and sends the resolution result to the callback", () => {
         const messageEvent = buildFakeMessageEvent(nodeId, protocol.messagePath, protocol.successResponse);
         const expectedResolution = buildFakeResolutionResult(nodeId, true);
-        resultMessagingListener.onMessageReceived(messageEvent);
+        resultMessagingService.onMessageReceived(messageEvent);
 
         expect(resolutionCallback).toHaveBeenCalledWith(expectedResolution);
     });
@@ -54,7 +53,7 @@ describe("Result Messaging Listener", () => {
     it("receives a failure message without explanatory data and sends the resolution result to the callback", () => {
         const messageEvent = buildFakeMessageEvent(nodeId, protocol.messagePath, protocol.failureResponse);
         const expectedResolution = buildFakeResolutionResult(nodeId, false);
-        resultMessagingListener.onMessageReceived(messageEvent);
+        resultMessagingService.onMessageReceived(messageEvent);
 
         expect(resolutionCallback).toHaveBeenCalledWith(expectedResolution);
     });
@@ -63,7 +62,7 @@ describe("Result Messaging Listener", () => {
         const explanatoryMessage = "Smartwatch exploded";
         const messageEvent = buildFakeMessageEvent(nodeId, protocol.messagePath, `${protocol.failureResponse}#${explanatoryMessage}`);
         const expectedResolution = buildFakeResolutionResult(nodeId, false, explanatoryMessage);
-        resultMessagingListener.onMessageReceived(messageEvent);
+        resultMessagingService.onMessageReceived(messageEvent);
 
         expect(resolutionCallback).toHaveBeenCalledWith(expectedResolution);
     });
