@@ -1,12 +1,18 @@
 package org.nativescript.demo.accelerometer;
 
 import android.Manifest;
-import android.util.Log;
+import android.content.ComponentName;
+import android.content.Context;
+import android.content.Intent;
+import android.content.ServiceConnection;
+import android.os.IBinder;
 
 import com.google.android.gms.wearable.MessageEvent;
-import com.google.android.gms.wearable.Wearable;
 import com.google.android.gms.wearable.WearableListenerService;
 
+import org.nativescript.demo.IntentManager;
+import org.nativescript.demo.collecting.SensorRecordingService;
+import org.nativescript.demo.collecting.ServiceAction;
 import org.nativescript.demo.messaging.MessagingClient;
 import org.nativescript.demo.NotificationProvider;
 import org.nativescript.demo.permissions.PermissionsManager;
@@ -15,10 +21,8 @@ import org.nativescript.demo.WearSensor;
 import org.nativescript.demo.messaging.MessagingProtocol;
 import org.nativescript.demo.messaging.ResultMessagingProtocol;
 
-import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Date;
 
 public class AcceletometerMessagingListenerService extends WearableListenerService {
 
@@ -34,8 +38,22 @@ public class AcceletometerMessagingListenerService extends WearableListenerServi
             new ResultMessagingProtocol("/accelerometer/prepare")
     );
 
+    private ServiceConnection currentConnection;
+
     @Override
-    public void onCreate() { super.onCreate(); }
+    public void onCreate() {
+        super.onCreate();
+        currentConnection = null;
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+
+        if (currentConnection != null) {
+            unbindService(currentConnection);
+        }
+    }
 
     @Override
     public void onMessageReceived(MessageEvent event) {
@@ -74,22 +92,52 @@ public class AcceletometerMessagingListenerService extends WearableListenerServi
             return;
         }
 
-        if (path.equals("/accelerometer/start")) {
-            Log.d(TAG, "onMessageReceived: start request");
-            byte[] array = new byte[20];
-            ByteBuffer buff = ByteBuffer.wrap(array);
-            buff.putFloat((float)3.1415);
-            buff.putFloat((float)6.2930);
-            buff.putFloat((float)1.3211);
-            buff.putLong(new Date().getTime());
-            Wearable.getMessageClient(getApplicationContext())
-                    .sendMessage(event.getSourceNodeId(), "/accelerometer/new-record", array);
+        if (path.equals(protocol.getStartMessagePath())) {
+            currentConnection = getServiceConnectionForAction(ServiceAction.START_COLLECTING);
+            Intent intent = IntentManager.intentForSensorRecordingService(this);
+            startForegroundService(intent);
+            bindService(
+                    intent,
+                    currentConnection,
+                    Context.BIND_AUTO_CREATE);
             return;
         }
 
-        if (path.equals("/accelerometer/stop")) {
-            Log.d(TAG, "onMessageReceived: stop request");
+        if (path.equals(protocol.getStopMessagePath())) {
+            currentConnection = getServiceConnectionForAction(ServiceAction.STOP_COLLECTING);
+            Intent intent = IntentManager.intentForSensorRecordingService(this);
+            startForegroundService(intent);
+            bindService(
+                    intent,
+                    currentConnection,
+                    Context.BIND_AUTO_CREATE
+            );
             return;
         }
+    }
+
+    private ServiceConnection getServiceConnectionForAction(final ServiceAction action) {
+        return new ServiceConnection() {
+
+            @Override
+            public void onServiceConnected(ComponentName name, IBinder service) {
+                SensorRecordingService.SensorRecordingBinder binder =
+                        (SensorRecordingService.SensorRecordingBinder) service;
+
+                switch (action) {
+                    case START_COLLECTING:
+                        binder.startRecordingFor(WearSensor.ACCELEROMETER);
+                        break;
+                    case STOP_COLLECTING:
+                        binder.stopRecordingFor(WearSensor.ACCELEROMETER);
+                        break;
+                }
+            }
+
+            @Override
+            public void onServiceDisconnected(ComponentName name) {
+                return;
+            }
+        };
     }
 }
