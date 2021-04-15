@@ -4,6 +4,7 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 
+import org.nativescript.demo.collecting.SensorRecordingService;
 import org.nativescript.demo.permissions.RequestPermissionsActivity;
 import org.nativescript.demo.messaging.ResultMessagingProtocol;
 
@@ -18,6 +19,10 @@ public class IntentManager {
     private static final String PROTOCOL = "PROTOCOL";
 
     private IntentManager() {
+    }
+
+    public static Intent intentForSensorRecordingService(Context context) {
+        return new Intent(context, SensorRecordingService.class);
     }
 
     public static PendingIntent pendingIntentFromPermissionsToRequest(

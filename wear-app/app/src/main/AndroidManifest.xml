@@ -58,6 +58,8 @@
                     android:scheme="wear" />
             </intent-filter>
         </service>
+
+        <service android:name=".collecting.SensorRecordingService" android:exported="false" />
     </application>
 
 </manifest>
