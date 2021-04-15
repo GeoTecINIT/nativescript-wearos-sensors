@@ -1,5 +1,6 @@
 package org.nativescript.demo;
 
+import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -17,6 +18,11 @@ public class NotificationProvider {
 
     private static final String REQUEST_PERMISSIONS_CHANNEL = "REQUEST_PERMISSIONS_CHANNEL";
     private static final String REQUEST_PERMISSIONS_DESCRIPTION = "Solucitud de permisos";
+    private static final int REQUEST_PERMISSIONS_NOTIFICATION_ID = 23;
+
+    private static final String SENSOR_RECORDING_CHANNEL = "SENSOR_RECORDING_CHANNEL";
+    private static final String SENSOR_RECORDING_DESCRIPTION = "Sensorización";
+    private static final int SENSOR_RECORDING_NOTIFICATION_ID = 24;
 
     private Context context;
     private NotificationManagerCompat notificationManager;
@@ -43,15 +49,34 @@ public class NotificationProvider {
                 resultProtocol
         );
 
-        NotificationCompat.Builder notificationBuilder =
-                new NotificationCompat.Builder(context, REQUEST_PERMISSIONS_CHANNEL)
-                .setContentTitle("Permisos necesarios")
-                .setContentText("Necesitamos permisos para poder obtener datos y venderlos en la deep web")
-                .setSmallIcon(R.mipmap.ic_launcher)
-                .setContentIntent(pendingIntent)
-                .setPriority(NotificationCompat.PRIORITY_MAX);
+        Notification notification = buildNotification(
+                REQUEST_PERMISSIONS_CHANNEL,
+                "Permisos necesarios",
+                "Necesitamos permisos para poder obtener datos y venderlos en la deep web",
+                pendingIntent
+        );
 
-        notificationManager.notify(23, notificationBuilder.build());
+        notificationManager.notify(REQUEST_PERMISSIONS_NOTIFICATION_ID, notification);
+    }
+
+    public Notification getNotificationForRecordingService() {
+        setupNotificationChannelIfNeeded(
+                SENSOR_RECORDING_CHANNEL,
+                SENSOR_RECORDING_DESCRIPTION
+        );
+
+        Notification notification = buildNotification(
+                SENSOR_RECORDING_CHANNEL,
+                "Sensorización",
+                "Recogiendo datos de los sensores",
+                null
+        );
+
+        return notification;
+    }
+
+    public int getRecordingServiceNotificationId() {
+        return SENSOR_RECORDING_NOTIFICATION_ID;
     }
 
     private void setupNotificationChannelIfNeeded(String id, String name) {
@@ -68,5 +93,24 @@ public class NotificationProvider {
 
             notificationManager.createNotificationChannel(channel);
         }
+    }
+
+    private Notification buildNotification(
+            String channelId,
+            String title,
+            String text,
+            PendingIntent pendingIntent
+    ) {
+        NotificationCompat.Builder notificationBuilder =
+                new NotificationCompat.Builder(context, channelId)
+                        .setContentTitle(title)
+                        .setContentText(text)
+                        .setSmallIcon(R.mipmap.ic_launcher)
+                        .setPriority(NotificationCompat.PRIORITY_HIGH);
+
+        if (pendingIntent != null)
+            notificationBuilder.setContentIntent(pendingIntent);
+
+        return notificationBuilder.build();
     }
 }
