@@ -1,4 +1,4 @@
-package org.nativescript.demo.accelerometer;
+package org.nativescript.demo.services;
 
 import android.Manifest;
 import android.content.ComponentName;
@@ -11,13 +11,11 @@ import com.google.android.gms.wearable.MessageEvent;
 import com.google.android.gms.wearable.WearableListenerService;
 
 import org.nativescript.demo.IntentManager;
-import org.nativescript.demo.collecting.SensorRecordingService;
-import org.nativescript.demo.collecting.ServiceAction;
 import org.nativescript.demo.messaging.MessagingClient;
 import org.nativescript.demo.NotificationProvider;
 import org.nativescript.demo.permissions.PermissionsManager;
 import org.nativescript.demo.PreferencesManager;
-import org.nativescript.demo.WearSensor;
+import org.nativescript.demo.sensoring.WearSensor;
 import org.nativescript.demo.messaging.MessagingProtocol;
 import org.nativescript.demo.messaging.ResultMessagingProtocol;
 
@@ -37,6 +35,8 @@ public class AcceletometerMessagingListenerService extends WearableListenerServi
             new ResultMessagingProtocol("/accelerometer/ready"),
             new ResultMessagingProtocol("/accelerometer/prepare")
     );
+
+    private String sourceNodeId;
 
     private ServiceConnection currentConnection;
 
@@ -58,7 +58,7 @@ public class AcceletometerMessagingListenerService extends WearableListenerServi
     @Override
     public void onMessageReceived(MessageEvent event) {
         String path = event.getPath();
-        String sourceNodeId = event.getSourceNodeId();
+        sourceNodeId = event.getSourceNodeId();
 
         MessagingClient messageClient = new MessagingClient(this);
         ResultMessagingProtocol readyProtocol = protocol.getReadyProtocol();
@@ -126,7 +126,11 @@ public class AcceletometerMessagingListenerService extends WearableListenerServi
 
                 switch (action) {
                     case START_COLLECTING:
-                        binder.startRecordingFor(WearSensor.ACCELEROMETER);
+                        binder.startRecordingFor(
+                                WearSensor.ACCELEROMETER,
+                                sourceNodeId,
+                                protocol.getNewRecordMessagePath()
+                        );
                         break;
                     case STOP_COLLECTING:
                         binder.stopRecordingFor(WearSensor.ACCELEROMETER);

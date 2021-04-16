@@ -1,4 +1,4 @@
-package org.nativescript.demo.collecting;
+package org.nativescript.demo.services;
 
 public enum ServiceAction {
     START_COLLECTING,

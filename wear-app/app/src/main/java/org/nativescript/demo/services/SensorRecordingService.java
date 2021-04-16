@@ -1,4 +1,4 @@
-package org.nativescript.demo.collecting;
+package org.nativescript.demo.services;
 
 import android.app.Notification;
 import android.app.Service;
@@ -11,7 +11,8 @@ import android.util.Log;
 import androidx.annotation.Nullable;
 
 import org.nativescript.demo.NotificationProvider;
-import org.nativescript.demo.WearSensor;
+import org.nativescript.demo.sensoring.WearSensor;
+import org.nativescript.demo.sensoring.CollectorManager;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -22,8 +23,8 @@ public class SensorRecordingService extends Service {
     public class SensorRecordingBinder extends Binder {
         SensorRecordingService service = SensorRecordingService.this;
 
-        public void startRecordingFor(WearSensor wearSensor) {
-            service.startRecordingFor(wearSensor);
+        public void startRecordingFor(WearSensor wearSensor, String requesterId, String sendingPath) {
+            service.startRecordingFor(wearSensor, requesterId, sendingPath);
         }
 
         public void stopRecordingFor(WearSensor wearSensor) {
@@ -43,6 +44,7 @@ public class SensorRecordingService extends Service {
 
     private PowerManager.WakeLock wakeLock;
     private Set<WearSensor> sensorsBeingRecorded;
+    private CollectorManager collectorManager;
 
     @Override
     public void onCreate() {
@@ -52,6 +54,8 @@ public class SensorRecordingService extends Service {
         wakeLock = powerManager.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "wearapp:sensorrecordingservice");
 
         sensorsBeingRecorded = new HashSet<>();
+
+        collectorManager = new CollectorManager(this);
     }
 
     @Override
@@ -81,15 +85,15 @@ public class SensorRecordingService extends Service {
         startForeground(notificationId, notification);
     }
 
-    private void startRecordingFor(WearSensor sensor) {
+    private void startRecordingFor(WearSensor sensor, String requesterId, String sendingPath) {
         if (sensorsBeingRecorded.contains(sensor)) {
             Log.d(TAG, "already recording: " + sensor.toString());
             return;
         }
 
         sensorsBeingRecorded.add(sensor);
+        collectorManager.startCollectingFrom(sensor, requesterId, sendingPath);
         Log.d(TAG, "startRecordingFor: " + sensor.toString());
-
     }
 
     private void stopRecordingFor(WearSensor sensor) {
@@ -97,6 +101,7 @@ public class SensorRecordingService extends Service {
             Log.d(TAG, "wasn't being recorded: " + sensor.toString());
         } else {
             Log.d(TAG, "stopRecordingFor: " + sensor.toString());
+            collectorManager.stopCollectingFrom(sensor);
             sensorsBeingRecorded.remove(sensor);
         }
 
