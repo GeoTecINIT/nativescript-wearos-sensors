@@ -1,4 +1,4 @@
-package org.nativescript.demo;
+package org.nativescript.demo.sensoring;
 
 import android.hardware.Sensor;
 
