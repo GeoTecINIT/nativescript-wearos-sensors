@@ -37,4 +37,8 @@ public class MessagingClient {
                 message.getBytes()
         );
     }
+
+    public void sendNewRecord(String sourceNodeId, String path, byte[] record) {
+        messageClient.sendMessage(sourceNodeId, path, record);
+    }
 }
