@@ -3,6 +3,8 @@ package org.nativescript.demo;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import org.nativescript.demo.sensoring.WearSensor;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
