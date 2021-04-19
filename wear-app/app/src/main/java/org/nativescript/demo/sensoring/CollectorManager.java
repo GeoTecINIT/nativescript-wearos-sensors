@@ -3,8 +3,11 @@ package org.nativescript.demo.sensoring;
 import android.content.Context;
 import android.hardware.SensorEventListener;
 
-import org.nativescript.demo.listeners_notifiers.SensorListenerAndNotifier;
-import org.nativescript.demo.listeners_notifiers.SensorListenerAndNotifierProvider;
+import org.nativescript.demo.listeners.WearSensorListener;
+import org.nativescript.demo.listeners.SensorListenerProvider;
+import org.nativescript.demo.records.accumulator.RecordAccumulator;
+import org.nativescript.demo.records.accumulator.RecordAccumulatorProvider;
+import org.nativescript.demo.records.callbacks.AbstractRecordCallback;
 import org.nativescript.demo.records.callbacks.RecordCallbackProvider;
 
 public class CollectorManager {
@@ -18,24 +21,29 @@ public class CollectorManager {
     }
 
     public boolean startCollectingFrom(WearSensor wearSensor, String requesterId, String sendingPath) {
-        SensorListenerAndNotifier listener = SensorListenerAndNotifierProvider.getListenerAndNotifierFor(wearSensor);
+        WearSensorListener listener = SensorListenerProvider.getListenerAndNotifierFor(wearSensor);
         if (listener == null)
             return false;
 
-        listener.setNewRecordCallback(
-                RecordCallbackProvider.getRecordCallbackFor(
-                        wearSensor,
-                        context,
-                        requesterId,
-                        sendingPath
-                )
+        AbstractRecordCallback callback = RecordCallbackProvider.getRecordCallbackFor(
+                wearSensor,
+                context,
+                requesterId,
+                sendingPath
         );
+
+        RecordAccumulator accumulator = RecordAccumulatorProvider.getRecordAccumulatorProviderFor(
+                wearSensor,
+                callback,
+                50);
+
+        listener.setRecordAccumulator(accumulator);
 
         return wearSensorManager.startCollectingFrom(wearSensor, listener);
     }
 
     public void stopCollectingFrom(WearSensor wearSensor) {
-        SensorEventListener listener = SensorListenerAndNotifierProvider.getListenerAndNotifierFor(wearSensor);
+        SensorEventListener listener = SensorListenerProvider.getListenerAndNotifierFor(wearSensor);
         wearSensorManager.stopCollectingFrom(wearSensor, listener);
     }
 }
