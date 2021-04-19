@@ -31,7 +31,8 @@ public class IntentManager {
             String sourceNodeId,
             ResultMessagingProtocol resultProtocol
     ) {
-        Intent permissionRequester = new Intent(context, RequestPermissionsActivity.class);
+        Intent permissionRequester = new Intent(context.getApplicationContext(), RequestPermissionsActivity.class);
+        permissionRequester.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
 
         permissionRequester.putStringArrayListExtra(PERMISSIONS_EXTRAS, permissions);
         permissionRequester.putExtra(NODE, sourceNodeId);
@@ -41,7 +42,7 @@ public class IntentManager {
                 context,
                 PENDING_INTENT_RC,
                 permissionRequester,
-                0
+                PendingIntent.FLAG_UPDATE_CURRENT
         );
     }
 

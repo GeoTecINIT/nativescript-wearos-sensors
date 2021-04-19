@@ -35,7 +35,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".permissions.RequestPermissionsActivity" />
+        <activity android:name=".permissions.RequestPermissionsActivity"
+            android:excludeFromRecents="true"
+            android:taskAffinity="" />
 
         <service android:name=".services.SensorMessagingListenerService">
             <intent-filter>

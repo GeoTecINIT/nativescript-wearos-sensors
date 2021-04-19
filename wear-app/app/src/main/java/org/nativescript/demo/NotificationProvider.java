@@ -108,8 +108,10 @@ public class NotificationProvider {
                         .setSmallIcon(R.mipmap.ic_launcher)
                         .setPriority(NotificationCompat.PRIORITY_HIGH);
 
-        if (pendingIntent != null)
+        if (pendingIntent != null) {
             notificationBuilder.setContentIntent(pendingIntent);
+            notificationBuilder.setAutoCancel(true);
+        }
 
         return notificationBuilder.build();
     }
