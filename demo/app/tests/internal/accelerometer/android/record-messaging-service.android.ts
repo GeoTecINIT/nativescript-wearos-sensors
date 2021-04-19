@@ -14,14 +14,14 @@ describe("Accelerometer record messaging service", () => {
         recordMessagingService = new AccelerometerRecordMessagingService();
         recordMessagingService.setProtocol(protocol);
         recordMessagingService.setCallbackManager(callbackManager);
-        spyOn(recordMessagingService, "decodeRecord").and.callThrough();
+        spyOn(recordMessagingService, "decodeRecords").and.callThrough();
     });
 
     it("does nothing when receives a messages with an unknown protocol", () => {
         const messageEvent = buildFakeMessageEvent(nodeId, "unknownProtocol");
         recordMessagingService.onMessageReceived(messageEvent);
 
-        expect(recordMessagingService.decodeRecord).not.toHaveBeenCalled();
+        expect(recordMessagingService.decodeRecords).not.toHaveBeenCalled();
         expect(callbackManager.notifyAll).not.toHaveBeenCalled();
     });
 
@@ -29,41 +29,54 @@ describe("Accelerometer record messaging service", () => {
         const messageEvent = buildFakeMessageEvent(nodeId, protocol.newRecordMessagePath);
         recordMessagingService.onMessageReceived(messageEvent);
 
-        expect(recordMessagingService.decodeRecord).not.toHaveBeenCalled();
+        expect(recordMessagingService.decodeRecords).not.toHaveBeenCalled();
         expect(callbackManager.notifyAll).not.toHaveBeenCalled();
     });
 
     it("decodes the message data building a new record", () => {
-        const fakeAccelerometerData = getFakeAccelerometerData();
-        const expectedRecord: AccelerometerSensorRecord = {
-            deviceName: nodeId,
-            ...fakeAccelerometerData
-        };
+        const expectedRecords: AccelerometerSensorRecord[] = [
+            {
+                deviceName: nodeId,
+                ...getFakeAccelerometerData()
+            },
+            {
+                deviceName: nodeId,
+                ...getFakeAccelerometerData()
+            },
+        ];
         const messageEvent = buildFakeMessageEvent(
             nodeId,
             protocol.newRecordMessagePath,
-            buildFakeEncodedMessage(fakeAccelerometerData)
+            buildFakeEncodedMessage(expectedRecords)
         );
 
-        const record = recordMessagingService.decodeRecord(messageEvent);
-        expect(record.deviceName).toEqual(expectedRecord.deviceName);
-        expect(record.timestamp).toEqual(expectedRecord.timestamp);
-        expect(record.x).toBeCloseTo(expectedRecord.x, 6);
-        expect(record.y).toBeCloseTo(expectedRecord.y, 6);
-        expect(record.z).toBeCloseTo(expectedRecord.z, 6);
+        const records = recordMessagingService.decodeRecords(messageEvent);
+        expect(records.length).toBe(2);
+        records.forEach((record, i) => {
+            expect(record.deviceName).toEqual(expectedRecords[i].deviceName);
+            expect(record.timestamp).toEqual(expectedRecords[i].timestamp);
+            expect(record.x).toBeCloseTo(expectedRecords[i].x, 6);
+            expect(record.y).toBeCloseTo(expectedRecords[i].y, 6);
+            expect(record.z).toBeCloseTo(expectedRecords[i].z, 6);
+        })
+
     });
 
     it("receives a message, builds a record an notifies it", () => {
-        const fakeAccelerometerData = getFakeAccelerometerData();
         const messageEvent = buildFakeMessageEvent(
             nodeId,
             protocol.newRecordMessagePath,
-            buildFakeEncodedMessage(fakeAccelerometerData)
+            buildFakeEncodedMessage([
+                {
+                    deviceName: nodeId,
+                    ...getFakeAccelerometerData()
+                }
+            ])
         );
 
         recordMessagingService.onMessageReceived(messageEvent);
 
-        expect(recordMessagingService.decodeRecord).toHaveBeenCalledWith(messageEvent);
+        expect(recordMessagingService.decodeRecords).toHaveBeenCalledWith(messageEvent);
         expect(callbackManager.notifyAll).toHaveBeenCalled();
     });
 })
@@ -77,15 +90,19 @@ function getFakeAccelerometerData() {
     };
 }
 
-function buildFakeEncodedMessage(fakeAccelerometerData) {
-    const bytes = Array.create("byte", 20);
+function buildFakeEncodedMessage(expectedRecords: AccelerometerSensorRecord[]) {
+    const bytes = Array.create("byte", (4 + (20) * expectedRecords.length));
     for (let i = 0; i < bytes.length; i++) {
         bytes[i] = 0;
     }
     const buff = java.nio.ByteBuffer.wrap(bytes);
-    buff.putFloat(fakeAccelerometerData.x);
-    buff.putFloat(fakeAccelerometerData.y);
-    buff.putFloat(fakeAccelerometerData.z);
-    buff.putLong(fakeAccelerometerData.timestamp.getTime());
+    buff.putInt(expectedRecords.length);
+    expectedRecords.forEach((record) => {
+        buff.putFloat(record.x);
+        buff.putFloat(record.y);
+        buff.putFloat(record.z);
+        buff.putLong(record.timestamp.getTime());
+    })
+
     return bytes;
 }

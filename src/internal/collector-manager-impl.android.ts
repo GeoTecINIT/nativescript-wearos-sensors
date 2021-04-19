@@ -18,7 +18,7 @@ export class CollectorManagerImpl<T extends SensorRecord> implements CollectorMa
        private protocol: MessagingProtocol,
        private capability: string,
        private messagingClient: MessagingClient,
-       private callbackManager: SensorCallbackManager<T>,
+       private callbackManager: SensorCallbackManager<T[]>,
     ) {
     }
 

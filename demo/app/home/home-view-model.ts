@@ -9,8 +9,8 @@ export class HomeViewModel extends Observable {
     constructor() {
         super();
         this.accelerometerCollector = getAccelerometerCollector();
-        this.accelerometerCollector.listenSensorUpdates((accelerometerRecord) => {
-            console.log(JSON.stringify(accelerometerRecord));
+        this.accelerometerCollector.listenSensorUpdates((accelerometerRecords) => {
+            console.log(JSON.stringify(accelerometerRecords));
         });
     }
 

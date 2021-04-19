@@ -6,12 +6,12 @@ import {
 import {SensorRecord} from "./sensor-record";
 
 interface InternalEventData extends NSEventData {
-    data: SensorRecord;
+    data: SensorRecord[];
 }
 type InternalEventCallback = (eventData: InternalEventData) => void;
-export type SensorCallback = <T extends SensorRecord>(sensorRecord) => void;
+export type SensorCallback = <T extends SensorRecord[]>(sensorRecords) => void;
 
-export class SensorCallbackManager<T extends SensorRecord> {
+export class SensorCallbackManager<T extends SensorRecord[]> {
 
     private notificationCenter: Observable;
     private listenerCounter: number;
@@ -31,14 +31,14 @@ export class SensorCallbackManager<T extends SensorRecord> {
         return this.listenerCounter++;
     }
 
-    notifyAll(record: T): void {
+    notifyAll(records: T): void {
         if (!this.notificationCenter.hasListeners(this.eventName)) {
             return;
         }
         const eventData: InternalEventData = {
             eventName: this.eventName,
             object: this.notificationCenter,
-            data: record,
+            data: records,
         };
         this.notificationCenter.notify<InternalEventData>(eventData);
     }

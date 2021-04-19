@@ -9,7 +9,7 @@ import { getResultMessagingService } from "../../messaging/android/result-messag
 
 export function getAndroidAccelerometerCollector(): CollectorManager {
     const protocol = buildAccelerometerMessagingProtocol();
-    const callback = new SensorCallbackManager<AccelerometerSensorRecord>("newAccelerometerRecord");
+    const callback = new SensorCallbackManager<AccelerometerSensorRecord[]>("newAccelerometerRecord");
     const messagingClient = new MessagingClientImpl(
         protocol,
         getResultMessagingService()

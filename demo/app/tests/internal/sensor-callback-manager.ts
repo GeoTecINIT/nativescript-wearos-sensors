@@ -2,15 +2,19 @@ import { SensorCallbackManager } from "nativescript-wearos-sensors/internal/sens
 import { SensorRecord } from "nativescript-wearos-sensors/internal/sensor-record";
 
 describe("Sensor callback manager", () => {
-    const callbackManager = new SensorCallbackManager<SensorRecord>("testEvent");
-    const sensorRecord: SensorRecord = {
+    const callbackManager = new SensorCallbackManager<SensorRecord[]>("testEvent");
+    const sensorRecordA: SensorRecord = {
+        deviceName: "test",
+        timestamp: new Date()
+    };
+    const sensorRecordB: SensorRecord = {
         deviceName: "test",
         timestamp: new Date()
     };
     const noNotificationTimeout = 100;
 
     it("adds a callback and return its id", () => {
-        const callback = (record) => null;
+        const callback = (records) => null;
         const callbackId = callbackManager.add(callback);
         expect(callbackId).toBeGreaterThanOrEqual(0);
     });
@@ -18,10 +22,10 @@ describe("Sensor callback manager", () => {
     it("notifies all registered callbacks for sensor updates", async () => {
         const callback1 = listenSensorUpdates(callbackManager);
         const callback2 = listenSensorUpdates(callbackManager);
-        callbackManager.notifyAll(sensorRecord);
+        callbackManager.notifyAll([sensorRecordA, sensorRecordB]);
         const sensorUpdates = await Promise.all([callback1, callback2]);
-        sensorUpdates.forEach((sensorUpdate) => {
-            expect(sensorUpdate).toEqual(sensorRecord);
+        sensorUpdates.forEach((sensorUpdates) => {
+            expect(sensorUpdates).toEqual([sensorRecordA, sensorRecordB]);
         })
     });
 
@@ -31,7 +35,7 @@ describe("Sensor callback manager", () => {
             noNotificationTimeout,
             (callbackId) => callbackManager.remove(callbackId),
         )
-        callbackManager.notifyAll(sensorRecord);
+        callbackManager.notifyAll([sensorRecordA]);
         await notToBeNotified;
     });
 
@@ -42,7 +46,7 @@ describe("Sensor callback manager", () => {
             (callbackId) => callbackManager.remove(callbackId),
         )
         const toBeNotified = listenSensorUpdates(callbackManager);
-        callbackManager.notifyAll(sensorRecord);
+        callbackManager.notifyAll([sensorRecordA]);
         const success = await Promise.all([notToBeNotified, toBeNotified]);
         expect(success.length).toBe(2);
     });
@@ -59,7 +63,7 @@ describe("Sensor callback manager", () => {
             (callbackId) => null
         );
         callbackManager.removeAll();
-        callbackManager.notifyAll(sensorRecord);
+        callbackManager.notifyAll([sensorRecordA]);
         const success = await Promise.all([notToBeNotified1, notToBeNotified2]);
         expect(success.length).toBe(2);
     });
@@ -68,14 +72,14 @@ describe("Sensor callback manager", () => {
 });
 
 function listenSensorUpdates(
-    callbackManager: SensorCallbackManager<SensorRecord>
-): Promise<SensorRecord> {
+    callbackManager: SensorCallbackManager<SensorRecord[]>
+): Promise<SensorRecord[]> {
     return new Promise((resolve) =>
-        callbackManager.add(sensorRecord => resolve(sensorRecord)))
+        callbackManager.add(sensorRecords => resolve(sensorRecords)))
 }
 
 function failOnActivityChange(
-    callbackManager: SensorCallbackManager<SensorRecord>,
+    callbackManager: SensorCallbackManager<SensorRecord[]>,
     timeout: number,
     onAdd: (number) => void
 ): Promise<void> {
