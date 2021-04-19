@@ -5,6 +5,8 @@ import android.content.Context;
 import org.nativescript.demo.records.Record;
 import org.nativescript.demo.messaging.MessagingClient;
 
+import java.util.List;
+
 public abstract class AbstractRecordCallback<T extends Record> {
 
     private MessagingClient messagingClient;
@@ -17,10 +19,10 @@ public abstract class AbstractRecordCallback<T extends Record> {
         this.sendingPath = sendingPath;
     }
 
-    public void onRecordCollected(T record) {
-        byte[] recordEncoded = encodeRecord(record);
+    public void onRecordsCollected(List<T> record) {
+        byte[] recordEncoded = encodeRecords(record);
         this.messagingClient.sendNewRecord(requesterId, sendingPath, recordEncoded);
     }
 
-    protected abstract byte[] encodeRecord(T record);
+    protected abstract byte[] encodeRecords(List<T> record);
 }

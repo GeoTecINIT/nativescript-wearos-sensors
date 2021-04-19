@@ -2,10 +2,10 @@ package org.nativescript.demo.records.callbacks;
 
 import android.content.Context;
 
-import org.nativescript.demo.records.callbacks.AbstractRecordCallback;
 import org.nativescript.demo.records.AccelerometerRecord;
 
 import java.nio.ByteBuffer;
+import java.util.List;
 
 
 public class AccelerometerRecordCallback extends AbstractRecordCallback<AccelerometerRecord> {
@@ -15,14 +15,18 @@ public class AccelerometerRecordCallback extends AbstractRecordCallback<Accelero
     }
 
     @Override
-    protected byte[] encodeRecord(AccelerometerRecord record) {
-        byte bytes[] = new byte[(Float.BYTES * 3 + Long.BYTES)];
+    protected byte[] encodeRecords(List<AccelerometerRecord> records) {
+        int size = records.size();
+        byte[] bytes = new byte[Integer.BYTES + (Float.BYTES * 3 + Long.BYTES) * size];
 
         ByteBuffer buff = ByteBuffer.wrap(bytes);
-        buff.putFloat(record.getX());
-        buff.putFloat(record.getY());
-        buff.putFloat(record.getZ());
-        buff.putLong(record.getTimestamp());
+        buff.putInt(size);
+        for (AccelerometerRecord record : records) {
+            buff.putFloat(record.getX());
+            buff.putFloat(record.getY());
+            buff.putFloat(record.getZ());
+            buff.putLong(record.getTimestamp());
+        }
 
         return bytes;
     }
