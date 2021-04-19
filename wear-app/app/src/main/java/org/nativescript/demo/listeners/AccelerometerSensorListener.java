@@ -1,29 +1,29 @@
-package org.nativescript.demo.listeners_notifiers;
+package org.nativescript.demo.listeners;
 
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 
+import org.nativescript.demo.records.accumulator.RecordAccumulator;
 import org.nativescript.demo.sensoring.WearSensor;
 import org.nativescript.demo.records.AccelerometerRecord;
-import org.nativescript.demo.records.callbacks.AbstractRecordCallback;
 
-public class AccelerometerSensorListenerAndNotifier implements SensorListenerAndNotifier {
+public class AccelerometerSensorListener implements WearSensorListener {
 
-    private static AccelerometerSensorListenerAndNotifier instance;
+    private static AccelerometerSensorListener instance;
 
-    private AbstractRecordCallback callback;
+    private RecordAccumulator accumulator;
 
-    private AccelerometerSensorListenerAndNotifier() {}
+    private AccelerometerSensorListener() {}
 
-    public static AccelerometerSensorListenerAndNotifier getInstance() {
+    public static AccelerometerSensorListener getInstance() {
         if (instance == null)
-            instance = new AccelerometerSensorListenerAndNotifier();
+            instance = new AccelerometerSensorListener();
         return instance;
     }
 
     @Override
-    public void setNewRecordCallback(AbstractRecordCallback callback) {
-        this.callback = callback;
+    public void setRecordAccumulator(RecordAccumulator accumulator) {
+        this.accumulator = accumulator;
     }
 
     @Override
@@ -36,7 +36,7 @@ public class AccelerometerSensorListenerAndNotifier implements SensorListenerAnd
         float zValue = event.values[2];
 
         AccelerometerRecord record = new AccelerometerRecord(System.currentTimeMillis(), xValue, yValue, zValue);
-        callback.onRecordCollected(record);
+       accumulator.accumulateRecord(record);
     }
 
     @Override
