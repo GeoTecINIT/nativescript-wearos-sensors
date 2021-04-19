@@ -37,24 +37,24 @@
         </activity>
         <activity android:name=".permissions.RequestPermissionsActivity" />
 
-        <service android:name=".services.AcceletometerMessagingListenerService">
+        <service android:name=".services.SensorMessagingListenerService">
             <intent-filter>
                 <action android:name="com.google.android.gms.wearable.MESSAGE_RECEIVED" />
                 <data
                     android:host="*"
-                    android:pathPrefix="/accelerometer/ready"
+                    android:pathPattern="/.*/ready"
                     android:scheme="wear" />
                 <data
                     android:host="*"
-                    android:pathPrefix="/accelerometer/prepare"
+                    android:pathPattern="/.*/prepare"
                     android:scheme="wear" />
                 <data
                     android:host="*"
-                    android:pathPrefix="/accelerometer/start"
+                    android:pathPattern="/.*/start"
                     android:scheme="wear" />
                 <data
                     android:host="*"
-                    android:pathPrefix="/accelerometer/stop"
+                    android:pathPattern="/.*/stop"
                     android:scheme="wear" />
             </intent-filter>
         </service>
