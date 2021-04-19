@@ -14,10 +14,10 @@ import org.nativescript.demo.IntentManager;
 import org.nativescript.demo.messaging.MessagingClient;
 import org.nativescript.demo.NotificationProvider;
 import org.nativescript.demo.permissions.PermissionsManager;
-import org.nativescript.demo.PreferencesManager;
 import org.nativescript.demo.sensoring.WearSensor;
 import org.nativescript.demo.messaging.MessagingProtocol;
 import org.nativescript.demo.messaging.ResultMessagingProtocol;
+import org.nativescript.demo.sensoring.WearSensorManager;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -35,8 +35,6 @@ public class AcceletometerMessagingListenerService extends WearableListenerServi
             new ResultMessagingProtocol("/accelerometer/ready"),
             new ResultMessagingProtocol("/accelerometer/prepare")
     );
-
-    private String sourceNodeId;
 
     private ServiceConnection currentConnection;
 
@@ -58,65 +56,88 @@ public class AcceletometerMessagingListenerService extends WearableListenerServi
     @Override
     public void onMessageReceived(MessageEvent event) {
         String path = event.getPath();
-        sourceNodeId = event.getSourceNodeId();
+        String sourceNodeId = event.getSourceNodeId();
 
+        if (path.equals(protocol.getReadyProtocol().getMessagePath())) {
+            handleIsReadyRequest(sourceNodeId);
+        } else if (path.equals(protocol.getPrepareProtocol().getMessagePath())) {
+            handlePrepareRequest(sourceNodeId);
+        } else if (path.equals(protocol.getStartMessagePath())) {
+            handleStartRequest(sourceNodeId);
+        } else if (path.equals(protocol.getStopMessagePath())) {
+            handleStopRequest(sourceNodeId);
+        }
+    }
+
+    private void handleIsReadyRequest(String sourceNodeId) {
         MessagingClient messageClient = new MessagingClient(this);
         ResultMessagingProtocol readyProtocol = protocol.getReadyProtocol();
-        if (path.equals(readyProtocol.getMessagePath())) {
-            ArrayList<String> permissionsToBeRequested =
-                    PermissionsManager.permissionsToBeRequested(this, requiredPermissions);
+        ArrayList<String> permissionsToBeRequested =
+                PermissionsManager.permissionsToBeRequested(this, requiredPermissions);
 
-            if (permissionsToBeRequested.size() != 0) {
-                PreferencesManager preferences = new PreferencesManager(this);
-                preferences.setMissingPermissionsFor(WearSensor.ACCELEROMETER, permissionsToBeRequested);
-
-                messageClient.sendFailureResponse(sourceNodeId, readyProtocol);
-                return;
-            }
-
-            messageClient.sendSuccessfulResponse(sourceNodeId, readyProtocol);
+        if (!isSensorSupported(WearSensor.ACCELEROMETER) || permissionsToBeRequested.size() != 0) {
+            messageClient.sendFailureResponse(sourceNodeId, readyProtocol);
             return;
         }
 
-        ResultMessagingProtocol prepareProtocol = protocol.getPrepareProtocol();
-        if (path.equals(prepareProtocol.getMessagePath())) {
-            PreferencesManager preferences = new PreferencesManager(this);
-            ArrayList<String> permissions = preferences.getMissingPermissionsFor(WearSensor.ACCELEROMETER);
+        messageClient.sendSuccessfulResponse(sourceNodeId, readyProtocol);
+    }
 
+    private void handlePrepareRequest(String sourceNodeId) {
+        MessagingClient messageClient = new MessagingClient(this);
+        ResultMessagingProtocol prepareProtocol = protocol.getPrepareProtocol();
+
+        if (!isSensorSupported(WearSensor.ACCELEROMETER)) {
+            messageClient.sendFailureResponseWithReason(
+                    sourceNodeId,
+                    prepareProtocol,
+                    "Sensor of type " + WearSensor.ACCELEROMETER + " not supported");
+            return;
+        }
+
+        ArrayList<String> permissionsToBeRequested =
+                PermissionsManager.permissionsToBeRequested(this, requiredPermissions);
+
+        if (permissionsToBeRequested.size() != 0) {
             NotificationProvider notificationProvider = new NotificationProvider(this);
             notificationProvider.createNotificationForPermissions(
-                    permissions,
-                    event.getSourceNodeId(),
+                    permissionsToBeRequested,
+                    sourceNodeId,
                     prepareProtocol
             );
             return;
         }
 
-        if (path.equals(protocol.getStartMessagePath())) {
-            currentConnection = getServiceConnectionForAction(ServiceAction.START_COLLECTING);
-            Intent intent = IntentManager.intentForSensorRecordingService(this);
-            startForegroundService(intent);
-            bindService(
-                    intent,
-                    currentConnection,
-                    Context.BIND_AUTO_CREATE);
-            return;
-        }
-
-        if (path.equals(protocol.getStopMessagePath())) {
-            currentConnection = getServiceConnectionForAction(ServiceAction.STOP_COLLECTING);
-            Intent intent = IntentManager.intentForSensorRecordingService(this);
-            startForegroundService(intent);
-            bindService(
-                    intent,
-                    currentConnection,
-                    Context.BIND_AUTO_CREATE
-            );
-            return;
-        }
+        messageClient.sendSuccessfulResponse(sourceNodeId, prepareProtocol);
     }
 
-    private ServiceConnection getServiceConnectionForAction(final ServiceAction action) {
+    private void handleStartRequest(String sourceNodeId) {
+        currentConnection = getServiceConnectionForAction(ServiceAction.START_COLLECTING, sourceNodeId);
+        Intent intent = IntentManager.intentForSensorRecordingService(this);
+        startForegroundService(intent);
+        bindService(
+                intent,
+                currentConnection,
+                Context.BIND_AUTO_CREATE);
+    }
+
+    private void handleStopRequest(String sourceNodeId) {
+        currentConnection = getServiceConnectionForAction(ServiceAction.STOP_COLLECTING, sourceNodeId);
+        Intent intent = IntentManager.intentForSensorRecordingService(this);
+        startForegroundService(intent);
+        bindService(
+                intent,
+                currentConnection,
+                Context.BIND_AUTO_CREATE
+        );
+    }
+
+    private boolean isSensorSupported(WearSensor wearSensor) {
+        WearSensorManager wearSensorManager = new WearSensorManager(this);
+        return wearSensorManager.isSensorAvailable(wearSensor);
+    }
+
+    private ServiceConnection getServiceConnectionForAction(final ServiceAction action, final String sourceNodeId) {
         return new ServiceConnection() {
 
             @Override
