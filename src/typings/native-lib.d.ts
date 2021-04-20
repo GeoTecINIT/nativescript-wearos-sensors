@@ -57,6 +57,42 @@ declare module es {
 		export module geotec {
 			export module wearos_sensors {
 				export module messaging {
+					export class GyroscopeRecordsMessagingService {
+						public static class: java.lang.Class<es.uji.geotec.wearos_sensors.messaging.GyroscopeRecordsMessagingService>;
+						public constructor();
+						public static setMessageListenerServiceDelegate(param0: es.uji.geotec.wearos_sensors.messaging.WearableListenerServiceDelegate): void;
+						public onCreate(): void;
+						public onMessageReceived(param0: com.google.android.gms.wearable.MessageEvent): void;
+					}
+				}
+			}
+		}
+	}
+}
+
+declare module es {
+	export module uji {
+		export module geotec {
+			export module wearos_sensors {
+				export module messaging {
+					export class GyroscopeResultMessageService {
+						public static class: java.lang.Class<es.uji.geotec.wearos_sensors.messaging.GyroscopeResultMessageService>;
+						public constructor();
+						public static setMessageListenerServiceDelegate(param0: es.uji.geotec.wearos_sensors.messaging.WearableListenerServiceDelegate): void;
+						public onCreate(): void;
+						public onMessageReceived(param0: com.google.android.gms.wearable.MessageEvent): void;
+					}
+				}
+			}
+		}
+	}
+}
+
+declare module es {
+	export module uji {
+		export module geotec {
+			export module wearos_sensors {
+				export module messaging {
 					export class MessageReceiverActivationCache {
 						public static class: java.lang.Class<es.uji.geotec.wearos_sensors.messaging.MessageReceiverActivationCache>;
 						public constructor(param0: com.google.android.gms.wearable.MessageEvent);

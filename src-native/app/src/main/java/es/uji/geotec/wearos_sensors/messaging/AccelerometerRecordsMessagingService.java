@@ -15,22 +15,22 @@ public class AccelerometerRecordsMessagingService extends WearableListenerServic
 
     @Override
     public void onMessageReceived(MessageEvent messageEvent) {
-        Log.d("Native", "messageEvent received");
+        Log.d("Native acc", "messageEvent received");
         if (messageEvent == null) {
             return;
         }
 
         if (delegate != null) {
-            Log.d("Native", "delegating to delegate");
+            Log.d("Native acc", "delegating to delegate");
             delegate.onMessageReceived(messageEvent);
         } else {
-            Log.d("Native", "caching...");
+            Log.d("Native acc", "caching...");
             activationCache = new MessageReceiverActivationCache(messageEvent);
         }
     }
 
     public static void setMessageListenerServiceDelegate(WearableListenerServiceDelegate serviceDelegate) {
-        Log.d("Native", "setup delegate");
+        Log.d("Native acc", "setup delegate");
         delegate = serviceDelegate;
         if (activationCache != null) {
             delegate.onMessageReceived(activationCache.getMessageEvent());

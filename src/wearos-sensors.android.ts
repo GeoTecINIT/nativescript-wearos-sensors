@@ -2,19 +2,25 @@ import { Common } from './wearos-sensors.common';
 
 import { getResultMessagingService } from "./internal/messaging/android/result-messaging-service.android";
 import AccelerometerResultMessageService = es.uji.geotec.wearos_sensors.messaging.AccelerometerResultMessageService;
+import GyroscopeResultMessageService = es.uji.geotec.wearos_sensors.messaging.GyroscopeResultMessageService;
 
 import { getAccelerometerRecordService } from "./internal/accelerometer/android/record-messaging-service.android";
 import AccelerometerRecordsMessagingService = es.uji.geotec.wearos_sensors.messaging.AccelerometerRecordsMessagingService;
+
+import { getGyroscopeRecordService } from "./internal/gyroscope/android/record-messaging-service.android";
+import GyroscopeRecordsMessagingService = es.uji.geotec.wearos_sensors.messaging.GyroscopeRecordsMessagingService;
+
 
 import WearableListenerServiceDelegate = es.uji.geotec.wearos_sensors.messaging.WearableListenerServiceDelegate;
 
 export class WearosSensors extends Common {
     async init(): Promise<void> {
-        this.wireUpNativeComponents();
+        this.wireUpAccelerometerComponents();
+        this.wireUpGyroscopeComponents();
         await super.init();
     }
 
-    public wireUpNativeComponents() {
+    public wireUpAccelerometerComponents() {
         AccelerometerResultMessageService.setMessageListenerServiceDelegate(
             new WearableListenerServiceDelegate({
                 onMessageReceived: (messageEvent) =>
@@ -25,6 +31,21 @@ export class WearosSensors extends Common {
             new WearableListenerServiceDelegate({
                 onMessageReceived: (messageEvent) =>
                     getAccelerometerRecordService().onMessageReceived(messageEvent)
+            })
+        );
+    }
+
+    public wireUpGyroscopeComponents() {
+        GyroscopeResultMessageService.setMessageListenerServiceDelegate(
+            new WearableListenerServiceDelegate({
+                onMessageReceived: (messageEvent) =>
+                    getResultMessagingService().onMessageReceived(messageEvent)
+            })
+        );
+        GyroscopeRecordsMessagingService.setMessageListenerServiceDelegate(
+            new WearableListenerServiceDelegate({
+                onMessageReceived: (messageEvent) =>
+                    getGyroscopeRecordService().onMessageReceived(messageEvent)
             })
         );
     }
