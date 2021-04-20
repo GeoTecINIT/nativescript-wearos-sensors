@@ -1,7 +1,4 @@
-import { SensorRecord } from "../sensor-record";
+import { TriAxialSensorRecord } from "../sensor-record";
 
-export interface AccelerometerSensorRecord extends SensorRecord {
-    x: number;
-    y: number;
-    z: number;
+export interface AccelerometerSensorRecord extends TriAxialSensorRecord {
 }

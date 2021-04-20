@@ -1,14 +1,13 @@
 import { AbstractRecordMessagingService } from "../../messaging/android/abstract-record-messaging-service.android";
 import { AccelerometerSensorRecord } from "../record";
-import { MessagingProtocol } from "../../messaging";
-import { SensorCallbackManager } from "../../sensor-callback-manager";
 import { wearOS } from "../../utils/android/wear-os-types.android";
+import { TriAxialSensorRecord } from "../../sensor-record";
 
 import ByteBuffer = java.nio.ByteBuffer;
 
-export class AccelerometerRecordMessagingService extends AbstractRecordMessagingService<AccelerometerSensorRecord> {
+export class TriAxialRecordMessagingService extends AbstractRecordMessagingService<TriAxialSensorRecord> {
 
-    decodeRecords(messageEvent: wearOS.MessageEvent): AccelerometerSensorRecord[] {
+    decodeRecords(messageEvent: wearOS.MessageEvent): TriAxialSensorRecord[] {
         const buff = ByteBuffer.wrap(messageEvent.getData());
         const size = buff.getInt();
         let x, y, z, time;
@@ -30,12 +29,4 @@ export class AccelerometerRecordMessagingService extends AbstractRecordMessaging
 
         return records;
     }
-}
-
-let _accelerometerRecordService = null;
-export function getAccelerometerRecordService(): AbstractRecordMessagingService<AccelerometerSensorRecord> {
-    if (!_accelerometerRecordService) {
-        _accelerometerRecordService = new AccelerometerRecordMessagingService();
-    }
-    return _accelerometerRecordService;
 }
