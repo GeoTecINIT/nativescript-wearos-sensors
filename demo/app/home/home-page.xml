@@ -6,11 +6,18 @@
         <Label text="Demo"></Label>
     </ActionBar>
 
-    <StackLayout>
+    <GridLayout columns="auto, auto" rows="auto, auto, auto, auto, auto">
         <!-- Add your page content here -->
-        <Button text="Send isReady" tap="{{ onSendIsReadyTap }}"></Button>
-        <Button text="Send prepare" tap="{{ onSendPrepareTap }}"></Button>
-        <Button text="Send start" tap="{{ onSendStartTap }}"></Button>
-        <Button text="Send stop" tap="{{ onSendStopTap }}"></Button>
-    </StackLayout>
+        <Button row="0" col="0" text="Acc isReady" tap="{{ onAccIsReadyTap }}"></Button>
+        <Button row="1" col="0" text="Acc prepare" tap="{{ onAccPrepareTap }}"></Button>
+        <Button row="2" col="0" text="Acc start" tap="{{ onAccStartTap }}"></Button>
+        <Button row="3" col="0" text="Acc stop" tap="{{ onAccStopTap }}"></Button>
+        <Button row="4" col="0" text="Clear Nodes" tap="{{ onAccClearNodesTap }}"></Button>
+
+        <Button row="0" col="1" text="Gyro isReady" tap="{{ onGyroIsReadyTap }}"></Button>
+        <Button row="1" col="1" text="Gyro prepare" tap="{{ onGyroPrepareTap }}"></Button>
+        <Button row="2" col="1" text="Gyro start" tap="{{ onGyroStartTap }}"></Button>
+        <Button row="3" col="1" text="Gyro stop" tap="{{ onGyroStopTap }}"></Button>
+        <Button row="4" col="1" text="Clear Nodes" tap="{{ onGyroClearNodesTap }}"></Button>
+    </GridLayout>
 </Page>
