@@ -73,7 +73,6 @@ public class SensorRecordingService extends Service {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        Log.d(TAG, "onDestroy: service destroyed bitch!!!!");
     }
 
     private void runInForegroundWithNotification() {
