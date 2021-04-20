@@ -1,12 +1,10 @@
 package org.nativescript.demo.records;
 
-import org.nativescript.demo.records.Record;
-
-public class AccelerometerRecord extends Record {
+public class TriAxialRecord extends Record {
 
     private float x, y, z;
 
-    public AccelerometerRecord(long timestamp, float x, float y, float z) {
+    public TriAxialRecord(long timestamp, float x, float y, float z) {
         super(timestamp);
         this.x = x;
         this.y = y;

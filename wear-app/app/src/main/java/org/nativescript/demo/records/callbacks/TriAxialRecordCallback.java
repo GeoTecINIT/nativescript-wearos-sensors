@@ -2,26 +2,26 @@ package org.nativescript.demo.records.callbacks;
 
 import android.content.Context;
 
-import org.nativescript.demo.records.AccelerometerRecord;
+import org.nativescript.demo.records.TriAxialRecord;
 
 import java.nio.ByteBuffer;
 import java.util.List;
 
 
-public class AccelerometerRecordCallback extends AbstractRecordCallback<AccelerometerRecord> {
+public class TriAxialRecordCallback extends AbstractRecordCallback<TriAxialRecord> {
 
-    public AccelerometerRecordCallback(Context context, String sourceNodeId, String path) {
+    public TriAxialRecordCallback(Context context, String sourceNodeId, String path) {
         super(context, sourceNodeId, path);
     }
 
     @Override
-    protected byte[] encodeRecords(List<AccelerometerRecord> records) {
+    protected byte[] encodeRecords(List<TriAxialRecord> records) {
         int size = records.size();
         byte[] bytes = new byte[Integer.BYTES + (Float.BYTES * 3 + Long.BYTES) * size];
 
         ByteBuffer buff = ByteBuffer.wrap(bytes);
         buff.putInt(size);
-        for (AccelerometerRecord record : records) {
+        for (TriAxialRecord record : records) {
             buff.putFloat(record.getX());
             buff.putFloat(record.getY());
             buff.putFloat(record.getZ());

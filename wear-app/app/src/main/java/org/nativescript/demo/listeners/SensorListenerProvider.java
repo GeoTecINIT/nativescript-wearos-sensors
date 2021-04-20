@@ -1,15 +1,22 @@
 package org.nativescript.demo.listeners;
 
+import android.hardware.SensorEventListener;
+
+import org.nativescript.demo.records.accumulator.RecordAccumulator;
 import org.nativescript.demo.sensoring.WearSensor;
 
 public class SensorListenerProvider {
     private SensorListenerProvider() {
     }
 
-    public static WearSensorListener getListenerAndNotifierFor(WearSensor wearSensor) {
+    public static SensorEventListener getListenerAndNotifierFor(
+            WearSensor wearSensor,
+            RecordAccumulator recordAccumulator
+    ) {
         switch (wearSensor) {
             case ACCELEROMETER:
-                return AccelerometerSensorListener.getInstance();
+            case GYROSCOPE:
+                return new TriAxialSensorListener(wearSensor, recordAccumulator);
             default:
                 return null;
         }

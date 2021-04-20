@@ -16,7 +16,8 @@ public class RecordCallbackProvider {
     ) {
         switch (wearSensor) {
             case ACCELEROMETER:
-                return new AccelerometerRecordCallback(context, requesterId, sendingPath);
+            case GYROSCOPE:
+                return new TriAxialRecordCallback(context, requesterId, sendingPath);
             default:
                 return null;
         }
