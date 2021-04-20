@@ -2,5 +2,6 @@
 <resources>
     <string-array name="android_wear_capabilities" translatable="false">
         <item>accelerometer-sensor</item>
+        <item>gyroscope-sensor</item>
     </string-array>
 </resources>
