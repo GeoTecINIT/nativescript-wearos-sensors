@@ -1,5 +1,4 @@
 import { CollectorManager, PrepareError } from "./collector-manager";
-import { SensorRecord } from "./sensor-record";
 import { MessagingProtocol } from "./messaging";
 import { SensorCallback, SensorCallbackManager } from "./sensor-callback-manager";
 import { CapabilityDiscoverer } from "./capability-discoverer.android";
@@ -7,7 +6,7 @@ import { NodeManager } from "./node-manager.android";
 import { MessagingClient } from "./messaging/messaging-client";
 import { ResolutionResult } from "./messaging/android/result-messaging-service.android";
 
-export class CollectorManagerImpl<T extends SensorRecord> implements CollectorManager {
+export class CollectorManagerImpl implements CollectorManager {
 
     private _nodeManagers: Map<string, NodeManager>;
 
@@ -18,7 +17,7 @@ export class CollectorManagerImpl<T extends SensorRecord> implements CollectorMa
        private protocol: MessagingProtocol,
        private capability: string,
        private messagingClient: MessagingClient,
-       private callbackManager: SensorCallbackManager<T[]>,
+       private callbackManager: SensorCallbackManager,
     ) {
     }
 

@@ -1,6 +1,5 @@
 import { CollectorManager } from "../../../../collector-manager";
 import { CollectorManagerImpl } from "../../../../collector-manager-impl.android";
-import { AccelerometerSensorRecord } from "../record";
 import { SensorCallbackManager } from "../../../../sensor-callback-manager";
 import { getAccelerometerRecordService } from "./record-messaging-service.android";
 import { buildAccelerometerMessagingProtocol } from "./protocol.android";
@@ -9,7 +8,7 @@ import { getResultMessagingService } from "../../../../messaging/android/result-
 
 export function getAndroidAccelerometerCollector(): CollectorManager {
     const protocol = buildAccelerometerMessagingProtocol();
-    const callback = new SensorCallbackManager<AccelerometerSensorRecord[]>("newAccelerometerRecord");
+    const callback = new SensorCallbackManager("newAccelerometerRecord");
     const messagingClient = new MessagingClientImpl(
         protocol,
         getResultMessagingService()
@@ -17,7 +16,7 @@ export function getAndroidAccelerometerCollector(): CollectorManager {
     const recordService = getAccelerometerRecordService();
     recordService.setProtocol(protocol);
     recordService.setCallbackManager(callback);
-    return new CollectorManagerImpl<AccelerometerSensorRecord>(
+    return new CollectorManagerImpl(
         protocol,
         "accelerometer-sensor",
         messagingClient,

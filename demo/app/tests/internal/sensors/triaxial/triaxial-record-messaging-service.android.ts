@@ -1,6 +1,6 @@
 import { buildFakeMessageEvent, getFakeMessagingProtocol } from "../../index";
-import { TriAxialRecordMessagingService } from "../../../../../../src/internal/sensors/triaxial/triaxial-record-messaging-service.android";
-import { TriAxialSensorRecord } from "../../../../../../src/internal/sensors/triaxial/record";
+import { TriAxialRecordMessagingService } from "nativescript-wearos-sensors/internal/sensors/triaxial/triaxial-record-messaging-service.android";
+import { TriAxialSensorRecord } from "nativescript-wearos-sensors/internal/sensors/triaxial/record";
 import { buildFakeEncodedMessage, getFakeTriAxialData } from ".";
 
 describe("TriAxial record messaging service", () => {
@@ -51,7 +51,7 @@ describe("TriAxial record messaging service", () => {
             buildFakeEncodedMessage(expectedRecords)
         );
 
-        const records = recordMessagingService.decodeRecords(messageEvent);
+        const { records } = recordMessagingService.decodeRecords(messageEvent);
         expect(records.length).toBe(2);
         records.forEach((record, i) => {
             expect(record.deviceName).toEqual(expectedRecords[i].deviceName);

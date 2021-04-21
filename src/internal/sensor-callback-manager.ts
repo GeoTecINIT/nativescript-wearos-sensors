@@ -3,19 +3,19 @@ import {
     fromObject,
     EventData as NSEventData,
 } from "tns-core-modules/data/observable";
-import {SensorRecord} from "./sensor-record";
+import { SensorRecords } from "./sensors/sensor-record";
 
 interface InternalEventData extends NSEventData {
-    data: SensorRecord[];
+    data: SensorRecords<any>;
 }
 type InternalEventCallback = (eventData: InternalEventData) => void;
-export type SensorCallback = <T extends SensorRecord[]>(sensorRecords) => void;
+export type SensorCallback = (sensorRecords: SensorRecords<any>) => void;
 
-export class SensorCallbackManager<T extends SensorRecord[]> {
+export class SensorCallbackManager {
 
     private notificationCenter: Observable;
     private listenerCounter: number;
-    private callbacks: Map<number, SensorCallback>;
+    private callbacks: Map<number, InternalEventCallback>;
 
     constructor(private eventName: string) {
         this.notificationCenter = fromObject({});
@@ -31,7 +31,7 @@ export class SensorCallbackManager<T extends SensorRecord[]> {
         return this.listenerCounter++;
     }
 
-    notifyAll(records: T): void {
+    notifyAll(records: SensorRecords<any>): void {
         if (!this.notificationCenter.hasListeners(this.eventName)) {
             return;
         }

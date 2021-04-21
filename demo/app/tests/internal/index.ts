@@ -2,6 +2,8 @@ import { Node, wearOS } from "nativescript-wearos-sensors/internal/utils/android
 import { MessagingProtocol } from "nativescript-wearos-sensors/internal/messaging";
 import { ResolutionResult } from "nativescript-wearos-sensors/internal/messaging/android/result-messaging-service.android";
 import { encodeMessage } from "nativescript-wearos-sensors/internal/messaging/messaging-client";
+import { SensorType } from "nativescript-wearos-sensors/internal/sensors/sensor-type";
+import { SensorRecord, SensorRecords } from "nativescript-wearos-sensors/internal/sensors/sensor-record";
 
 export function buildFakeNode(id: string, name: string, nearby: boolean): Node {
     return new wearOS.Node({
@@ -70,4 +72,11 @@ export function buildFakeMessageEvent(
             return nodeId;
         }
     });
+}
+
+export function buildFakeSensorRecords(type: SensorType, records: SensorRecord[]): SensorRecords<any> {
+    return {
+        type,
+        records,
+    }
 }
