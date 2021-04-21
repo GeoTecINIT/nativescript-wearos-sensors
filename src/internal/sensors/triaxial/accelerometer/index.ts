@@ -1,4 +1,4 @@
-import { CollectorManager } from "../collector-manager";
+import { CollectorManager } from "../../../collector-manager";
 import { android as androidApp } from "tns-core-modules/application/application";
 import { getAndroidAccelerometerCollector } from "./android/index.android";
 

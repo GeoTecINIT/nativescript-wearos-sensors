@@ -1,7 +1,7 @@
 import { AbstractRecordMessagingService } from "../../messaging/android/abstract-record-messaging-service.android";
-import { AccelerometerSensorRecord } from "../record";
+import { AccelerometerSensorRecord } from "./accelerometer/record";
 import { wearOS } from "../../utils/android/wear-os-types.android";
-import { TriAxialSensorRecord } from "../../sensor-record";
+import { TriAxialSensorRecord } from "./record";
 
 import ByteBuffer = java.nio.ByteBuffer;
 

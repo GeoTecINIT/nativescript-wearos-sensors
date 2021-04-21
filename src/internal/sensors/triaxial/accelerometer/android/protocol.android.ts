@@ -1,14 +1,14 @@
-import { MessagingProtocol } from "../../messaging";
+import { MessagingProtocol } from "../../../../messaging";
 
-const DEFAULT_START_MESSAGE_PATH = "/gyroscope/start";
-const DEFAULT_STOP_MESSAGE_PATH = "/gyroscope/stop";
-const DEFAULT_READY_MESSAGE_PATH = "/gyroscope/ready";
-const DEFAULT_PREPARE_MESSAGE_PATH = "/gyroscope/prepare";
+const DEFAULT_START_MESSAGE_PATH = "/accelerometer/start";
+const DEFAULT_STOP_MESSAGE_PATH = "/accelerometer/stop";
+const DEFAULT_READY_MESSAGE_PATH = "/accelerometer/ready";
+const DEFAULT_PREPARE_MESSAGE_PATH = "/accelerometer/prepare";
 const DEFAULT_SUCCESS_RESPONSE = "success";
 const DEFAULT_FAILURE_RESPONSE = "failure";
-const DEFAULT_NEW_RECORD_MESSAGE_PATH = "/gyroscope/new-record";
+const DEFAULT_NEW_RECORD_MESSAGE_PATH = "/accelerometer/new-record";
 
-export function buildGyroscopeMessagingProtocol(): MessagingProtocol {
+export function buildAccelerometerMessagingProtocol(): MessagingProtocol {
     return {
         startMessagePath: DEFAULT_START_MESSAGE_PATH,
         stopMessagePath: DEFAULT_STOP_MESSAGE_PATH,

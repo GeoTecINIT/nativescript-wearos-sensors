@@ -1,11 +1,11 @@
-import { CollectorManager } from "../../collector-manager";
-import { CollectorManagerImpl } from "../../collector-manager-impl.android";
+import { CollectorManager } from "../../../../collector-manager";
+import { CollectorManagerImpl } from "../../../../collector-manager-impl.android";
 import { GyroscopeSensorRecord} from "../record";
-import { SensorCallbackManager } from "../../sensor-callback-manager";
+import { SensorCallbackManager } from "../../../../sensor-callback-manager";
 import { getGyroscopeRecordService} from "./record-messaging-service.android";
 import { buildGyroscopeMessagingProtocol } from "./protocol.android";
-import { MessagingClientImpl } from "../../messaging/android/messaging-client.android";
-import { getResultMessagingService } from "../../messaging/android/result-messaging-service.android";
+import { MessagingClientImpl } from "../../../../messaging/android/messaging-client.android";
+import { getResultMessagingService } from "../../../../messaging/android/result-messaging-service.android";
 
 export function getAndroidGyroscopeCollector(): CollectorManager {
     const protocol = buildGyroscopeMessagingProtocol();

@@ -1,4 +1,4 @@
-import { TriAxialSensorRecord } from "../sensor-record";
+import { TriAxialSensorRecord } from "../record";
 
 export interface GyroscopeSensorRecord extends TriAxialSensorRecord {
 }

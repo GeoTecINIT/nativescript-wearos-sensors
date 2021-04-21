@@ -1,7 +1,7 @@
 import { Observable } from "tns-core-modules/data/observable";
-import { getAccelerometerCollector } from "../../../src/internal/accelerometer";
+import { getAccelerometerCollector } from "../../../src/internal/sensors/triaxial/accelerometer";
 import { CollectorManager } from "../../../src/internal/collector-manager";
-import { getGyroscopeCollector } from "../../../src/internal/gyroscope";
+import { getGyroscopeCollector } from "../../../src/internal/sensors/triaxial/gyroscope";
 
 export class HomeViewModel extends Observable {
 

@@ -1,6 +1,6 @@
-import { TriAxialRecordMessagingService } from "../../accelerometer/android/triaxial-record-messaging-service.android";
+import { TriAxialRecordMessagingService } from "../../triaxial-record-messaging-service.android";
 import { GyroscopeSensorRecord} from "../record";
-import { AbstractRecordMessagingService } from "../../messaging/android/abstract-record-messaging-service.android";
+import { AbstractRecordMessagingService } from "../../../../messaging/android/abstract-record-messaging-service.android";
 
 export class GyroscopeRecordMessagingService extends TriAxialRecordMessagingService {
 

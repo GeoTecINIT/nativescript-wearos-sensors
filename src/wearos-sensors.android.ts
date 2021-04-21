@@ -4,10 +4,10 @@ import { getResultMessagingService } from "./internal/messaging/android/result-m
 import AccelerometerResultMessageService = es.uji.geotec.wearos_sensors.messaging.AccelerometerResultMessageService;
 import GyroscopeResultMessageService = es.uji.geotec.wearos_sensors.messaging.GyroscopeResultMessageService;
 
-import { getAccelerometerRecordService } from "./internal/accelerometer/android/record-messaging-service.android";
+import { getAccelerometerRecordService } from "./internal/sensors/triaxial/accelerometer/android/record-messaging-service.android";
 import AccelerometerRecordsMessagingService = es.uji.geotec.wearos_sensors.messaging.AccelerometerRecordsMessagingService;
 
-import { getGyroscopeRecordService } from "./internal/gyroscope/android/record-messaging-service.android";
+import { getGyroscopeRecordService } from "./internal/sensors/triaxial/gyroscope/android/record-messaging-service.android";
 import GyroscopeRecordsMessagingService = es.uji.geotec.wearos_sensors.messaging.GyroscopeRecordsMessagingService;
 
 

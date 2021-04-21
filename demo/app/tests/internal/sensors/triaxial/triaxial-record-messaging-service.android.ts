@@ -1,17 +1,18 @@
-import { buildFakeMessageEvent, getFakeMessagingProtocol } from "../..";
-import { AccelerometerSensorRecord } from "nativescript-wearos-sensors/internal/accelerometer/record";
-import { AccelerometerRecordMessagingService } from "nativescript-wearos-sensors/internal/accelerometer/android/record-messaging-service.android";
+import { buildFakeMessageEvent, getFakeMessagingProtocol } from "../../index";
+import { TriAxialRecordMessagingService } from "../../../../../../src/internal/sensors/triaxial/triaxial-record-messaging-service.android";
+import { TriAxialSensorRecord } from "../../../../../../src/internal/sensors/triaxial/record";
+import { buildFakeEncodedMessage, getFakeTriAxialData } from ".";
 
-describe("Accelerometer record messaging service", () => {
+describe("TriAxial record messaging service", () => {
     const nodeId = "testNode";
     const protocol = getFakeMessagingProtocol();
 
     let callbackManager;
-    let recordMessagingService: AccelerometerRecordMessagingService;
+    let recordMessagingService: TriAxialRecordMessagingService;
 
     beforeEach(() => {
         callbackManager = jasmine.createSpyObj("callbackManagerSpy", ['notifyAll']);
-        recordMessagingService = new AccelerometerRecordMessagingService();
+        recordMessagingService = new TriAxialRecordMessagingService();
         recordMessagingService.setProtocol(protocol);
         recordMessagingService.setCallbackManager(callbackManager);
         spyOn(recordMessagingService, "decodeRecords").and.callThrough();
@@ -34,14 +35,14 @@ describe("Accelerometer record messaging service", () => {
     });
 
     it("decodes the message data building a new record", () => {
-        const expectedRecords: AccelerometerSensorRecord[] = [
+        const expectedRecords: TriAxialSensorRecord[] = [
             {
                 deviceName: nodeId,
-                ...getFakeAccelerometerData()
+                ...getFakeTriAxialData()
             },
             {
                 deviceName: nodeId,
-                ...getFakeAccelerometerData()
+                ...getFakeTriAxialData()
             },
         ];
         const messageEvent = buildFakeMessageEvent(
@@ -69,7 +70,7 @@ describe("Accelerometer record messaging service", () => {
             buildFakeEncodedMessage([
                 {
                     deviceName: nodeId,
-                    ...getFakeAccelerometerData()
+                    ...getFakeTriAxialData()
                 }
             ])
         );
@@ -80,29 +81,3 @@ describe("Accelerometer record messaging service", () => {
         expect(callbackManager.notifyAll).toHaveBeenCalled();
     });
 })
-
-function getFakeAccelerometerData() {
-    return {
-        timestamp: new Date(),
-        x: Math.random(),
-        y: Math.random(),
-        z: Math.random(),
-    };
-}
-
-function buildFakeEncodedMessage(expectedRecords: AccelerometerSensorRecord[]) {
-    const bytes = Array.create("byte", (4 + (20) * expectedRecords.length));
-    for (let i = 0; i < bytes.length; i++) {
-        bytes[i] = 0;
-    }
-    const buff = java.nio.ByteBuffer.wrap(bytes);
-    buff.putInt(expectedRecords.length);
-    expectedRecords.forEach((record) => {
-        buff.putFloat(record.x);
-        buff.putFloat(record.y);
-        buff.putFloat(record.z);
-        buff.putLong(record.timestamp.getTime());
-    })
-
-    return bytes;
-}
