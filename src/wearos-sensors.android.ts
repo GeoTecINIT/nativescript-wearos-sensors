@@ -1,17 +1,13 @@
 import { Common } from './wearos-sensors.common';
 
 import { getResultMessagingService } from "./internal/messaging/android/result-messaging-service.android";
-import AccelerometerResultMessageService = es.uji.geotec.wearos_sensors.messaging.AccelerometerResultMessageService;
-import GyroscopeResultMessageService = es.uji.geotec.wearos_sensors.messaging.GyroscopeResultMessageService;
-
 import { getAccelerometerRecordService } from "./internal/sensors/triaxial/accelerometer/android/record-messaging-service.android";
-import AccelerometerRecordsMessagingService = es.uji.geotec.wearos_sensors.messaging.AccelerometerRecordsMessagingService;
-
 import { getGyroscopeRecordService } from "./internal/sensors/triaxial/gyroscope/android/record-messaging-service.android";
-import GyroscopeRecordsMessagingService = es.uji.geotec.wearos_sensors.messaging.GyroscopeRecordsMessagingService;
-
 
 import WearableListenerServiceDelegate = es.uji.geotec.wearos_sensors.messaging.WearableListenerServiceDelegate;
+import WearosSensorsResultsMessagingService = es.uji.geotec.wearos_sensors.messaging.WearosSensorsResultsMessagingService;
+import WearosSensorsRecordsMessagingService = es.uji.geotec.wearos_sensors.messaging.WearosSensorsRecordsMessagingService;
+import WearSensor = es.uji.geotec.wearos_sensors.WearSensor;
 
 export class WearosSensors extends Common {
     async init(): Promise<void> {
@@ -21,13 +17,15 @@ export class WearosSensors extends Common {
     }
 
     public wireUpAccelerometerComponents() {
-        AccelerometerResultMessageService.setMessageListenerServiceDelegate(
+        WearosSensorsResultsMessagingService.setResultServiceDelegate(
+            WearSensor.ACCELEROMETER,
             new WearableListenerServiceDelegate({
                 onMessageReceived: (messageEvent) =>
                     getResultMessagingService().onMessageReceived(messageEvent)
             })
         );
-        AccelerometerRecordsMessagingService.setMessageListenerServiceDelegate(
+        WearosSensorsRecordsMessagingService.setRecordServiceDelegate(
+            WearSensor.ACCELEROMETER,
             new WearableListenerServiceDelegate({
                 onMessageReceived: (messageEvent) =>
                     getAccelerometerRecordService().onMessageReceived(messageEvent)
@@ -36,13 +34,15 @@ export class WearosSensors extends Common {
     }
 
     public wireUpGyroscopeComponents() {
-        GyroscopeResultMessageService.setMessageListenerServiceDelegate(
+        WearosSensorsResultsMessagingService.setResultServiceDelegate(
+            WearSensor.GYROSCOPE,
             new WearableListenerServiceDelegate({
                 onMessageReceived: (messageEvent) =>
                     getResultMessagingService().onMessageReceived(messageEvent)
             })
         );
-        GyroscopeRecordsMessagingService.setMessageListenerServiceDelegate(
+        WearosSensorsRecordsMessagingService.setRecordServiceDelegate(
+            WearSensor.GYROSCOPE,
             new WearableListenerServiceDelegate({
                 onMessageReceived: (messageEvent) =>
                     getGyroscopeRecordService().onMessageReceived(messageEvent)

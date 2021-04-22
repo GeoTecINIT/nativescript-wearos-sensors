@@ -20,68 +20,12 @@ declare module es {
 	export module uji {
 		export module geotec {
 			export module wearos_sensors {
-				export module messaging {
-					export class AccelerometerRecordsMessagingService {
-						public static class: java.lang.Class<es.uji.geotec.wearos_sensors.messaging.AccelerometerRecordsMessagingService>;
-						public constructor();
-						public static setMessageListenerServiceDelegate(param0: es.uji.geotec.wearos_sensors.messaging.WearableListenerServiceDelegate): void;
-						public onCreate(): void;
-						public onMessageReceived(param0: com.google.android.gms.wearable.MessageEvent): void;
-					}
-				}
-			}
-		}
-	}
-}
-
-declare module es {
-	export module uji {
-		export module geotec {
-			export module wearos_sensors {
-				export module messaging {
-					export class AccelerometerResultMessageService {
-						public static class: java.lang.Class<es.uji.geotec.wearos_sensors.messaging.AccelerometerResultMessageService>;
-						public constructor();
-						public static setMessageListenerServiceDelegate(param0: es.uji.geotec.wearos_sensors.messaging.WearableListenerServiceDelegate): void;
-						public onCreate(): void;
-						public onMessageReceived(param0: com.google.android.gms.wearable.MessageEvent): void;
-					}
-				}
-			}
-		}
-	}
-}
-
-declare module es {
-	export module uji {
-		export module geotec {
-			export module wearos_sensors {
-				export module messaging {
-					export class GyroscopeRecordsMessagingService {
-						public static class: java.lang.Class<es.uji.geotec.wearos_sensors.messaging.GyroscopeRecordsMessagingService>;
-						public constructor();
-						public static setMessageListenerServiceDelegate(param0: es.uji.geotec.wearos_sensors.messaging.WearableListenerServiceDelegate): void;
-						public onCreate(): void;
-						public onMessageReceived(param0: com.google.android.gms.wearable.MessageEvent): void;
-					}
-				}
-			}
-		}
-	}
-}
-
-declare module es {
-	export module uji {
-		export module geotec {
-			export module wearos_sensors {
-				export module messaging {
-					export class GyroscopeResultMessageService {
-						public static class: java.lang.Class<es.uji.geotec.wearos_sensors.messaging.GyroscopeResultMessageService>;
-						public constructor();
-						public static setMessageListenerServiceDelegate(param0: es.uji.geotec.wearos_sensors.messaging.WearableListenerServiceDelegate): void;
-						public onCreate(): void;
-						public onMessageReceived(param0: com.google.android.gms.wearable.MessageEvent): void;
-					}
+				export class WearSensor {
+					public static class: java.lang.Class<es.uji.geotec.wearos_sensors.WearSensor>;
+					public static ACCELEROMETER: es.uji.geotec.wearos_sensors.WearSensor;
+					public static GYROSCOPE: es.uji.geotec.wearos_sensors.WearSensor;
+					public static values(): native.Array<es.uji.geotec.wearos_sensors.WearSensor>;
+					public static valueOf(param0: string): es.uji.geotec.wearos_sensors.WearSensor;
 				}
 			}
 		}
@@ -118,6 +62,42 @@ declare module es {
 							onMessageReceived(param0: com.google.android.gms.wearable.MessageEvent): void;
 						});
 						public constructor();
+						public onMessageReceived(param0: com.google.android.gms.wearable.MessageEvent): void;
+					}
+				}
+			}
+		}
+	}
+}
+
+declare module es {
+	export module uji {
+		export module geotec {
+			export module wearos_sensors {
+				export module messaging {
+					export class WearosSensorsRecordsMessagingService {
+						public static class: java.lang.Class<es.uji.geotec.wearos_sensors.messaging.WearosSensorsRecordsMessagingService>;
+						public constructor();
+						public static setRecordServiceDelegate(param0: es.uji.geotec.wearos_sensors.WearSensor, param1: es.uji.geotec.wearos_sensors.messaging.WearableListenerServiceDelegate): void;
+						public onCreate(): void;
+						public onMessageReceived(param0: com.google.android.gms.wearable.MessageEvent): void;
+					}
+				}
+			}
+		}
+	}
+}
+
+declare module es {
+	export module uji {
+		export module geotec {
+			export module wearos_sensors {
+				export module messaging {
+					export class WearosSensorsResultsMessagingService {
+						public static class: java.lang.Class<es.uji.geotec.wearos_sensors.messaging.WearosSensorsResultsMessagingService>;
+						public constructor();
+						public onCreate(): void;
+						public static setResultServiceDelegate(param0: es.uji.geotec.wearos_sensors.WearSensor, param1: es.uji.geotec.wearos_sensors.messaging.WearableListenerServiceDelegate): void;
 						public onMessageReceived(param0: com.google.android.gms.wearable.MessageEvent): void;
 					}
 				}
