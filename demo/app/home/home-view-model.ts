@@ -14,9 +14,11 @@ export class HomeViewModel extends Observable {
 
     private isDeviceReady: boolean;
     private readyResponse: string;
+    private waitingForIsReadyResponse: boolean;
 
     private needToPrepare: boolean;
     private prepareResponse: string;
+    private waitingForPrepareResponse: boolean;
 
     private receivedRecords: ReceivedRecords;
 
@@ -45,19 +47,23 @@ export class HomeViewModel extends Observable {
     }
 
     onIsReadyTap() {
+        this.updateWaitingIndicator(true, "isReady");
         this.collector.isReady().then((ready) => {
             console.log(`${this.selectedSensor} isReady response: ${ready}`);
             const readyResponse = `${this.selectedSensor} is ${ready ? "ready" : "not ready"}`;
+            this.updateWaitingIndicator(false, "isReady");
             this.updateIsReadyStatus(ready, readyResponse);
             this.updateNeedToPrepareStatus(!ready)
         });
     }
 
     onPrepareTap() {
+        this.updateWaitingIndicator(true, "prepare");
         this.collector.prepare().then((prepareErrors) => {
             console.log(`${this.selectedSensor} prepare response: ${JSON.stringify(prepareErrors)}`);
             const needToPrepare = prepareErrors.length > 0;
             const prepareMessage =`${this.selectedSensor} has ${!needToPrepare ? "been prepared": "not been prepared"}`;
+            this.updateWaitingIndicator(false, "prepare");
             this.updateNeedToPrepareStatus(needToPrepare, prepareMessage);
             this.updateIsReadyStatus(!needToPrepare, `${this.selectedSensor} is ${!needToPrepare ? "ready" : "not ready"}`);
         });
@@ -101,6 +107,16 @@ export class HomeViewModel extends Observable {
 
         this.notifyPropertyChange("prepareResponse", this.prepareResponse);
         this.notifyPropertyChange("needToPrepare", this.needToPrepare);
+    }
+
+    private updateWaitingIndicator(waiting: boolean, indicator: "isReady" | "prepare") {
+        if (indicator === "isReady") {
+            this.waitingForIsReadyResponse = waiting;
+            this.notifyPropertyChange("waitingForIsReadyResponse", this.waitingForIsReadyResponse);
+        } else {
+            this.waitingForPrepareResponse = waiting;
+            this.notifyPropertyChange("waitingForPrepareResponse", this.waitingForPrepareResponse);
+        }
     }
 
     private clearStatus() {
