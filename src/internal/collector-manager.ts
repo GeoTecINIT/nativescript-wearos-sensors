@@ -6,7 +6,7 @@ export interface CollectorManager {
     prepare(): Promise<PrepareError[]>;
     startCollecting(): Promise<void>;
     stopCollecting(): Promise<void>;
-    listenSensorUpdates(callback: SensorCallback);
+    listenSensorUpdates(callback: SensorCallback): number;
     stopListenSensorUpdates(listenerId?: number);
 }
 

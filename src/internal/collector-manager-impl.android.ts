@@ -87,8 +87,8 @@ export class CollectorManagerImpl implements CollectorManager {
         }
     }
 
-    listenSensorUpdates(callback: SensorCallback) {
-        this.callbackManager.add(callback);
+    listenSensorUpdates(callback: SensorCallback): number {
+        return this.callbackManager.add(callback);
     }
 
     stopListenSensorUpdates(listenerId?: number) {

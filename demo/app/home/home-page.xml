@@ -3,21 +3,56 @@
     xmlns="http://schemas.nativescript.org/tns.xsd">
 
     <ActionBar>
-        <Label text="Demo"></Label>
+        <Label text="WearOS Sensors"></Label>
     </ActionBar>
+    <StackLayout>
+        <StackLayout orientation="horizontal" style="horizontal-align: center">
+            <Label text="Wear Sensor:"
+                   class="v-centered bold"
+                   style="margin-right: 20dp; font-size: 20dp"/>
+            <ListPicker items="{{ sensors }}"
+                        loaded="{{ onListPickerLoaded }}"
+                        selectedValue="{{ selectedSensor }}" width="150dp"/>
+        </StackLayout>
 
-    <GridLayout columns="auto, auto" rows="auto, auto, auto, auto, auto">
-        <!-- Add your page content here -->
-        <Button row="0" col="0" text="Acc isReady" tap="{{ onAccIsReadyTap }}"></Button>
-        <Button row="1" col="0" text="Acc prepare" tap="{{ onAccPrepareTap }}"></Button>
-        <Button row="2" col="0" text="Acc start" tap="{{ onAccStartTap }}"></Button>
-        <Button row="3" col="0" text="Acc stop" tap="{{ onAccStopTap }}"></Button>
-        <Button row="4" col="0" text="Clear Nodes" tap="{{ onAccClearNodesTap }}"></Button>
+        <GridLayout columns="*, *" rows="auto, auto, auto, auto" horizontalAlignment="center" width="100%">
+            <!-- Add your page content here -->
+            <Button row="0" col="0" text="Send isReady" tap="{{ onIsReadyTap }}"
+                    class="bg-primary -rounded-lg"></Button>
+            <Button row="1" col="0" text="Send prepare" tap="{{ onPrepareTap }}"
+                    isEnabled="{{ needToPrepare }}"
+                    class="bg-primary -rounded-lg"></Button>
+            <Button row="2" col="0" text="Send start" tap="{{ onStartTap }}"
+                    isEnabled="{{ isDeviceReady }}"
+                    class="bg-primary -rounded-lg"></Button>
+            <Button row="2" col="1" text="Send stop" tap="{{ onStopTap }}"
+                    isEnabled="{{ isDeviceReady }}"
+                    class="bg-primary -rounded-lg"></Button>
+            <Button row="3" col="0" colSpan="2" text="Clear nodes" tap="{{ onClearNodesTap }}"
+                    class="bg-danger -rounded-lg"></Button>
 
-        <Button row="0" col="1" text="Gyro isReady" tap="{{ onGyroIsReadyTap }}"></Button>
-        <Button row="1" col="1" text="Gyro prepare" tap="{{ onGyroPrepareTap }}"></Button>
-        <Button row="2" col="1" text="Gyro start" tap="{{ onGyroStartTap }}"></Button>
-        <Button row="3" col="1" text="Gyro stop" tap="{{ onGyroStopTap }}"></Button>
-        <Button row="4" col="1" text="Clear Nodes" tap="{{ onGyroClearNodesTap }}"></Button>
-    </GridLayout>
+            <Label class="v-centered h-centered" row="0" col="1" text="{{ readyResponse }}" style="horizontal-align: center; vertical-align: center"></Label>
+            <Label class="v-centered h-centered" row="1" col="1" text="{{ prepareResponse }}" textWrap="true"></Label>
+        </GridLayout>
+
+        <GridLayout class="record-grid" columns="*, *" rows="auto, auto, auto" visibility="{{ receivedRecords ? 'visible' : 'collapsed'}}">
+            <Label class="h-centered bold" row="0" col="0" colSpan="2" text="Received records"></Label>
+            <Label class="h-centered" row="1" col="0" text="{{ receivedRecords, 'Type: ' + receivedRecords.type }}"></Label>
+            <Label class="h-centered" row="1" col="1" text="{{ receivedRecords, 'Batch size: ' + receivedRecords.batchSize }}"></Label>
+            <GridLayout row="2" col="0" columns="*, 4*" rows="auto, auto, auto, auto">
+                <Label class="bold" row="0" col="0" rowSpan="4" text="First:"></Label>
+                <Label row="0" col="1" text="{{ receivedRecords, 'Timestamp:' + receivedRecords.first.timestamp }}" textWrap="true"></Label>
+                <Label row="1" col="1" text="{{ receivedRecords, 'x:' + receivedRecords.first.x }}"></Label>
+                <Label row="2" col="1" text="{{ receivedRecords, 'y:' + receivedRecords.first.y }}"></Label>
+                <Label row="3" col="1" text="{{ receivedRecords, 'z:' + receivedRecords.first.z }}"></Label>
+            </GridLayout>
+            <GridLayout row="2" col="1" columns="*, 4*" rows="auto, auto, auto, auto">
+                <Label class="bold" row="0" col="0" rowSpan="4" text="Last:"></Label>
+                <Label row="0" col="1" text="{{ receivedRecords, 'Timestamp:' + receivedRecords.last.timestamp }}" textWrap="true"></Label>
+                <Label row="1" col="1" text="{{ receivedRecords, 'x:' + receivedRecords.last.x }}"></Label>
+                <Label row="2" col="1" text="{{ receivedRecords, 'y:' + receivedRecords.last.y }}"></Label>
+                <Label row="3" col="1" text="{{ receivedRecords, 'z:' + receivedRecords.last.z }}"></Label>
+            </GridLayout>
+        </GridLayout>
+    </StackLayout>
 </Page>

@@ -1,4 +1,4 @@
 export enum SensorType {
-    ACCELEROMETER,
-    GYROSCOPE,
+    ACCELEROMETER = "ACCELEROMETER",
+    GYROSCOPE = "GYROSCOPE",
 }

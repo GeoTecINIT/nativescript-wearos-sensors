@@ -1,70 +1,130 @@
 import { Observable } from "tns-core-modules/data/observable";
-import { getAccelerometerCollector } from "../../../src/internal/sensors/triaxial/accelerometer";
-import { CollectorManager } from "../../../src/internal/collector-manager";
-import { getGyroscopeCollector } from "../../../src/internal/sensors/triaxial/gyroscope";
+import { EventData, ListPicker } from "tns-core-modules";
+import { getAccelerometerCollector } from "nativescript-wearos-sensors/internal/sensors/triaxial/accelerometer";
+import { getGyroscopeCollector } from "nativescript-wearos-sensors/internal/sensors/triaxial/gyroscope";
+import { CollectorManager } from "nativescript-wearos-sensors/internal/collector-manager";
+import { SensorType } from "nativescript-wearos-sensors/internal/sensors/sensor-type";
+import { TriAxialSensorRecord } from "nativescript-wearos-sensors/internal/sensors/triaxial/record";
 
 export class HomeViewModel extends Observable {
 
-    private accelerometerCollector: CollectorManager;
-    private gyroscopeCollector: CollectorManager;
+    private collector: CollectorManager;
+    private sensors: SensorType[] = [SensorType.ACCELEROMETER, SensorType.GYROSCOPE];
+    private selectedSensor: SensorType;
+
+    private isDeviceReady: boolean;
+    private readyResponse: string;
+
+    private needToPrepare: boolean;
+    private prepareResponse: string;
+
+    private receivedRecords: ReceivedRecords;
+
+    private listenerId: number;
 
     constructor() {
         super();
-        this.accelerometerCollector = getAccelerometerCollector();
-        this.gyroscopeCollector = getGyroscopeCollector();
-        this.accelerometerCollector.listenSensorUpdates((accelerometerRecords) => {
-            console.log(JSON.stringify(accelerometerRecords));
+        this.collector = getAccelerometerCollector();
+        this.clearStatus();
+    }
+
+    onListPickerLoaded(args) {
+        const listPicker = args.object;
+        listPicker.on('selectedIndexChange', (data: EventData) => {
+            const picker = data.object as ListPicker;
+            switch (this.sensors[picker.selectedIndex]) {
+                case SensorType.ACCELEROMETER:
+                    this.collector = getAccelerometerCollector();
+                    break;
+                case SensorType.GYROSCOPE:
+                    this.collector = getGyroscopeCollector();
+                    break;
+            }
+            this.clearStatus();
         });
-        this.gyroscopeCollector.listenSensorUpdates((gyroscopeRecords) => {
-            console.log(JSON.stringify(gyroscopeRecords));
+    }
+
+    onIsReadyTap() {
+        this.collector.isReady().then((ready) => {
+            console.log(`${this.selectedSensor} isReady response: ${ready}`);
+            const readyResponse = `${this.selectedSensor} is ${ready ? "ready" : "not ready"}`;
+            this.updateIsReadyStatus(ready, readyResponse);
+            this.updateNeedToPrepareStatus(!ready)
         });
     }
 
-    onAccIsReadyTap() {
-        this.accelerometerCollector.isReady().then((ready) => {
-            console.log("acc isReadyResponse: " + ready);
-        })
+    onPrepareTap() {
+        this.collector.prepare().then((prepareErrors) => {
+            console.log(`${this.selectedSensor} prepare response: ${JSON.stringify(prepareErrors)}`);
+            const needToPrepare = prepareErrors.length > 0;
+            const prepareMessage =`${this.selectedSensor} has ${!needToPrepare ? "been prepared": "not been prepared"}`;
+            this.updateNeedToPrepareStatus(needToPrepare, prepareMessage);
+            this.updateIsReadyStatus(!needToPrepare, `${this.selectedSensor} is ${!needToPrepare ? "ready" : "not ready"}`);
+        });
     }
 
-    onAccPrepareTap() {
-        this.accelerometerCollector.prepare().then((prepareErrors) => {
-            console.log(`acc prepareResponse, errors: ${JSON.stringify(prepareErrors)}`);
-        })
+    onStartTap() {
+        this.listenerId = this.collector.listenSensorUpdates((records) => {
+            console.log(JSON.stringify(records));
+            const triaxialRecords = records.records
+            this.receivedRecords = {
+                type: records.type,
+                batchSize: triaxialRecords.length,
+                first: triaxialRecords[0],
+                last: triaxialRecords[triaxialRecords.length - 1]
+            };
+            this.notifyPropertyChange("receivedRecords", this.receivedRecords);
+        });
+        this.collector.startCollecting();
     }
 
-    onAccStartTap() {
-        this.accelerometerCollector.startCollecting();
+    onStopTap() {
+        this.collector.stopCollecting();
+        this.collector.stopListenSensorUpdates(this.listenerId);
     }
 
-    onAccStopTap() {
-        this.accelerometerCollector.stopCollecting();
+    onClearNodesTap() {
+        this.collector.clearNodes();
+        this.clearStatus();
     }
 
-    onAccClearNodesTap() {
-        this.accelerometerCollector.clearNodes();
+    private updateIsReadyStatus(ready: boolean, message?: string) {
+        this.isDeviceReady = ready;
+        this.readyResponse = message;
+        this.notifyPropertyChange("readyResponse", this.readyResponse);
+        this.notifyPropertyChange("isDeviceReady", this.isDeviceReady);
     }
 
-    onGyroIsReadyTap() {
-        this.gyroscopeCollector.isReady().then((ready) => {
-            console.log("gyro isReadyResponse: " + ready);
-        })
+    private updateNeedToPrepareStatus(needToPrepare: boolean, message?: string) {
+        this.needToPrepare = needToPrepare;
+        this.prepareResponse = message;
+
+        this.notifyPropertyChange("prepareResponse", this.prepareResponse);
+        this.notifyPropertyChange("needToPrepare", this.needToPrepare);
     }
 
-    onGyroPrepareTap() {
-        this.gyroscopeCollector.prepare().then((prepareErrors) => {
-            console.log(`gyro prepareResponse, errors: ${JSON.stringify(prepareErrors)}`);
-        })
-    }
+    private clearStatus() {
+        this.receivedRecords = undefined;
 
-    onGyroStartTap() {
-        this.gyroscopeCollector.startCollecting();
+        this.updateIsReadyStatus(false);
+        this.updateNeedToPrepareStatus(false);
     }
+}
 
-    onGyroStopTap() {
-        this.gyroscopeCollector.stopCollecting();
-    }
+interface ReceivedRecords {
+    type: SensorType,
+    batchSize: number,
+    first: TriAxialSensorRecord,
+    last: TriAxialSensorRecord,
+}
 
-    onGyroClearNodesTap() {
-        this.gyroscopeCollector.clearNodes();
+const fakeRecord = {
+    type: SensorType.ACCELEROMETER,
+    batchSize: 50,
+    first: {
+        timestamp: new Date(), x: 0, y: 9.81000041966167, z: 0
+    },
+    last: {
+        timestamp: new Date(), x: 0, y: 9.81000041966167, z: 0
     }
 }
