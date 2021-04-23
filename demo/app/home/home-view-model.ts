@@ -1,8 +1,6 @@
 import { Observable } from "tns-core-modules/data/observable";
 import { EventData, ListPicker } from "tns-core-modules";
-import { getAccelerometerCollector } from "nativescript-wearos-sensors/internal/sensors/triaxial/accelerometer";
-import { getGyroscopeCollector } from "nativescript-wearos-sensors/internal/sensors/triaxial/gyroscope";
-import { getMagnetometerCollector } from "nativescript-wearos-sensors/internal/sensors/triaxial/magnetometer";
+import { getSensorCollector } from "nativescript-wearos-sensors/internal/sensors";
 import { CollectorManager } from "nativescript-wearos-sensors/internal/collector-manager";
 import { SensorType } from "nativescript-wearos-sensors/internal/sensors/sensor-type";
 import { TriAxialSensorRecord } from "nativescript-wearos-sensors/internal/sensors/triaxial/record";
@@ -21,13 +19,15 @@ export class HomeViewModel extends Observable {
     private prepareResponse: string;
     private waitingForPrepareResponse: boolean;
 
+    private started: boolean;
+
     private receivedRecords: ReceivedRecords;
 
     private listenerId: number;
 
     constructor() {
         super();
-        this.collector = getAccelerometerCollector();
+        this.collector = getSensorCollector(SensorType.ACCELEROMETER);
         this.clearStatus();
     }
 
@@ -35,17 +35,7 @@ export class HomeViewModel extends Observable {
         const listPicker = args.object;
         listPicker.on('selectedIndexChange', (data: EventData) => {
             const picker = data.object as ListPicker;
-            switch (this.sensors[picker.selectedIndex]) {
-                case SensorType.ACCELEROMETER:
-                    this.collector = getAccelerometerCollector();
-                    break;
-                case SensorType.GYROSCOPE:
-                    this.collector = getGyroscopeCollector();
-                    break;
-                case SensorType.MAGNETOMETER:
-                    this.collector = getMagnetometerCollector();
-                    break;
-            }
+            this.collector = getSensorCollector(this.sensors[picker.selectedIndex]);
             this.clearStatus();
         });
     }
@@ -86,11 +76,13 @@ export class HomeViewModel extends Observable {
             this.notifyPropertyChange("receivedRecords", this.receivedRecords);
         });
         this.collector.startCollecting();
+        this.updateStartedStatus(true);
     }
 
     onStopTap() {
         this.collector.stopCollecting();
         this.collector.stopListenSensorUpdates(this.listenerId);
+        this.updateStartedStatus(false);
     }
 
     onClearNodesTap() {
@@ -123,11 +115,17 @@ export class HomeViewModel extends Observable {
         }
     }
 
+    private updateStartedStatus(started: boolean) {
+        this.started = started;
+        this.notifyPropertyChange("started", this.started);
+    }
+
     private clearStatus() {
         this.receivedRecords = undefined;
 
         this.updateIsReadyStatus(false);
         this.updateNeedToPrepareStatus(false);
+        this.updateStartedStatus(false);
     }
 }
 

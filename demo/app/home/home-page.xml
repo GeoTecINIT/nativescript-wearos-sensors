@@ -37,24 +37,31 @@
             <ActivityIndicator row="1" col="1" visibility="{{ waitingForPrepareResponse ? 'visible' : 'collapsed' }}" busy="true"/>
         </GridLayout>
 
-        <GridLayout class="record-grid" columns="*, *" rows="auto, auto, auto" visibility="{{ receivedRecords ? 'visible' : 'collapsed'}}">
-            <Label class="h-centered bold" row="0" col="0" colSpan="2" text="Received records"></Label>
-            <Label class="h-centered" row="1" col="0" text="{{ receivedRecords, 'Type: ' + receivedRecords.type }}"></Label>
-            <Label class="h-centered" row="1" col="1" text="{{ receivedRecords, 'Batch size: ' + receivedRecords.batchSize }}"></Label>
-            <GridLayout row="2" col="0" columns="*, 4*" rows="auto, auto, auto, auto">
-                <Label class="bold" row="0" col="0" rowSpan="4" text="First:"></Label>
-                <Label row="0" col="1" text="{{ receivedRecords, 'Timestamp:' + receivedRecords.first.timestamp }}" textWrap="true"></Label>
-                <Label row="1" col="1" text="{{ receivedRecords, 'x:' + receivedRecords.first.x }}"></Label>
-                <Label row="2" col="1" text="{{ receivedRecords, 'y:' + receivedRecords.first.y }}"></Label>
-                <Label row="3" col="1" text="{{ receivedRecords, 'z:' + receivedRecords.first.z }}"></Label>
+        <StackLayout visibility="{{ started ? 'visible' : 'collapsed' }}">
+            <ActivityIndicator visibility="{{ receivedRecords ? 'collapsed' : 'visible' }}"
+                               marginTop="20dp"
+                               width="100dp"
+                               height="100dp"
+                               busy="true"/>
+            <GridLayout class="record-grid" columns="*, *" rows="auto, auto, auto" visibility="{{ receivedRecords ? 'visible' : 'collapsed'}}">
+                <Label class="h-centered bold" row="0" col="0" colSpan="2" text="Received records"></Label>
+                <Label class="h-centered" row="1" col="0" text="{{ receivedRecords, 'Type: ' + receivedRecords.type }}"></Label>
+                <Label class="h-centered" row="1" col="1" text="{{ receivedRecords, 'Batch size: ' + receivedRecords.batchSize }}"></Label>
+                <GridLayout row="2" col="0" columns="*, 4*" rows="auto, auto, auto, auto">
+                    <Label class="bold" row="0" col="0" rowSpan="4" text="First:"></Label>
+                    <Label row="0" col="1" text="{{ receivedRecords, 'Timestamp:' + receivedRecords.first.timestamp }}" textWrap="true"></Label>
+                    <Label row="1" col="1" text="{{ receivedRecords, 'x:' + receivedRecords.first.x }}"></Label>
+                    <Label row="2" col="1" text="{{ receivedRecords, 'y:' + receivedRecords.first.y }}"></Label>
+                    <Label row="3" col="1" text="{{ receivedRecords, 'z:' + receivedRecords.first.z }}"></Label>
+                </GridLayout>
+                <GridLayout row="2" col="1" columns="*, 4*" rows="auto, auto, auto, auto">
+                    <Label class="bold" row="0" col="0" rowSpan="4" text="Last:"></Label>
+                    <Label row="0" col="1" text="{{ receivedRecords, 'Timestamp:' + receivedRecords.last.timestamp }}" textWrap="true"></Label>
+                    <Label row="1" col="1" text="{{ receivedRecords, 'x:' + receivedRecords.last.x }}"></Label>
+                    <Label row="2" col="1" text="{{ receivedRecords, 'y:' + receivedRecords.last.y }}"></Label>
+                    <Label row="3" col="1" text="{{ receivedRecords, 'z:' + receivedRecords.last.z }}"></Label>
+                </GridLayout>
             </GridLayout>
-            <GridLayout row="2" col="1" columns="*, 4*" rows="auto, auto, auto, auto">
-                <Label class="bold" row="0" col="0" rowSpan="4" text="Last:"></Label>
-                <Label row="0" col="1" text="{{ receivedRecords, 'Timestamp:' + receivedRecords.last.timestamp }}" textWrap="true"></Label>
-                <Label row="1" col="1" text="{{ receivedRecords, 'x:' + receivedRecords.last.x }}"></Label>
-                <Label row="2" col="1" text="{{ receivedRecords, 'y:' + receivedRecords.last.y }}"></Label>
-                <Label row="3" col="1" text="{{ receivedRecords, 'z:' + receivedRecords.last.z }}"></Label>
-            </GridLayout>
-        </GridLayout>
+        </StackLayout>
     </StackLayout>
 </Page>
