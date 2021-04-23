@@ -2,6 +2,7 @@ import { Observable } from "tns-core-modules/data/observable";
 import { EventData, ListPicker } from "tns-core-modules";
 import { getAccelerometerCollector } from "nativescript-wearos-sensors/internal/sensors/triaxial/accelerometer";
 import { getGyroscopeCollector } from "nativescript-wearos-sensors/internal/sensors/triaxial/gyroscope";
+import { getMagnetometerCollector } from "nativescript-wearos-sensors/internal/sensors/triaxial/magnetometer";
 import { CollectorManager } from "nativescript-wearos-sensors/internal/collector-manager";
 import { SensorType } from "nativescript-wearos-sensors/internal/sensors/sensor-type";
 import { TriAxialSensorRecord } from "nativescript-wearos-sensors/internal/sensors/triaxial/record";
@@ -9,7 +10,7 @@ import { TriAxialSensorRecord } from "nativescript-wearos-sensors/internal/senso
 export class HomeViewModel extends Observable {
 
     private collector: CollectorManager;
-    private sensors: SensorType[] = [SensorType.ACCELEROMETER, SensorType.GYROSCOPE];
+    private sensors: SensorType[] = [SensorType.ACCELEROMETER, SensorType.GYROSCOPE, SensorType.MAGNETOMETER];
     private selectedSensor: SensorType;
 
     private isDeviceReady: boolean;
@@ -40,6 +41,9 @@ export class HomeViewModel extends Observable {
                     break;
                 case SensorType.GYROSCOPE:
                     this.collector = getGyroscopeCollector();
+                    break;
+                case SensorType.MAGNETOMETER:
+                    this.collector = getMagnetometerCollector();
                     break;
             }
             this.clearStatus();

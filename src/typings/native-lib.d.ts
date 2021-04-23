@@ -24,6 +24,7 @@ declare module es {
 					public static class: java.lang.Class<es.uji.geotec.wearos_sensors.WearSensor>;
 					public static ACCELEROMETER: es.uji.geotec.wearos_sensors.WearSensor;
 					public static GYROSCOPE: es.uji.geotec.wearos_sensors.WearSensor;
+					public static MAGNETOMETER: es.uji.geotec.wearos_sensors.WearSensor;
 					public static values(): native.Array<es.uji.geotec.wearos_sensors.WearSensor>;
 					public static valueOf(param0: string): es.uji.geotec.wearos_sensors.WearSensor;
 				}
