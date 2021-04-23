@@ -1,8 +1,8 @@
 import {
     Observable,
-    fromObject,
     EventData as NSEventData,
-} from "tns-core-modules/data/observable";
+} from "@nativescript/core";
+import { fromObject } from "@nativescript/core/data/observable";
 import { SensorRecords } from "./sensors/sensor-record";
 
 interface InternalEventData extends NSEventData {

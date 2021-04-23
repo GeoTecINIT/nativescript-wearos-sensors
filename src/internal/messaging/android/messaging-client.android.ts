@@ -1,4 +1,4 @@
-import { android as androidApp } from "tns-core-modules/application/application";
+import { Application } from "@nativescript/core";
 import {
     WearMessageClient,
     wearOS,
@@ -17,7 +17,7 @@ export class MessagingClientImpl implements MessagingClient {
         private protocol: MessagingProtocol,
         private resultMessagingService: ResultMessagingService,
     ) {
-        this.messageClient = wearOS.Wearable.getMessageClient(androidApp.context);
+        this.messageClient = wearOS.Wearable.getMessageClient(Application.android.context);
     }
 
     public async sendIsReadyMessageAndWaitForResolution(node: Node): Promise<ResolutionResult> {

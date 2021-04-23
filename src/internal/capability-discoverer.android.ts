@@ -1,4 +1,4 @@
-import { android as androidApp } from "tns-core-modules/application/application";
+import { Application } from "@nativescript/core";
 
 import OnCompleteListener = com.google.android.gms.tasks.OnCompleteListener;
 import { NodeSet, wearOS } from "./utils/android/wear-os-types.android";
@@ -7,7 +7,7 @@ export class CapabilityDiscoverer {
 
     constructor(
         private capability: string,
-        private capabilityClient= wearOS.Wearable.getCapabilityClient(androidApp.context)
+        private capabilityClient= wearOS.Wearable.getCapabilityClient(Application.android.context)
     ) {
     }
 
