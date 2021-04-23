@@ -1,5 +1,9 @@
-import { Observable } from "tns-core-modules/data/observable";
-import { EventData, ListPicker } from "tns-core-modules";
+import {
+    Observable,
+    EventData,
+    ListPicker
+} from "@nativescript/core";
+
 import { getSensorCollector } from "nativescript-wearos-sensors/internal/sensors";
 import { CollectorManager } from "nativescript-wearos-sensors/internal/collector-manager";
 import { SensorType } from "nativescript-wearos-sensors/internal/sensors/sensor-type";
