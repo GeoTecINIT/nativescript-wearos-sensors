@@ -4,7 +4,8 @@ import android.hardware.Sensor;
 
 public enum WearSensor {
     ACCELEROMETER(Sensor.TYPE_ACCELEROMETER),
-    GYROSCOPE(Sensor.TYPE_GYROSCOPE);
+    GYROSCOPE(Sensor.TYPE_GYROSCOPE),
+    MAGNETOMETER(Sensor.TYPE_MAGNETIC_FIELD);
 
     private int sensorType;
     WearSensor(int sensorType) {

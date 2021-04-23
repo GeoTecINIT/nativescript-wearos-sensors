@@ -16,6 +16,7 @@ public class SensorListenerProvider {
         switch (wearSensor) {
             case ACCELEROMETER:
             case GYROSCOPE:
+            case MAGNETOMETER:
                 return new TriAxialSensorListener(wearSensor, recordAccumulator);
             default:
                 return null;
