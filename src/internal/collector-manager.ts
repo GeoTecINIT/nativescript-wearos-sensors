@@ -8,6 +8,7 @@ export interface CollectorManager {
     stopCollecting(): Promise<void>;
     listenSensorUpdates(callback: SensorCallback): number;
     stopListenSensorUpdates(listenerId?: number);
+    clearNodes();
 }
 
 export interface PrepareError {

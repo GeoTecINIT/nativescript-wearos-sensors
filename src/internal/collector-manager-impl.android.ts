@@ -99,6 +99,12 @@ export class CollectorManagerImpl implements CollectorManager {
         }
     }
 
+    clearNodes() {
+        this._nodeManagers = undefined;
+        this.idsToBePrepared = [];
+        this.idsPrepared = [];
+    }
+
     private async getAvailableNodes(): Promise<Map<string, NodeManager>> {
         if (!this._nodeManagers) {
             const capabilityDiscoverer = new CapabilityDiscoverer(this.capability);
