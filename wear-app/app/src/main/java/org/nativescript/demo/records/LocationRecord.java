@@ -1,5 +1,7 @@
 package org.nativescript.demo.records;
 
+import android.location.Location;
+
 public class LocationRecord extends Record {
 
     private double latitude;
@@ -11,6 +13,13 @@ public class LocationRecord extends Record {
         this.latitude = latitude;
         this.longitude = longitude;
         this.altitude = altitude;
+    }
+
+    public LocationRecord(Location location) {
+        super(location.getTime());
+        this.latitude = location.getLatitude();
+        this.longitude = location.getLongitude();
+        this.altitude = location.getAltitude();
     }
 
     public double getLatitude() {

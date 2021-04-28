@@ -37,7 +37,7 @@ public class CollectorManager {
                 callback,
                 50);
 
-        SensorEventListener listener = SensorListenerProvider.getListenerAndNotifierFor(wearSensor, accumulator);
+        SensorEventListener listener = SensorListenerProvider.getListenerFor(wearSensor, accumulator);
         if (listener == null)
             return false;
 
