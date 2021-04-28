@@ -7,14 +7,16 @@ import android.hardware.SensorManager;
 
 public class WearSensorManager {
 
+    private Context context;
     private SensorManager sensorManager;
 
     public WearSensorManager(Context context) {
+        this.context = context;
         this.sensorManager = (SensorManager) context.getSystemService(Context.SENSOR_SERVICE);
     }
 
     public boolean isSensorAvailable(WearSensor sensor) {
-        return  getWearSensor(sensor) != null;
+        return  context.getPackageManager().hasSystemFeature(sensor.getSensorFeature());
     }
 
     public boolean startCollectingFrom(WearSensor wearSensor, SensorEventListener listener) {
