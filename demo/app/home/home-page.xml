@@ -47,19 +47,28 @@
                 <Label class="h-centered bold" row="0" col="0" colSpan="2" text="Received records"></Label>
                 <Label class="h-centered" row="1" col="0" text="{{ receivedRecords, 'Type: ' + receivedRecords.type }}"></Label>
                 <Label class="h-centered" row="1" col="1" text="{{ receivedRecords, 'Batch size: ' + receivedRecords.batchSize }}"></Label>
-                <GridLayout row="2" col="0" columns="*, 4*" rows="auto, auto, auto, auto">
+                <StackLayout row="2" col="0" colSpan="2"
+                            visibility="{{ receivedRecords, receivedRecords.type === 'LOCATION' ? 'visible' : 'collapsed'}}">
+                    <Label text="{{ receivedRecords, 'Timestamp: ' + receivedRecords.record.timestamp }}" textWrap="true"></Label>
+                    <Label text="{{ receivedRecords, 'Latitude: ' + receivedRecords.record.latitude }}"></Label>
+                    <Label text="{{ receivedRecords, 'Longitude: ' + receivedRecords.record.longitude }}"></Label>
+                    <Label text="{{ receivedRecords, 'Altitude: ' + receivedRecords.record.altitude }}"></Label>
+                </StackLayout>
+                <GridLayout row="2" col="0" columns="*, 4*" rows="auto, auto, auto, auto"
+                            visibility="{{ receivedRecords, receivedRecords.type === 'LOCATION' ? 'collapsed' : 'visible'}}">
                     <Label class="bold" row="0" col="0" rowSpan="4" text="First:"></Label>
-                    <Label row="0" col="1" text="{{ receivedRecords, 'Timestamp:' + receivedRecords.first.timestamp }}" textWrap="true"></Label>
-                    <Label row="1" col="1" text="{{ receivedRecords, 'x:' + receivedRecords.first.x }}"></Label>
-                    <Label row="2" col="1" text="{{ receivedRecords, 'y:' + receivedRecords.first.y }}"></Label>
-                    <Label row="3" col="1" text="{{ receivedRecords, 'z:' + receivedRecords.first.z }}"></Label>
+                    <Label row="0" col="1" text="{{ receivedRecords, 'Timestamp: ' + receivedRecords.first.timestamp }}" textWrap="true"></Label>
+                    <Label row="1" col="1" text="{{ receivedRecords, 'x: ' + receivedRecords.first.x }}"></Label>
+                    <Label row="2" col="1" text="{{ receivedRecords, 'y: ' + receivedRecords.first.y }}"></Label>
+                    <Label row="3" col="1" text="{{ receivedRecords, 'z: ' + receivedRecords.first.z }}"></Label>
                 </GridLayout>
-                <GridLayout row="2" col="1" columns="*, 4*" rows="auto, auto, auto, auto">
+                <GridLayout row="2" col="1" columns="*, 4*" rows="auto, auto, auto, auto"
+                            visibility="{{ receivedRecords, receivedRecords.type == 'LOCATION' ? 'collapsed' : 'visible'}}">
                     <Label class="bold" row="0" col="0" rowSpan="4" text="Last:"></Label>
-                    <Label row="0" col="1" text="{{ receivedRecords, 'Timestamp:' + receivedRecords.last.timestamp }}" textWrap="true"></Label>
-                    <Label row="1" col="1" text="{{ receivedRecords, 'x:' + receivedRecords.last.x }}"></Label>
-                    <Label row="2" col="1" text="{{ receivedRecords, 'y:' + receivedRecords.last.y }}"></Label>
-                    <Label row="3" col="1" text="{{ receivedRecords, 'z:' + receivedRecords.last.z }}"></Label>
+                    <Label row="0" col="1" text="{{ receivedRecords, 'Timestamp: ' + receivedRecords.last.timestamp }}" textWrap="true"></Label>
+                    <Label row="1" col="1" text="{{ receivedRecords, 'x: ' + receivedRecords.last.x }}"></Label>
+                    <Label row="2" col="1" text="{{ receivedRecords, 'y: ' + receivedRecords.last.y }}"></Label>
+                    <Label row="3" col="1" text="{{ receivedRecords, 'z: ' + receivedRecords.last.z }}"></Label>
                 </GridLayout>
             </GridLayout>
         </StackLayout>
