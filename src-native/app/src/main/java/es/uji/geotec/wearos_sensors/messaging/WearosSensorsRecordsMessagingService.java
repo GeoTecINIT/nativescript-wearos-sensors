@@ -31,6 +31,8 @@ public class WearosSensorsRecordsMessagingService extends WearableListenerServic
             handleMessage(WearSensor.GYROSCOPE, messageEvent);
         } else if (path.contains("magnetometer")) {
             handleMessage(WearSensor.MAGNETOMETER, messageEvent);
+        } else if (path.contains("location")) {
+            handleMessage(WearSensor.LOCATION, messageEvent);
         }
     }
 
