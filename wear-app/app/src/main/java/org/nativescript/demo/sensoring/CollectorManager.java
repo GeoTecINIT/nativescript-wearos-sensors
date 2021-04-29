@@ -38,7 +38,7 @@ public class CollectorManager {
         RecordAccumulator accumulator = RecordAccumulatorProvider.getRecordAccumulatorProviderFor(
                 wearSensor,
                 callback,
-                50);
+                wearSensor == WearSensor.LOCATION ? 1 : 50);
 
         switch (wearSensor) {
             case ACCELEROMETER:
