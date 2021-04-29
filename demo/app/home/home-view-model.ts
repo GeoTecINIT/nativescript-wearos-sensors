@@ -8,11 +8,17 @@ import { getSensorCollector } from "nativescript-wearos-sensors/internal/sensors
 import { CollectorManager } from "nativescript-wearos-sensors/internal/collector-manager";
 import { SensorType } from "nativescript-wearos-sensors/internal/sensors/sensor-type";
 import { TriAxialSensorRecord } from "nativescript-wearos-sensors/internal/sensors/triaxial/record";
+import {LocationSensorRecord} from "nativescript-wearos-sensors/internal/sensors/location/record";
 
 export class HomeViewModel extends Observable {
 
     private collector: CollectorManager;
-    private sensors: SensorType[] = [SensorType.ACCELEROMETER, SensorType.GYROSCOPE, SensorType.MAGNETOMETER];
+    private sensors: SensorType[] = [
+        SensorType.ACCELEROMETER,
+        SensorType.GYROSCOPE,
+        SensorType.MAGNETOMETER,
+        SensorType.LOCATION
+    ];
     private selectedSensor: SensorType;
 
     private isDeviceReady: boolean;
@@ -25,7 +31,7 @@ export class HomeViewModel extends Observable {
 
     private started: boolean;
 
-    private receivedRecords: ReceivedRecords;
+    private receivedRecords: TriAxialReceivedRecords | LocationReceivedRecords;
 
     private listenerId: number;
 
@@ -70,13 +76,14 @@ export class HomeViewModel extends Observable {
     onStartTap() {
         this.listenerId = this.collector.listenSensorUpdates((records) => {
             console.log(JSON.stringify(records));
-            const triaxialRecords = records.records
-            this.receivedRecords = {
+            const sensorRecords = records.records
+            const recordsInfo = {
                 type: records.type,
-                batchSize: triaxialRecords.length,
-                first: triaxialRecords[0],
-                last: triaxialRecords[triaxialRecords.length - 1]
+                batchSize: sensorRecords.length,
             };
+            this.receivedRecords = records.type === SensorType.LOCATION
+                ? { ...recordsInfo, record: sensorRecords[0]}
+                : { ...recordsInfo, first: sensorRecords[0], last: sensorRecords[sensorRecords.length - 1]};
             this.notifyPropertyChange("receivedRecords", this.receivedRecords);
         });
         this.collector.startCollecting();
@@ -136,8 +143,15 @@ export class HomeViewModel extends Observable {
 interface ReceivedRecords {
     type: SensorType,
     batchSize: number,
+}
+
+interface TriAxialReceivedRecords extends ReceivedRecords {
     first: TriAxialSensorRecord,
     last: TriAxialSensorRecord,
+}
+
+interface LocationReceivedRecords extends ReceivedRecords {
+    record: LocationSensorRecord,
 }
 
 const fakeRecord = {

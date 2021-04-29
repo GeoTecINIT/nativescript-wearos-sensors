@@ -19,10 +19,10 @@ public abstract class AbstractRecordCallback<T extends Record> {
         this.sendingPath = sendingPath;
     }
 
-    public void onRecordsCollected(List<T> record) {
-        byte[] recordEncoded = encodeRecords(record);
-        this.messagingClient.sendNewRecord(requesterId, sendingPath, recordEncoded);
+    public void onRecordsCollected(List<T> records) {
+        byte[] recordsEncoded = encodeRecords(records);
+        this.messagingClient.sendNewRecord(requesterId, sendingPath, recordsEncoded);
     }
 
-    protected abstract byte[] encodeRecords(List<T> record);
+    protected abstract byte[] encodeRecords(List<T> records);
 }

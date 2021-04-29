@@ -1,5 +1,6 @@
 package org.nativescript.demo.records.accumulator;
 
+import org.nativescript.demo.records.LocationRecord;
 import org.nativescript.demo.records.TriAxialRecord;
 import org.nativescript.demo.records.callbacks.AbstractRecordCallback;
 import org.nativescript.demo.sensoring.WearSensor;
@@ -13,6 +14,8 @@ public class RecordAccumulatorProvider {
             case GYROSCOPE:
             case MAGNETOMETER:
                 return new RecordAccumulator<TriAxialRecord>(callback, limit);
+            case LOCATION:
+                return new RecordAccumulator<LocationRecord>(callback, limit);
             default:
                 return null;
         }

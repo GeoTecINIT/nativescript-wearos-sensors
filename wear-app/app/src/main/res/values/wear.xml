@@ -4,5 +4,6 @@
         <item>accelerometer-sensor</item>
         <item>gyroscope-sensor</item>
         <item>magnetometer-sensor</item>
+        <item>location-sensor</item>
     </string-array>
 </resources>

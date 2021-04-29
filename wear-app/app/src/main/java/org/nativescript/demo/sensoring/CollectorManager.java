@@ -3,6 +3,8 @@ package org.nativescript.demo.sensoring;
 import android.content.Context;
 import android.hardware.SensorEventListener;
 
+import com.google.android.gms.location.LocationCallback;
+
 import org.nativescript.demo.listeners.SensorListenerProvider;
 import org.nativescript.demo.records.accumulator.RecordAccumulator;
 import org.nativescript.demo.records.accumulator.RecordAccumulatorProvider;
@@ -17,6 +19,7 @@ public class CollectorManager {
     private WearSensorManager wearSensorManager;
 
     private HashMap<WearSensor, SensorEventListener> listeners;
+    private LocationCallback locationListener;
 
     public CollectorManager(Context context) {
         this.context = context;
@@ -35,23 +38,48 @@ public class CollectorManager {
         RecordAccumulator accumulator = RecordAccumulatorProvider.getRecordAccumulatorProviderFor(
                 wearSensor,
                 callback,
-                50);
+                wearSensor == WearSensor.LOCATION ? 1 : 50);
 
-        SensorEventListener listener = SensorListenerProvider.getListenerAndNotifierFor(wearSensor, accumulator);
-        if (listener == null)
-            return false;
+        switch (wearSensor) {
+            case ACCELEROMETER:
+            case GYROSCOPE:
+            case MAGNETOMETER:
+                SensorEventListener listener = SensorListenerProvider.getListenerFor(wearSensor, accumulator);
+                if (listener == null)
+                    return false;
 
-        listeners.put(wearSensor, listener);
+                listeners.put(wearSensor, listener);
+                return wearSensorManager.startCollectingFrom(wearSensor, listener);
+            case LOCATION:
+                locationListener = SensorListenerProvider.getLocationListener(accumulator);
+                if (locationListener == null)
+                    return false;
 
-        return wearSensorManager.startCollectingFrom(wearSensor, listener);
+                return wearSensorManager.startCollectingLocations(locationListener);
+            default:
+                return false;
+        }
     }
 
     public void stopCollectingFrom(WearSensor wearSensor) {
-        SensorEventListener listener = listeners.get(wearSensor);
-        if (listener == null)
-            return;
+        switch (wearSensor) {
+            case ACCELEROMETER:
+            case GYROSCOPE:
+            case MAGNETOMETER:
+                SensorEventListener listener = listeners.get(wearSensor);
+                if (listener == null)
+                    return;
 
-        listeners.remove(wearSensor);
-        wearSensorManager.stopCollectingFrom(wearSensor, listener);
+                listeners.remove(wearSensor);
+                wearSensorManager.stopCollectingFrom(wearSensor, listener);
+                break;
+            case LOCATION:
+                if (locationListener == null)
+                    return;
+
+                wearSensorManager.stopCollectingLocations(locationListener);
+                locationListener = null;
+                break;
+        }
     }
 }

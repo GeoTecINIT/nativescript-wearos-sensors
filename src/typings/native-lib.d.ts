@@ -25,6 +25,7 @@ declare module es {
 					public static ACCELEROMETER: es.uji.geotec.wearos_sensors.WearSensor;
 					public static GYROSCOPE: es.uji.geotec.wearos_sensors.WearSensor;
 					public static MAGNETOMETER: es.uji.geotec.wearos_sensors.WearSensor;
+					public static LOCATION: es.uji.geotec.wearos_sensors.WearSensor;
 					public static values(): native.Array<es.uji.geotec.wearos_sensors.WearSensor>;
 					public static valueOf(param0: string): es.uji.geotec.wearos_sensors.WearSensor;
 				}
