@@ -8,7 +8,7 @@ import { getSensorCollector } from "nativescript-wearos-sensors/internal/sensors
 import { CollectorManager } from "nativescript-wearos-sensors/internal/collector-manager";
 import { SensorType } from "nativescript-wearos-sensors/internal/sensors/sensor-type";
 import { TriAxialSensorRecord } from "nativescript-wearos-sensors/internal/sensors/triaxial/record";
-import {LocationSensorRecord} from "nativescript-wearos-sensors/internal/sensors/location/record";
+import { LocationSensorRecord } from "nativescript-wearos-sensors/internal/sensors/location/record";
 
 export class HomeViewModel extends Observable {
 
@@ -17,7 +17,8 @@ export class HomeViewModel extends Observable {
         SensorType.ACCELEROMETER,
         SensorType.GYROSCOPE,
         SensorType.MAGNETOMETER,
-        SensorType.LOCATION
+        SensorType.LOCATION,
+        SensorType.HEART_RATE,
     ];
     private selectedSensor: SensorType;
 

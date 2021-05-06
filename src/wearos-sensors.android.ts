@@ -5,6 +5,7 @@ import { getAccelerometerRecordService } from "./internal/sensors/triaxial/accel
 import { getGyroscopeRecordService } from "./internal/sensors/triaxial/gyroscope/android/record-messaging-service.android";
 import { getMagnetometerRecordService } from "./internal/sensors/triaxial/magnetometer/android/record-messaging-service.android";
 import { getLocationRecordService } from "./internal/sensors/location/android/record-messaging-service.android";
+import { getHeartRateRecordService } from "./internal/sensors/heart-rate/android/record-messaging-service.android";
 
 import WearableListenerServiceDelegate = es.uji.geotec.wearos_sensors.messaging.WearableListenerServiceDelegate;
 import WearosSensorsResultsMessagingService = es.uji.geotec.wearos_sensors.messaging.WearosSensorsResultsMessagingService;
@@ -17,6 +18,7 @@ export class WearosSensors extends Common {
         this.wireUpGyroscopeComponents();
         this.wireUpMagnetometerComponents();
         this.wireUpLocationComponents();
+        this.wireUpHeartRateComponents();
         await super.init();
     }
 
@@ -84,6 +86,23 @@ export class WearosSensors extends Common {
             new WearableListenerServiceDelegate({
                 onMessageReceived: (messageEvent) =>
                     getLocationRecordService().onMessageReceived(messageEvent)
+            })
+        );
+    }
+
+    public wireUpHeartRateComponents() {
+        WearosSensorsResultsMessagingService.setResultServiceDelegate(
+            WearSensor.HEART_RATE,
+            new WearableListenerServiceDelegate({
+                onMessageReceived: (messageEvent) =>
+                    getResultMessagingService().onMessageReceived(messageEvent)
+            })
+        );
+        WearosSensorsRecordsMessagingService.setRecordServiceDelegate(
+            WearSensor.HEART_RATE,
+            new WearableListenerServiceDelegate({
+                onMessageReceived: (messageEvent) =>
+                    getHeartRateRecordService().onMessageReceived(messageEvent)
             })
         );
     }
