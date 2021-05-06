@@ -18,7 +18,7 @@ public class AccelerometerMessagingHandler extends AbstractMessagingHandler {
 
     @Override
     protected ArrayList<String> getRequiredPermissions() {
-        return new ArrayList<>(Arrays.asList(Manifest.permission.BODY_SENSORS));
+        return new ArrayList<>();
     }
 
     @Override
