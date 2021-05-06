@@ -19,6 +19,8 @@ public class RecordCallbackProvider {
             case GYROSCOPE:
             case MAGNETOMETER:
                 return new TriAxialRecordCallback(context, requesterId, sendingPath);
+            case HEART_RATE:
+                return new HeartRateRecordCallback(context, requesterId, sendingPath);
             case LOCATION:
                 return new LocationRecordCallback(context, requesterId, sendingPath);
             default:

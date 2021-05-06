@@ -1,5 +1,6 @@
 package org.nativescript.demo.records.accumulator;
 
+import org.nativescript.demo.records.HeartRateRecord;
 import org.nativescript.demo.records.LocationRecord;
 import org.nativescript.demo.records.TriAxialRecord;
 import org.nativescript.demo.records.callbacks.AbstractRecordCallback;
@@ -14,6 +15,8 @@ public class RecordAccumulatorProvider {
             case GYROSCOPE:
             case MAGNETOMETER:
                 return new RecordAccumulator<TriAxialRecord>(callback, limit);
+            case HEART_RATE:
+                return new RecordAccumulator<HeartRateRecord>(callback, limit);
             case LOCATION:
                 return new RecordAccumulator<LocationRecord>(callback, limit);
             default:
