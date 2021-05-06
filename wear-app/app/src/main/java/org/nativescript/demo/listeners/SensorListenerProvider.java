@@ -20,6 +20,8 @@ public class SensorListenerProvider {
             case GYROSCOPE:
             case MAGNETOMETER:
                 return new TriAxialSensorListener(wearSensor, recordAccumulator);
+            case HEART_RATE:
+                return new HeartRateSensorListener(recordAccumulator);
             default:
                 return null;
         }
