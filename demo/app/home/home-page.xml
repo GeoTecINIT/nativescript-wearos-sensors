@@ -33,7 +33,7 @@
 
             <Label class="v-centered h-centered" row="0" col="1" text="{{ readyResponse }}"></Label>
             <ActivityIndicator row="0" col="1" visibility="{{ waitingForIsReadyResponse ? 'visible' : 'collapsed' }}" busy="true"/>
-            <Label class="v-centered h-centered" row="1" col="1" text="{{ prepareResponse }}"></Label>
+            <Label class="v-centered h-centered" row="1" col="1" textWrap="true" text="{{ prepareResponse }}"></Label>
             <ActivityIndicator row="1" col="1" visibility="{{ waitingForPrepareResponse ? 'visible' : 'collapsed' }}" busy="true"/>
         </GridLayout>
 
@@ -43,7 +43,7 @@
                                width="100dp"
                                height="100dp"
                                busy="true"/>
-            <GridLayout class="record-grid" columns="*, *" rows="auto, auto, auto" visibility="{{ receivedRecords ? 'visible' : 'collapsed'}}">
+            <GridLayout class="bordered-layout" columns="*, *" rows="auto, auto, auto" visibility="{{ receivedRecords ? 'visible' : 'collapsed'}}">
                 <Label class="h-centered bold" row="0" col="0" colSpan="2" text="Received records"></Label>
                 <Label class="h-centered" row="1" col="0" text="{{ receivedRecords, 'Type: ' + receivedRecords.type }}"></Label>
                 <Label class="h-centered" row="1" col="1" text="{{ receivedRecords, 'Batch size: ' + receivedRecords.batchSize }}"></Label>
@@ -76,6 +76,14 @@
                     <Label row="3" col="1" text="{{ receivedRecords, 'z: ' + receivedRecords.last.z }}"></Label>
                 </GridLayout>
             </GridLayout>
+        </StackLayout>
+
+        <StackLayout class="bordered-layout" visibility="{{ prepareErrors ? 'visible' : 'collapsed' }}">
+            <Label class="h-centered bold" text="Prepare errors"></Label>
+            <StackLayout orientation="horizontal">
+                <Label class=" bold" text="Message: "></Label>
+                <Label textWrap="true" text="{{ prepareErrors }}"></Label>
+            </StackLayout>
         </StackLayout>
     </StackLayout>
 </Page>

@@ -5,11 +5,11 @@ import {
 } from "@nativescript/core";
 
 import { getSensorCollector } from "nativescript-wearos-sensors/internal/sensors";
-import { CollectorManager } from "nativescript-wearos-sensors/internal/collector-manager";
+import { CollectorManager, PrepareError } from "nativescript-wearos-sensors/internal/collector-manager";
 import { SensorType } from "nativescript-wearos-sensors/internal/sensors/sensor-type";
 import { TriAxialSensorRecord } from "nativescript-wearos-sensors/internal/sensors/triaxial/record";
 import { LocationSensorRecord } from "nativescript-wearos-sensors/internal/sensors/location/record";
-import {HeartRateSensorRecord} from "nativescript-wearos-sensors/internal/sensors/heart-rate/record";
+import { HeartRateSensorRecord } from "nativescript-wearos-sensors/internal/sensors/heart-rate/record";
 
 export class HomeViewModel extends Observable {
 
@@ -29,6 +29,7 @@ export class HomeViewModel extends Observable {
 
     private needToPrepare: boolean;
     private prepareResponse: string;
+    private prepareErrors;
     private waitingForPrepareResponse: boolean;
 
     private started: boolean;
@@ -65,12 +66,13 @@ export class HomeViewModel extends Observable {
 
     onPrepareTap() {
         this.updateWaitingIndicator(true, "prepare");
+        this.updateNeedToPrepareStatus(true);
         this.collector.prepare().then((prepareErrors) => {
             console.log(`${this.selectedSensor} prepare response: ${JSON.stringify(prepareErrors)}`);
             const needToPrepare = prepareErrors.length > 0;
             const prepareMessage =`${this.selectedSensor} has ${!needToPrepare ? "been prepared": "not been prepared"}`;
             this.updateWaitingIndicator(false, "prepare");
-            this.updateNeedToPrepareStatus(needToPrepare, prepareMessage);
+            this.updateNeedToPrepareStatus(needToPrepare, prepareMessage, prepareErrors);
             this.updateIsReadyStatus(!needToPrepare, `${this.selectedSensor} is ${!needToPrepare ? "ready" : "not ready"}`);
         });
     }
@@ -110,12 +112,15 @@ export class HomeViewModel extends Observable {
         this.notifyPropertyChange("isDeviceReady", this.isDeviceReady);
     }
 
-    private updateNeedToPrepareStatus(needToPrepare: boolean, message?: string) {
+    private updateNeedToPrepareStatus(needToPrepare: boolean, message?: string, prepareErrors?: PrepareError[]) {
         this.needToPrepare = needToPrepare;
         this.prepareResponse = message;
+        this.prepareErrors = prepareErrors && prepareErrors.length > 0 ? prepareErrors.map((error) => error.message).join("\n") : undefined;
 
-        this.notifyPropertyChange("prepareResponse", this.prepareResponse);
         this.notifyPropertyChange("needToPrepare", this.needToPrepare);
+        this.notifyPropertyChange("prepareResponse", this.prepareResponse);
+        this.notifyPropertyChange("prepareErrors", this.prepareErrors);
+
     }
 
     private updateWaitingIndicator(waiting: boolean, indicator: "isReady" | "prepare") {
@@ -160,22 +165,3 @@ interface HearthRateReceivedRecords extends ReceivedRecords {
     record: HeartRateSensorRecord,
 }
 
-// For UI testing purposes
-const fakeTriaxialRecord: TriAxialReceivedRecords = {
-    type: SensorType.ACCELEROMETER,
-    batchSize: 50,
-    first: {
-        timestamp: new Date(), x: 0, y: 9.81000041966167, z: 0, deviceName:"fake"
-    },
-    last: {
-        timestamp: new Date(), x: 0, y: 9.81000041966167, z: 0, deviceName: "fake"
-    }
-}
-
-const fakeHeartRateRecord: HearthRateReceivedRecords = {
-    type: SensorType.HEART_RATE,
-    batchSize: 1,
-    record: {
-        timestamp: new Date(), value: 65, deviceName: "fake"
-    },
-}
