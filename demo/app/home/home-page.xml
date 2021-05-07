@@ -54,8 +54,13 @@
                     <Label text="{{ receivedRecords, 'Longitude: ' + receivedRecords.record.longitude }}"></Label>
                     <Label text="{{ receivedRecords, 'Altitude: ' + receivedRecords.record.altitude }}"></Label>
                 </StackLayout>
+                <StackLayout row="2" col="0" colSpan="2"
+                             visibility="{{ receivedRecords, receivedRecords.type === 'HEART_RATE' ? 'visible' : 'collapsed'}}">
+                    <Label text="{{ receivedRecords, 'Timestamp: ' + receivedRecords.record.timestamp }}" textWrap="true"></Label>
+                    <Label text="{{ receivedRecords, 'HR value: ' + receivedRecords.record.value }}"></Label>
+                </StackLayout>
                 <GridLayout row="2" col="0" columns="*, 4*" rows="auto, auto, auto, auto"
-                            visibility="{{ receivedRecords, receivedRecords.type === 'LOCATION' ? 'collapsed' : 'visible'}}">
+                            visibility="{{ receivedRecords.first ? 'visible' : 'collapsed'}}">
                     <Label class="bold" row="0" col="0" rowSpan="4" text="First:"></Label>
                     <Label row="0" col="1" text="{{ receivedRecords, 'Timestamp: ' + receivedRecords.first.timestamp }}" textWrap="true"></Label>
                     <Label row="1" col="1" text="{{ receivedRecords, 'x: ' + receivedRecords.first.x }}"></Label>
@@ -63,7 +68,7 @@
                     <Label row="3" col="1" text="{{ receivedRecords, 'z: ' + receivedRecords.first.z }}"></Label>
                 </GridLayout>
                 <GridLayout row="2" col="1" columns="*, 4*" rows="auto, auto, auto, auto"
-                            visibility="{{ receivedRecords, receivedRecords.type == 'LOCATION' ? 'collapsed' : 'visible'}}">
+                            visibility="{{ receivedRecords.first ? 'visible' : 'collapsed'}}">
                     <Label class="bold" row="0" col="0" rowSpan="4" text="Last:"></Label>
                     <Label row="0" col="1" text="{{ receivedRecords, 'Timestamp: ' + receivedRecords.last.timestamp }}" textWrap="true"></Label>
                     <Label row="1" col="1" text="{{ receivedRecords, 'x: ' + receivedRecords.last.x }}"></Label>

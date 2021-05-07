@@ -9,6 +9,7 @@ import { CollectorManager } from "nativescript-wearos-sensors/internal/collector
 import { SensorType } from "nativescript-wearos-sensors/internal/sensors/sensor-type";
 import { TriAxialSensorRecord } from "nativescript-wearos-sensors/internal/sensors/triaxial/record";
 import { LocationSensorRecord } from "nativescript-wearos-sensors/internal/sensors/location/record";
+import {HeartRateSensorRecord} from "nativescript-wearos-sensors/internal/sensors/heart-rate/record";
 
 export class HomeViewModel extends Observable {
 
@@ -32,7 +33,7 @@ export class HomeViewModel extends Observable {
 
     private started: boolean;
 
-    private receivedRecords: TriAxialReceivedRecords | LocationReceivedRecords;
+    private receivedRecords: TriAxialReceivedRecords | LocationReceivedRecords | HearthRateReceivedRecords;
 
     private listenerId: number;
 
@@ -82,7 +83,7 @@ export class HomeViewModel extends Observable {
                 type: records.type,
                 batchSize: sensorRecords.length,
             };
-            this.receivedRecords = records.type === SensorType.LOCATION
+            this.receivedRecords = records.type === SensorType.LOCATION || records.type === SensorType.HEART_RATE
                 ? { ...recordsInfo, record: sensorRecords[0]}
                 : { ...recordsInfo, first: sensorRecords[0], last: sensorRecords[sensorRecords.length - 1]};
             this.notifyPropertyChange("receivedRecords", this.receivedRecords);
@@ -155,13 +156,26 @@ interface LocationReceivedRecords extends ReceivedRecords {
     record: LocationSensorRecord,
 }
 
-const fakeRecord = {
+interface HearthRateReceivedRecords extends ReceivedRecords {
+    record: HeartRateSensorRecord,
+}
+
+// For UI testing purposes
+const fakeTriaxialRecord: TriAxialReceivedRecords = {
     type: SensorType.ACCELEROMETER,
     batchSize: 50,
     first: {
-        timestamp: new Date(), x: 0, y: 9.81000041966167, z: 0
+        timestamp: new Date(), x: 0, y: 9.81000041966167, z: 0, deviceName:"fake"
     },
     last: {
-        timestamp: new Date(), x: 0, y: 9.81000041966167, z: 0
+        timestamp: new Date(), x: 0, y: 9.81000041966167, z: 0, deviceName: "fake"
     }
+}
+
+const fakeHeartRateRecord: HearthRateReceivedRecords = {
+    type: SensorType.HEART_RATE,
+    batchSize: 1,
+    record: {
+        timestamp: new Date(), value: 65, deviceName: "fake"
+    },
 }
