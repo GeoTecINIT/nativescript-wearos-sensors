@@ -3,4 +3,5 @@ export enum SensorType {
     GYROSCOPE = "GYROSCOPE",
     MAGNETOMETER = "MAGNETOMETER",
     LOCATION = "LOCATION",
+    HEART_RATE = "HEART_RATE",
 }

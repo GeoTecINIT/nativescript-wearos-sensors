@@ -1,9 +1,9 @@
 /// <reference path="android-declarations.d.ts"/>
 
-declare module es {
-	export module uji {
-		export module geotec {
-			export module wearos_sensors {
+declare namespace es {
+	export namespace uji {
+		export namespace geotec {
+			export namespace wearos_sensors {
 				export class BuildConfig {
 					public static class: java.lang.Class<es.uji.geotec.wearos_sensors.BuildConfig>;
 					public static DEBUG: boolean;
@@ -16,16 +16,17 @@ declare module es {
 	}
 }
 
-declare module es {
-	export module uji {
-		export module geotec {
-			export module wearos_sensors {
+declare namespace es {
+	export namespace uji {
+		export namespace geotec {
+			export namespace wearos_sensors {
 				export class WearSensor {
 					public static class: java.lang.Class<es.uji.geotec.wearos_sensors.WearSensor>;
 					public static ACCELEROMETER: es.uji.geotec.wearos_sensors.WearSensor;
 					public static GYROSCOPE: es.uji.geotec.wearos_sensors.WearSensor;
 					public static MAGNETOMETER: es.uji.geotec.wearos_sensors.WearSensor;
 					public static LOCATION: es.uji.geotec.wearos_sensors.WearSensor;
+					public static HEART_RATE: es.uji.geotec.wearos_sensors.WearSensor;
 					public static values(): native.Array<es.uji.geotec.wearos_sensors.WearSensor>;
 					public static valueOf(param0: string): es.uji.geotec.wearos_sensors.WearSensor;
 				}
@@ -34,11 +35,11 @@ declare module es {
 	}
 }
 
-declare module es {
-	export module uji {
-		export module geotec {
-			export module wearos_sensors {
-				export module messaging {
+declare namespace es {
+	export namespace uji {
+		export namespace geotec {
+			export namespace wearos_sensors {
+				export namespace messaging {
 					export class MessageReceiverActivationCache {
 						public static class: java.lang.Class<es.uji.geotec.wearos_sensors.messaging.MessageReceiverActivationCache>;
 						public constructor(param0: com.google.android.gms.wearable.MessageEvent);
@@ -50,11 +51,11 @@ declare module es {
 	}
 }
 
-declare module es {
-	export module uji {
-		export module geotec {
-			export module wearos_sensors {
-				export module messaging {
+declare namespace es {
+	export namespace uji {
+		export namespace geotec {
+			export namespace wearos_sensors {
+				export namespace messaging {
 					export class WearableListenerServiceDelegate {
 						public static class: java.lang.Class<es.uji.geotec.wearos_sensors.messaging.WearableListenerServiceDelegate>;
 						/**
@@ -72,11 +73,11 @@ declare module es {
 	}
 }
 
-declare module es {
-	export module uji {
-		export module geotec {
-			export module wearos_sensors {
-				export module messaging {
+declare namespace es {
+	export namespace uji {
+		export namespace geotec {
+			export namespace wearos_sensors {
+				export namespace messaging {
 					export class WearosSensorsRecordsMessagingService {
 						public static class: java.lang.Class<es.uji.geotec.wearos_sensors.messaging.WearosSensorsRecordsMessagingService>;
 						public constructor();
@@ -90,11 +91,11 @@ declare module es {
 	}
 }
 
-declare module es {
-	export module uji {
-		export module geotec {
-			export module wearos_sensors {
-				export module messaging {
+declare namespace es {
+	export namespace uji {
+		export namespace geotec {
+			export namespace wearos_sensors {
+				export namespace messaging {
 					export class WearosSensorsResultsMessagingService {
 						public static class: java.lang.Class<es.uji.geotec.wearos_sensors.messaging.WearosSensorsResultsMessagingService>;
 						public constructor();

@@ -5,6 +5,7 @@ import com.google.android.gms.wearable.WearableListenerService;
 
 import org.nativescript.demo.messaging.handlers.AccelerometerMessagingHandler;
 import org.nativescript.demo.messaging.handlers.GyroscopeMessagingHandler;
+import org.nativescript.demo.messaging.handlers.HeartRateMessagingHandler;
 import org.nativescript.demo.messaging.handlers.LocationMessagingHandler;
 import org.nativescript.demo.messaging.handlers.MagnetometerMessagingHandler;
 
@@ -21,6 +22,8 @@ public class SensorMessagingListenerService extends WearableListenerService {
             new GyroscopeMessagingHandler(this).handleMessage(event);
         } else if (path.contains("magnetometer")) {
             new MagnetometerMessagingHandler(this).handleMessage(event);
+        } else if(path.contains("heart-rate")) {
+            new HeartRateMessagingHandler(this).handleMessage(event);
         } else if (path.contains("location")) {
             new LocationMessagingHandler(this).handleMessage(event);
         }

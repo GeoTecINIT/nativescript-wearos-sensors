@@ -10,30 +10,30 @@ import org.nativescript.demo.sensoring.WearSensor;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class AccelerometerMessagingHandler extends AbstractMessagingHandler {
+public class HeartRateMessagingHandler extends AbstractMessagingHandler {
 
-    public AccelerometerMessagingHandler(Context context) {
+    public HeartRateMessagingHandler(Context context) {
         super(context);
     }
 
     @Override
     protected ArrayList<String> getRequiredPermissions() {
-        return new ArrayList<>();
+        return new ArrayList<>(Arrays.asList(Manifest.permission.BODY_SENSORS));
     }
 
     @Override
     protected MessagingProtocol getProtocol() {
         return new MessagingProtocol(
-                "/accelerometer/start",
-                "/accelerometer/stop",
-                "/accelerometer/new-record",
-                new ResultMessagingProtocol("/accelerometer/ready"),
-                new ResultMessagingProtocol("/accelerometer/prepare")
+                "/heart-rate/start",
+                "/heart-rate/stop",
+                "/heart-rate/new-record",
+                new ResultMessagingProtocol("/heart-rate/ready"),
+                new ResultMessagingProtocol("/heart-rate/prepare")
         );
     }
 
     @Override
     protected WearSensor getWearSensorType() {
-        return WearSensor.ACCELEROMETER;
+        return WearSensor.HEART_RATE;
     }
 }

@@ -4,5 +4,6 @@ public enum WearSensor {
     ACCELEROMETER,
     GYROSCOPE,
     MAGNETOMETER,
-    LOCATION
+    LOCATION,
+    HEART_RATE
 }

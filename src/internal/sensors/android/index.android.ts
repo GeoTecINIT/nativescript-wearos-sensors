@@ -23,6 +23,10 @@ import {
     getLocationDefaultWearableConfig,
     getLocationRecordService
 } from "../location/android/index.android";
+import {
+    getHeartRateDefaultWearableConfig,
+    getHeartRateRecordService
+} from "../heart-rate/android/index.android";
 
 export function getAndroidSensorCollector(
     sensorType: SensorType,
@@ -60,6 +64,8 @@ function getRecordsService(sensorType: SensorType): AbstractRecordMessagingServi
             return getMagnetometerRecordService();
         case SensorType.LOCATION:
             return getLocationRecordService();
+        case SensorType.HEART_RATE:
+            return getHeartRateRecordService();
         default:
             return null;
     }
@@ -75,6 +81,8 @@ function getDefaultWearableConfig(sensorType: SensorType): WearableConfig {
             return getMagnetometerDefaultWearableConfig();
         case SensorType.LOCATION:
             return getLocationDefaultWearableConfig();
+        case SensorType.HEART_RATE:
+            return getHeartRateDefaultWearableConfig();
         default:
             return null;
     }

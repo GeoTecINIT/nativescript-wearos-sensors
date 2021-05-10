@@ -5,10 +5,11 @@ import {
 } from "@nativescript/core";
 
 import { getSensorCollector } from "nativescript-wearos-sensors/internal/sensors";
-import { CollectorManager } from "nativescript-wearos-sensors/internal/collector-manager";
+import { CollectorManager, PrepareError } from "nativescript-wearos-sensors/internal/collector-manager";
 import { SensorType } from "nativescript-wearos-sensors/internal/sensors/sensor-type";
 import { TriAxialSensorRecord } from "nativescript-wearos-sensors/internal/sensors/triaxial/record";
-import {LocationSensorRecord} from "nativescript-wearos-sensors/internal/sensors/location/record";
+import { LocationSensorRecord } from "nativescript-wearos-sensors/internal/sensors/location/record";
+import { HeartRateSensorRecord } from "nativescript-wearos-sensors/internal/sensors/heart-rate/record";
 
 export class HomeViewModel extends Observable {
 
@@ -17,7 +18,8 @@ export class HomeViewModel extends Observable {
         SensorType.ACCELEROMETER,
         SensorType.GYROSCOPE,
         SensorType.MAGNETOMETER,
-        SensorType.LOCATION
+        SensorType.LOCATION,
+        SensorType.HEART_RATE,
     ];
     private selectedSensor: SensorType;
 
@@ -27,11 +29,12 @@ export class HomeViewModel extends Observable {
 
     private needToPrepare: boolean;
     private prepareResponse: string;
+    private prepareErrors;
     private waitingForPrepareResponse: boolean;
 
     private started: boolean;
 
-    private receivedRecords: TriAxialReceivedRecords | LocationReceivedRecords;
+    private receivedRecords: TriAxialReceivedRecords | LocationReceivedRecords | HearthRateReceivedRecords;
 
     private listenerId: number;
 
@@ -63,12 +66,13 @@ export class HomeViewModel extends Observable {
 
     onPrepareTap() {
         this.updateWaitingIndicator(true, "prepare");
+        this.updateNeedToPrepareStatus(true);
         this.collector.prepare().then((prepareErrors) => {
             console.log(`${this.selectedSensor} prepare response: ${JSON.stringify(prepareErrors)}`);
             const needToPrepare = prepareErrors.length > 0;
             const prepareMessage =`${this.selectedSensor} has ${!needToPrepare ? "been prepared": "not been prepared"}`;
             this.updateWaitingIndicator(false, "prepare");
-            this.updateNeedToPrepareStatus(needToPrepare, prepareMessage);
+            this.updateNeedToPrepareStatus(needToPrepare, prepareMessage, prepareErrors);
             this.updateIsReadyStatus(!needToPrepare, `${this.selectedSensor} is ${!needToPrepare ? "ready" : "not ready"}`);
         });
     }
@@ -81,7 +85,7 @@ export class HomeViewModel extends Observable {
                 type: records.type,
                 batchSize: sensorRecords.length,
             };
-            this.receivedRecords = records.type === SensorType.LOCATION
+            this.receivedRecords = records.type === SensorType.LOCATION || records.type === SensorType.HEART_RATE
                 ? { ...recordsInfo, record: sensorRecords[0]}
                 : { ...recordsInfo, first: sensorRecords[0], last: sensorRecords[sensorRecords.length - 1]};
             this.notifyPropertyChange("receivedRecords", this.receivedRecords);
@@ -108,12 +112,15 @@ export class HomeViewModel extends Observable {
         this.notifyPropertyChange("isDeviceReady", this.isDeviceReady);
     }
 
-    private updateNeedToPrepareStatus(needToPrepare: boolean, message?: string) {
+    private updateNeedToPrepareStatus(needToPrepare: boolean, message?: string, prepareErrors?: PrepareError[]) {
         this.needToPrepare = needToPrepare;
         this.prepareResponse = message;
+        this.prepareErrors = prepareErrors && prepareErrors.length > 0 ? prepareErrors.map((error) => error.message).join("\n") : undefined;
 
-        this.notifyPropertyChange("prepareResponse", this.prepareResponse);
         this.notifyPropertyChange("needToPrepare", this.needToPrepare);
+        this.notifyPropertyChange("prepareResponse", this.prepareResponse);
+        this.notifyPropertyChange("prepareErrors", this.prepareErrors);
+
     }
 
     private updateWaitingIndicator(waiting: boolean, indicator: "isReady" | "prepare") {
@@ -154,13 +161,7 @@ interface LocationReceivedRecords extends ReceivedRecords {
     record: LocationSensorRecord,
 }
 
-const fakeRecord = {
-    type: SensorType.ACCELEROMETER,
-    batchSize: 50,
-    first: {
-        timestamp: new Date(), x: 0, y: 9.81000041966167, z: 0
-    },
-    last: {
-        timestamp: new Date(), x: 0, y: 9.81000041966167, z: 0
-    }
+interface HearthRateReceivedRecords extends ReceivedRecords {
+    record: HeartRateSensorRecord,
 }
+

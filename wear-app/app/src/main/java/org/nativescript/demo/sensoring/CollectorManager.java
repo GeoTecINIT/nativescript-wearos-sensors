@@ -38,12 +38,13 @@ public class CollectorManager {
         RecordAccumulator accumulator = RecordAccumulatorProvider.getRecordAccumulatorProviderFor(
                 wearSensor,
                 callback,
-                wearSensor == WearSensor.LOCATION ? 1 : 50);
+                wearSensor == WearSensor.LOCATION || wearSensor == WearSensor.HEART_RATE ? 1 : 50);
 
         switch (wearSensor) {
             case ACCELEROMETER:
             case GYROSCOPE:
             case MAGNETOMETER:
+            case HEART_RATE:
                 SensorEventListener listener = SensorListenerProvider.getListenerFor(wearSensor, accumulator);
                 if (listener == null)
                     return false;
@@ -66,6 +67,7 @@ public class CollectorManager {
             case ACCELEROMETER:
             case GYROSCOPE:
             case MAGNETOMETER:
+            case HEART_RATE:
                 SensorEventListener listener = listeners.get(wearSensor);
                 if (listener == null)
                     return;
