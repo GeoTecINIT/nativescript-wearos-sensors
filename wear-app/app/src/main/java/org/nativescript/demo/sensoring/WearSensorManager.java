@@ -21,7 +21,19 @@ public class WearSensorManager {
     }
 
     public boolean isSensorAvailable(WearSensor sensor) {
-        return context.getPackageManager().hasSystemFeature(sensor.getSensorFeature());
+        boolean hasFeature = context.getPackageManager().hasSystemFeature(sensor.getSensorFeature());
+
+        // Heart rate appears to be not available as system feature in the emulator
+        // but it is available from the sensor manager. This is probably due to the
+        // recent inclusion of this sensor in the emulator.
+        // TODO: check in the future if the heart rate is available as system feature to undo this patch
+        int sensorType = sensor.getSensorType();
+        if (sensorType == -1)
+            return hasFeature;
+
+        boolean hasSensor = sensorManager.getDefaultSensor(sensor.getSensorType()) != null;
+
+        return hasFeature || hasSensor;
     }
 
     public boolean startCollectingFrom(WearSensor wearSensor, SensorEventListener listener) {
