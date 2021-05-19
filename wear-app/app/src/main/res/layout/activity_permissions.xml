@@ -1,66 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<android.support.wearable.view.BoxInsetLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/description"
-        android:layout_width="169dp"
-        android:layout_height="39dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:gravity="center_horizontal"
-        android:text="Vamos a solicitarte permisos"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_box="top|bottom">
 
-    <ProgressBar
-        android:id="@+id/progressBar"
-        style="?android:attr/progressBarStyle"
-        android:layout_width="90dp"
-        android:layout_height="88dp"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="20dp"
-        android:indeterminate="true"
-        android:visibility="visible"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/description" />
+        <TextView
+            android:id="@+id/description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:gravity="center_horizontal"
+            android:text="Vamos a solicitarte permisos"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textSize="16sp" />
 
-    <ImageView
-        android:id="@+id/checkIcon"
-        android:layout_width="90dp"
-        android:layout_height="90dp"
-        android:layout_marginStart="47dp"
-        android:layout_marginTop="18dp"
-        android:layout_marginEnd="49dp"
-        android:layout_marginBottom="32dp"
-        android:src="@drawable/ic_cc_checkmark"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/description" />
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="8dp">
 
-    <ImageView
-        android:id="@+id/failIcon"
-        android:layout_width="90dp"
-        android:layout_height="90dp"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="18dp"
-        android:layout_marginEnd="49dp"
-        android:layout_marginBottom="32dp"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/description"
-        android:src="@drawable/ic_cc_clear" />
+            <ProgressBar
+                android:id="@+id/progressBar"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="90dp"
+                android:layout_height="88dp"
+                android:layout_gravity="center"
+                android:layout_margin="8dp"
+                android:indeterminate="true"
+                android:visibility="visible"
+                app:layout_constraintTop_toBottomOf="@+id/description" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <ImageView
+                android:id="@+id/checkIcon"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:layout_gravity="center"
+                android:layout_margin="8dp"
+                android:src="@drawable/ic_cc_checkmark"
+                android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/failIcon"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:layout_gravity="center"
+                android:layout_margin="8dp"
+                android:src="@drawable/ic_cc_clear"
+                android:visibility="gone" />
+        </FrameLayout>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</android.support.wearable.view.BoxInsetLayout>
