@@ -3,6 +3,16 @@
 
 /* Place any CSS rules you want to apply on both iOS and Android here.
 This is where the vast majority of your CSS code goes. */
+Label.title-big {
+    horiz-align: center;
+    font-size: 28dp;
+}
+
+Label.title-med {
+    horiz-align: center;
+    font-size: 16dp;
+}
+
 Label.h-centered {
     text-align: center;
 }
@@ -19,5 +29,41 @@ Label.bold {
     border-width: 5px;
     margin: 5dp;
     padding: 5dp;
+}
+
+.mdi-ro {
+    font-family: "Material Icons Round", "MaterialIconsRound-Regular";
+    font-style: normal;
+    font-weight: 400;
+    background-color: #0B388A;
+    border-radius: 5;
+    text-align: center;
+}
+
+.mdi-ro.white {
+    color: white;
+}
+
+.mdi-ro.available {
+    background-color: lightgreen;
+}
+
+.mdi-ro.unavailable {
+    background-color: indianred;
+}
+
+.mdi-ro.mdi-30 {
+    font-size: 30;
+    margin-right: 5;
+}
+
+.mdi-ro.mdi-50 {
+    font-size: 70;
+}
+
+.node-card {
+    border-radius: 4;
+    android-elevation: 2;
+    height: 120;
 }
 

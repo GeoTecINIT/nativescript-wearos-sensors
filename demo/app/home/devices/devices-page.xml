@@ -1,0 +1,39 @@
+<Page
+        navigatingTo="onNavigatingTo"
+        xmlns="http://schemas.nativescript.org/tns.xsd">
+
+    <ActionBar>
+        <Label text="WearOS Sensors"></Label>
+    </ActionBar>
+
+    <StackLayout>
+        <Button text="Scan connected nodes" class="bg-primary -rounded-md" tap="{{ onScanNodes }}"></Button>
+
+        <StackLayout visibility="{{ nodes ? 'visible' : 'collapse' }}" margin="10">
+            <Label text="Connected nodes" horizontalAlignment="center" class="title-big bold"></Label>
+            <ListView items="{{ nodes }}" itemTap="onNodeTap">
+                <ListView.itemTemplate>
+                    <GridLayout columns="1*,3*" class="node-card">
+                        <Label text="&#xe334;" class="mdi-ro mdi-50 white" horizontalAlignment="center"></Label>
+                        <GridLayout col="1" rows="auto, auto, *">
+                            <Label class="title-med" horizontalAlignment="center">
+                                <FormattedString>
+                                    <Span text="{{ name }} " fontWeight="bold"></Span>
+                                    <Span text="{{ ' (' + id + ')' }}"></Span>
+                                </FormattedString>
+                            </Label>
+                            <Label row="1" text="Sensors availability:" class="bold"></Label>
+                            <GridLayout row="2" columns="1*,1*,1*,1*,1*" orientation="horizontal" horizontalAlignment="center" width="100%">
+                                <Label col="0" text="&#xe89f;" class="{{ sensorsAvailability, sensorsAvailability.accelerometer ? 'mdi-ro mdi-30 available' : 'mdi-ro mdi-30 unavailable'}}"></Label>
+                                <Label col="1" text="&#xe84d;" class="{{ sensorsAvailability, sensorsAvailability.gyroscope ? 'mdi-ro mdi-30 available' : 'mdi-ro mdi-30 unavailable'}}"></Label>
+                                <Label col="2" text="&#xe87a;" class="{{ sensorsAvailability, sensorsAvailability.magnetometer ? 'mdi-ro mdi-30 available' : 'mdi-ro mdi-30 unavailable'}}"></Label>
+                                <Label col="3" text="&#xe0c8;" class="{{ sensorsAvailability, sensorsAvailability.location ? 'mdi-ro mdi-30 available' : 'mdi-ro mdi-30 unavailable'}}"></Label>
+                                <Label col="4" text="&#xe87d;" class="{{ sensorsAvailability, sensorsAvailability.heart_rate ? 'mdi-ro mdi-30 available' : 'mdi-ro mdi-30 unavailable'}}"></Label>
+                            </GridLayout>
+                        </GridLayout>
+                    </GridLayout>
+                </ListView.itemTemplate>
+            </ListView>
+        </StackLayout>
+    </StackLayout>
+</Page>
