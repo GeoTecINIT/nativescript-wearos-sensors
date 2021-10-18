@@ -3,6 +3,7 @@ package org.nativescript.demo.services;
 import com.google.android.gms.wearable.MessageEvent;
 import com.google.android.gms.wearable.WearableListenerService;
 
+import org.nativescript.demo.capabilities.CapabilityAdvertisementHandler;
 import org.nativescript.demo.messaging.handlers.AccelerometerMessagingHandler;
 import org.nativescript.demo.messaging.handlers.GyroscopeMessagingHandler;
 import org.nativescript.demo.messaging.handlers.HeartRateMessagingHandler;
@@ -16,7 +17,9 @@ public class SensorMessagingListenerService extends WearableListenerService {
     public void onMessageReceived(MessageEvent event) {
         String path = event.getPath();
 
-        if (path.contains("accelerometer")) {
+        if (path.contains("advertise-capabilities")) {
+            new CapabilityAdvertisementHandler(this).handleRequest(event);
+        } else if (path.contains("accelerometer")) {
             new AccelerometerMessagingHandler(this).handleMessage(event);
         } else if (path.contains("gyroscope")) {
             new GyroscopeMessagingHandler(this).handleMessage(event);
