@@ -4,7 +4,7 @@ import { wearOS } from "../../../utils/android/wear-os-types.android";
 import { ResultMessagingProtocol } from "../index";
 import { decodeMessage } from "../../encoder-decoder";
 
-export class ResultMessagingService implements CommunicationResultService, WearableListenerServiceDelegate {
+export class MessagingResultService implements CommunicationResultService, WearableListenerServiceDelegate {
 
     private protocol: ResultMessagingProtocol;
     private resolutionCallback: (resolution: MessagingResult) => void;
@@ -52,10 +52,10 @@ export interface MessagingResult {
 }
 
 // FIXME: will this work with multiple sensors? Maybe one instance per sensor will be needed
-let _instance: ResultMessagingService;
-export function getResultMessagingService(): ResultMessagingService {
+let _instance: MessagingResultService;
+export function getResultMessagingService(): MessagingResultService {
     if (!_instance) {
-        _instance = new ResultMessagingService();
+        _instance = new MessagingResultService();
     }
 
     return _instance;

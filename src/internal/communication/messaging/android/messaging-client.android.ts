@@ -1,6 +1,6 @@
 import { MessagingClient } from "../messaging-client";
 import { MessagingProtocol } from "../index";
-import { MessagingResult, ResultMessagingService } from "./messaging-result-service.android";
+import { MessagingResult, MessagingResultService } from "./messaging-result-service.android";
 import { CommunicationClient } from "../../communication-client.android";
 import { Node } from "../../../node/node.android";
 
@@ -8,9 +8,9 @@ export class MessagingClientImpl extends CommunicationClient<MessagingResult> im
 
     constructor(
         private protocol: MessagingProtocol,
-        private resultMessagingService: ResultMessagingService,
+        private messagingResultService: MessagingResultService,
     ) {
-        super(resultMessagingService);
+        super(messagingResultService);
     }
 
     public async sendIsReadyMessage(node: Node): Promise<MessagingResult> {
