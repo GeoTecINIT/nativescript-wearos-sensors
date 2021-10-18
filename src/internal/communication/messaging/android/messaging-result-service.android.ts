@@ -1,12 +1,13 @@
-import { wearOS } from "../../utils/android/wear-os-types.android";
-import { decodeMessage } from "../messaging-client";
-import { ResultMessagingProtocol } from "../index";
+import { CommunicationResultService } from "../../communication-result-service";
 import WearableListenerServiceDelegate = es.uji.geotec.wearos_sensors.messaging.WearableListenerServiceDelegate;
+import { wearOS } from "../../../utils/android/wear-os-types.android";
+import { ResultMessagingProtocol } from "../index";
+import { decodeMessage } from "../../encoder-decoder";
 
-export class ResultMessagingService implements WearableListenerServiceDelegate {
+export class ResultMessagingService implements CommunicationResultService, WearableListenerServiceDelegate {
 
     private protocol: ResultMessagingProtocol;
-    private resolutionCallback: (resolution: ResolutionResult) => void;
+    private resolutionCallback: (resolution: MessagingResult) => void;
 
     public setProtocol(protocol) {
         this.protocol = protocol;
@@ -44,7 +45,7 @@ export class ResultMessagingService implements WearableListenerServiceDelegate {
     }
 }
 
-export interface ResolutionResult {
+export interface MessagingResult {
     nodeId: string;
     success: boolean;
     message?: string;

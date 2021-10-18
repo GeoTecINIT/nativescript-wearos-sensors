@@ -1,4 +1,4 @@
-import { AbstractRecordMessagingService } from "../../../messaging/android/abstract-record-messaging-service.android";
+import { AbstractRecordMessagingService } from "../../../communication/messaging/android/abstract-record-messaging-service.android";
 import { wearOS } from "../../../utils/android/wear-os-types.android";
 import { SensorRecords } from "../../sensor-record";
 import { HeartRateSensorRecord } from "../record";

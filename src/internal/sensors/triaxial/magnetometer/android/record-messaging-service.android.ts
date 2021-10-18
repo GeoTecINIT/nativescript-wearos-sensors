@@ -2,7 +2,7 @@ import { TriAxialRecordMessagingService } from "../../triaxial-record-messaging-
 import { SensorRecords } from "../../../sensor-record";
 import { TriAxialSensorRecord } from "../../record";
 import { SensorType } from "../../../sensor-type";
-import { AbstractRecordMessagingService } from "../../../../messaging/android/abstract-record-messaging-service.android";
+import { AbstractRecordMessagingService } from "../../../../communication/messaging/android/abstract-record-messaging-service.android";
 
 export class MagnetometerRecordMessagingService extends TriAxialRecordMessagingService {
 

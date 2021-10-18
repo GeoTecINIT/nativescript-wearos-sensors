@@ -1,11 +1,11 @@
 import { SensorType } from "../sensor-type";
 import { WearableConfig } from "../index";
 import { CollectorManager } from "../../collector-manager";
-import { AbstractRecordMessagingService } from "../../messaging/android/abstract-record-messaging-service.android";
+import { AbstractRecordMessagingService } from "../../communication/messaging/android/abstract-record-messaging-service.android";
 import { buildMessagingProtocol } from "./protocol.android";
 import { SensorCallbackManager } from "../../sensor-callback-manager";
-import { MessagingClientImpl } from "../../messaging/android/messaging-client.android";
-import { getResultMessagingService } from "../../messaging/android/result-messaging-service.android";
+import { MessagingClientImpl } from "../../communication/messaging/android/messaging-client.android";
+import { getResultMessagingService } from "../../communication/messaging/android/messaging-result-service.android";
 import { CollectorManagerImpl } from "../../collector-manager-impl.android";
 import {
     getAccelerometerDefaultWearableConfig,
