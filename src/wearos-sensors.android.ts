@@ -1,6 +1,7 @@
 import { Common } from './wearos-sensors.common';
 
-import { getResultMessagingService } from "./internal/messaging/android/result-messaging-service.android";
+import { getCapabilityAdvertiserResultService } from "./internal/communication/capabilities/android/capability-advertiser-result-service.android";
+import { getResultMessagingService } from "./internal/communication/messaging/android/messaging-result-service.android";
 import { getAccelerometerRecordService } from "./internal/sensors/triaxial/accelerometer/android/record-messaging-service.android";
 import { getGyroscopeRecordService } from "./internal/sensors/triaxial/gyroscope/android/record-messaging-service.android";
 import { getMagnetometerRecordService } from "./internal/sensors/triaxial/magnetometer/android/record-messaging-service.android";
@@ -8,18 +9,29 @@ import { getLocationRecordService } from "./internal/sensors/location/android/re
 import { getHeartRateRecordService } from "./internal/sensors/heart-rate/android/record-messaging-service.android";
 
 import WearableListenerServiceDelegate = es.uji.geotec.wearos_sensors.messaging.WearableListenerServiceDelegate;
+import WearosSensorsCapabilityAdvertiserService = es.uji.geotec.wearos_sensors.messaging.WearosSensorsCapabilityAdvertiserService;
 import WearosSensorsResultsMessagingService = es.uji.geotec.wearos_sensors.messaging.WearosSensorsResultsMessagingService;
 import WearosSensorsRecordsMessagingService = es.uji.geotec.wearos_sensors.messaging.WearosSensorsRecordsMessagingService;
 import WearSensor = es.uji.geotec.wearos_sensors.WearSensor;
 
 export class WearosSensors extends Common {
     async init(): Promise<void> {
+        this.wireUpCapabilityAdvertiser();
         this.wireUpAccelerometerComponents();
         this.wireUpGyroscopeComponents();
         this.wireUpMagnetometerComponents();
         this.wireUpLocationComponents();
         this.wireUpHeartRateComponents();
         await super.init();
+    }
+
+    public wireUpCapabilityAdvertiser() {
+        WearosSensorsCapabilityAdvertiserService.setCapabilityAdvertiserDelegate(
+            new WearableListenerServiceDelegate({
+                onMessageReceived: (messageEvent) =>
+                    getCapabilityAdvertiserResultService().onMessageReceived(messageEvent)
+            })
+        );
     }
 
     public wireUpAccelerometerComponents() {

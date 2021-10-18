@@ -78,6 +78,24 @@ declare namespace es {
 		export namespace geotec {
 			export namespace wearos_sensors {
 				export namespace messaging {
+					export class WearosSensorsCapabilityAdvertiserService {
+						public static class: java.lang.Class<es.uji.geotec.wearos_sensors.messaging.WearosSensorsCapabilityAdvertiserService>;
+						public constructor();
+						public static setCapabilityAdvertiserDelegate(param0: es.uji.geotec.wearos_sensors.messaging.WearableListenerServiceDelegate): void;
+						public onCreate(): void;
+						public onMessageReceived(param0: com.google.android.gms.wearable.MessageEvent): void;
+					}
+				}
+			}
+		}
+	}
+}
+
+declare namespace es {
+	export namespace uji {
+		export namespace geotec {
+			export namespace wearos_sensors {
+				export namespace messaging {
 					export class WearosSensorsRecordsMessagingService {
 						public static class: java.lang.Class<es.uji.geotec.wearos_sensors.messaging.WearosSensorsRecordsMessagingService>;
 						public constructor();
