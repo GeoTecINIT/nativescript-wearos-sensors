@@ -10,7 +10,18 @@ import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class WearSensorManager {
+
+    private static WearSensor[] SENSORS = new WearSensor[] {
+            WearSensor.ACCELEROMETER,
+            WearSensor.GYROSCOPE,
+            WearSensor.MAGNETOMETER,
+            WearSensor.LOCATION,
+            WearSensor.HEART_RATE
+    };
 
     private Context context;
     private SensorManager sensorManager;
@@ -18,6 +29,16 @@ public class WearSensorManager {
     public WearSensorManager(Context context) {
         this.context = context;
         this.sensorManager = (SensorManager) context.getSystemService(Context.SENSOR_SERVICE);
+    }
+
+    public List<WearSensor> availableSensors() {
+        List<WearSensor> availableSensors = new ArrayList<>();
+        for (WearSensor sensor : SENSORS) {
+            if (isSensorAvailable(sensor))
+                availableSensors.add(sensor);
+        }
+
+        return availableSensors;
     }
 
     public boolean isSensorAvailable(WearSensor sensor) {
