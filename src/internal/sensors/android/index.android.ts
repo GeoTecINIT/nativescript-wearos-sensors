@@ -47,8 +47,7 @@ export function getAndroidSensorCollector(
     recordService.setCallbackManager(callback);
 
     return new CollectorManagerImpl(
-        protocol,
-        wearableConfig.capability,
+        sensorType,
         messagingClient,
         callback
     );
