@@ -1,0 +1,57 @@
+<Page
+        navigatingTo="onNavigatingTo"
+        loaded="onPageLoaded"
+        xmlns="http://schemas.nativescript.org/tns.xsd">
+
+    <ActionBar>
+        <Label class="title-med">
+            <FormattedString>
+                <Span text="{{ node.name }} " fontWeight="bold"></Span>
+                <Span text="{{ ' (' + node.id + ')' }}"></Span>
+            </FormattedString>
+        </Label>
+    </ActionBar>
+
+    <ScrollView verticalAlignment="top">
+        <Repeater id="repeater" items="{{ sensorDescription }}" margin="10">
+            <Repeater.itemsLayout>
+                <StackLayout orientation="vertical"></StackLayout>
+            </Repeater.itemsLayout>
+            <Repeater.itemTemplate>
+                <GridLayout rows="auto, auto, *" columns="1*, 3*" class="card">
+                    <Label row="0" rowSpan="3" col="0" text="{{ $value.icon }}"
+                           class="{{ $value.status.id, $value.status.id === 'listening' ? 'mdi-ro mdi-50 recording' : 'mdi-ro mdi-50'}}"
+                           backgroundColor="{{ $value.status.iconColorBg }}" horizontalAlignment="center" verticalAlignment="center"></Label>
+                    <Label row="0" col="1"  text="{{ $value.sensor }}" class="title-med bold"></Label>
+                    <Label row="1" col="1" class="bold">
+                        <FormattedString>
+                            <Span text="Status: "></Span>
+                            <Span text="{{ $value.status.message }}"></Span>
+                        </FormattedString>
+                    </Label>
+                    <StackLayout row="3" col="1" orientation="horizontal" horizontalAlignment="center">
+                        <Button visibility="{{ $value.status.id, $value.status.id === 'availableInDevice' ? 'visible' : 'collapsed' }}"
+                                class="sensor-action"
+                                tap="{{ $parents['Page'].onIsReadyTap }}"
+                                text="Check if device is ready"/>
+                        <Button visibility="{{ $value.status.id, $value.status.id === 'notReady' ? 'visible' : 'collapsed' }}"
+                                class="sensor-action"
+                                tap="{{ $parents['Page'].onPrepareTap }}"
+                                text="Request device preparation"/>
+                        <Button visibility="{{ $value.status.id, $value.status.id === 'ready' ? 'visible' : 'collapsed' }}"
+                                class="sensor-action"
+                                tap="{{ $parents['Page'].onStartTap }}"
+                                text="Start listening for records"/>
+                        <ActivityIndicator visibility="{{ $value.status.id, $value.status.id === 'waitingForResponse' ? 'visible' : 'collapsed' }}"
+                                busy="true" />
+                        <Button visibility="{{ $value.status.id, $value.status.id === 'listening' ? 'visible' : 'collapsed' }}"
+                                class="sensor-action"
+                                tap="{{ $parents['Page'].onStopTap }}"
+                                text="Stop listening records"/>
+                    </StackLayout>
+                </GridLayout>
+            </Repeater.itemTemplate>
+        </Repeater>
+    </ScrollView>
+
+</Page>
