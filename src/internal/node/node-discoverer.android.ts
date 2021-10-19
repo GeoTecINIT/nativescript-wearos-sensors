@@ -36,16 +36,15 @@ export class NodeDiscoverer {
         const nodes: Node[] = [];
         const iterator = wearosNodes.iterator();
         while (iterator.hasNext()) {
-            const node = iterator.next();
-            const capabilityResult = await this.capabilityClient.sendCapabilityAdvertisementRequest(node);
-
-            nodes.push(
-                new Node(
-                    node.getId(),
-                    node.getDisplayName(),
-                    capabilityResult.capabilities
-                )
+            const nativeNode = iterator.next();
+            const node = new Node(
+                nativeNode.getId(),
+                nativeNode.getDisplayName(),
             );
+
+            const capabilityResult = await this.capabilityClient.sendCapabilityAdvertisementRequest(node);
+            node.capabilities = capabilityResult.capabilities;
+            nodes.push(node);
         }
 
         return nodes;

@@ -5,7 +5,7 @@ export class Node {
     constructor(
         private _id: string,
         private _name: string,
-        private _capabilities: SensorType[],
+        private _capabilities?: SensorType[],
     ) {
     }
 
@@ -19,6 +19,10 @@ export class Node {
 
     get capabilities(): SensorType[] {
         return this._capabilities;
+    }
+
+    set capabilities(sensors: SensorType[]) {
+        this._capabilities = sensors;
     }
 }
 
