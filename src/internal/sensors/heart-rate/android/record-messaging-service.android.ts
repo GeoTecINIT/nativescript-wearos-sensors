@@ -18,7 +18,7 @@ export class HeartRateRecordMessagingService extends AbstractRecordMessagingServ
             time = buff.getLong();
 
             records.push({
-                deviceName: messageEvent.getSourceNodeId(),
+                deviceId: messageEvent.getSourceNodeId(),
                 timestamp: new Date(time),
                 value,
             });

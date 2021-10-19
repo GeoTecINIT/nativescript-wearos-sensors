@@ -20,7 +20,7 @@ export class LocationRecordMessagingService extends AbstractRecordMessagingServi
             time = buff.getLong();
 
             records.push({
-                deviceName: messageEvent.getSourceNodeId(),
+                deviceId: messageEvent.getSourceNodeId(),
                 timestamp: new Date(time),
                 latitude: lat,
                 longitude: lon,

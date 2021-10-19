@@ -19,7 +19,7 @@ export class TriAxialRecordMessagingService extends AbstractRecordMessagingServi
             z = buff.getFloat();
             time = buff.getLong();
             records.push({
-                deviceName: messageEvent.getSourceNodeId(),
+                deviceId: messageEvent.getSourceNodeId(),
                 timestamp: new Date(time),
                 x,
                 y,
