@@ -31,6 +31,14 @@ Label.bold {
     padding: 5dp;
 }
 
+.mdi {
+    font-family: "Material Icons Round", "MaterialIconsRound-Regular";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 30;
+    text-align: center;
+}
+
 .mdi-ro {
     font-family: "Material Icons Round", "MaterialIconsRound-Regular";
     font-style: normal;
@@ -78,5 +86,11 @@ Label.bold {
     border-radius: 4;
     height: 60%;
     width: 70%;
+}
+
+.logger-text {
+    font-family: monospace;
+    font-size: 10%;
+    color: white;
 }
 

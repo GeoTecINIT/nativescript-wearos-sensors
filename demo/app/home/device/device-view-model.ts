@@ -3,8 +3,10 @@ import { Node } from "nativescript-wearos-sensors/internal/node/node.android";
 import { SensorType } from "nativescript-wearos-sensors/internal/sensors/sensor-type";
 import { getSensorCollector } from "nativescript-wearos-sensors/internal/sensors";
 import { CollectorManager } from "nativescript-wearos-sensors/internal/collector-manager";
+import { getLogger } from "~/home/logger/logger-view-model";
 
 export class DeviceViewModel extends Observable {
+    private logger;
     private status = {
         availableInDevice: "available in device",
         waitingForResponse: "waiting for response...",
@@ -29,6 +31,7 @@ export class DeviceViewModel extends Observable {
         private node: Node
     ) {
         super();
+        this.logger = getLogger();
         this.sensorDescription = this.node.capabilities.map((sensor) => {
             return {
                 parent: this,
@@ -79,8 +82,9 @@ export class DeviceViewModel extends Observable {
     private handleOnIsReadyTap(sensorDescription: SensorDescription) {
         this.updateSensorDescriptionStatus(sensorDescription, Status.WAITING_FOR_RESPONSE);
 
+        this.logger.logInfoForNode(this.node.name, `Sending isReady request and waiting for response...`);
         sensorDescription.collector.isReady(this.node).then((ready) => {
-            console.log("Ready status: " + ready);
+            this.logger.logResultForNode(this.node.name, `Ready response: ${ ready ? 'node ready' : 'node not ready. Should prepare node'}`);
             let status;
             if (ready) {
                 status = Status.READY;
@@ -95,7 +99,9 @@ export class DeviceViewModel extends Observable {
     private handleOnPrepareTap(sensorDescription: SensorDescription) {
         this.updateSensorDescriptionStatus(sensorDescription, Status.WAITING_FOR_RESPONSE)
 
+        this.logger.logInfoForNode(this.node.name, `Sending prepare request to node and waiting for response. Should look at wearable device...`);
         sensorDescription.collector.prepare(this.node).then((prepareError) => {
+            this.logger.logResultForNode(this.node.name, `Prepare response: ${ prepareError ? prepareError.message : 'device prepared successfully'}`);
             let status;
             if (prepareError) {
                 status = Status.NOT_READY;
@@ -110,9 +116,10 @@ export class DeviceViewModel extends Observable {
 
     private handleOnStartTap(sensorDescription: SensorDescription) {
         sensorDescription.collector.listenSensorUpdates((records) => {
-            console.log(JSON.stringify(records));
+            this.logger.logResultForNode(this.node.name, `record received --> ${JSON.stringify(records)}`);
         });
         sensorDescription.collector.startCollecting(this.node);
+        this.logger.logInfoForNode(this.node.name, `Send start request for ${sensorDescription.sensor}`);
 
         this.updateSensorDescriptionStatus(sensorDescription, Status.LISTENING);
     }
@@ -120,6 +127,7 @@ export class DeviceViewModel extends Observable {
     private handleOnStopTap(sensorDescription: SensorDescription) {
         sensorDescription.collector.stopCollecting(this.node);
         sensorDescription.collector.stopListenSensorUpdates();
+        this.logger.logInfoForNode(this.node.name, `Send stop request for ${sensorDescription.sensor}`);
         this.updateSensorDescriptionStatus(sensorDescription, Status.READY);
     }
 

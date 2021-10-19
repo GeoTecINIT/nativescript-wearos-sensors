@@ -1,9 +1,19 @@
 import { Observable } from "@nativescript/core";
 import { NodeDiscoverer } from "nativescript-wearos-sensors/internal/node/node-discoverer.android";
+import { getLogger } from "~/home/logger/logger-view-model";
 
 export class DeviceListViewModel extends Observable {
 
+    private logger;
     private nodes: ConnectedNode[] = testNodes;
+
+    constructor() {
+        super();
+        this.logger = getLogger();
+        this.nodes = testNodes;
+
+        this.logger.logInfo("showing test data, press 'Scan connected nodes' to scan for WearOS connected devices");
+    }
 
     getNode(index: number): ConnectedNode {
         if (index < 0 || index > this.nodes.length - 1)
@@ -13,13 +23,14 @@ export class DeviceListViewModel extends Observable {
 
     onScanNodes() {
         const nodeDiscoverer = new NodeDiscoverer();
+        this.logger.logInfo("Scanning for WearOS connected devices");
         nodeDiscoverer.getConnectedNodes().then((nodes) => {
             this.nodes = nodes.map((node) => {
+                this.logger.logResult(`Connected node --> ${JSON.stringify(node)}`);
                 const sensorsAvailability = {};
 
                 node.capabilities.forEach((capability) => sensorsAvailability[capability.toLowerCase()] = true)
 
-                console.log(sensorsAvailability);
                 return {
                     id: node.id,
                     name: node.name,

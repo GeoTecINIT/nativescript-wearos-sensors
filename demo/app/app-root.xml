@@ -1,1 +1,4 @@
-<Frame id="main-frame" defaultPage="home/device-list/device-list-page"></Frame>
+<StackLayout orientation="vertical">
+    <Frame id="main-frame" defaultPage="home/device-list/device-list-page" height="60%"></Frame>
+    <Frame id="log-frame" defaultPage="home/logger/logger-page" height="40%"></Frame>
+</StackLayout>
