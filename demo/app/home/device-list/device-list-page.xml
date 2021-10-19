@@ -8,9 +8,10 @@
 
     <StackLayout>
         <Button text="Scan connected nodes" class="bg-primary -rounded-md" tap="{{ onScanNodes }}"></Button>
-
+        <Label visibility="{{ nodes ? 'collapse' : 'visible' }}" class="title-big bold h-centered"
+               text="There are no connected nodes"></Label>
         <StackLayout visibility="{{ nodes ? 'visible' : 'collapse' }}" margin="10">
-            <Label text="Connected nodes" horizontalAlignment="center" class="title-big bold"></Label>
+            <Label text="Connected nodes" class="title-big bold h-centered"></Label>
             <ListView items="{{ nodes }}" itemTap="onNodeTap">
                 <ListView.itemTemplate>
                     <GridLayout columns="1*,3*" class="card">
@@ -35,5 +36,6 @@
                 </ListView.itemTemplate>
             </ListView>
         </StackLayout>
+
     </StackLayout>
 </Page>

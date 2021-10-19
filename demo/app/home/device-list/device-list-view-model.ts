@@ -5,13 +5,11 @@ import { getLogger } from "~/home/logger/logger-view-model";
 export class DeviceListViewModel extends Observable {
 
     private logger;
-    private nodes: ConnectedNode[] = testNodes;
+    private nodes: ConnectedNode[];
 
     constructor() {
         super();
         this.logger = getLogger();
-        this.nodes = testNodes;
-
         this.logger.logInfo("showing test data, press 'Scan connected nodes' to scan for WearOS connected devices");
     }
 
