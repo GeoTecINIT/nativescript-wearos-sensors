@@ -1,9 +1,15 @@
 import { Observable } from "@nativescript/core";
 import { NodeDiscoverer } from "nativescript-wearos-sensors/internal/node/node-discoverer.android";
 
-export class DevicesViewModel extends Observable {
+export class DeviceListViewModel extends Observable {
 
     private nodes: ConnectedNode[] = testNodes;
+
+    getNode(index: number): ConnectedNode {
+        if (index < 0 || index > this.nodes.length - 1)
+            return undefined;
+        return this.nodes[index];
+    }
 
     onScanNodes() {
         const nodeDiscoverer = new NodeDiscoverer();
