@@ -42,9 +42,13 @@ export class NodeDiscoverer {
                 nativeNode.getDisplayName(),
             );
 
-            const capabilityResult = await this.capabilityClient.sendCapabilityAdvertisementRequest(node);
-            node.capabilities = capabilityResult.capabilities;
-            nodes.push(node);
+            try {
+                const capabilityResult = await this.capabilityClient.sendCapabilityAdvertisementRequest(node);
+                node.capabilities = capabilityResult.capabilities;
+                nodes.push(node);
+            } catch (error) {
+                console.log(error);
+            }
         }
 
         return nodes;
