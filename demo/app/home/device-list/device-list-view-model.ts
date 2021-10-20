@@ -5,12 +5,14 @@ import { getLogger } from "~/home/logger/logger-view-model";
 export class DeviceListViewModel extends Observable {
 
     private logger;
+    private scanning;
     private nodes: ConnectedNode[];
 
     constructor() {
         super();
         this.logger = getLogger();
-        this.logger.logInfo("showing test data, press 'Scan connected nodes' to scan for WearOS connected devices");
+        this.scanning = false;
+        this.nodes = [];
     }
 
     getNode(index: number): ConnectedNode {
@@ -22,6 +24,10 @@ export class DeviceListViewModel extends Observable {
     onScanNodes() {
         const nodeDiscoverer = new NodeDiscoverer();
         this.logger.logInfo("Scanning for WearOS connected devices");
+        this.nodes = [];
+        this.scanning = true;
+        this.notifyPropertyChange("nodes", this.nodes);
+        this.notifyPropertyChange("scanning", this.scanning);
         nodeDiscoverer.getConnectedNodes().then((nodes) => {
             this.nodes = nodes.map((node) => {
                 this.logger.logResult(`Connected node --> ${JSON.stringify(node)}`);
@@ -36,8 +42,10 @@ export class DeviceListViewModel extends Observable {
                 }
             });
 
+            this.scanning = false;
+            this.notifyPropertyChange("scanning", this.scanning);
             this.notifyPropertyChange("nodes", this.nodes);
-        })
+        });
     }
 }
 

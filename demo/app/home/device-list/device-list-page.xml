@@ -8,9 +8,11 @@
 
     <StackLayout>
         <Button text="Scan connected nodes" class="bg-primary -rounded-md" tap="{{ onScanNodes }}"></Button>
-        <Label visibility="{{ nodes ? 'collapse' : 'visible' }}" class="title-big bold h-centered"
+        <Label visibility="{{ nodes.length !== 0 ? 'collapse' : 'visible' }}" class="title-big bold h-centered"
                text="There are no connected nodes"></Label>
-        <StackLayout visibility="{{ nodes ? 'visible' : 'collapse' }}" margin="10">
+        <Label visibility="{{ scanning ? 'visible' : 'collapsed' }}" class="title-big bold h-centered"
+               text="Scanning..."></Label>
+        <StackLayout visibility="{{ nodes.length !== 0 ? 'visible' : 'collapse' }}" margin="10">
             <Label text="Connected nodes" class="title-big bold h-centered"></Label>
             <ListView items="{{ nodes }}" itemTap="onNodeTap">
                 <ListView.itemTemplate>

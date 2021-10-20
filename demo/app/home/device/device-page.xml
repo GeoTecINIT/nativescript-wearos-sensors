@@ -32,21 +32,21 @@
                     <StackLayout row="3" col="1" orientation="horizontal" horizontalAlignment="center">
                         <Button visibility="{{ $value.status.id, $value.status.id === 'availableInDevice' ? 'visible' : 'collapsed' }}"
                                 class="sensor-action"
-                                tap="{{ $parents['Page'].onIsReadyTap }}"
+                                tap="{{ $value.parent.onIsReadyTap }}"
                                 text="Check if device is ready"/>
                         <Button visibility="{{ $value.status.id, $value.status.id === 'notReady' ? 'visible' : 'collapsed' }}"
                                 class="sensor-action"
-                                tap="{{ $parents['Page'].onPrepareTap }}"
+                                tap="{{ $value.parent.onPrepareTap }}"
                                 text="Request device preparation"/>
                         <Button visibility="{{ $value.status.id, $value.status.id === 'ready' ? 'visible' : 'collapsed' }}"
                                 class="sensor-action"
-                                tap="{{ $parents['Page'].onStartTap }}"
+                                tap="{{ $value.parent.onStartTap }}"
                                 text="Start listening for records"/>
                         <ActivityIndicator visibility="{{ $value.status.id, $value.status.id === 'waitingForResponse' ? 'visible' : 'collapsed' }}"
                                 busy="true" />
                         <Button visibility="{{ $value.status.id, $value.status.id === 'listening' ? 'visible' : 'collapsed' }}"
                                 class="sensor-action"
-                                tap="{{ $parents['Page'].onStopTap }}"
+                                tap="{{ $value.parent.onStopTap }}"
                                 text="Stop listening records"/>
                     </StackLayout>
                 </GridLayout>
