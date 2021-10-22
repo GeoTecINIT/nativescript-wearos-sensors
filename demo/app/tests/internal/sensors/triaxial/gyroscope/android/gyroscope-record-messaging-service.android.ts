@@ -13,11 +13,11 @@ describe("Gyroscope record messaging service", () => {
         const recordMessagingService = new GyroscopeRecordMessagingService();
         const expectedRecords: TriAxialSensorRecord[] = [
             {
-                deviceName: nodeId,
+                deviceId: nodeId,
                 ...getFakeTriAxialData()
             },
             {
-                deviceName: nodeId,
+                deviceId: nodeId,
                 ...getFakeTriAxialData()
             }
         ]

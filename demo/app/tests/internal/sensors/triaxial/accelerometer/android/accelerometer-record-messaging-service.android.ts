@@ -13,11 +13,11 @@ describe("Accelerometer record messaging service", () => {
         const recordMessagingService = new AccelerometerRecordMessagingService();
         const expectedRecords: TriAxialSensorRecord[] = [
             {
-                deviceName: nodeId,
+                deviceId: nodeId,
                 ...getFakeTriAxialData()
             },
             {
-                deviceName: nodeId,
+                deviceId: nodeId,
                 ...getFakeTriAxialData()
             }
         ]

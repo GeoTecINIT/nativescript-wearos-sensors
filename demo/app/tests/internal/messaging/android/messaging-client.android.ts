@@ -1,82 +1,82 @@
-import { MessagingClientImpl } from "nativescript-wearos-sensors/internal/messaging/android/messaging-client.android";
 import {
     buildFakeMessageEvent,
-    buildFakeNode,
     buildFakeResolutionResult,
     getFakeMessagingProtocol
 } from "~/tests/internal";
-import { ResultMessagingService } from "nativescript-wearos-sensors/internal/messaging/android/result-messaging-service.android";
+import { Node } from "nativescript-wearos-sensors/internal/node";
+import { MessagingResultService } from "nativescript-wearos-sensors/internal/communication/messaging/android/messaging-result-service.android";
+import { MessagingClientImpl } from "nativescript-wearos-sensors/internal/communication/messaging/android/messaging-client.android";
 
 describe("Messaging client", () => {
-    const node = buildFakeNode("node1", "node1", true);
+    const node = new Node("node1", "node1", []);
     const protocol = getFakeMessagingProtocol();
 
     let resultMessagingService;
     let messagingClient;
 
     beforeEach(() => {
-        resultMessagingService = new ResultMessagingService();
+        resultMessagingService = new MessagingResultService();
         messagingClient = new MessagingClientImpl(protocol, resultMessagingService);
         spyOn<any>(messagingClient, "sendMessage").and.callFake(() => Promise.resolve());
     });
 
     it("sends an isReady message to a ready node", async () => {
-        const ready = messagingClient.sendIsReadyMessageAndWaitForResolution(node);
+        const ready = messagingClient.sendIsReadyMessage(node);
         resultMessagingService.onMessageReceived(
             buildFakeMessageEvent(
-                node.getId(),
+                node.id,
                 protocol.readyProtocol.messagePath,
                 protocol.readyProtocol.successResponse,
             )
         )
 
         await expectAsync(ready).toBeResolvedTo(
-            buildFakeResolutionResult(node.getId(), true)
+            buildFakeResolutionResult(node.id, true)
         );
     });
 
     it("sends an isReady message to a not ready node", async () => {
-        const ready = messagingClient.sendIsReadyMessageAndWaitForResolution(node);
+        const ready = messagingClient.sendIsReadyMessage(node);
         resultMessagingService.onMessageReceived(
             buildFakeMessageEvent(
-                node.getId(),
+                node.id,
                 protocol.readyProtocol.messagePath,
                 protocol.readyProtocol.failureResponse,
             )
         )
 
         await expectAsync(ready).toBeResolvedTo(
-            buildFakeResolutionResult(node.getId(), false)
+            buildFakeResolutionResult(node.id, false)
         );
     });
 
     it("sends a prepare message to a node, which is successfully prepared", async () => {
-        const ready = messagingClient.sendPrepareMessageAndWaitForResolution(node);
+        const ready = messagingClient.sendPrepareMessage(node);
         resultMessagingService.onMessageReceived(
             buildFakeMessageEvent(
-                node.getId(),
+                node.id,
                 protocol.prepareProtocol.messagePath,
                 protocol.prepareProtocol.successResponse,
             )
         )
 
         await expectAsync(ready).toBeResolvedTo(
-            buildFakeResolutionResult(node.getId(), true)
+            buildFakeResolutionResult(node.id, true)
         );
     });
 
     it("sends a prepare message to a node, which is not successfully prepared", async () => {
-        const ready = messagingClient.sendPrepareMessageAndWaitForResolution(node);
+        const ready = messagingClient.sendPrepareMessage(node);
         resultMessagingService.onMessageReceived(
             buildFakeMessageEvent(
-                node.getId(),
+                node.id,
                 protocol.prepareProtocol.messagePath,
                 `${protocol.prepareProtocol.failureResponse}#Smartwatch exploded`,
             )
         )
 
         await expectAsync(ready).toBeResolvedTo(
-            buildFakeResolutionResult(node.getId(), false, "Smartwatch exploded")
+            buildFakeResolutionResult(node.id, false, "Smartwatch exploded")
         );
     });
 });

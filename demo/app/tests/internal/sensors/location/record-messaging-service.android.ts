@@ -11,11 +11,11 @@ describe("Location record messaging service", () => {
         const recordMessagingService = new LocationRecordMessagingService();
         const expectedRecords: LocationSensorRecord[] = [
             {
-                deviceName: nodeId,
+                deviceId: nodeId,
                 ...getFakeLocationData(),
             },
             {
-                deviceName: nodeId,
+                deviceId: nodeId,
                 ...getFakeLocationData(),
             }
         ];

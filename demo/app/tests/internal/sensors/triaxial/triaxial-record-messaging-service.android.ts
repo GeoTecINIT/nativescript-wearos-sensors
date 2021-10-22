@@ -37,11 +37,11 @@ describe("TriAxial record messaging service", () => {
     it("decodes the message data building a new record", () => {
         const expectedRecords: TriAxialSensorRecord[] = [
             {
-                deviceName: nodeId,
+                deviceId: nodeId,
                 ...getFakeTriAxialData()
             },
             {
-                deviceName: nodeId,
+                deviceId: nodeId,
                 ...getFakeTriAxialData()
             },
         ];
@@ -54,7 +54,7 @@ describe("TriAxial record messaging service", () => {
         const { records } = recordMessagingService.decodeRecords(messageEvent);
         expect(records.length).toBe(2);
         records.forEach((record, i) => {
-            expect(record.deviceName).toEqual(expectedRecords[i].deviceName);
+            expect(record.deviceId).toEqual(expectedRecords[i].deviceId);
             expect(record.timestamp).toEqual(expectedRecords[i].timestamp);
             expect(record.x).toBeCloseTo(expectedRecords[i].x, 6);
             expect(record.y).toBeCloseTo(expectedRecords[i].y, 6);
@@ -69,7 +69,7 @@ describe("TriAxial record messaging service", () => {
             protocol.newRecordMessagePath,
             buildFakeEncodedMessage([
                 {
-                    deviceName: nodeId,
+                    deviceId: nodeId,
                     ...getFakeTriAxialData()
                 }
             ])

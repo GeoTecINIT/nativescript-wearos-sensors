@@ -1,6 +1,6 @@
-import { ResultMessagingProtocol } from "nativescript-wearos-sensors/internal/messaging";
+import { ResultMessagingProtocol } from "nativescript-wearos-sensors/internal/communication/messaging";
 import { buildFakeMessageEvent, buildFakeResolutionResult } from "../..";
-import { ResultMessagingService } from "nativescript-wearos-sensors/internal/messaging/android/result-messaging-service.android";
+import { MessagingResultService } from "nativescript-wearos-sensors/internal/communication/messaging/android/messaging-result-service.android";
 
 describe("Result Messaging Service", () => {
     const nodeId = "testNode";
@@ -12,11 +12,11 @@ describe("Result Messaging Service", () => {
     const unknownPath = "unknownPath";
 
     let resolutionCallback;
-    let resultMessagingService: ResultMessagingService;
+    let resultMessagingService: MessagingResultService;
 
     beforeEach(() => {
         resolutionCallback = jasmine.createSpy("resolutionCallbackSpy");
-        resultMessagingService = new ResultMessagingService();
+        resultMessagingService = new MessagingResultService();
         resultMessagingService.setProtocol(protocol);
         resultMessagingService.setResolutionCallback(resolutionCallback);
     })

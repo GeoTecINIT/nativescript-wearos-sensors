@@ -1,4 +1,4 @@
-import { wearOS, Node } from "nativescript-wearos-sensors/internal/utils/android/wear-os-types.android";
+import { wearOS, WearOsNode } from "nativescript-wearos-sensors/internal/utils/android/wear-os-types.android";
 import { CapabilityDiscoverer } from "nativescript-wearos-sensors/internal/capability-discoverer.android";
 import { buildFakeNode } from ".";
 
@@ -89,7 +89,7 @@ function buildFakeTaskResult(capability: string, successful: boolean) {
         getResult() {
             return {
                 getNodes() {
-                    const set = new java.util.HashSet<Node>();
+                    const set = new java.util.HashSet<WearOsNode>();
                     if (capability === SUPPORTED_CAPABILITY) {
                         set.add(buildFakeNode("node1", "node1", true));
                         set.add(buildFakeNode("node2", "node2", true));

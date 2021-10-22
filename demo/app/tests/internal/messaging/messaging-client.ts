@@ -1,4 +1,4 @@
-import {decodeMessage, encodeMessage} from "../../../../../src/internal/messaging/messaging-client";
+import { decodeMessage, encodeMessage } from "nativescript-wearos-sensors/internal/communication/encoder-decoder";
 
 describe("Messaging client utilily functions", () => {
     it("allow to get the byte encoding from a simple message string", () => {
