@@ -9,13 +9,12 @@ import { capabilityProtocol } from "../../communication/capabilities";
 
 export class AndroidNodeDiscoverer implements NodeDiscoverer {
 
-    private nodeClient: wearOS.NodeClient;
     constructor(
         private capabilityClient: CapabilityClient = new CapabilityClient(
             capabilityProtocol, getCapabilityAdvertiserResultService()
-        )
+        ),
+        private nodeClient: wearOS.NodeClient = wearOS.Wearable.getNodeClient(Application.android.context)
     ) {
-        this.nodeClient = wearOS.Wearable.getNodeClient(Application.android.context);
     }
 
     public async getConnectedNodes(): Promise<Node[]> {
