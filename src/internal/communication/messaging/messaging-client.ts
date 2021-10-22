@@ -1,5 +1,5 @@
 import { MessagingResult } from "./android/messaging-result-service.android";
-import { Node } from "../../node/node.android";
+import { Node } from "../../node";
 
 export interface MessagingClient {
     sendIsReadyMessage(node: Node): Promise<MessagingResult>;

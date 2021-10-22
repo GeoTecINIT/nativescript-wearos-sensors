@@ -1,12 +1,13 @@
+import { NodeDiscoverer } from "./node-discoverer";
 import { Application } from "@nativescript/core";
-import { WearOsNode, wearOS } from "../utils/android/wear-os-types.android";
+import { WearOsNode, wearOS } from "../../utils/android/wear-os-types.android";
 import OnCompleteListener = com.google.android.gms.tasks.OnCompleteListener;
-import { Node } from "./node.android";
-import { CapabilityClient } from "../communication/capabilities/android/capability-client.android";
-import { getCapabilityAdvertiserResultService } from "../communication/capabilities/android/capability-advertiser-result-service.android";
-import { capabilityProtocol } from "../communication/capabilities";
+import { Node } from "../index";
+import { CapabilityClient } from "../../communication/capabilities/android/capability-client.android";
+import { getCapabilityAdvertiserResultService } from "../../communication/capabilities/android/capability-advertiser-result-service.android";
+import { capabilityProtocol } from "../../communication/capabilities";
 
-export class NodeDiscoverer {
+export class AndroidNodeDiscoverer implements NodeDiscoverer {
 
     private nodeClient: wearOS.NodeClient;
     constructor(

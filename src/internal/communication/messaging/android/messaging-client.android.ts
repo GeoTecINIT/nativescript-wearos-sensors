@@ -2,7 +2,7 @@ import { MessagingClient } from "../messaging-client";
 import { MessagingProtocol } from "../index";
 import { MessagingResult, MessagingResultService } from "./messaging-result-service.android";
 import { CommunicationClient } from "../../communication-client.android";
-import { Node } from "../../../node/node.android";
+import { Node } from "../../../node";
 
 export class MessagingClientImpl extends CommunicationClient<MessagingResult> implements MessagingClient {
 

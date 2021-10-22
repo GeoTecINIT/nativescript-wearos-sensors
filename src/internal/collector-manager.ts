@@ -1,5 +1,5 @@
 import { SensorCallback } from "./sensor-callback-manager";
-import { Node } from "./node/node.android";
+import { Node } from "./node";
 
 export interface CollectorManager {
     isReady(node: Node): Promise<boolean>;

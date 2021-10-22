@@ -1,6 +1,6 @@
 import { Observable } from "@nativescript/core";
-import { NodeDiscoverer } from "nativescript-wearos-sensors/internal/node/node-discoverer.android";
 import { getLogger } from "~/home/logger/logger-view-model";
+import { getNodeDiscoverer } from "nativescript-wearos-sensors/internal/node/discoverer";
 
 export class DeviceListViewModel extends Observable {
 
@@ -22,7 +22,7 @@ export class DeviceListViewModel extends Observable {
     }
 
     onScanNodes() {
-        const nodeDiscoverer = new NodeDiscoverer();
+        const nodeDiscoverer = getNodeDiscoverer();
         this.logger.logInfo("Scanning for WearOS connected devices");
         this.nodes = [];
         this.scanning = true;

@@ -4,7 +4,7 @@ import {
 } from "./capability-advertiser-result-service.android";
 import { CapabilityAdvertiserProtocol } from "../index";
 import { CommunicationClient } from "../../communication-client.android";
-import { Node } from "../../../node/node.android";
+import { Node } from "../../../node";
 
 export class CapabilityClient extends CommunicationClient<CapabilityAdvertisementResult> {
 

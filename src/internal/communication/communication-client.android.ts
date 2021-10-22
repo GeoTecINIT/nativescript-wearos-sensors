@@ -1,6 +1,6 @@
 import { Application } from "@nativescript/core";
 import { WearMessageClient, wearOS } from "../utils/android/wear-os-types.android";
-import { Node } from "../node/node.android";
+import { Node } from "../node";
 import { encodeMessage } from "./encoder-decoder";
 import { promisify } from "../utils/android/utils.android";
 import { CommunicationResultService } from "./communication-result-service";

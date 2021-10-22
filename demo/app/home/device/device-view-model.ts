@@ -1,5 +1,5 @@
 import { Button, Color, EventData, Observable, Repeater } from "@nativescript/core";
-import { Node } from "nativescript-wearos-sensors/internal/node/node.android";
+import { Node } from "nativescript-wearos-sensors/internal/node";
 import { SensorType } from "nativescript-wearos-sensors/internal/sensors/sensor-type";
 import { getSensorCollector } from "nativescript-wearos-sensors/internal/sensors";
 import { CollectorManager } from "nativescript-wearos-sensors/internal/collector-manager";

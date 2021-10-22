@@ -1,6 +1,6 @@
 import { CollectorManager, PrepareError } from "./collector-manager";
 import { SensorCallback, SensorCallbackManager } from "./sensor-callback-manager";
-import { Node } from "./node/node.android";
+import { Node } from "./node";
 import { MessagingClient } from "./communication/messaging/messaging-client";
 import { SensorType } from "./sensors/sensor-type";
 
