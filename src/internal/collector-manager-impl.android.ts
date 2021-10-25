@@ -17,20 +17,16 @@ export class CollectorManagerImpl implements CollectorManager {
         return node.capabilities.indexOf(this.sensor) !== -1;
     }
 
-    // TODO: re-think method name and signature, maybe return not ready nodes?
     async isReady(node: Node): Promise<boolean> {
         if (!this.hasCapability(node)) {
-            console.log("No tiene la capability");
             return false;
         }
 
-        console.log("Voy a enviar el mensaje");
         const result = await this.messagingClient.sendIsReadyMessage(node);
 
         return result.success;
     }
 
-    // TODO: re-think signature, maybe receive nodes to be prepared?
     async prepare(node: Node): Promise<PrepareError> {
         if (!this.hasCapability(node))
             return {
