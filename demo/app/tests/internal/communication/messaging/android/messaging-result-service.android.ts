@@ -1,5 +1,5 @@
 import { ResultMessagingProtocol } from "nativescript-wearos-sensors/internal/communication/messaging";
-import { buildFakeMessageEvent, buildFakeResolutionResult } from "../..";
+import { buildFakeMessageEvent, buildFakeResolutionResult } from "../../../index";
 import { MessagingResultService } from "nativescript-wearos-sensors/internal/communication/messaging/android/messaging-result-service.android";
 
 describe("Result Messaging Service", () => {
