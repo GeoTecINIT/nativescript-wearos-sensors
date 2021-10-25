@@ -2,7 +2,7 @@ import { CommunicationResultService } from "../../communication-result-service";
 import WearableListenerServiceDelegate = es.uji.geotec.wearos_sensors.messaging.WearableListenerServiceDelegate;
 import { CapabilityAdvertiserProtocol } from "../index";
 import { wearOS } from "../../../utils/android/wear-os-types.android";
-import { fromString, SensorType} from "../../../sensors/sensor-type";
+import { fromString, SensorType } from "../../../sensors/sensor-type";
 import { decodeMessage } from "../../encoder-decoder";
 
 export class CapabilityAdvertiserResultService implements CommunicationResultService, WearableListenerServiceDelegate {
@@ -30,7 +30,9 @@ export class CapabilityAdvertiserResultService implements CommunicationResultSer
         }
 
         const decodedMessage = decodeMessage(message.getData());
-        const capabilities = decodedMessage.split("#");
+        const capabilities = decodedMessage !== ""
+            ? decodedMessage.split("#")
+            : [];
 
         this.resolutionCallback({
             nodeId: message.getSourceNodeId(),

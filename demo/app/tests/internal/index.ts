@@ -56,7 +56,7 @@ export function buildFakeMessageEvent(
 ): wearOS.MessageEvent {
     return new wearOS.MessageEvent({
         getData(): native.Array<number> {
-            return message ?
+            return message || message === "" ?
                 typeof message === "string" ?
                     encodeMessage(message as string) :
                     message :
