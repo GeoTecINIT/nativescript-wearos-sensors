@@ -15,7 +15,8 @@ export class MessagingClientImpl extends CommunicationClient<MessagingResult> im
 
     public async sendIsReadyMessage(node: Node): Promise<MessagingResult> {
         const resolutionPromise = this.createResolutionPromise(
-            this.protocol.readyProtocol
+            this.protocol.readyProtocol,
+            node
         );
         await this.sendMessage(node, this.protocol.readyProtocol.messagePath);
         return await resolutionPromise;
@@ -23,7 +24,8 @@ export class MessagingClientImpl extends CommunicationClient<MessagingResult> im
 
     public async sendPrepareMessage(node: Node): Promise<MessagingResult> {
         const resolutionPromise = this.createResolutionPromise(
-            this.protocol.prepareProtocol
+            this.protocol.prepareProtocol,
+            node
         );
         await this.sendMessage(node, this.protocol.prepareProtocol.messagePath);
         return await resolutionPromise;

@@ -17,7 +17,7 @@ describe("Capability advertiser result service", () => {
         resolutionCallback = jasmine.createSpy("resolutionCallbackSpy");
         capabilityResultService = new CapabilityAdvertiserResultService();
         capabilityResultService.setProtocol(protocol);
-        capabilityResultService.setResolutionCallback(resolutionCallback);
+        capabilityResultService.setResolutionCallbackForNode(node.id, resolutionCallback);
     })
 
     it("does nothing if receives a message with an unknown protocol", () => {
@@ -50,8 +50,6 @@ describe("Capability advertiser result service", () => {
 
     it("receives an empty message and returns a capability result without capabilities", () => {
         const messageEvent = buildFakeMessageEvent(node.id, protocol.messagePath, "");
-        console.log("DATA " + messageEvent.getData());
-        console.log("HOLAAA");
         capabilityResultService.onMessageReceived(messageEvent);
 
         expect(resolutionCallback).toHaveBeenCalledWith({

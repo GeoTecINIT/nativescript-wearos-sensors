@@ -7,14 +7,14 @@ import { decodeMessage } from "../../encoder-decoder";
 export class MessagingResultService implements CommunicationResultService, WearableListenerServiceDelegate {
 
     private protocol: ResultMessagingProtocol;
-    private resolutionCallback: (resolution: MessagingResult) => void;
+    private resolutionCallbacks = new Map<string, (messagingResult: MessagingResult) => void>();
 
     public setProtocol(protocol) {
         this.protocol = protocol;
     }
 
-    public setResolutionCallback(resolutionCallback) {
-        this.resolutionCallback = resolutionCallback;
+    public setResolutionCallbackForNode(nodeId: string, resolutionCallback) {
+        this.resolutionCallbacks.set(nodeId, resolutionCallback);
     }
 
     public onMessageReceived(message: wearOS.MessageEvent) {
@@ -31,7 +31,7 @@ export class MessagingResultService implements CommunicationResultService, Weara
         const decodedMessage = decodeMessage(message.getData());
         const messageParts = decodedMessage.split('#');
         if (messageParts[0] === this.protocol.successResponse) {
-            this.resolutionCallback({
+            this.resolutionCallbacks.get(message.getSourceNodeId())({
                 nodeId: message.getSourceNodeId(),
                 success: true,
             });
@@ -40,7 +40,7 @@ export class MessagingResultService implements CommunicationResultService, Weara
             const resolution = messageParts.length > 1 ?
                 { ...partialResolution, message: messageParts[1]} :
                 partialResolution;
-            this.resolutionCallback(resolution);
+            this.resolutionCallbacks.get(message.getSourceNodeId())(resolution);
         }
     }
 }

@@ -18,7 +18,7 @@ describe("Result Messaging Service", () => {
         resolutionCallback = jasmine.createSpy("resolutionCallbackSpy");
         resultMessagingService = new MessagingResultService();
         resultMessagingService.setProtocol(protocol);
-        resultMessagingService.setResolutionCallback(resolutionCallback);
+        resultMessagingService.setResolutionCallbackForNode(nodeId, resolutionCallback);
     })
 
     it("does nothing if receives a message with an unknown protocol", () => {

@@ -8,14 +8,14 @@ import { decodeMessage } from "../../encoder-decoder";
 export class CapabilityAdvertiserResultService implements CommunicationResultService, WearableListenerServiceDelegate {
 
     private protocol: CapabilityAdvertiserProtocol;
-    private resolutionCallback: (capabilityResult: CapabilityAdvertisementResult) => void;
+    private resolutionCallbacks = new Map<string, (capabilityResult: CapabilityAdvertisementResult) => void>();
 
     public setProtocol(protocol) {
         this.protocol = protocol;
     }
 
-    public setResolutionCallback(resolutionCallback) {
-        this.resolutionCallback = resolutionCallback;
+    public setResolutionCallbackForNode(nodeId: string, resolutionCallback) {
+        this.resolutionCallbacks.set(nodeId, resolutionCallback);
     }
 
     public onMessageReceived(message: wearOS.MessageEvent) {
@@ -34,7 +34,7 @@ export class CapabilityAdvertiserResultService implements CommunicationResultSer
             ? decodedMessage.split("#")
             : [];
 
-        this.resolutionCallback({
+        this.resolutionCallbacks.get(message.getSourceNodeId())({
             nodeId: message.getSourceNodeId(),
             capabilities: capabilities.map((capability) => fromString(capability)),
         });

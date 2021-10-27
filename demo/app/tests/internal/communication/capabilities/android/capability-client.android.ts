@@ -42,7 +42,7 @@ describe("Capability client", () => {
         const response = capabilityClient.sendCapabilityAdvertisementRequest(node);
         jasmine.clock().tick(5000);
 
-        await expectAsync(response).toBeRejectedWith(`Timeout for capability advertising in node ${node.name} (${node.id})`);
+        await expectAsync(response).toBeRejectedWith(`Timeout for communication request in node ${node.name} (${node.id})`);
 
         jasmine.clock().uninstall();
     });
