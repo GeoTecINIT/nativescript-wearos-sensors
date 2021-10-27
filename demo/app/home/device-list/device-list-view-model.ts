@@ -28,23 +28,32 @@ export class DeviceListViewModel extends Observable {
         this.scanning = true;
         this.notifyPropertyChange("nodes", this.nodes);
         this.notifyPropertyChange("scanning", this.scanning);
-        nodeDiscoverer.getConnectedNodes().then((nodes) => {
-            this.nodes = nodes.map((node) => {
-                this.logger.logResult(`Connected node --> ${JSON.stringify(node)}`);
-                const sensorsAvailability = {};
 
+        nodeDiscoverer.getConnectedNodes().subscribe({
+            next: (nodeDiscovered) => {
+                if (nodeDiscovered.error) {
+                    this.logger.logResult(nodeDiscovered.error);
+                    return;
+                }
+
+                const node = nodeDiscovered.node;
+                this.logger.logResult(`Connected node --> ${JSON.stringify(node)}`);
+
+                const sensorsAvailability = {};
                 node.capabilities.forEach((capability) => sensorsAvailability[capability.toLowerCase()] = true)
 
-                return {
+                this.nodes.push({
                     id: node.id,
                     name: node.name,
                     sensorsAvailability: sensorsAvailability,
-                }
-            });
-
-            this.scanning = false;
-            this.notifyPropertyChange("scanning", this.scanning);
-            this.notifyPropertyChange("nodes", this.nodes);
+                });
+                this.notifyPropertyChange("nodes", this.nodes);
+            },
+            complete: () => {
+                this.logger.logInfo("Scan ended");
+                this.scanning = false;
+                this.notifyPropertyChange("scanning", this.scanning);
+            }
         });
     }
 }

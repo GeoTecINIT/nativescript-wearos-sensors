@@ -6,6 +6,7 @@ import { CapabilityAdvertisementResult } from "nativescript-wearos-sensors/inter
 import { AndroidNodeDiscoverer } from "nativescript-wearos-sensors/internal/node/discoverer/node-discoverer.android";
 import { buildFakeNode } from "~/tests/internal";
 import { SensorType } from "nativescript-wearos-sensors/internal/sensors/sensor-type";
+import { toArray, isEmpty } from "rxjs/operators";
 
 describe("Node discoverer", () => {
 
@@ -30,7 +31,7 @@ describe("Node discoverer", () => {
         nodeDiscoverer = new AndroidNodeDiscoverer(capabilityClient, nodeClient);
     })
 
-    it("returns an empty list when there are no connected nodes",async () => {
+    it("returns an empty list when there are no connected nodes",(done) => {
         const fakeConnectedNodesResult = buildFakeConnectedNodesResult(true, []);
         const fakeConnectedNodesRequest = buildFakeConnectedNodesRequest(fakeConnectedNodesResult);
 
@@ -39,26 +40,23 @@ describe("Node discoverer", () => {
         );
         spyOn(capabilityClient, "sendCapabilityAdvertisementRequest").and.callThrough();
 
-        const connectedNodesPromise = nodeDiscoverer.getConnectedNodes();
+        nodeDiscoverer.getConnectedNodes().pipe(isEmpty()).subscribe((res) => {
+            expect(res).toBeTrue();
+            done();
+        });
         fakeConnectedNodesRequest.complete();
-        const connectedNodes = await connectedNodesPromise;
-
-        expect(capabilityClient.sendCapabilityAdvertisementRequest).not.toHaveBeenCalled();
-        expect(connectedNodes.length).toBe(0);
     });
 
-    it("throws an error when the connected nodes request has been not successful", async() => {
-        const fakeConnectedNodesResult = buildFakeConnectedNodesResult(true, []);
-        const fakeConnectedNodesRequest = buildFakeConnectedNodesRequest(fakeConnectedNodesResult);
-
+    it("throws an error when the connected nodes request has been not successful", (done) => {
         spyOn(nodeClient, "getConnectedNodes").and.rejectWith();
 
-        const connectedNodesPromise = nodeDiscoverer.getConnectedNodes();
-
-        await expectAsync(connectedNodesPromise).toBeRejected();
+        nodeDiscoverer.getConnectedNodes().pipe(isEmpty()).subscribe((res) => {
+            expect(res).toBeTrue();
+            done();
+        });
     });
 
-    it("given two connected nodes which advertise capabilities, returns a list with them", async () => {
+    it("given two connected nodes which advertise capabilities, returns a list with them", (done) => {
         const fakeConnectedNodesResult = buildFakeConnectedNodesResult(true, [
             buildFakeNode(node1.id, node1.name, true),
             buildFakeNode(node2.id, node2.name, true)
@@ -71,17 +69,19 @@ describe("Node discoverer", () => {
             .withArgs(node1).and.returnValue(Promise.resolve({ nodeId: node1.id, capabilities: node1Capabilities}))
             .withArgs(node2).and.returnValue(Promise.resolve({ nodeId: node2.id, capabilities: node2Capabilities}));
 
-        const connectedNodesPromise = nodeDiscoverer.getConnectedNodes();
+        nodeDiscoverer.getConnectedNodes().pipe(toArray()).subscribe((connectedNodes) => {
+            expect(capabilityClient.sendCapabilityAdvertisementRequest).toHaveBeenCalledTimes(2);
+            expect(connectedNodes.length).toBe(2);
+            expect(connectedNodes[0].node).toEqual(node1WithCapabilities);
+            expect(connectedNodes[0].error).toBeUndefined();
+            expect(connectedNodes[1].node).toEqual(node2WithCapabilities);
+            expect(connectedNodes[1].error).toBeUndefined();
+            done();
+        });
         fakeConnectedNodesRequest.complete();
-        const connectedNodes = await connectedNodesPromise;
-
-        expect(capabilityClient.sendCapabilityAdvertisementRequest).toHaveBeenCalledTimes(2);
-        expect(connectedNodes.length).toBe(2);
-        expect(connectedNodes[0]).toEqual(node1WithCapabilities);
-        expect(connectedNodes[1]).toEqual(node2WithCapabilities);
     });
 
-    it("given two connected nodes which only one of them advertise capabilities, returns a list with that node", async () => {
+    it("given two connected nodes which only one of them advertise capabilities, returns a list with that node", (done) => {
         const fakeConnectedNodesResult = buildFakeConnectedNodesResult(true, [
             buildFakeNode(node1.id, node1.name, true),
             buildFakeNode(node3.id, node3.name, true)
@@ -94,13 +94,16 @@ describe("Node discoverer", () => {
             .withArgs(node1).and.returnValue(Promise.resolve({ nodeId: node1.id, capabilities: node1Capabilities}))
             .withArgs(node3).and.returnValue(Promise.reject("TEST: timeout for capability advertisement response"));
 
-        const connectedNodesPromise = nodeDiscoverer.getConnectedNodes();
+        nodeDiscoverer.getConnectedNodes().pipe(toArray()).subscribe((connectedNodes) => {
+            expect(capabilityClient.sendCapabilityAdvertisementRequest).toHaveBeenCalledTimes(2);
+            expect(connectedNodes.length).toBe(2);
+            expect(connectedNodes[0].node).toEqual(node1WithCapabilities);
+            expect(connectedNodes[0].error).toBeUndefined();
+            expect(connectedNodes[1].node).toEqual(node3);
+            expect(connectedNodes[1].error).toEqual("TEST: timeout for capability advertisement response");
+            done();
+        });
         fakeConnectedNodesRequest.complete();
-        const connectedNodes = await connectedNodesPromise;
-
-        expect(capabilityClient.sendCapabilityAdvertisementRequest).toHaveBeenCalledTimes(2);
-        expect(connectedNodes.length).toBe(1);
-        expect(connectedNodes[0]).toEqual(node1WithCapabilities);
     });
 })
 
