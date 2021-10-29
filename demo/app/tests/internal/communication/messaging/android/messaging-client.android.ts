@@ -50,8 +50,18 @@ describe("Messaging client", () => {
         );
     });
 
+    it("sends an isReady message to a node but it does not reply", async () => {
+        jasmine.clock().install();
+        const ready = messagingClient.sendIsReadyMessage(node);
+
+        jasmine.clock().tick(5000);
+        await expectAsync(ready).toBeRejectedWith(`Timeout for communication request in node ${node.name} (${node.id})`);
+
+        jasmine.clock().uninstall();
+    });
+
     it("sends a prepare message to a node, which is successfully prepared", async () => {
-        const ready = messagingClient.sendPrepareMessage(node);
+        const prepared = messagingClient.sendPrepareMessage(node);
         resultMessagingService.onMessageReceived(
             buildFakeMessageEvent(
                 node.id,
@@ -60,13 +70,13 @@ describe("Messaging client", () => {
             )
         )
 
-        await expectAsync(ready).toBeResolvedTo(
+        await expectAsync(prepared).toBeResolvedTo(
             buildFakeResolutionResult(node.id, true)
         );
     });
 
     it("sends a prepare message to a node, which is not successfully prepared", async () => {
-        const ready = messagingClient.sendPrepareMessage(node);
+        const prepared = messagingClient.sendPrepareMessage(node);
         resultMessagingService.onMessageReceived(
             buildFakeMessageEvent(
                 node.id,
@@ -75,8 +85,18 @@ describe("Messaging client", () => {
             )
         )
 
-        await expectAsync(ready).toBeResolvedTo(
+        await expectAsync(prepared).toBeResolvedTo(
             buildFakeResolutionResult(node.id, false, "Smartwatch exploded")
         );
+    });
+
+    it("sends a prepare message to a node but it does not reply", async () => {
+        jasmine.clock().install();
+        const prepared = messagingClient.sendPrepareMessage(node);
+
+        jasmine.clock().tick(5000);
+        await expectAsync(prepared).toBeRejectedWith(`Timeout for communication request in node ${node.name} (${node.id})`);
+
+        jasmine.clock().uninstall();
     });
 });
