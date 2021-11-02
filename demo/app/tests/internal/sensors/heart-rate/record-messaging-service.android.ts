@@ -11,11 +11,11 @@ describe("Heart rate record messaging service", () => {
         const recordMessagingService = new HeartRateRecordMessagingService();
         const expectedRecords: HeartRateSensorRecord[] = [
             {
-                deviceName: nodeId,
+                deviceId: nodeId,
                 ...getFakeHeartRateData(),
             },
             {
-                deviceName: nodeId,
+                deviceId: nodeId,
                 ...getFakeHeartRateData(),
             }
         ];

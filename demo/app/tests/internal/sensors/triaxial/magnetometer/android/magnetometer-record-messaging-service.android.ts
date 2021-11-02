@@ -13,11 +13,11 @@ describe("Magnetometer record messaging service", () => {
         const recordMessagingService = new MagnetometerRecordMessagingService();
         const expectedRecords: TriAxialSensorRecord[] = [
             {
-                deviceName: nodeId,
+                deviceId: nodeId,
                 ...getFakeTriAxialData()
             },
             {
-                deviceName: nodeId,
+                deviceId: nodeId,
                 ...getFakeTriAxialData()
             }
         ]

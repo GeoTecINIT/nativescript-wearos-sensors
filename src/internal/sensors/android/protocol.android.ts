@@ -1,4 +1,4 @@
-import { MessagingProtocol } from "../../messaging";
+import { MessagingProtocol } from "../../communication/messaging";
 
 const DEFAULT_START_SUFFIX = "start";
 const DEFAULT_STOP_SUFFIX = "stop";

@@ -1,14 +1,13 @@
 import { SensorCallback } from "./sensor-callback-manager";
-import { Node } from "./utils/android/wear-os-types.android";
+import { Node } from "./node";
 
 export interface CollectorManager {
-    isReady(): Promise<boolean>;
-    prepare(): Promise<PrepareError[]>;
-    startCollecting(): Promise<void>;
-    stopCollecting(): Promise<void>;
+    isReady(node: Node): Promise<boolean>;
+    prepare(node: Node): Promise<PrepareError>;
+    startCollecting(node: Node): Promise<void>;
+    stopCollecting(node: Node): Promise<void>;
     listenSensorUpdates(callback: SensorCallback): number;
     stopListenSensorUpdates(listenerId?: number);
-    clearNodes();
 }
 
 export interface PrepareError {

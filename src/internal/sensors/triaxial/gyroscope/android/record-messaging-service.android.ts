@@ -1,5 +1,5 @@
 import { TriAxialRecordMessagingService } from "../../triaxial-record-messaging-service.android";
-import { AbstractRecordMessagingService } from "../../../../messaging/android/abstract-record-messaging-service.android";
+import { AbstractRecordMessagingService } from "../../../../communication/messaging/android/abstract-record-messaging-service.android";
 import { SensorRecords } from "../../../sensor-record";
 import { SensorType } from "../../../sensor-type";
 import {TriAxialSensorRecord} from "../../record";

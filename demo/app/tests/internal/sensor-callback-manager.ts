@@ -5,11 +5,11 @@ import { buildFakeSensorRecords } from "~/tests/internal/index";
 describe("Sensor callback manager", () => {
     const callbackManager = new SensorCallbackManager("testEvent");
     const sensorRecordA: SensorRecord = {
-        deviceName: "test",
+        deviceId: "test",
         timestamp: new Date()
     };
     const sensorRecordB: SensorRecord = {
-        deviceName: "test",
+        deviceId: "test",
         timestamp: new Date()
     };
     const noNotificationTimeout = 100;

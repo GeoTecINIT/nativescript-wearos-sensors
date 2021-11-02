@@ -3,6 +3,16 @@
 
 /* Place any CSS rules you want to apply on both iOS and Android here.
 This is where the vast majority of your CSS code goes. */
+Label.title-big {
+    text-align: center;
+    font-size: 28dp;
+}
+
+Label.title-med {
+    text-align: center;
+    font-size: 16dp;
+}
+
 Label.h-centered {
     text-align: center;
 }
@@ -19,5 +29,68 @@ Label.bold {
     border-width: 5px;
     margin: 5dp;
     padding: 5dp;
+}
+
+.mdi {
+    font-family: "Material Icons Round", "MaterialIconsRound-Regular";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 30;
+    text-align: center;
+}
+
+.mdi-ro {
+    font-family: "Material Icons Round", "MaterialIconsRound-Regular";
+    font-style: normal;
+    font-weight: 400;
+    background-color: #0B388A;
+    border-radius: 5;
+    text-align: center;
+}
+
+.mdi-ro.white {
+    color: white;
+}
+
+.mdi-ro.available {
+    background-color: lightgreen;
+}
+
+.mdi-ro.unavailable {
+    background-color: indianred;
+}
+
+.mdi-ro.recording {
+    border-width: 5px;
+    border-color: red;
+}
+
+.mdi-ro.mdi-30 {
+    font-size: 30;
+    margin-right: 5;
+}
+
+.mdi-ro.mdi-50 {
+    font-size: 70;
+}
+
+.card {
+    border-radius: 4;
+    android-elevation: 2;
+    height: 120;
+    padding: 10dp;
+}
+
+.sensor-action {
+    background-color: deepskyblue;
+    border-radius: 4;
+    height: 60%;
+    width: 70%;
+}
+
+.logger-text {
+    font-family: monospace;
+    font-size: 10%;
+    color: white;
 }
 

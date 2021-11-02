@@ -1,0 +1,25 @@
+<Page
+        navigatingTo="onNavigatingTo"
+        loaded="onPageLoaded"
+        actionBarHidden="true"
+        xmlns="http://schemas.nativescript.org/tns.xsd">
+    <Label text="Hola!!!"></Label>
+
+    <GridLayout rows="auto, *" columns="*, auto" backgroundColor="grey">
+        <Label row="0" col="0" text="WearOS Logger" class="logger-text v-centered h-centered bold"></Label>
+        <Label  row="0" col="1"
+                class="mdi" text="&#xe92b;" color="White"
+                tap="{{ clearLogs }}"></Label>
+        <ScrollView
+                row="1" colSpan="2"
+                id="logger-view" width="100%" height="100%">
+            <TextView
+                    class="logger-text"
+                    editable="false"
+                    textChange="loggerTextChanged"
+                    text="{{ loggedText }}"></TextView>
+
+        </ScrollView>
+    </GridLayout>
+
+</Page>

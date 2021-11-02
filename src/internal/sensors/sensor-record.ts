@@ -1,7 +1,7 @@
 import { SensorType } from "./sensor-type";
 
 export interface SensorRecord {
-    deviceName: string;
+    deviceId: string;
     timestamp: Date;
 }
 

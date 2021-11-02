@@ -1,8 +1,8 @@
 export interface MessagingProtocol {
-    startMessagePath: string;
-    stopMessagePath: string;
     readyProtocol: ResultMessagingProtocol;
     prepareProtocol: ResultMessagingProtocol;
+    startMessagePath: string;
+    stopMessagePath: string;
     newRecordMessagePath: string;
 }
 

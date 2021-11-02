@@ -1,19 +1,20 @@
-import { wearOS } from "../../utils/android/wear-os-types.android";
-import { decodeMessage } from "../messaging-client";
-import { ResultMessagingProtocol } from "../index";
+import { CommunicationResultService } from "../../communication-result-service";
 import WearableListenerServiceDelegate = es.uji.geotec.wearos_sensors.messaging.WearableListenerServiceDelegate;
+import { wearOS } from "../../../utils/android/wear-os-types.android";
+import { ResultMessagingProtocol } from "../index";
+import { decodeMessage } from "../../encoder-decoder";
 
-export class ResultMessagingService implements WearableListenerServiceDelegate {
+export class MessagingResultService implements CommunicationResultService, WearableListenerServiceDelegate {
 
     private protocol: ResultMessagingProtocol;
-    private resolutionCallback: (resolution: ResolutionResult) => void;
+    private resolutionCallbacks = new Map<string, (messagingResult: MessagingResult) => void>();
 
     public setProtocol(protocol) {
         this.protocol = protocol;
     }
 
-    public setResolutionCallback(resolutionCallback) {
-        this.resolutionCallback = resolutionCallback;
+    public setResolutionCallbackForNode(nodeId: string, resolutionCallback) {
+        this.resolutionCallbacks.set(nodeId, resolutionCallback);
     }
 
     public onMessageReceived(message: wearOS.MessageEvent) {
@@ -30,7 +31,7 @@ export class ResultMessagingService implements WearableListenerServiceDelegate {
         const decodedMessage = decodeMessage(message.getData());
         const messageParts = decodedMessage.split('#');
         if (messageParts[0] === this.protocol.successResponse) {
-            this.resolutionCallback({
+            this.resolutionCallbacks.get(message.getSourceNodeId())({
                 nodeId: message.getSourceNodeId(),
                 success: true,
             });
@@ -39,22 +40,22 @@ export class ResultMessagingService implements WearableListenerServiceDelegate {
             const resolution = messageParts.length > 1 ?
                 { ...partialResolution, message: messageParts[1]} :
                 partialResolution;
-            this.resolutionCallback(resolution);
+            this.resolutionCallbacks.get(message.getSourceNodeId())(resolution);
         }
     }
 }
 
-export interface ResolutionResult {
+export interface MessagingResult {
     nodeId: string;
     success: boolean;
     message?: string;
 }
 
 // FIXME: will this work with multiple sensors? Maybe one instance per sensor will be needed
-let _instance: ResultMessagingService;
-export function getResultMessagingService(): ResultMessagingService {
+let _instance: MessagingResultService;
+export function getResultMessagingService(): MessagingResultService {
     if (!_instance) {
-        _instance = new ResultMessagingService();
+        _instance = new MessagingResultService();
     }
 
     return _instance;

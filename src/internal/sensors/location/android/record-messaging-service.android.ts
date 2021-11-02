@@ -1,4 +1,4 @@
-import { AbstractRecordMessagingService } from "../../../messaging/android/abstract-record-messaging-service.android";
+import { AbstractRecordMessagingService } from "../../../communication/messaging/android/abstract-record-messaging-service.android";
 import { wearOS } from "../../../utils/android/wear-os-types.android";
 import { SensorRecords } from "../../sensor-record";
 import { LocationSensorRecord } from "../record";
@@ -20,7 +20,7 @@ export class LocationRecordMessagingService extends AbstractRecordMessagingServi
             time = buff.getLong();
 
             records.push({
-                deviceName: messageEvent.getSourceNodeId(),
+                deviceId: messageEvent.getSourceNodeId(),
                 timestamp: new Date(time),
                 latitude: lat,
                 longitude: lon,
