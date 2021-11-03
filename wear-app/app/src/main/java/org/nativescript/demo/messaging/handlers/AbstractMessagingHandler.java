@@ -14,6 +14,7 @@ import org.nativescript.demo.messaging.MessagingClient;
 import org.nativescript.demo.messaging.MessagingProtocol;
 import org.nativescript.demo.messaging.ResultMessagingProtocol;
 import org.nativescript.demo.permissions.PermissionsManager;
+import org.nativescript.demo.sensoring.SensoringConfiguration;
 import org.nativescript.demo.sensoring.WearSensor;
 import org.nativescript.demo.sensoring.WearSensorManager;
 import org.nativescript.demo.services.SensorRecordingService;
@@ -39,7 +40,7 @@ public abstract class AbstractMessagingHandler {
         } else if (path.equals(protocol.getPrepareProtocol().getMessagePath())) {
             handlePrepareRequest(sourceNodeId);
         } else if (path.equals(protocol.getStartMessagePath())) {
-            handleStartRequest(sourceNodeId);
+            handleStartRequest(sourceNodeId, event.getData());
         } else if (path.equals(protocol.getStopMessagePath())) {
             handleStopRequest(sourceNodeId);
         }
@@ -87,12 +88,18 @@ public abstract class AbstractMessagingHandler {
         messageClient.sendSuccessfulResponse(sourceNodeId, prepareProtocol);
     }
 
-    private void handleStartRequest(String sourceNodeId) {
+    private void handleStartRequest(String sourceNodeId, byte[] configuration) {
+        String[] configParams = new String(configuration).split("#");
         Intent intent = IntentManager.intentForSensorRecordingService(context);
         context.startForegroundService(intent);
         context.bindService(
                 intent,
-                getServiceConnectionForAction(ServiceAction.START_COLLECTING, sourceNodeId),
+                getServiceConnectionForAction(
+                        ServiceAction.START_COLLECTING,
+                        sourceNodeId,
+                        Integer.parseInt(configParams[0]),
+                        Integer.parseInt(configParams[1])
+                ),
                 Context.BIND_AUTO_CREATE);
     }
 
@@ -101,7 +108,7 @@ public abstract class AbstractMessagingHandler {
         context.startForegroundService(intent);
         context.bindService(
                 intent,
-                getServiceConnectionForAction(ServiceAction.STOP_COLLECTING, sourceNodeId),
+                getServiceConnectionForAction(ServiceAction.STOP_COLLECTING, sourceNodeId, -1, -1),
                 Context.BIND_AUTO_CREATE
         );
     }
@@ -112,7 +119,7 @@ public abstract class AbstractMessagingHandler {
         return wearSensorManager.isSensorAvailable(wearSensor);
     }
 
-    private ServiceConnection getServiceConnectionForAction(final ServiceAction action, final String sourceNodeId) {
+    private ServiceConnection getServiceConnectionForAction(final ServiceAction action, final String sourceNodeId, final int sensorDelay, final int batchSize) {
         return new ServiceConnection() {
 
             @Override
@@ -122,11 +129,14 @@ public abstract class AbstractMessagingHandler {
                 WearSensor wearSensor = getWearSensorType();
                 switch (action) {
                     case START_COLLECTING:
-                        binder.startRecordingFor(
+                        SensoringConfiguration sensoringConfiguration = new SensoringConfiguration(
                                 wearSensor,
                                 sourceNodeId,
-                                getProtocol().getNewRecordMessagePath()
+                                getProtocol().getNewRecordMessagePath(),
+                                sensorDelay,
+                                batchSize
                         );
+                        binder.startRecordingFor(sensoringConfiguration);
                         break;
                     case STOP_COLLECTING:
                         binder.stopRecordingFor(wearSensor);
