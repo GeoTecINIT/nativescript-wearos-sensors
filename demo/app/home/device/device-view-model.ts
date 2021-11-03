@@ -2,8 +2,10 @@ import { Button, Color, EventData, Observable, Repeater } from "@nativescript/co
 import { Node } from "nativescript-wearos-sensors/internal/node";
 import { SensorType } from "nativescript-wearos-sensors/internal/sensors/sensor-type";
 import { getSensorCollector } from "nativescript-wearos-sensors/internal/sensors";
-import { CollectorManager } from "nativescript-wearos-sensors/internal/collector-manager";
+import { CollectorManager } from "nativescript-wearos-sensors/internal/collection/collector-manager";
 import { getLogger } from "~/home/logger/logger-view-model";
+import { SensorDelay } from "nativescript-wearos-sensors/internal/collection/collection-configuration";
+import { ValueList } from "nativescript-drop-down";
 
 export class DeviceViewModel extends Observable {
     private logger;
@@ -26,6 +28,16 @@ export class DeviceViewModel extends Observable {
     private sensorDescription: SensorDescription[];
 
     private repeater: Repeater;
+
+    private sensorDelays = new ValueList([
+        { value: SensorDelay.NORMAL, display: "NORMAL" },
+        { value: SensorDelay.UI, display: "UI" },
+        { value: SensorDelay.GAME, display: "GAME" },
+        { value: SensorDelay.FASTEST, display: "FASTEST" }
+    ]);
+    private selectedDelayIndex = 0;
+
+    private batchSize = 50;
 
     constructor(
         private node: Node
@@ -118,7 +130,10 @@ export class DeviceViewModel extends Observable {
         sensorDescription.collector.listenSensorUpdates((records) => {
             this.logger.logResultForNode(this.node.name, `record received --> ${JSON.stringify(records)}`);
         });
-        sensorDescription.collector.startCollecting(this.node);
+        sensorDescription.collector.startCollecting(this.node, {
+            sensorDelay: this.sensorDelays.getValue(this.selectedDelayIndex),
+            batchSize: this.batchSize
+        });
         this.logger.logInfoForNode(this.node.name, `Send start request for ${sensorDescription.sensor}`);
 
         this.updateSensorDescriptionStatus(sensorDescription, Status.LISTENING);
