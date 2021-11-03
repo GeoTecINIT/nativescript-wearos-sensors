@@ -89,14 +89,4 @@ describe("Messaging client", () => {
             buildFakeResolutionResult(node.id, false, "Smartwatch exploded")
         );
     });
-
-    it("sends a prepare message to a node but it does not reply", async () => {
-        jasmine.clock().install();
-        const prepared = messagingClient.sendPrepareMessage(node);
-
-        jasmine.clock().tick(5000);
-        await expectAsync(prepared).toBeRejectedWith(`Timeout for communication request in node ${node.name} (${node.id})`);
-
-        jasmine.clock().uninstall();
-    });
 });
