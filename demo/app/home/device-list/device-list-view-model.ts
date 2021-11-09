@@ -1,6 +1,6 @@
 import { Observable } from "@nativescript/core";
 import { getLogger } from "~/home/logger/logger-view-model";
-import { getNodeDiscoverer } from "nativescript-wearos-sensors/internal/node/discoverer";
+import { getNodeDiscoverer, NodeDiscovered } from "nativescript-wearos-sensors/node";
 
 export class DeviceListViewModel extends Observable {
 
@@ -30,7 +30,7 @@ export class DeviceListViewModel extends Observable {
         this.notifyPropertyChange("scanning", this.scanning);
 
         nodeDiscoverer.getConnectedNodes().subscribe({
-            next: (nodeDiscovered) => {
+            next: (nodeDiscovered: NodeDiscovered) => {
                 if (nodeDiscovered.error) {
                     this.logger.logResult(nodeDiscovered.error);
                     return;

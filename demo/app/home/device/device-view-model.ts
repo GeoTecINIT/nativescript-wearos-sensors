@@ -1,11 +1,10 @@
 import { Button, Color, EventData, Observable, Repeater } from "@nativescript/core";
-import { Node } from "nativescript-wearos-sensors/internal/node";
-import { SensorType } from "nativescript-wearos-sensors/internal/sensors/sensor-type";
-import { getSensorCollector } from "nativescript-wearos-sensors/internal/sensors";
-import { CollectorManager } from "nativescript-wearos-sensors/internal/collection/collector-manager";
 import { getLogger } from "~/home/logger/logger-view-model";
-import { SensorDelay } from "nativescript-wearos-sensors/internal/collection/collection-configuration";
 import { ValueList } from "nativescript-drop-down";
+import { Node } from "nativescript-wearos-sensors/node";
+import { CollectorManager, PrepareError, SensorDelay } from "nativescript-wearos-sensors/collection";
+import { getSensorCollector, SensorType } from "nativescript-wearos-sensors/sensors";
+import { SensorRecords } from "nativescript-wearos-sensors/sensors/records";
 
 export class DeviceViewModel extends Observable {
     private logger;
@@ -112,7 +111,7 @@ export class DeviceViewModel extends Observable {
         this.updateSensorDescriptionStatus(sensorDescription, Status.WAITING_FOR_RESPONSE)
 
         this.logger.logInfoForNode(this.node.name, `Sending prepare request to node and waiting for response. Should look at wearable device...`);
-        sensorDescription.collector.prepare(this.node).then((prepareError) => {
+        sensorDescription.collector.prepare(this.node).then((prepareError: PrepareError) => {
             this.logger.logResultForNode(this.node.name, `Prepare response: ${ prepareError ? prepareError.message : 'device prepared successfully'}`);
             let status;
             if (prepareError) {
@@ -127,7 +126,7 @@ export class DeviceViewModel extends Observable {
     }
 
     private handleOnStartTap(sensorDescription: SensorDescription) {
-        sensorDescription.collector.listenSensorUpdates((records) => {
+        sensorDescription.collector.listenSensorUpdates((records: SensorRecords<any>) => {
             this.logger.logResultForNode(this.node.name, `record received --> ${JSON.stringify(records)}`);
         });
         sensorDescription.collector.startCollecting(this.node, {
