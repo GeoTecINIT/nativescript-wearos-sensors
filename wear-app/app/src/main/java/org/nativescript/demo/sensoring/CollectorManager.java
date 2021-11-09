@@ -27,18 +27,20 @@ public class CollectorManager {
         this.listeners = new HashMap<>();
     }
 
-    public boolean startCollectingFrom(WearSensor wearSensor, String requesterId, String sendingPath) {
+    public boolean startCollectingFrom(SensoringConfiguration sensoringConfiguration) {
+        WearSensor wearSensor = sensoringConfiguration.getWearSensor();
         AbstractRecordCallback callback = RecordCallbackProvider.getRecordCallbackFor(
                 wearSensor,
                 context,
-                requesterId,
-                sendingPath
+                sensoringConfiguration.getRequesterId(),
+                sensoringConfiguration.getSendingPath()
         );
 
         RecordAccumulator accumulator = RecordAccumulatorProvider.getRecordAccumulatorProviderFor(
                 wearSensor,
                 callback,
-                wearSensor == WearSensor.LOCATION || wearSensor == WearSensor.HEART_RATE ? 1 : 50);
+                sensoringConfiguration.getBatchSize()
+        );
 
         switch (wearSensor) {
             case ACCELEROMETER:
@@ -50,7 +52,7 @@ public class CollectorManager {
                     return false;
 
                 listeners.put(wearSensor, listener);
-                return wearSensorManager.startCollectingFrom(wearSensor, listener);
+                return wearSensorManager.startCollectingFrom(wearSensor, sensoringConfiguration.getSensorDelay(), listener);
             case LOCATION:
                 locationListener = SensorListenerProvider.getLocationListener(accumulator);
                 if (locationListener == null)

@@ -11,6 +11,7 @@ import android.util.Log;
 import androidx.annotation.Nullable;
 
 import org.nativescript.demo.NotificationProvider;
+import org.nativescript.demo.sensoring.SensoringConfiguration;
 import org.nativescript.demo.sensoring.WearSensor;
 import org.nativescript.demo.sensoring.CollectorManager;
 
@@ -23,8 +24,8 @@ public class SensorRecordingService extends Service {
     public class SensorRecordingBinder extends Binder {
         SensorRecordingService service = SensorRecordingService.this;
 
-        public void startRecordingFor(WearSensor wearSensor, String requesterId, String sendingPath) {
-            service.startRecordingFor(wearSensor, requesterId, sendingPath);
+        public void startRecordingFor(SensoringConfiguration sensoringConfiguration) {
+            service.startRecordingFor(sensoringConfiguration);
         }
 
         public void stopRecordingFor(WearSensor wearSensor) {
@@ -84,14 +85,15 @@ public class SensorRecordingService extends Service {
         startForeground(notificationId, notification);
     }
 
-    private void startRecordingFor(WearSensor sensor, String requesterId, String sendingPath) {
+    private void startRecordingFor(SensoringConfiguration sensoringConfiguration) {
+        WearSensor sensor = sensoringConfiguration.getWearSensor();
         if (sensorsBeingRecorded.contains(sensor)) {
             Log.d(TAG, "already recording: " + sensor.toString());
             return;
         }
 
         sensorsBeingRecorded.add(sensor);
-        collectorManager.startCollectingFrom(sensor, requesterId, sendingPath);
+        collectorManager.startCollectingFrom(sensoringConfiguration);
         Log.d(TAG, "startRecordingFor: " + sensor.toString());
     }
 

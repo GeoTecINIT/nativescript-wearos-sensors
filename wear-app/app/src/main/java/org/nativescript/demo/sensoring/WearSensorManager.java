@@ -57,12 +57,12 @@ public class WearSensorManager {
         return hasFeature || hasSensor;
     }
 
-    public boolean startCollectingFrom(WearSensor wearSensor, SensorEventListener listener) {
+    public boolean startCollectingFrom(WearSensor wearSensor, int samplingPeriod, SensorEventListener listener) {
         if (!isSensorAvailable(wearSensor) || listener == null)
             return false;
 
         Sensor sensor = getWearSensor(wearSensor);
-        return sensorManager.registerListener(listener, sensor, SensorManager.SENSOR_DELAY_NORMAL);
+        return sensorManager.registerListener(listener, sensor, samplingPeriod);
     }
 
     @SuppressLint("MissingPermission")

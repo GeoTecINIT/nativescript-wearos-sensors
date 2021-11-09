@@ -3,11 +3,12 @@
   "license": "SEE LICENSE IN <your-license-filename>",
   "repository": "<fill-your-repository-here>",
   "dependencies": {
+    "@nativescript/core": "~7.3.0",
     "@nativescript/theme": "~2.3.0",
     "@nativescript/unit-test-runner": "^1.0.2",
-    "nativescript-wearos-sensors": "file:../src",
-    "@nativescript/core": "~7.3.0",
-    "@nativescript/webpack": "3.0.0"
+    "@nativescript/webpack": "3.0.0",
+    "nativescript-drop-down": "^6.0.0",
+    "nativescript-wearos-sensors": "file:../src"
   },
   "devDependencies": {
     "@nativescript/android": "8.0.0",

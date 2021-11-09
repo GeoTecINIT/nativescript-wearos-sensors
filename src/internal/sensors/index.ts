@@ -1,6 +1,6 @@
 import { Application } from "@nativescript/core";
 import { SensorType } from "./sensor-type";
-import { CollectorManager } from "../collector-manager";
+import { CollectorManager } from "../collection/collector-manager";
 import { getAndroidSensorCollector } from "./android/index.android";
 
 export function getSensorCollector(

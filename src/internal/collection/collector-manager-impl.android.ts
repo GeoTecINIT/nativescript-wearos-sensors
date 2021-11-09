@@ -1,8 +1,9 @@
 import { CollectorManager, PrepareError } from "./collector-manager";
-import { SensorCallback, SensorCallbackManager } from "./sensor-callback-manager";
-import { Node } from "./node";
-import { MessagingClient } from "./communication/messaging/messaging-client";
-import { SensorType } from "./sensors/sensor-type";
+import { SensorCallback, SensorCallbackManager } from "../sensor-callback-manager";
+import { Node } from "../node";
+import { MessagingClient } from "../communication/messaging/messaging-client";
+import { SensorType } from "../sensors/sensor-type";
+import { CollectionConfiguration, configAsString, defaultCollectionConfiguration } from "./collection-configuration";
 
 export class CollectorManagerImpl implements CollectorManager {
 
@@ -46,11 +47,12 @@ export class CollectorManagerImpl implements CollectorManager {
         }
     }
 
-    async startCollecting(node: Node): Promise<void> {
+    async startCollecting(node: Node, config?: CollectionConfiguration): Promise<void> {
         if (!this.hasCapability(node))
             return;
 
-        await this.messagingClient.sendStartMessage(node);
+        const message = config ? configAsString(config) : configAsString(defaultCollectionConfiguration);
+        await this.messagingClient.sendStartMessage(node, message);
     }
 
     async stopCollecting(node: Node): Promise<void> {

@@ -94,3 +94,9 @@ Label.bold {
     color: white;
 }
 
+.drop-down {
+    text-align: center;
+    vertical-align: center;
+    horiz-align: center;
+}
+
