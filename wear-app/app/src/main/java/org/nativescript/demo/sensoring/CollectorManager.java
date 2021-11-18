@@ -86,4 +86,8 @@ public class CollectorManager {
                 break;
         }
     }
+
+    public void ensureStopCollecting() {
+        wearSensorManager.stopCollectingFromAllSources(listeners, locationListener);
+    }
 }

@@ -91,7 +91,6 @@ public abstract class AbstractMessagingHandler {
     private void handleStartRequest(String sourceNodeId, byte[] configuration) {
         String[] configParams = new String(configuration).split("#");
         Intent intent = IntentManager.intentForSensorRecordingService(context);
-        context.startForegroundService(intent);
         context.bindService(
                 intent,
                 getServiceConnectionForAction(
@@ -100,17 +99,18 @@ public abstract class AbstractMessagingHandler {
                         Integer.parseInt(configParams[0]),
                         Integer.parseInt(configParams[1])
                 ),
-                Context.BIND_AUTO_CREATE);
+                0);
+        context.startForegroundService(intent);
     }
 
     private void handleStopRequest(String sourceNodeId) {
         Intent intent = IntentManager.intentForSensorRecordingService(context);
-        context.startForegroundService(intent);
         context.bindService(
                 intent,
                 getServiceConnectionForAction(ServiceAction.STOP_COLLECTING, sourceNodeId, -1, -1),
-                Context.BIND_AUTO_CREATE
+                0
         );
+        //context.startForegroundService(intent);
     }
 
     private boolean isSensorSupported() {

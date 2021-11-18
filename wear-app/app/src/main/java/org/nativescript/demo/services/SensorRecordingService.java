@@ -41,7 +41,7 @@ public class SensorRecordingService extends Service {
 
     private static final String TAG = "SensorRecordingService";
 
-    private static final int TIMEOUT = 10 * 60000;
+    private static final int TIMEOUT = 1000 * 60;
 
     private PowerManager.WakeLock wakeLock;
     private Set<WearSensor> sensorsBeingRecorded;
@@ -65,14 +65,16 @@ public class SensorRecordingService extends Service {
 
         if (!wakeLock.isHeld()) {
             wakeLock.acquire(TIMEOUT);
-            runInForegroundWithNotification();
         }
+
+        runInForegroundWithNotification();
 
         return START_STICKY;
     }
 
     @Override
     public void onDestroy() {
+        collectorManager.ensureStopCollecting();
         super.onDestroy();
     }
 

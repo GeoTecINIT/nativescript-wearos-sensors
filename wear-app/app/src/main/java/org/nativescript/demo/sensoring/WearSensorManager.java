@@ -11,6 +11,7 @@ import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class WearSensorManager {
@@ -95,6 +96,14 @@ public class WearSensorManager {
 
         LocationServices.getFusedLocationProviderClient(context)
                 .removeLocationUpdates(listener);
+    }
+
+    public void stopCollectingFromAllSources(HashMap<WearSensor, SensorEventListener> listeners, LocationCallback locationCallback) {
+        for (WearSensor wearSensor : listeners.keySet()) {
+            stopCollectingFrom(wearSensor, listeners.get(wearSensor));
+        }
+
+        stopCollectingLocations(locationCallback);
     }
 
     private Sensor getWearSensor(WearSensor sensor) {
