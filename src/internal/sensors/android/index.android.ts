@@ -3,7 +3,7 @@ import { WearableConfig } from "../index";
 import { CollectorManager } from "../../collection/collector-manager";
 import { AbstractRecordMessagingService } from "../../communication/messaging/android/abstract-record-messaging-service.android";
 import { buildMessagingProtocol } from "./protocol.android";
-import { SensorCallbackManager } from "../../sensor-callback-manager";
+import { getSensorCallbackManager } from "../../sensor-callback-manager";
 import { MessagingClientImpl } from "../../communication/messaging/android/messaging-client.android";
 import { getResultMessagingService } from "../../communication/messaging/android/messaging-result-service.android";
 import { CollectorManagerImpl } from "../../collection/collector-manager-impl.android";
@@ -37,7 +37,7 @@ export function getAndroidSensorCollector(
         : getDefaultWearableConfig(sensorType);
 
     const protocol = buildMessagingProtocol(wearableConfig.messagingPrefixPath);
-    const callback = new SensorCallbackManager(sensorType);
+    const callback = getSensorCallbackManager();
     const messagingClient = new MessagingClientImpl(
         protocol,
         getResultMessagingService()

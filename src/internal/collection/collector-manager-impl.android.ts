@@ -63,14 +63,14 @@ export class CollectorManagerImpl implements CollectorManager {
     }
 
     listenSensorUpdates(callback: SensorCallback): number {
-        return this.callbackManager.add(callback);
+        return this.callbackManager.add(callback, this.sensor);
     }
 
     stopListenSensorUpdates(listenerId?: number) {
         if (typeof listenerId === "number") {
             this.callbackManager.remove(listenerId);
         } else {
-            this.callbackManager.removeAll();
+            this.callbackManager.removeAllForEvent(this.sensor);
         }
     }
 }
