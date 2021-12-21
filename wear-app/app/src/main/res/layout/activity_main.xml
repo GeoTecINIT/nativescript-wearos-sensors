@@ -15,38 +15,69 @@
         android:padding="@dimen/inner_frame_layout_padding"
         app:boxedEdges="all">
 
-        <LinearLayout
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center|center_horizontal"
-            android:orientation="vertical">
+            android:layout_height="match_parent"
+            android:padding="4dp"
+            android:scrollbarSize="4dp"
+            android:scrollbarStyle="outsideInset">
 
-            <TextView
-                android:id="@+id/text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal|top"
-                android:layout_marginBottom="10dp"
-                android:text="@string/app_name"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/info"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:justificationMode="inter_word"
-                android:text="Tap Command to intruct the smartphone to request an update for each sensor" />
+                android:orientation="vertical">
 
-            <Button
-                android:id="@+id/command_button"
-                style="@style/Widget.AppCompat.Button.Colored"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center|center_horizontal"
-                android:onClick="onStartButtonClick"
-                android:text="Command" />
-        </LinearLayout>
+                <TextView
+                    android:id="@+id/text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal|top"
+                    android:layout_marginBottom="10dp"
+                    android:text="@string/app_name"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/info_command"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:justificationMode="inter_word"
+                    android:text='Tap "Command" to intruct the smartphone to request an update for each sensor' />
+
+                <Button
+                    android:id="@+id/command_button"
+                    style="@style/Widget.AppCompat.Button.Colored"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|center_horizontal"
+                    android:layout_margin="10dp"
+                    android:onClick="onCommandButtonClick"
+                    android:text="Command" />
+
+                <TextView
+                    android:id="@+id/info_command_single"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:justificationMode="inter_word"
+                    android:text='Tap "Single Command" to instruct the smartphone to request an update for the selected sensor' />
+
+                <Spinner
+                    android:id="@+id/sensor_spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:spinnerMode="dropdown" />
+
+                <Button
+                    android:id="@+id/single_command_button"
+                    style="@style/Widget.AppCompat.Button.Colored"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:onClick="onSingleCommandButtonClick"
+                    android:text="Single Command" />
+            </LinearLayout>
+        </ScrollView>
 
     </FrameLayout>
 </androidx.wear.widget.BoxInsetLayout>
