@@ -88,8 +88,13 @@ public class NotificationProvider {
             NotificationChannel channel = new NotificationChannel(
                     id,
                     name,
-                    NotificationManager.IMPORTANCE_LOW
+                    id.equals(REQUEST_PERMISSIONS_CHANNEL)
+                            ? NotificationManager.IMPORTANCE_HIGH
+                            : NotificationManager.IMPORTANCE_LOW
             );
+
+            if (id.equals(REQUEST_PERMISSIONS_CHANNEL))
+                channel.enableVibration(true);
 
             notificationManager.createNotificationChannel(channel);
         }
@@ -109,6 +114,7 @@ public class NotificationProvider {
                         .setPriority(NotificationCompat.PRIORITY_HIGH);
 
         if (pendingIntent != null) {
+            notificationBuilder.setVibrate(new long[]{1000, 1000, 1000, 1000, 1000});
             notificationBuilder.setContentIntent(pendingIntent);
             notificationBuilder.setAutoCancel(true);
         }
