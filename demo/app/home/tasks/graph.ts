@@ -5,13 +5,28 @@ class DemoTaskGraph implements TaskGraph {
         on: EventListenerGenerator,
         run: RunnableTaskDescriptor
     ): Promise<void> {
-        on("requestStartCommand", run("commandLoggerTask"));
+        on("startAllCommand", run("commandLoggerTask"));
+        on("startAccelerometerCommand", run("commandLoggerTask"));
+        on("startGyroscopeCommand", run("commandLoggerTask"));
+        on("startMagnetometerCommand", run("commandLoggerTask"));
+        on("startHeartRateCommand", run("commandLoggerTask"));
+        on("startLocationCommand", run("commandLoggerTask"));
 
-        on("requestStartCommand", run("accelerometerStartSensorTask"));
-        on("requestStartCommand", run("gyroscopeStartSensorTask"));
-        on("requestStartCommand", run("magnetometerStartSensorTask"));
-        on("requestStartCommand", run("heartRateStartSensorTask"));
-        on("requestStartCommand", run("locationStartSensorTask"));
+        on("startAllCommand", run("accelerometerStartSensorTask"));
+        on("startAccelerometerCommand", run("accelerometerStartSensorTask"));
+
+        on("startAllCommand", run("gyroscopeStartSensorTask"));
+        on("startGyroscopeCommand", run("gyroscopeStartSensorTask"));
+
+        on("startAllCommand", run("magnetometerStartSensorTask"));
+        on("startMagnetometerCommand", run("magnetometerStartSensorTask"));
+
+        on("startAllCommand", run("heartRateStartSensorTask"));
+        on("startHeartRateCommand", run("heartRateStartSensorTask"));
+
+        on("startAllCommand", run("locationStartSensorTask"));
+        on("startLocationCommand", run("locationStartSensorTask"));
+
 
         on("accelerometerRecordsAcquired", run("accelerometerStopSensorTask"));
         on("gyroscopeRecordsAcquired", run("gyroscopeStopSensorTask"));
