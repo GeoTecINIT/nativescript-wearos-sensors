@@ -7,16 +7,19 @@ import { getGyroscopeRecordService } from "./internal/sensors/triaxial/gyroscope
 import { getMagnetometerRecordService } from "./internal/sensors/triaxial/magnetometer/android/record-messaging-service.android";
 import { getLocationRecordService } from "./internal/sensors/location/android/record-messaging-service.android";
 import { getHeartRateRecordService } from "./internal/sensors/heart-rate/android/record-messaging-service.android";
+import { getCommandService } from "./internal/communication/command/command-service.android";
 
 import WearableListenerServiceDelegate = es.uji.geotec.wearos_sensors.messaging.WearableListenerServiceDelegate;
 import WearosSensorsCapabilityAdvertiserService = es.uji.geotec.wearos_sensors.messaging.WearosSensorsCapabilityAdvertiserService;
 import WearosSensorsResultsMessagingService = es.uji.geotec.wearos_sensors.messaging.WearosSensorsResultsMessagingService;
 import WearosSensorsRecordsMessagingService = es.uji.geotec.wearos_sensors.messaging.WearosSensorsRecordsMessagingService;
+import WearosSensorsCommandService = es.uji.geotec.wearos_sensors.command.WearosCommandService;
 import WearSensor = es.uji.geotec.wearos_sensors.WearSensor;
 
 export class WearosSensors extends Common {
     async init(): Promise<void> {
         this.wireUpCapabilityAdvertiser();
+        this.wireUpCommandService();
         this.wireUpAccelerometerComponents();
         this.wireUpGyroscopeComponents();
         this.wireUpMagnetometerComponents();
@@ -30,6 +33,15 @@ export class WearosSensors extends Common {
             new WearableListenerServiceDelegate({
                 onMessageReceived: (messageEvent) =>
                     getCapabilityAdvertiserResultService().onMessageReceived(messageEvent)
+            })
+        );
+    }
+
+    public wireUpCommandService() {
+        WearosSensorsCommandService.setCommandServiceDelegate(
+            new WearableListenerServiceDelegate({
+                onMessageReceived: (messageEvent) =>
+                    getCommandService().onMessageReceived(messageEvent)
             })
         );
     }
