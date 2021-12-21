@@ -9,6 +9,8 @@ import { getLocationRecordService } from "./internal/sensors/location/android/re
 import { getHeartRateRecordService } from "./internal/sensors/heart-rate/android/record-messaging-service.android";
 import { getCommandService } from "./internal/communication/command/command-service.android";
 
+import { Task } from "nativescript-task-dispatcher/tasks";
+import { TaskGraph } from "nativescript-task-dispatcher/internal/tasks/graph";
 import WearableListenerServiceDelegate = es.uji.geotec.wearos_sensors.messaging.WearableListenerServiceDelegate;
 import WearosSensorsCapabilityAdvertiserService = es.uji.geotec.wearos_sensors.messaging.WearosSensorsCapabilityAdvertiserService;
 import WearosSensorsResultsMessagingService = es.uji.geotec.wearos_sensors.messaging.WearosSensorsResultsMessagingService;
@@ -17,7 +19,12 @@ import WearosSensorsCommandService = es.uji.geotec.wearos_sensors.command.Wearos
 import WearSensor = es.uji.geotec.wearos_sensors.WearSensor;
 
 export class WearosSensors extends Common {
-    async init(): Promise<void> {
+    async init(
+        appTasks: Array<Task>,
+        taskGraph: TaskGraph
+    ): Promise<void> {
+        await super.init(appTasks, taskGraph);
+
         this.wireUpCapabilityAdvertiser();
         this.wireUpCommandService();
         this.wireUpAccelerometerComponents();
@@ -25,7 +32,6 @@ export class WearosSensors extends Common {
         this.wireUpMagnetometerComponents();
         this.wireUpLocationComponents();
         this.wireUpHeartRateComponents();
-        await super.init();
     }
 
     public wireUpCapabilityAdvertiser() {
