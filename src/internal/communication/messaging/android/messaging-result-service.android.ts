@@ -3,6 +3,7 @@ import WearableListenerServiceDelegate = es.uji.geotec.wearos_sensors.messaging.
 import { wearOS } from "../../../utils/android/wear-os-types.android";
 import { ResultMessagingProtocol } from "../index";
 import { decodeMessage } from "../../encoder-decoder";
+import { SensorType } from "../../../sensors/sensor-type";
 
 export class MessagingResultService implements CommunicationResultService, WearableListenerServiceDelegate {
 
@@ -51,12 +52,11 @@ export interface MessagingResult {
     message?: string;
 }
 
-// FIXME: will this work with multiple sensors? Maybe one instance per sensor will be needed
-let _instance: MessagingResultService;
-export function getResultMessagingService(): MessagingResultService {
-    if (!_instance) {
-        _instance = new MessagingResultService();
+let _instances: Map<SensorType, MessagingResultService> = new Map();
+export function getResultMessagingService(sensorType: SensorType): MessagingResultService {
+    if (!_instances.get(sensorType)) {
+        _instances.set(sensorType, new MessagingResultService());
     }
 
-    return _instance;
+    return _instances.get(sensorType);
 }
