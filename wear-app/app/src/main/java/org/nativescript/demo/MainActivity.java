@@ -1,17 +1,19 @@
 package org.nativescript.demo;
 
+import android.app.Activity;
+import android.content.res.Resources;
 import android.os.Bundle;
-import android.support.wearable.activity.WearableActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 
 import org.nativescript.demo.command.CommandClient;
 import org.nativescript.demo.sensoring.WearSensor;
 
-public class MainActivity extends WearableActivity {
+public class MainActivity extends Activity {
 
+    private LinearLayout linearLayout;
     private Spinner sensorSpinner;
 
     @Override
@@ -19,9 +21,7 @@ public class MainActivity extends WearableActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Enables Always-on
-        setAmbientEnabled();
-
+        setupLayout();
         setupSpinner();
     }
 
@@ -34,6 +34,14 @@ public class MainActivity extends WearableActivity {
         String selectedSensor = (String) sensorSpinner.getSelectedItem();
         CommandClient commandClient = new CommandClient(this);
         commandClient.sendCommand("start-" + selectedSensor.toLowerCase());
+    }
+
+    private void setupLayout() {
+        linearLayout = findViewById(R.id.linear_layout);
+        if (this.getResources().getConfiguration().isScreenRound()) {
+            int padding = (int) (Resources.getSystem().getDisplayMetrics().widthPixels * 0.146467f);
+            linearLayout.setPadding(padding, padding, padding, padding);
+        }
     }
 
     private void setupSpinner() {

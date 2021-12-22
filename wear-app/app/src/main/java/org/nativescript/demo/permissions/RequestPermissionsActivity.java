@@ -70,7 +70,7 @@ public class RequestPermissionsActivity extends FragmentActivity {
             messagingClient.sendSuccessfulResponse(sourceNodeId, protocol);
             descriptionText.setText("Gracias :D");
             checkIcon.setVisibility(View.VISIBLE);
-            //finish();
+            finishDeferred();
             return;
         }
 
@@ -78,7 +78,7 @@ public class RequestPermissionsActivity extends FragmentActivity {
         messagingClient.sendFailureResponseWithReason(sourceNodeId, protocol, failureMessage);
         descriptionText.setText("Permisos denegados :(");
         failIcon.setVisibility(View.VISIBLE);
-        //finish();
+        finishDeferred();
     }
 
     private void requestPermissions(ArrayList<String> permissions) {
@@ -96,5 +96,15 @@ public class RequestPermissionsActivity extends FragmentActivity {
         }
 
         return sb.toString();
+    }
+
+    private void finishDeferred() {
+        Timer delayer = new Timer();
+        delayer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                finish();
+            }
+        }, 1000);
     }
 }
