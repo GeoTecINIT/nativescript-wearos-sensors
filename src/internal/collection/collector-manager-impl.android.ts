@@ -51,7 +51,7 @@ export class CollectorManagerImpl implements CollectorManager {
         if (!this.hasCapability(node))
             return;
 
-        const message = config ? configAsString(config) : configAsString(defaultCollectionConfiguration);
+        const message = config ? configAsString(config) : configAsString(defaultCollectionConfiguration(this.sensor));
         await this.messagingClient.sendStartMessage(node, message);
     }
 
