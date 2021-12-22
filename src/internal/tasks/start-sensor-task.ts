@@ -4,14 +4,12 @@ import { SensorType } from "../sensors/sensor-type";
 import { getSensorCollector } from "../sensors";
 import { Node } from "../node";
 import { taskDispatcher } from "nativescript-task-dispatcher";
-import { CollectionConfiguration } from "../collection/collection-configuration";
 import { camelCase } from "../utils/strings";
 
 export class StartSensorTask extends Task {
 
     constructor(
-        private sensorType: SensorType,
-        private config?: CollectionConfiguration
+        private sensorType: SensorType
     ) {
         super(`${camelCase(sensorType)}StartSensorTask`);
     }
@@ -20,8 +18,10 @@ export class StartSensorTask extends Task {
         taskParams: TaskParams,
         invocationEvent: DispatchableEvent
     ): Promise<void | TaskOutcome> {
+        const data = invocationEvent.data;
+
         const collector = getSensorCollector(this.sensorType);
-        const node = new Node(invocationEvent.data.deviceId, "", [this.sensorType]);
+        const node = new Node(data.deviceId, "", [this.sensorType]);
 
         const isReady = await collector.isReady(node);
         if (!isReady) {
@@ -42,7 +42,7 @@ export class StartSensorTask extends Task {
         });
         await collector.startCollecting(
             node,
-            this.config
+            data.config
         );
     }
 

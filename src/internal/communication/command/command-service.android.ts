@@ -17,13 +17,34 @@ export class CommandService implements WearableListenerServiceDelegate {
             return;
         }
 
-        const command = decodeMessage(message.getData());
+        const parameters = this.extractCommandParameters(
+            decodeMessage(message.getData())
+        );
         taskDispatcher.emitEvent(
-            camelCase(command) + "Command",
+            camelCase(parameters.commandName) + "Command",
             {
-                deviceId: message.getSourceNodeId()
+                deviceId: message.getSourceNodeId(),
+                config: parameters.config,
             }
         );
+    }
+
+    private extractCommandParameters(command: string) {
+        const paramList = command.split("#");
+
+        if (paramList.length === 3) {
+            return {
+                commandName: paramList[0],
+                config: {
+                    sensorType: paramList[1],
+                    batchSize: paramList[2],
+                }
+            };
+        }
+
+        return {
+            commandName: paramList[0]
+        };
     }
 }
 
