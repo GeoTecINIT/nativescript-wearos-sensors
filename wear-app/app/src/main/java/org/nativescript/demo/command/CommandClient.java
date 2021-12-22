@@ -25,7 +25,7 @@ public class CommandClient {
         this.messageClient = Wearable.getMessageClient(context);
     }
 
-    public void sendCommand(final String command) {
+    public void sendCommand(String command) {
         capabilityClient.getCapability("main-node", CapabilityClient.FILTER_ALL)
                 .addOnSuccessListener(new OnSuccessListener<CapabilityInfo>() {
                     @Override
@@ -44,5 +44,18 @@ public class CommandClient {
                         Log.d("Failure", e.getMessage());
                     }
                 });
+    }
+
+    public void sendCommand(String commandName, int sensorDelay, int batchSize) {
+        String command = commandFromParameters(commandName, sensorDelay, batchSize);
+        sendCommand(command);
+    }
+
+    private String commandFromParameters(String commandName, int sensorDelay, int batchSize) {
+        return String.join("#",
+                commandName,
+                String.valueOf(sensorDelay),
+                String.valueOf(batchSize)
+        );
     }
 }
