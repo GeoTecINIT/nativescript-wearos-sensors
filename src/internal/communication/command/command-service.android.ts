@@ -36,7 +36,7 @@ export class CommandService implements WearableListenerServiceDelegate {
             return {
                 commandName: paramList[0],
                 config: {
-                    sensorType: paramList[1],
+                    sensorDelay: paramList[1],
                     batchSize: paramList[2],
                 }
             };
