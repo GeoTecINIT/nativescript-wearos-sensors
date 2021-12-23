@@ -12,7 +12,7 @@ export class CommandLoggerTask extends Task {
         taskParams: TaskParams,
         invocationEvent: DispatchableEvent
     ): Promise<void | TaskOutcome> {
-        getLogger().logInfo(`${invocationEvent.name} received from ${invocationEvent.data.deviceId}.`);
+        getLogger().logInfo(`${invocationEvent.name} received for ${invocationEvent.data.deviceId}.`);
         return;
     }
 }
