@@ -1,4 +1,4 @@
-import { SensorRecords } from "nativescript-wearos-sensors/internal/sensors/sensor-record";
+import { SensorRecords } from "../sensors/sensor-record";
 import { knownFolders } from "@nativescript/core";
 
 export class Store {
