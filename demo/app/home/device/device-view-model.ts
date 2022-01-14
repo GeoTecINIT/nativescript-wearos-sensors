@@ -91,6 +91,16 @@ export class DeviceViewModel extends Observable {
         parent.handleOnStopTap(sensorDescription);
     }
 
+    onStoreData() {
+        wearosSensors.emitEvent("storeCollectedData", {
+            deviceId: this.node.id
+        });
+    }
+
+    onClearData() {
+        wearosSensors.emitEvent("clearCollectedData");
+    }
+
     private handleOnIsReadyTap(sensorDescription: SensorDescription) {
         this.updateSensorDescriptionStatus(sensorDescription, Status.WAITING_FOR_RESPONSE);
 

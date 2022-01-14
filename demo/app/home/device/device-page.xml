@@ -11,6 +11,16 @@
                 <Span text="{{ ' (' + node.id + ')' }}"></Span>
             </FormattedString>
         </Label>
+        <ActionItem
+                text="Store collected data"
+                tap="{{ onStoreData }}"
+                android.position="popup"
+        ></ActionItem>
+        <ActionItem
+                text="Clear collected data"
+                tap="{{ onClearData }}"
+                android.position="popup"
+        ></ActionItem>
     </ActionBar>
 
     <StackLayout orientation="vertical">
