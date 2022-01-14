@@ -65,6 +65,9 @@ class DemoTaskGraph implements TaskGraph {
 
         on("storeCollectedData", run("storeCollectedDataTask"));
         on("clearCollectedData", run("clearCollectedDataTask"));
+
+        on("storeCollectedDataTaskFinished", run("storeDataMessageLoggerTask"));
+        on("clearCollectedDataTaskFinished", run("clearDataMessageLoggerTask"));
     }
 }
 
