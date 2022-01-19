@@ -2,7 +2,9 @@ import { Task } from "nativescript-task-dispatcher/tasks";
 import { StartSensorTask } from "./start-sensor-task";
 import { SensorType } from "../sensors/sensor-type";
 import { StopSensorTask } from "./stop-sensor-task";
-import { SensorDelay } from "../collection/collection-configuration";
+import { AccumulatorTask } from "./accumulator-task";
+import { StoreCollectedDataTask } from "./store-collected-data-task";
+import { ClearCollectedDataTask } from "./clear-collected-data-task";
 
 export const internalTasks: Array<Task> = [
     new StartSensorTask(SensorType.ACCELEROMETER),
@@ -16,4 +18,8 @@ export const internalTasks: Array<Task> = [
     new StopSensorTask(SensorType.MAGNETOMETER),
     new StopSensorTask(SensorType.HEART_RATE),
     new StopSensorTask(SensorType.LOCATION),
+
+    new AccumulatorTask(),
+    new StoreCollectedDataTask(),
+    new ClearCollectedDataTask(),
 ];
