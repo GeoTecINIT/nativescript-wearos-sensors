@@ -1,3 +1,5 @@
+import {SensorType} from "../sensors/sensor-type";
+
 export interface CollectionConfiguration {
     sensorDelay: SensorDelay;
     batchSize: number;
@@ -14,7 +16,20 @@ export function configAsString(collectionConfiguration: CollectionConfiguration)
     return `${collectionConfiguration.sensorDelay}#${collectionConfiguration.batchSize}`;
 }
 
-export const defaultCollectionConfiguration: CollectionConfiguration = {
-    sensorDelay: SensorDelay.NORMAL,
-    batchSize: 50,
-};
+export function defaultCollectionConfiguration(sensorType: SensorType): CollectionConfiguration {
+    switch (sensorType) {
+        case SensorType.ACCELEROMETER:
+        case SensorType.GYROSCOPE:
+        case SensorType.MAGNETOMETER:
+            return {
+                sensorDelay: SensorDelay.NORMAL,
+                batchSize: 50
+            };
+        case SensorType.LOCATION:
+        case SensorType.HEART_RATE:
+            return {
+                sensorDelay: SensorDelay.NORMAL,
+                batchSize: 5
+            };
+    }
+}

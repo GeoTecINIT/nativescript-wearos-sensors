@@ -52,6 +52,7 @@
 		"semver": "^5.6.0"
 	},
 	"dependencies": {
+		"nativescript-task-dispatcher": "^2.0.1",
 		"rxjs": "^6.6.7"
 	},
 	"bootstrapper": "nativescript-plugin-seed"

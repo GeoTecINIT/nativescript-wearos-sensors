@@ -4,7 +4,8 @@ import { ValueList } from "nativescript-drop-down";
 import { Node } from "nativescript-wearos-sensors/node";
 import { CollectorManager, PrepareError, SensorDelay } from "nativescript-wearos-sensors/collection";
 import { getSensorCollector, SensorType } from "nativescript-wearos-sensors/sensors";
-import { SensorRecords } from "nativescript-wearos-sensors/sensors/records";
+import { wearosSensors } from "nativescript-wearos-sensors";
+import { pascalCase } from "nativescript-wearos-sensors/internal/utils/strings";
 
 export class DeviceViewModel extends Observable {
     private logger;
@@ -126,22 +127,26 @@ export class DeviceViewModel extends Observable {
     }
 
     private handleOnStartTap(sensorDescription: SensorDescription) {
-        sensorDescription.collector.listenSensorUpdates((records: SensorRecords<any>) => {
-            this.logger.logResultForNode(this.node.name, `record received --> ${JSON.stringify(records)}`);
-        });
-        sensorDescription.collector.startCollecting(this.node, {
-            sensorDelay: this.sensorDelays.getValue(this.selectedDelayIndex),
-            batchSize: this.batchSize
-        });
-        this.logger.logInfoForNode(this.node.name, `Send start request for ${sensorDescription.sensor}`);
-
+        wearosSensors.emitEvent(
+            `start${pascalCase(sensorDescription.sensor)}Command`,
+            {
+                deviceId: this.node.id,
+                config: {
+                    sensorDelay: this.sensorDelays.getValue(this.selectedDelayIndex),
+                    batchSize: this.batchSize
+                }
+            }
+        );
         this.updateSensorDescriptionStatus(sensorDescription, Status.LISTENING);
     }
 
     private handleOnStopTap(sensorDescription: SensorDescription) {
-        sensorDescription.collector.stopCollecting(this.node);
-        sensorDescription.collector.stopListenSensorUpdates();
-        this.logger.logInfoForNode(this.node.name, `Send stop request for ${sensorDescription.sensor}`);
+        wearosSensors.emitEvent(
+            `stop${pascalCase(sensorDescription.sensor)}Command`,
+            {
+                deviceId: this.node.id
+            }
+        );
         this.updateSensorDescriptionStatus(sensorDescription, Status.READY);
     }
 

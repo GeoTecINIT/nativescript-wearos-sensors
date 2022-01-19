@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.wearable.view.BoxInsetLayout
+<androidx.wear.widget.BoxInsetLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/dark_grey"
+    android:padding="@dimen/box_inset_layout_padding">
 
-    <androidx.appcompat.widget.LinearLayoutCompat
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        app:layout_box="top|bottom">
+        app:boxedEdges="all">
 
         <TextView
             android:id="@+id/description"
@@ -29,7 +31,7 @@
             android:layout_height="match_parent"
             android:layout_margin="8dp">
 
-            <ProgressBar
+            <androidx.core.widget.ContentLoadingProgressBar
                 android:id="@+id/progressBar"
                 style="?android:attr/progressBarStyle"
                 android:layout_width="90dp"
@@ -38,7 +40,7 @@
                 android:layout_margin="8dp"
                 android:indeterminate="true"
                 android:visibility="visible"
-                app:layout_constraintTop_toBottomOf="@+id/description" />
+                 />
 
             <ImageView
                 android:id="@+id/checkIcon"
@@ -59,5 +61,5 @@
                 android:visibility="gone" />
         </FrameLayout>
 
-    </androidx.appcompat.widget.LinearLayoutCompat>
-</android.support.wearable.view.BoxInsetLayout>
+    </LinearLayout>
+</androidx.wear.widget.BoxInsetLayout>

@@ -7,22 +7,32 @@ import { getGyroscopeRecordService } from "./internal/sensors/triaxial/gyroscope
 import { getMagnetometerRecordService } from "./internal/sensors/triaxial/magnetometer/android/record-messaging-service.android";
 import { getLocationRecordService } from "./internal/sensors/location/android/record-messaging-service.android";
 import { getHeartRateRecordService } from "./internal/sensors/heart-rate/android/record-messaging-service.android";
+import { getCommandService } from "./internal/communication/command/command-service.android";
+import { SensorType } from "./internal/sensors/sensor-type";
 
+import { Task } from "nativescript-task-dispatcher/tasks";
+import { TaskGraph } from "nativescript-task-dispatcher/internal/tasks/graph";
 import WearableListenerServiceDelegate = es.uji.geotec.wearos_sensors.messaging.WearableListenerServiceDelegate;
 import WearosSensorsCapabilityAdvertiserService = es.uji.geotec.wearos_sensors.messaging.WearosSensorsCapabilityAdvertiserService;
 import WearosSensorsResultsMessagingService = es.uji.geotec.wearos_sensors.messaging.WearosSensorsResultsMessagingService;
 import WearosSensorsRecordsMessagingService = es.uji.geotec.wearos_sensors.messaging.WearosSensorsRecordsMessagingService;
+import WearosSensorsCommandService = es.uji.geotec.wearos_sensors.command.WearosCommandService;
 import WearSensor = es.uji.geotec.wearos_sensors.WearSensor;
 
 export class WearosSensors extends Common {
-    async init(): Promise<void> {
+    async init(
+        appTasks: Array<Task>,
+        taskGraph: TaskGraph
+    ): Promise<void> {
+        await super.init(appTasks, taskGraph);
+
         this.wireUpCapabilityAdvertiser();
+        this.wireUpCommandService();
         this.wireUpAccelerometerComponents();
         this.wireUpGyroscopeComponents();
         this.wireUpMagnetometerComponents();
         this.wireUpLocationComponents();
         this.wireUpHeartRateComponents();
-        await super.init();
     }
 
     public wireUpCapabilityAdvertiser() {
@@ -34,12 +44,21 @@ export class WearosSensors extends Common {
         );
     }
 
+    public wireUpCommandService() {
+        WearosSensorsCommandService.setCommandServiceDelegate(
+            new WearableListenerServiceDelegate({
+                onMessageReceived: (messageEvent) =>
+                    getCommandService().onMessageReceived(messageEvent)
+            })
+        );
+    }
+
     public wireUpAccelerometerComponents() {
         WearosSensorsResultsMessagingService.setResultServiceDelegate(
             WearSensor.ACCELEROMETER,
             new WearableListenerServiceDelegate({
                 onMessageReceived: (messageEvent) =>
-                    getResultMessagingService().onMessageReceived(messageEvent)
+                    getResultMessagingService(SensorType.ACCELEROMETER).onMessageReceived(messageEvent)
             })
         );
         WearosSensorsRecordsMessagingService.setRecordServiceDelegate(
@@ -56,7 +75,7 @@ export class WearosSensors extends Common {
             WearSensor.GYROSCOPE,
             new WearableListenerServiceDelegate({
                 onMessageReceived: (messageEvent) =>
-                    getResultMessagingService().onMessageReceived(messageEvent)
+                    getResultMessagingService(SensorType.GYROSCOPE).onMessageReceived(messageEvent)
             })
         );
         WearosSensorsRecordsMessagingService.setRecordServiceDelegate(
@@ -73,7 +92,7 @@ export class WearosSensors extends Common {
             WearSensor.MAGNETOMETER,
             new WearableListenerServiceDelegate({
                 onMessageReceived: (messageEvent) =>
-                    getResultMessagingService().onMessageReceived(messageEvent)
+                    getResultMessagingService(SensorType.MAGNETOMETER).onMessageReceived(messageEvent)
             })
         );
         WearosSensorsRecordsMessagingService.setRecordServiceDelegate(
@@ -90,7 +109,7 @@ export class WearosSensors extends Common {
             WearSensor.LOCATION,
             new WearableListenerServiceDelegate({
                 onMessageReceived: (messageEvent) =>
-                    getResultMessagingService().onMessageReceived(messageEvent)
+                    getResultMessagingService(SensorType.LOCATION).onMessageReceived(messageEvent)
             })
         );
         WearosSensorsRecordsMessagingService.setRecordServiceDelegate(
@@ -107,7 +126,7 @@ export class WearosSensors extends Common {
             WearSensor.HEART_RATE,
             new WearableListenerServiceDelegate({
                 onMessageReceived: (messageEvent) =>
-                    getResultMessagingService().onMessageReceived(messageEvent)
+                    getResultMessagingService(SensorType.HEART_RATE).onMessageReceived(messageEvent)
             })
         );
         WearosSensorsRecordsMessagingService.setRecordServiceDelegate(

@@ -88,8 +88,10 @@ public class NotificationProvider {
             NotificationChannel channel = new NotificationChannel(
                     id,
                     name,
-                    NotificationManager.IMPORTANCE_LOW
+                    NotificationManager.IMPORTANCE_HIGH
             );
+
+            channel.enableVibration(true);
 
             notificationManager.createNotificationChannel(channel);
         }
@@ -106,7 +108,8 @@ public class NotificationProvider {
                         .setContentTitle(title)
                         .setContentText(text)
                         .setSmallIcon(R.mipmap.ic_launcher)
-                        .setPriority(NotificationCompat.PRIORITY_HIGH);
+                        .setPriority(NotificationCompat.PRIORITY_HIGH)
+                        .setVibrate(new long[]{1000, 1000, 1000, 1000, 1000});
 
         if (pendingIntent != null) {
             notificationBuilder.setContentIntent(pendingIntent);

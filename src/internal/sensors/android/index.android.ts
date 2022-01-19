@@ -40,7 +40,7 @@ export function getAndroidSensorCollector(
     const callback = getSensorCallbackManager();
     const messagingClient = new MessagingClientImpl(
         protocol,
-        getResultMessagingService()
+        getResultMessagingService(sensorType)
     );
     const recordService = getRecordsService(sensorType);
     recordService.setProtocol(protocol);
