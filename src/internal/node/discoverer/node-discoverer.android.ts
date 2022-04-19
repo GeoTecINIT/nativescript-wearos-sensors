@@ -20,6 +20,24 @@ export class AndroidNodeDiscoverer implements NodeDiscoverer {
     ) {
     }
 
+    public getLocalNode(): Promise<Node> {
+        const localNode = this.nodeClient.getLocalNode();
+
+        return new Promise<Node>((resolve, reject) => {
+            localNode.addOnCompleteListener(new OnCompleteListener({
+                onComplete: task => {
+                    if (task.isSuccessful()) {
+                        const nativeNode = task.getResult();
+                        const node = new Node(nativeNode.getId(), nativeNode.getDisplayName());
+                        resolve(node);
+                    } else {
+                        reject(task.getException().getMessage());
+                    }
+                }
+            }));
+        });
+    }
+
     public getConnectedNodes(): Observable<NodeDiscovered> {
         const connectedNodes = this.nodeClient.getConnectedNodes();
 
