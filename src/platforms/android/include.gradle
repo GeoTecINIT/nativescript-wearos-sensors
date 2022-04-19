@@ -14,5 +14,5 @@ android {
 
 dependencies {
     def googlePlayServicesVersion = project.hasProperty('googlePlayServicesVersion') ? project.googlePlayServicesVersion : "17.0.0"
-    compile "com.google.android.gms:play-services-wearable:$googlePlayServicesVersion"
+    implementation "com.google.android.gms:play-services-wearable:$googlePlayServicesVersion"
 }
