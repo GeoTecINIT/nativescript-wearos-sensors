@@ -17,4 +17,12 @@ export class Common extends Observable {
   public emitEvent(eventName: string, eventData?: EventData) {
       taskDispatcher.emitEvent(eventName, eventData);
   }
+
+  public isReady(): Promise<boolean> {
+      return taskDispatcher.isReady();
+  }
+
+  public prepare(): Promise<void> {
+      return taskDispatcher.prepare();
+  }
 }
