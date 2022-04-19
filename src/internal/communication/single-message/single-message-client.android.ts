@@ -1,9 +1,9 @@
 import { CommunicationClient } from "../communication-client.android";
 import { Node } from "../../node";
 
-export class ResultClient extends CommunicationClient<any> {
+export class SingleMessageClient extends CommunicationClient<any> {
 
-    constructor(private path = "/result") {
+    constructor(private path = "/single-message") {
         super(undefined);
     }
 

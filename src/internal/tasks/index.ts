@@ -5,7 +5,7 @@ import { StopSensorTask } from "./stop-sensor-task";
 import { AccumulatorTask } from "./accumulator-task";
 import { StoreCollectedDataTask } from "./store-collected-data-task";
 import { ClearCollectedDataTask } from "./clear-collected-data-task";
-import { SendResultTask } from "./send-result-task";
+import { SendSingleMessageTask } from "./send-single-message-task";
 
 export const internalTasks: Array<Task> = [
     new StartSensorTask(SensorType.ACCELEROMETER),
@@ -23,5 +23,5 @@ export const internalTasks: Array<Task> = [
     new AccumulatorTask(),
     new StoreCollectedDataTask(),
     new ClearCollectedDataTask(),
-    new SendResultTask(),
+    new SendSingleMessageTask(),
 ];
