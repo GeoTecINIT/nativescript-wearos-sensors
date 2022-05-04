@@ -1,4 +1,4 @@
-import { buildFakeMessageEvent, getFakeMessagingProtocol } from "~/tests/internal";
+import { buildFakeMessageEvent, getFakeMessagingProtocol } from "~/tests/internal/index.spec";
 import { LocationSensorRecord } from "nativescript-wearos-sensors/internal/sensors/location/record";
 import { LocationRecordMessagingService } from "nativescript-wearos-sensors/internal/sensors/location/android/record-messaging-service.android";
 import { SensorType } from "nativescript-wearos-sensors/internal/sensors/sensor-type";

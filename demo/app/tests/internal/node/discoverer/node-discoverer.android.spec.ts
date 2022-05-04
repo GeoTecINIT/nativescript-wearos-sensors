@@ -4,7 +4,7 @@ import { CapabilityClient } from "nativescript-wearos-sensors/internal/communica
 import { Node } from "nativescript-wearos-sensors/internal/node";
 import { CapabilityAdvertisementResult } from "nativescript-wearos-sensors/internal/communication/capabilities/android/capability-advertiser-result-service.android";
 import { AndroidNodeDiscoverer } from "nativescript-wearos-sensors/internal/node/discoverer/node-discoverer.android";
-import { buildFakeNode } from "~/tests/internal";
+import { buildFakeNode } from "~/tests/internal/index.spec";
 import { SensorType } from "nativescript-wearos-sensors/internal/sensors/sensor-type";
 import { toArray, isEmpty } from "rxjs/operators";
 

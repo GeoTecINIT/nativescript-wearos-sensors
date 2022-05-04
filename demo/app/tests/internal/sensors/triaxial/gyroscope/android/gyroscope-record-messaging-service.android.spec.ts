@@ -1,5 +1,5 @@
-import { buildFakeMessageEvent, getFakeMessagingProtocol } from "~/tests/internal";
-import { buildFakeEncodedMessage, getFakeTriAxialData } from "~/tests/internal/sensors/triaxial";
+import { buildFakeMessageEvent, getFakeMessagingProtocol } from "~/tests/internal/index.spec";
+import { buildFakeEncodedMessage, getFakeTriAxialData } from "~/tests/internal/sensors/triaxial/index.spec";
 import { GyroscopeRecordMessagingService } from "nativescript-wearos-sensors/internal/sensors/triaxial/gyroscope/android/record-messaging-service.android";
 import { TriAxialSensorRecord } from "nativescript-wearos-sensors/internal/sensors/triaxial/record";
 import { SensorType } from "nativescript-wearos-sensors/internal/sensors/sensor-type";

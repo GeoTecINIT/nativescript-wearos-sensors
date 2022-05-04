@@ -1,4 +1,4 @@
-import { buildFakeMessageEvent, getFakeMessagingProtocol } from "~/tests/internal";
+import { buildFakeMessageEvent, getFakeMessagingProtocol } from "~/tests/internal/index.spec";
 import { HeartRateRecordMessagingService } from "nativescript-wearos-sensors/internal/sensors/heart-rate/android/record-messaging-service.android";
 import { HeartRateSensorRecord } from "nativescript-wearos-sensors/internal/sensors/heart-rate/record";
 import { SensorType } from "nativescript-wearos-sensors/internal/sensors/sensor-type";

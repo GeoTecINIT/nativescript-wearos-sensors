@@ -2,7 +2,7 @@ import { Node } from "nativescript-wearos-sensors/internal/node";
 import { SensorType } from "nativescript-wearos-sensors/internal/sensors/sensor-type";
 import { CapabilityClient } from "nativescript-wearos-sensors/internal/communication/capabilities/android/capability-client.android";
 import { CapabilityAdvertiserResultService } from "nativescript-wearos-sensors/internal/communication/capabilities/android/capability-advertiser-result-service.android";
-import { buildFakeMessageEvent } from "~/tests/internal";
+import { buildFakeMessageEvent } from "~/tests/internal/index.spec";
 
 describe("Capability client", () => {
     const node = new Node("node1", "node1", []);

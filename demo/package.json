@@ -11,14 +11,17 @@
     "rxjs": "^7.5.5"
   },
   "devDependencies": {
+    "@jsdevtools/coverage-istanbul-loader": "3.0.5",
     "@nativescript/android": "~8.2.0",
-    "@types/jasmine": "4.0.0",
-    "karma": "~6.3.4",
+    "@nativescript/webpack": "~5.0.0",
+    "@types/jasmine": "3.10.2",
+    "karma": "6.3.17",
+    "karma-coverage": "2.2.0",
     "karma-jasmine": "4.0.1",
     "karma-nativescript-launcher": "0.4.0",
-    "typescript": "~4.3.5",
     "nativescript-task-dispatcher": "^3.1.1",
-    "@nativescript/webpack": "~5.0.0"
+    "nyc": "15.1.0",
+    "typescript": "~4.3.5"
   },
   "gitHead": "20a65d338ae8f8911087ab6615b89363f864b07b",
   "readme": "NativeScript Application",
