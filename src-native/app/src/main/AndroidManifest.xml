@@ -3,7 +3,9 @@
     package="es.uji.geotec.wearos_sensors">
 
     <application>
-        <service android:name=".messaging.WearosSensorsResultsMessagingService">
+        <service
+            android:name=".messaging.WearosSensorsResultsMessagingService"
+            android:exported="true">
             <intent-filter>
                 <action android:name="com.google.android.gms.wearable.MESSAGE_RECEIVED" />
                 <data
@@ -17,7 +19,9 @@
             </intent-filter>
         </service>
 
-        <service android:name=".messaging.WearosSensorsRecordsMessagingService">
+        <service
+            android:name=".messaging.WearosSensorsRecordsMessagingService"
+            android:exported="true">
             <intent-filter>
                 <action android:name="com.google.android.gms.wearable.MESSAGE_RECEIVED" />
                 <data
@@ -27,7 +31,9 @@
             </intent-filter>
         </service>
 
-        <service android:name=".messaging.WearosSensorsCapabilityAdvertiserService">
+        <service
+            android:name=".messaging.WearosSensorsCapabilityAdvertiserService"
+            android:exported="true">
             <intent-filter>
                 <action android:name="com.google.android.gms.wearable.MESSAGE_RECEIVED" />
                 <data
@@ -37,7 +43,9 @@
             </intent-filter>
         </service>
 
-        <service android:name=".command.WearosCommandService">
+        <service
+            android:name=".command.WearosCommandService"
+            android:exported="true">
             <intent-filter>
                 <action android:name="com.google.android.gms.wearable.MESSAGE_RECEIVED" />
                 <data
