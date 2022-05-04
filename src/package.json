@@ -53,7 +53,7 @@
 	},
 	"dependencies": {
 		"nativescript-task-dispatcher": "^3.1.1",
-		"rxjs": "^6.6.7"
+		"rxjs": "^7.5.5"
 	},
 	"bootstrapper": "nativescript-plugin-seed"
 }

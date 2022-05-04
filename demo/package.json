@@ -7,7 +7,8 @@
     "@nativescript/theme": "~2.3.0",
     "@nativescript/unit-test-runner": "~3.0.0",
     "nativescript-drop-down": "^6.0.0",
-    "nativescript-wearos-sensors": "file:../src"
+    "nativescript-wearos-sensors": "file:../src",
+    "rxjs": "^7.5.5"
   },
   "devDependencies": {
     "@nativescript/android": "~8.2.0",
