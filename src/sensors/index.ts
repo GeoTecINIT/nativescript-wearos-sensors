@@ -1,2 +1,2 @@
 export { getSensorCollector } from "../internal/sensors";
-export { SensorType } from "../internal/sensors/sensor-type";
+export { SensorType, fromString } from "../internal/sensors/sensor-type";

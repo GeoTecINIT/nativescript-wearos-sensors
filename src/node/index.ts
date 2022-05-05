@@ -1,3 +1,6 @@
 export { Node } from "../internal/node";
-export { NodeDiscoverer, NodeDiscovered } from "../internal/node/discoverer/node-discoverer";
+import  { NodeDiscoverer as NDR, NodeDiscovered as NDD } from "../internal/node/discoverer/node-discoverer";
+export type NodeDiscoverer = NDR;
+export type NodeDiscovered = NDD;
+
 export { getNodeDiscoverer } from "../internal/node/discoverer";
