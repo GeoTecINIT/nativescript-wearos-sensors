@@ -1,6 +1,6 @@
 {
 	"name": "nativescript-wearos-sensors",
-	"version": "1.0.1",
+	"version": "2.0.0",
 	"description": "Your awesome NativeScript plugin.",
 	"main": "wearos-sensors",
 	"typings": "index.d.ts",
