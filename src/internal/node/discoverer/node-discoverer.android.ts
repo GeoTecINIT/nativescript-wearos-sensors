@@ -53,7 +53,7 @@ export class AndroidNodeDiscoverer implements NodeDiscoverer {
         });
 
         return from(connectedNodesPromise).pipe(
-            switchMap((wearosNodes) => {
+            switchMap((wearosNodes: java.util.List<WearOsNode>) => {
                 const totalNodes = wearosNodes.size();
                 if (totalNodes === 0)
                     return EMPTY;
