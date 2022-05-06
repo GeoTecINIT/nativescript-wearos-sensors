@@ -1,7 +1,7 @@
 import { Frame, ItemEventData, NavigatedData, Page } from "@nativescript/core";
 import { DeviceListViewModel } from "~/home/device-list/device-list-view-model";
-import { Node } from "nativescript-wearos-sensors/internal/node";
-import { fromString } from "nativescript-wearos-sensors/internal/sensors/sensor-type";
+import { Node } from "nativescript-wearos-sensors/node";
+import { fromString } from "nativescript-wearos-sensors/sensors";
 
 export function onNavigatingTo(args: NavigatedData) {
     const page = <Page>args.object;

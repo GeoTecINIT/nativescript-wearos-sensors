@@ -1,6 +1,6 @@
 import { SensorCallbackManager } from "nativescript-wearos-sensors/internal/sensor-callback-manager";
 import { SensorRecord, SensorRecords } from "nativescript-wearos-sensors/internal/sensors/sensor-record";
-import { buildFakeSensorRecords } from "~/tests/internal/index";
+import { buildFakeSensorRecords } from "~/tests/internal/index.spec";
 import { SensorType } from "nativescript-wearos-sensors/internal/sensors/sensor-type";
 
 describe("Sensor callback manager", () => {

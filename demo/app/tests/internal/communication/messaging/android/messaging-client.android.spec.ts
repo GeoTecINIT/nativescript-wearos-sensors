@@ -2,7 +2,7 @@ import {
     buildFakeMessageEvent,
     buildFakeResolutionResult,
     getFakeMessagingProtocol
-} from "~/tests/internal";
+} from "~/tests/internal/index.spec";
 import { Node } from "nativescript-wearos-sensors/internal/node";
 import { MessagingResultService } from "nativescript-wearos-sensors/internal/communication/messaging/android/messaging-result-service.android";
 import { MessagingClientImpl } from "nativescript-wearos-sensors/internal/communication/messaging/android/messaging-client.android";

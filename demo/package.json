@@ -3,24 +3,27 @@
   "license": "SEE LICENSE IN <your-license-filename>",
   "repository": "<fill-your-repository-here>",
   "dependencies": {
-    "@nativescript/core": "~7.3.0",
+    "@nativescript/core": "~8.2.0",
     "@nativescript/theme": "~2.3.0",
-    "@nativescript/unit-test-runner": "^1.0.2",
-    "@nativescript/webpack": "3.0.0",
+    "@nativescript/unit-test-runner": "~3.0.0",
     "nativescript-drop-down": "^6.0.0",
-    "nativescript-wearos-sensors": "file:../src"
+    "nativescript-wearos-sensors": "file:../src",
+    "nativescript-task-dispatcher": "^3.1.1",
+    "rxjs": "^7.5.5"
   },
   "devDependencies": {
-    "@nativescript/android": "8.0.0",
-    "@types/jasmine": "3.5.11",
-    "karma": "6.3.2",
+    "@jsdevtools/coverage-istanbul-loader": "3.0.5",
+    "@nativescript/android": "~8.2.0",
+    "@nativescript/webpack": "~5.0.0",
+    "@types/jasmine": "3.10.2",
+    "karma": "6.3.17",
+    "karma-coverage": "2.2.0",
     "karma-jasmine": "4.0.1",
     "karma-nativescript-launcher": "0.4.0",
-    "karma-webpack": "3.0.5",
-    "typescript": "3.9.7",
-    "nativescript-task-dispatcher": "^2.0.1"
+    "nyc": "15.1.0",
+    "typescript": "~4.3.5"
   },
   "gitHead": "20a65d338ae8f8911087ab6615b89363f864b07b",
   "readme": "NativeScript Application",
-  "main": "app.js"
+  "main": "./app/app.ts"
 }

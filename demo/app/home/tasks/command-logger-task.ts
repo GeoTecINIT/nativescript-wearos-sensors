@@ -1,5 +1,5 @@
 import { Task, TaskOutcome, TaskParams } from "nativescript-task-dispatcher/tasks";
-import { DispatchableEvent } from "nativescript-task-dispatcher/internal/events";
+import { DispatchableEvent } from "nativescript-task-dispatcher/events";
 import { getLogger } from "~/home/logger/logger-view-model";
 
 export class CommandLoggerTask extends Task {

@@ -1,6 +1,6 @@
 import { wearOS, WearOsNode } from "nativescript-wearos-sensors/internal/utils/android/wear-os-types.android";
 import { CapabilityDiscoverer } from "nativescript-wearos-sensors/internal/capability-discoverer.android";
-import { buildFakeNode } from ".";
+import { buildFakeNode } from "~/tests/internal/index.spec";
 
 const SUPPORTED_CAPABILITY = "supportedCapability";
 const UNSUPPORTED_CAPABILITY = "unsupportedCapability";

@@ -1,7 +1,7 @@
-import { buildFakeMessageEvent, getFakeMessagingProtocol } from "../../index";
+import { buildFakeMessageEvent, getFakeMessagingProtocol } from "../../index.spec";
 import { TriAxialRecordMessagingService } from "nativescript-wearos-sensors/internal/sensors/triaxial/triaxial-record-messaging-service.android";
 import { TriAxialSensorRecord } from "nativescript-wearos-sensors/internal/sensors/triaxial/record";
-import { buildFakeEncodedMessage, getFakeTriAxialData } from ".";
+import { buildFakeEncodedMessage, getFakeTriAxialData } from "~/tests/internal/sensors/triaxial/index.spec";
 
 describe("TriAxial record messaging service", () => {
     const nodeId = "testNode";

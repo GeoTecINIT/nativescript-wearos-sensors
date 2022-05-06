@@ -6,8 +6,7 @@ import { Node } from "../index";
 import { CapabilityClient } from "../../communication/capabilities/android/capability-client.android";
 import { getCapabilityAdvertiserResultService } from "../../communication/capabilities/android/capability-advertiser-result-service.android";
 import { capabilityProtocol } from "../../communication/capabilities";
-import { EMPTY, Observable } from "rxjs";
-import { fromPromise } from "rxjs/internal-compatibility";
+import { EMPTY, from, Observable } from "rxjs";
 import { catchError, switchMap } from "rxjs/operators";
 
 export class AndroidNodeDiscoverer implements NodeDiscoverer {
@@ -53,8 +52,8 @@ export class AndroidNodeDiscoverer implements NodeDiscoverer {
            }));
         });
 
-        return fromPromise(connectedNodesPromise).pipe(
-            switchMap((wearosNodes) => {
+        return from(connectedNodesPromise).pipe(
+            switchMap((wearosNodes: java.util.List<WearOsNode>) => {
                 const totalNodes = wearosNodes.size();
                 if (totalNodes === 0)
                     return EMPTY;
