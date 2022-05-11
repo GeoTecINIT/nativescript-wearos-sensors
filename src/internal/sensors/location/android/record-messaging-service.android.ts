@@ -21,7 +21,7 @@ export class LocationRecordMessagingService extends AbstractRecordMessagingServi
 
             records.push({
                 deviceId: messageEvent.getSourceNodeId(),
-                timestamp: new Date(time),
+                timestamp: time,
                 latitude: lat,
                 longitude: lon,
                 altitude: alt,
