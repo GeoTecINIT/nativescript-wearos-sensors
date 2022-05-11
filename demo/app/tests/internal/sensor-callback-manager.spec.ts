@@ -10,15 +10,15 @@ describe("Sensor callback manager", () => {
 
     const sensorRecordA1: SensorRecord = {
         deviceId: "test",
-        timestamp: new Date()
+        timestamp: Date.now()
     };
     const sensorRecordA2: SensorRecord = {
         deviceId: "test",
-        timestamp: new Date()
+        timestamp: Date.now()
     };
     const sensorRecordB1: SensorRecord = {
         deviceId: "test",
-        timestamp: new Date()
+        timestamp: Date.now()
     };
     const noNotificationTimeout = 100;
 

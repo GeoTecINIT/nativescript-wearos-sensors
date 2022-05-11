@@ -2,7 +2,7 @@ import { TriAxialSensorRecord } from "nativescript-wearos-sensors/internal/senso
 
 export function getFakeTriAxialData() {
     return {
-        timestamp: new Date(),
+        timestamp: Date.now(),
         x: Math.random(),
         y: Math.random(),
         z: Math.random(),
@@ -20,7 +20,7 @@ export function buildFakeEncodedMessage(expectedRecords: TriAxialSensorRecord[])
         buff.putFloat(record.x);
         buff.putFloat(record.y);
         buff.putFloat(record.z);
-        buff.putLong(record.timestamp.getTime());
+        buff.putLong(record.timestamp);
     })
 
     return bytes;
