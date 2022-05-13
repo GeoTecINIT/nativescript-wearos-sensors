@@ -37,7 +37,7 @@ describe("Heart rate record messaging service", () => {
 
 function getFakeHeartRateData() {
     return {
-        timestamp: new Date(),
+        timestamp: Date.now(),
         value: Math.floor(Math.random() * 100),
     };
 }
@@ -51,7 +51,7 @@ function buildFakeEncodedMessage(expectedRecords: HeartRateSensorRecord[]) {
     buff.putInt(expectedRecords.length);
     expectedRecords.forEach((record) => {
         buff.putInt(record.value);
-        buff.putLong(record.timestamp.getTime());
+        buff.putLong(record.timestamp);
     })
 
     return bytes;

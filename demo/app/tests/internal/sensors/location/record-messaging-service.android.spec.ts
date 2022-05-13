@@ -39,7 +39,7 @@ describe("Location record messaging service", () => {
 
 function getFakeLocationData() {
     return {
-        timestamp: new Date(),
+        timestamp: Date.now(),
         latitude: 39.9939752904,
         longitude: -0.0741332084749,
         altitude: 20,
@@ -57,7 +57,7 @@ function buildFakeEncodedMessage(expectedRecords: LocationSensorRecord[]) {
         buff.putDouble(record.latitude);
         buff.putDouble(record.longitude);
         buff.putDouble(record.altitude);
-        buff.putLong(record.timestamp.getTime());
+        buff.putLong(record.timestamp);
     })
 
     return bytes;
