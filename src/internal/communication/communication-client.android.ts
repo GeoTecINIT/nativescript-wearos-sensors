@@ -27,14 +27,14 @@ export class CommunicationClient<T> {
         );
     }
 
-    protected createResolutionPromise(protocol: CommunicationProtocol, node: Node, timeout: boolean = true): Promise<T> {
+    protected createResolutionPromise(protocol: CommunicationProtocol, node: Node, timeout?: number): Promise<T> {
         this.communicationResultService.setProtocol(protocol);
         return new Promise<T>(async (resolve, reject) => {
             let timeoutId;
             if (timeout) {
                 timeoutId = setTimeout(() => {
                     reject(`Timeout for communication request in node ${node.name} (${node.id})`);
-                }, 5000);
+                }, timeout);
             }
 
             this.communicationResultService.setResolutionCallbackForNode(

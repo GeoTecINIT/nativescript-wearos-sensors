@@ -15,8 +15,8 @@ export class CapabilityClient extends CommunicationClient<CapabilityAdvertisemen
         super(capabilityAdvertiserService);
     }
 
-    public async sendCapabilityAdvertisementRequest(node: Node): Promise<CapabilityAdvertisementResult> {
-        const resolutionPromise = this.createResolutionPromise(this.protocol, node);
+    public async sendCapabilityAdvertisementRequest(node: Node, timeout: number): Promise<CapabilityAdvertisementResult> {
+        const resolutionPromise = this.createResolutionPromise(this.protocol, node, timeout);
 
         await this.sendMessage(node, this.protocol.messagePath);
         return await resolutionPromise;
