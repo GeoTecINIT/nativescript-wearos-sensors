@@ -21,7 +21,7 @@ describe("Capability client", () => {
     })
 
     it("sends a capability advertisement request to a node and returns a response", async () => {
-        const response = capabilityClient.sendCapabilityAdvertisementRequest(node);
+        const response = capabilityClient.sendCapabilityAdvertisementRequest(node, 1000);
         capabilityAdvertiserService.onMessageReceived(
             buildFakeMessageEvent(
                 node.id,
@@ -39,8 +39,8 @@ describe("Capability client", () => {
 
     it("sends a capability advertisement request to a node but it not responds", async () => {
         jasmine.clock().install();
-        const response = capabilityClient.sendCapabilityAdvertisementRequest(node);
-        jasmine.clock().tick(5000);
+        const response = capabilityClient.sendCapabilityAdvertisementRequest(node, 500);
+        jasmine.clock().tick(500);
 
         await expectAsync(response).toBeRejectedWith(`Timeout for communication request in node ${node.name} (${node.id})`);
 
