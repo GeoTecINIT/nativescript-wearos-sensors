@@ -6,7 +6,7 @@ import { Node } from "../index";
 import { CapabilityClient } from "../../communication/capabilities/android/capability-client.android";
 import { getCapabilityAdvertiserResultService } from "../../communication/capabilities/android/capability-advertiser-result-service.android";
 import { capabilityProtocol } from "../../communication/capabilities";
-import { EMPTY, from, Observable } from "rxjs";
+import { EMPTY, firstValueFrom, from, Observable, toArray } from "rxjs";
 import { catchError, switchMap } from "rxjs/operators";
 
 export class AndroidNodeDiscoverer implements NodeDiscoverer {
@@ -37,7 +37,14 @@ export class AndroidNodeDiscoverer implements NodeDiscoverer {
         });
     }
 
-    public getConnectedNodes(): Observable<NodeDiscovered> {
+    public getConnectedNodes(timeout: number = 5000): Promise<NodeDiscovered[]> {
+        return firstValueFrom(
+            this.scanConnectedNodes(timeout)
+                .pipe(toArray())
+        );
+    }
+
+    private scanConnectedNodes(timeout: number): Observable<NodeDiscovered> {
         const connectedNodes = this.nodeClient.getConnectedNodes();
 
         const connectedNodesPromise = new Promise<java.util.List<WearOsNode>>((resolve, reject) => {
@@ -68,7 +75,7 @@ export class AndroidNodeDiscoverer implements NodeDiscoverer {
                             nativeNode.getDisplayName(),
                         );
 
-                        this.capabilityClient.sendCapabilityAdvertisementRequest(node)
+                        this.capabilityClient.sendCapabilityAdvertisementRequest(node, timeout)
                             .then((capabilityResult) => {
                                 node.capabilities = capabilityResult.capabilities;
                                 subscriber.next({
@@ -87,7 +94,7 @@ export class AndroidNodeDiscoverer implements NodeDiscoverer {
                         });
                     }
                 });
-            }), catchError((err => EMPTY))
+            }), catchError((() => EMPTY))
         );
     }
 }

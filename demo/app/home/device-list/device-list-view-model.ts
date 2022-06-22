@@ -1,6 +1,6 @@
 import { Observable } from "@nativescript/core";
 import { getLogger } from "~/home/logger/logger-view-model";
-import { getNodeDiscoverer, NodeDiscovered } from "nativescript-wearos-sensors/node";
+import { getNodeDiscoverer } from "nativescript-wearos-sensors/node";
 
 export class DeviceListViewModel extends Observable {
 
@@ -29,32 +29,31 @@ export class DeviceListViewModel extends Observable {
         this.notifyPropertyChange("nodes", this.nodes);
         this.notifyPropertyChange("scanning", this.scanning);
 
-        nodeDiscoverer.getConnectedNodes().subscribe({
-            next: (nodeDiscovered: NodeDiscovered) => {
-                if (nodeDiscovered.error) {
-                    this.logger.logResult(nodeDiscovered.error);
-                    return;
-                }
+        nodeDiscoverer.getConnectedNodes()
+            .then((nodesDiscovered) => {
+                nodesDiscovered.forEach((nodeDiscovered) => {
+                    if (nodeDiscovered.error) {
+                        this.logger.logResult(nodeDiscovered.error);
+                        return;
+                    }
 
-                const node = nodeDiscovered.node;
-                this.logger.logResult(`Connected node --> ${JSON.stringify(node)}`);
+                    const node = nodeDiscovered.node;
+                    this.logger.logResult(`Connected node --> ${JSON.stringify(node)}`);
 
-                const sensorsAvailability = {};
-                node.capabilities.forEach((capability) => sensorsAvailability[capability.toLowerCase()] = true)
+                    const sensorsAvailability = {};
+                    node.capabilities.forEach((capability) => sensorsAvailability[capability.toLowerCase()] = true)
 
-                this.nodes.push({
-                    id: node.id,
-                    name: node.name,
-                    sensorsAvailability: sensorsAvailability,
+                    this.nodes.push({
+                        id: node.id,
+                        name: node.name,
+                        sensorsAvailability: sensorsAvailability,
+                    });
                 });
                 this.notifyPropertyChange("nodes", this.nodes);
-            },
-            complete: () => {
                 this.logger.logInfo("Scan ended");
                 this.scanning = false;
                 this.notifyPropertyChange("scanning", this.scanning);
-            }
-        });
+            });
     }
 }
 
