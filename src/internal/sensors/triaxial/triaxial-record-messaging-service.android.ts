@@ -1,25 +1,24 @@
 import { AbstractRecordMessagingService } from "../../communication/messaging/android/abstract-record-messaging-service.android";
 import { wearOS } from "../../utils/android/wear-os-types.android";
-import { TriAxialSensorRecord } from "./record";
-import { SensorRecords } from "../sensor-record";
+import { TriAxialSensorSample } from "./sample";
+import { SensorRecord } from "../sensor-record";
 
 import ByteBuffer = java.nio.ByteBuffer;
 
 export class TriAxialRecordMessagingService extends AbstractRecordMessagingService {
 
-    decodeRecords(messageEvent: wearOS.MessageEvent): SensorRecords<TriAxialSensorRecord> {
+    decodeSamples(messageEvent: wearOS.MessageEvent): SensorRecord<TriAxialSensorSample> {
         const buff = ByteBuffer.wrap(messageEvent.getData());
         const size = buff.getInt();
         let x, y, z, time;
 
-        const records: TriAxialSensorRecord[] = [];
+        const samples: TriAxialSensorSample[] = [];
         for (let i = 0; i < size; i++) {
             x = buff.getFloat();
             y = buff.getFloat();
             z = buff.getFloat();
             time = buff.getLong();
-            records.push({
-                deviceId: messageEvent.getSourceNodeId(),
+            samples.push({
                 timestamp: time,
                 x,
                 y,
@@ -29,7 +28,8 @@ export class TriAxialRecordMessagingService extends AbstractRecordMessagingServi
 
         return {
             type: null,
-            records,
+            deviceId: messageEvent.getSourceNodeId(),
+            samples: samples,
         };
     }
 }

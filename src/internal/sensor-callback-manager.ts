@@ -3,17 +3,17 @@ import {
     EventData as NSEventData,
 } from "@nativescript/core";
 import { fromObject } from "@nativescript/core/data/observable";
-import { SensorRecords } from "./sensors/sensor-record";
+import { SensorRecord } from "./sensors/sensor-record";
 
 interface InternalEventData extends NSEventData {
-    data: SensorRecords<any>;
+    data: SensorRecord<any>;
 }
 type InternalEventCallback = (eventData: InternalEventData) => void;
 interface CallbackDescriptor {
     eventName: string;
     callback: InternalEventCallback;
 }
-export type SensorCallback = (sensorRecords: SensorRecords<any>) => void;
+export type SensorCallback = (sensorRecord: SensorRecord<any>) => void;
 
 export class SensorCallbackManager {
 
@@ -38,14 +38,14 @@ export class SensorCallbackManager {
         return this.listenerCounter++;
     }
 
-    notifyAll(records: SensorRecords<any>): void {
-        if (!this.notificationCenter.hasListeners(records.type)) {
+    notifyAll(record: SensorRecord<any>): void {
+        if (!this.notificationCenter.hasListeners(record.type)) {
             return;
         }
         const eventData: InternalEventData = {
-            eventName: records.type,
+            eventName: record.type,
             object: this.notificationCenter,
-            data: records,
+            data: record,
         };
         this.notificationCenter.notify<InternalEventData>(eventData);
     }

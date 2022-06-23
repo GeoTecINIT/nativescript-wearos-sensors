@@ -1,23 +1,22 @@
 import { SensorCallbackManager } from "nativescript-wearos-sensors/internal/sensor-callback-manager";
-import { SensorRecord, SensorRecords } from "nativescript-wearos-sensors/internal/sensors/sensor-record";
+import { SensorRecord } from "nativescript-wearos-sensors/internal/sensors/sensor-record";
 import { buildFakeSensorRecords } from "~/tests/internal/index.spec";
 import { SensorType } from "nativescript-wearos-sensors/internal/sensors/sensor-type";
+import { SensorSample } from "nativescript-wearos-sensors/internal/sensors/sample";
 
 describe("Sensor callback manager", () => {
+    const deviceId = "test";
     const callbackManager = new SensorCallbackManager();
     const sensorTypeA = SensorType.ACCELEROMETER;
     const sensorTypeB = SensorType.LOCATION;
 
-    const sensorRecordA1: SensorRecord = {
-        deviceId: "test",
+    const sensorRecordA1: SensorSample = {
         timestamp: Date.now()
     };
-    const sensorRecordA2: SensorRecord = {
-        deviceId: "test",
+    const sensorRecordA2: SensorSample = {
         timestamp: Date.now()
     };
-    const sensorRecordB1: SensorRecord = {
-        deviceId: "test",
+    const sensorRecordB1: SensorSample = {
         timestamp: Date.now()
     };
     const noNotificationTimeout = 100;
@@ -37,13 +36,13 @@ describe("Sensor callback manager", () => {
             (callbackId) => null
         );
 
-        const sensorRecords = buildFakeSensorRecords(sensorTypeA,[sensorRecordA1, sensorRecordA2]);
+        const sensorRecord = buildFakeSensorRecords(sensorTypeA, deviceId, [sensorRecordA1, sensorRecordA2]);
         callbackManager.notifyAll(
-            sensorRecords
+            sensorRecord
         );
 
         const sensorUpdates = await toBeNotified;
-        expect(sensorUpdates).toEqual(sensorRecords);
+        expect(sensorUpdates).toEqual(sensorRecord);
         await notToBeNotified;
     });
 
@@ -56,7 +55,7 @@ describe("Sensor callback manager", () => {
         );
 
         callbackManager.notifyAll(
-            buildFakeSensorRecords(sensorTypeA,[sensorRecordA1, sensorRecordA2])
+            buildFakeSensorRecords(sensorTypeA, deviceId, [sensorRecordA1, sensorRecordA2])
         );
         await notToBeNotified;
     });
@@ -71,14 +70,14 @@ describe("Sensor callback manager", () => {
         const toBeNotified = listenSensorUpdates(callbackManager, sensorTypeA);
 
         await notToBeNotified;
-        const sensorRecords = buildFakeSensorRecords(sensorTypeA,[sensorRecordA1, sensorRecordA2]);
-        callbackManager.notifyAll(sensorRecords);
+        const sensorRecord = buildFakeSensorRecords(sensorTypeA, deviceId,[sensorRecordA1, sensorRecordA2]);
+        callbackManager.notifyAll(sensorRecord);
         callbackManager.notifyAll(
-            buildFakeSensorRecords(sensorTypeB, [sensorRecordB1])
+            buildFakeSensorRecords(sensorTypeB,  deviceId, [sensorRecordB1])
         );
 
         const sensorUpdates = await toBeNotified;
-        expect(sensorUpdates).toBe(sensorRecords);
+        expect(sensorUpdates).toBe(sensorRecord);
     });
 
     it("removes all registered callbacks for a specific event, while others can listen updates", async () => {
@@ -98,13 +97,13 @@ describe("Sensor callback manager", () => {
 
         callbackManager.removeAllForEvent(sensorTypeA);
         callbackManager.notifyAll(
-            buildFakeSensorRecords(sensorTypeA,[sensorRecordA1, sensorRecordA2])
+            buildFakeSensorRecords(sensorTypeA, deviceId, [sensorRecordA1, sensorRecordA2])
         );
-        const sensorRecords = buildFakeSensorRecords(sensorTypeB,[sensorRecordB1]);
-        callbackManager.notifyAll(sensorRecords);
+        const sensorRecord = buildFakeSensorRecords(sensorTypeB, deviceId, [sensorRecordB1]);
+        callbackManager.notifyAll(sensorRecord);
 
         const sensorUpdates = await toBeNotified;
-        expect(sensorUpdates).toBe(sensorRecords)
+        expect(sensorUpdates).toBe(sensorRecord)
     })
 
     it("removes all registered callbacks, so no one is notified", async () => {
@@ -123,7 +122,7 @@ describe("Sensor callback manager", () => {
 
         callbackManager.removeAll();
         callbackManager.notifyAll(
-            buildFakeSensorRecords(sensorTypeA,[sensorRecordA1, sensorRecordA2])
+            buildFakeSensorRecords(sensorTypeA, deviceId, [sensorRecordA1, sensorRecordA2])
         );
 
         const success = await Promise.all([notToBeNotified1, notToBeNotified2]);
@@ -136,7 +135,7 @@ describe("Sensor callback manager", () => {
 function listenSensorUpdates(
     callbackManager: SensorCallbackManager,
     eventName: string
-): Promise<SensorRecords<any>> {
+): Promise<SensorRecord<any>> {
     return new Promise((resolve) =>
         callbackManager.add(sensorRecords => resolve(sensorRecords), eventName))
 }

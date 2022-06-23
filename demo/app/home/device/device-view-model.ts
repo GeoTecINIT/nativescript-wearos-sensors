@@ -140,10 +140,10 @@ export class DeviceViewModel extends Observable {
 
     private handleOnStartTap(sensorDescription: SensorDescription) {
         const collector = sensorDescription.collector;
-        const listener = collector.listenSensorUpdates((sensorCallback) => {
-            const records = sensorCallback.records;
-            const deviceId = records[0].deviceId;
-            getLogger().logResultForNode(deviceId, JSON.stringify(records));
+        const listener = collector.listenSensorUpdates((sensorRecord) => {
+            const samples = sensorRecord.samples;
+            const deviceId = sensorRecord.deviceId;
+            getLogger().logResultForNode(deviceId, JSON.stringify(samples));
         });
         this.listeners.set(sensorDescription.sensor, listener);
         collector.startCollecting(

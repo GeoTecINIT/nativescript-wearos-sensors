@@ -1,16 +1,17 @@
 import { TriAxialRecordMessagingService } from "../../triaxial-record-messaging-service.android";
 import { AbstractRecordMessagingService } from "../../../../communication/messaging/android/abstract-record-messaging-service.android";
-import { SensorRecords } from "../../../sensor-record";
+import { SensorRecord } from "../../../sensor-record";
 import { SensorType } from "../../../sensor-type";
-import {TriAxialSensorRecord} from "../../record";
+import {TriAxialSensorSample} from "../../sample";
 
 export class GyroscopeRecordMessagingService extends TriAxialRecordMessagingService {
 
-    decodeRecords(messageEvent: com.google.android.gms.wearable.MessageEvent): SensorRecords<TriAxialSensorRecord> {
-        const { records } = super.decodeRecords(messageEvent);
+    decodeSamples(messageEvent: com.google.android.gms.wearable.MessageEvent): SensorRecord<TriAxialSensorSample> {
+        const { deviceId, samples } = super.decodeSamples(messageEvent);
         return {
             type: SensorType.GYROSCOPE,
-            records,
+            deviceId: deviceId,
+            samples: samples,
         };
     }
 }

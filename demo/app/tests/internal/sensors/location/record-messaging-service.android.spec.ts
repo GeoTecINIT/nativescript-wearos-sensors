@@ -1,5 +1,5 @@
 import { buildFakeMessageEvent, getFakeMessagingProtocol } from "~/tests/internal/index.spec";
-import { LocationSensorRecord } from "nativescript-wearos-sensors/internal/sensors/location/record";
+import { LocationSensorSample } from "nativescript-wearos-sensors/internal/sensors/location/sample";
 import { LocationRecordMessagingService } from "nativescript-wearos-sensors/internal/sensors/location/android/record-messaging-service.android";
 import { SensorType } from "nativescript-wearos-sensors/internal/sensors/sensor-type";
 
@@ -9,30 +9,24 @@ describe("Location record messaging service", () => {
 
     it("decodes the message data building an array of location records", () => {
         const recordMessagingService = new LocationRecordMessagingService();
-        const expectedRecords: LocationSensorRecord[] = [
-            {
-                deviceId: nodeId,
-                ...getFakeLocationData(),
-            },
-            {
-                deviceId: nodeId,
-                ...getFakeLocationData(),
-            }
+        const expectedSamples: LocationSensorSample[] = [
+            { ...getFakeLocationData() },
+            { ...getFakeLocationData() }
         ];
 
         const messageEvent = buildFakeMessageEvent(
             nodeId,
             protocol.newRecordMessagePath,
-            buildFakeEncodedMessage(expectedRecords)
+            buildFakeEncodedMessage(expectedSamples)
         );
 
-        const decodedRecord = recordMessagingService.decodeRecords(messageEvent);
+        const decodedRecord = recordMessagingService.decodeSamples(messageEvent);
         expect(decodedRecord.type).toBe(SensorType.LOCATION);
-        const { records } = decodedRecord;
-        records.forEach((record, i) => {
-            expect(record.latitude).toEqual(expectedRecords[i].latitude);
-            expect(record.longitude).toEqual(expectedRecords[i].longitude);
-            expect(record.altitude).toEqual(expectedRecords[i].altitude);
+        const { samples } = decodedRecord;
+        samples.forEach((samples, i) => {
+            expect(samples.latitude).toEqual(expectedSamples[i].latitude);
+            expect(samples.longitude).toEqual(expectedSamples[i].longitude);
+            expect(samples.altitude).toEqual(expectedSamples[i].altitude);
         })
     });
 });
@@ -46,18 +40,18 @@ function getFakeLocationData() {
     };
 }
 
-function buildFakeEncodedMessage(expectedRecords: LocationSensorRecord[]) {
-    const bytes = Array.create("byte", (4 + (32) * expectedRecords.length));
+function buildFakeEncodedMessage(expectedSamples: LocationSensorSample[]) {
+    const bytes = Array.create("byte", (4 + (32) * expectedSamples.length));
     for (let i = 0; i < bytes.length; i++) {
         bytes[i] = 0;
     }
     const buff = java.nio.ByteBuffer.wrap(bytes);
-    buff.putInt(expectedRecords.length);
-    expectedRecords.forEach((record) => {
-        buff.putDouble(record.latitude);
-        buff.putDouble(record.longitude);
-        buff.putDouble(record.altitude);
-        buff.putLong(record.timestamp);
+    buff.putInt(expectedSamples.length);
+    expectedSamples.forEach((sample) => {
+        buff.putDouble(sample.latitude);
+        buff.putDouble(sample.longitude);
+        buff.putDouble(sample.altitude);
+        buff.putLong(sample.timestamp);
     })
 
     return bytes;

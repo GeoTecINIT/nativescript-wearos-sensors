@@ -1,16 +1,17 @@
 import { TriAxialRecordMessagingService } from "../../triaxial-record-messaging-service.android";
 import { AbstractRecordMessagingService } from "../../../../communication/messaging/android/abstract-record-messaging-service.android";
 import { SensorType } from "../../../sensor-type";
-import { SensorRecords } from "../../../sensor-record";
-import { TriAxialSensorRecord } from "../../record";
+import { SensorRecord } from "../../../sensor-record";
+import { TriAxialSensorSample } from "../../sample";
 
 export class AccelerometerRecordMessagingService extends TriAxialRecordMessagingService {
 
-    decodeRecords(messageEvent: com.google.android.gms.wearable.MessageEvent): SensorRecords<TriAxialSensorRecord> {
-        const { records } = super.decodeRecords(messageEvent);
+    decodeSamples(messageEvent: com.google.android.gms.wearable.MessageEvent): SensorRecord<TriAxialSensorSample> {
+        const { deviceId, samples } = super.decodeSamples(messageEvent);
         return {
             type: SensorType.ACCELEROMETER,
-            records,
+            deviceId: deviceId,
+            samples: samples,
         };
     }
 }

@@ -1,11 +1,11 @@
-import { SensorRecords } from "../sensors/sensor-record";
+import { SensorRecord } from "../sensors/sensor-record";
 import { knownFolders } from "@nativescript/core";
 
 export class Store {
 
-    private records: SensorRecords<any>[] = [];
+    private records: SensorRecord<any>[] = [];
 
-    public addRecord(record: SensorRecords<any>): void {
+    public addRecord(record: SensorRecord<any>): void {
         this.records.push(record);
     }
 

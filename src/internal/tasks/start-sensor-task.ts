@@ -36,7 +36,7 @@ export class StartSensorTask extends Task {
             taskDispatcher.emitEvent(
                 `${camelCase(this.sensorType)}RecordsAcquired`,
                 {
-                    deviceId: records.records[0].deviceId,
+                    deviceId: records.samples[0].deviceId,
                     records: records
                 });
         });

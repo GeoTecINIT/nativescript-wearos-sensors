@@ -1,9 +1,10 @@
 import { wearOS, WearOsNode } from "nativescript-wearos-sensors/internal/utils/android/wear-os-types.android";
 import { MessagingProtocol } from "nativescript-wearos-sensors/internal/communication/messaging";
 import { SensorType } from "nativescript-wearos-sensors/internal/sensors/sensor-type";
-import { SensorRecord, SensorRecords } from "nativescript-wearos-sensors/internal/sensors/sensor-record";
+import { SensorRecord } from "nativescript-wearos-sensors/internal/sensors/sensor-record";
 import { MessagingResult } from "nativescript-wearos-sensors/internal/communication/messaging/android/messaging-result-service.android";
 import { encodeMessage } from "nativescript-wearos-sensors/internal/communication/encoder-decoder";
+import { SensorSample } from "nativescript-wearos-sensors/internal/sensors/sample";
 
 export function buildFakeNode(id: string, name: string, nearby: boolean): WearOsNode {
     return new wearOS.Node({
@@ -74,9 +75,10 @@ export function buildFakeMessageEvent(
     });
 }
 
-export function buildFakeSensorRecords(type: SensorType, records: SensorRecord[]): SensorRecords<any> {
+export function buildFakeSensorRecords(type: SensorType, deviceId: string, samples: SensorSample[]): SensorRecord<any> {
     return {
         type,
-        records,
+        deviceId,
+        samples,
     }
 }
