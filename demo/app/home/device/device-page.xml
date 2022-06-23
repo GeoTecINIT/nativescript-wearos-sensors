@@ -7,46 +7,51 @@
     <ActionBar>
         <Label class="title-med">
             <FormattedString>
-                <Span text="{{ node.name }} " fontWeight="bold"></Span>
-                <Span text="{{ ' (' + node.id + ')' }}"></Span>
+                <Span text="{{ node.name }} " fontWeight="bold"/>
+                <Span text="{{ ' (' + node.id + ')' }}"/>
             </FormattedString>
         </Label>
         <ActionItem
                 text="Store collected data"
                 tap="{{ onStoreData }}"
                 android.position="popup"
-        ></ActionItem>
+        />
         <ActionItem
                 text="Clear collected data"
                 tap="{{ onClearData }}"
                 android.position="popup"
-        ></ActionItem>
+        />
     </ActionBar>
 
     <StackLayout orientation="vertical">
-        <GridLayout class="card" rows="auto, auto" columns="*, *" height="80">
-            <Label row="0" col="0" text="Sensor Delay: "></Label>
-            <dd:DropDown row="1" col="0"
-                         items="{{ sensorDelays }}" selectedIndex="{{ selectedDelayIndex }}"
-                         itemsTextAlignment="center" itemsPadding="5" class="drop-down"/>
-            <Label row="0" col="1" text="Batch size: "></Label>
-            <TextField row="1" col="1" text="{{ batchSize }}" keyboardType="number" textAlignment="center"></TextField>
+        <GridLayout class="card" rows="auto, auto" columns="2*, *" height="80">
+            <Label row="0" col="0" text="Sensor interval: "/>
+            <StackLayout row="1" col="0" orientation="horizontal">
+                <dd:DropDown items="{{ sensorIntervals }}" selectedIndex="{{ selectedDelayIndex }}"
+                             itemsTextAlignment="center" itemsPadding="5" class="drop-down"/>
+                <Label text="or" verticalAlignment="center"/>
+                <TextField text="{{ customSensorInterval }}" hint="custom" style="placeholder-color: grey;"
+                           keyboardType="number" textAlignment="center" width="50"/>
+                <Label text="ms" verticalAlignment="center"/>
+            </StackLayout>
+            <Label row="0" col="1" text="Batch size: "/>
+            <TextField row="1" col="1" text="{{ batchSize }}" keyboardType="number" textAlignment="center"/>
         </GridLayout>
         <ScrollView verticalAlignment="top">
             <Repeater id="repeater" items="{{ sensorDescription }}" margin="10">
                 <Repeater.itemsLayout>
-                    <StackLayout orientation="vertical"></StackLayout>
+                    <StackLayout orientation="vertical"/>
                 </Repeater.itemsLayout>
                 <Repeater.itemTemplate>
                     <GridLayout rows="auto, auto, *" columns="1*, 3*" class="card">
                         <Label row="0" rowSpan="3" col="0" text="{{ $value.icon }}"
                                class="{{ $value.status.id, $value.status.id === 'listening' ? 'mdi-ro mdi-50 recording' : 'mdi-ro mdi-50'}}"
-                               backgroundColor="{{ $value.status.iconColorBg }}" horizontalAlignment="center" verticalAlignment="center"></Label>
-                        <Label row="0" col="1"  text="{{ $value.sensor }}" class="title-med bold"></Label>
+                               backgroundColor="{{ $value.status.iconColorBg }}" horizontalAlignment="center" verticalAlignment="center"/>
+                        <Label row="0" col="1"  text="{{ $value.sensor }}" class="title-med bold"/>
                         <Label row="1" col="1" class="bold">
                             <FormattedString>
-                                <Span text="Status: "></Span>
-                                <Span text="{{ $value.status.message }}"></Span>
+                                <Span text="Status: "/>
+                                <Span text="{{ $value.status.message }}"/>
                             </FormattedString>
                         </Label>
                         <StackLayout row="3" col="1" orientation="horizontal" horizontalAlignment="center">

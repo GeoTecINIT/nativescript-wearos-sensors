@@ -2,7 +2,7 @@ import { Button, Color, EventData, Observable, Repeater } from "@nativescript/co
 import { getLogger } from "~/home/logger/logger-view-model";
 import { ValueList } from "nativescript-drop-down";
 import { Node } from "nativescript-wearos-sensors/node";
-import { CollectorManager, PrepareError, SensorDelay } from "nativescript-wearos-sensors/collection";
+import { CollectorManager, PrepareError, NativeSensorDelay } from "nativescript-wearos-sensors/collection";
 import { getSensorCollector, SensorType } from "nativescript-wearos-sensors/sensors";
 import { wearosSensors } from "nativescript-wearos-sensors";
 
@@ -28,11 +28,12 @@ export class DeviceViewModel extends Observable {
 
     private repeater: Repeater;
 
-    private sensorDelays = new ValueList([
-        { value: SensorDelay.NORMAL, display: "NORMAL" },
-        { value: SensorDelay.UI, display: "UI" },
-        { value: SensorDelay.GAME, display: "GAME" },
-        { value: SensorDelay.FASTEST, display: "FASTEST" }
+    private customSensorInterval: number;
+    private sensorIntervals = new ValueList([
+        { value: NativeSensorDelay.NORMAL, display: "NORMAL" },
+        { value: NativeSensorDelay.UI, display: "UI" },
+        { value: NativeSensorDelay.GAME, display: "GAME" },
+        { value: NativeSensorDelay.FASTEST, display: "FASTEST" }
     ]);
     private selectedDelayIndex = 0;
 
@@ -148,7 +149,7 @@ export class DeviceViewModel extends Observable {
         collector.startCollecting(
             this.node,
             {
-                sensorInterval: this.sensorDelays.getValue(this.selectedDelayIndex),
+                sensorInterval: this.customSensorInterval ?? this.sensorIntervals.getValue(this.selectedDelayIndex),
                 batchSize: this.batchSize
             }
         );

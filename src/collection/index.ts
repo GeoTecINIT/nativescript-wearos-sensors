@@ -5,4 +5,7 @@ export type PrepareError = PE;
 import { CollectionConfiguration as CC } from "../internal/collection/collection-configuration";
 export type CollectionConfiguration = CC;
 
-export { SensorDelay } from "../internal/collection/collection-configuration";
+import { SensorInterval as SI } from "../internal/collection/collection-configuration";
+export type SensorInterval = SI;
+
+export { NativeSensorDelay } from "../internal/collection/collection-configuration";
