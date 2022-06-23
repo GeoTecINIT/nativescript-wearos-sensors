@@ -1,9 +1,7 @@
 import { Application } from "@nativescript/core";
 import { wearosSensors } from "nativescript-wearos-sensors/wearos-sensors.android";
-import { appTasks } from "~/home/tasks";
-import { demoTaskGraph } from "~/home/tasks/graph";
 
-wearosSensors.init(appTasks, demoTaskGraph);
+wearosSensors.init();
 
 Application.run({ moduleName: "app-root" });
 

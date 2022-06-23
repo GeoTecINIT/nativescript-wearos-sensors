@@ -7,7 +7,6 @@
     "@nativescript/theme": "~2.3.0",
     "@nativescript/unit-test-runner": "~3.0.0",
     "nativescript-drop-down": "^6.0.0",
-    "nativescript-task-dispatcher": "^3.1.1",
     "nativescript-wearos-sensors": "file:../src"
   },
   "devDependencies": {
