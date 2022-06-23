@@ -1,4 +1,4 @@
-import { SensorRecord } from "../sensors/sensor-record";
+import { SensorRecord } from "nativescript-wearos-sensors/internal/sensors/sensor-record";
 import { knownFolders } from "@nativescript/core";
 
 export class Store {
@@ -9,7 +9,7 @@ export class Store {
         this.records.push(record);
     }
 
-    public store(fileName: string): Promise<any> {
+    public store(fileName: string, clearAfter: boolean = false): Promise<any> {
         if (this.records.length === 0) {
             throw new Error("Nothing to store!");
         }
@@ -18,18 +18,19 @@ export class Store {
         const file = folder.getFile(fileName);
 
         const recordsToStore = this.records.slice();
-        this.clear();
+
+        if (clearAfter) this.clear();
 
         return file.writeText(JSON.stringify(recordsToStore));
     }
 
-    private clear() {
+    public clear() {
         this.records = [];
     }
 }
 
 let _instance;
-export function getStore() {
+export function getStore(): Store {
     if (!_instance)
         _instance = new Store();
     return _instance;

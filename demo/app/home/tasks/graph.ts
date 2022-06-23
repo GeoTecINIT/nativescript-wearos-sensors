@@ -55,19 +55,6 @@ class DemoTaskGraph implements TaskGraph {
         on("magnetometerRecordsAcquired", run("recordLoggerTask"));
         on("heartRateRecordsAcquired", run("recordLoggerTask"));
         on("locationRecordsAcquired", run("recordLoggerTask"));
-
-        // Save records and store
-        on("accelerometerRecordsAcquired", run("accumulatorTask"));
-        on("gyroscopeRecordsAcquired", run("accumulatorTask"));
-        on("magnetometerRecordsAcquired", run("accumulatorTask"));
-        on("heartRateRecordsAcquired", run("accumulatorTask"));
-        on("locationRecordsAcquired", run("accumulatorTask"));
-
-        on("storeCollectedData", run("storeCollectedDataTask"));
-        on("clearCollectedData", run("clearCollectedDataTask"));
-
-        on("storeCollectedDataTaskFinished", run("storeDataMessageLoggerTask"));
-        on("clearCollectedDataTaskFinished", run("clearDataMessageLoggerTask"));
     }
 }
 

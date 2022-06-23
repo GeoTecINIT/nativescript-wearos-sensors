@@ -4,7 +4,7 @@ import { ValueList } from "nativescript-drop-down";
 import { Node } from "nativescript-wearos-sensors/node";
 import { CollectorManager, PrepareError, NativeSensorDelay } from "nativescript-wearos-sensors/collection";
 import { getSensorCollector, SensorType } from "nativescript-wearos-sensors/sensors";
-import { wearosSensors } from "nativescript-wearos-sensors";
+import { getStore } from "~/home/store";
 
 export class DeviceViewModel extends Observable {
     private logger;
@@ -93,14 +93,15 @@ export class DeviceViewModel extends Observable {
         parent.handleOnStopTap(sensorDescription);
     }
 
-    onStoreData() {
-        wearosSensors.emitEvent("storeCollectedData", {
-            deviceId: this.node.id
-        });
+    async onStoreData() {
+        const fileName = `${this.node.id}_${Date.now()}.json`
+        await getStore().store(fileName);
+        getLogger().logInfo(`collected data has been stored in internal memory as ${fileName}`);
     }
 
     onClearData() {
-        wearosSensors.emitEvent("clearCollectedData");
+        getStore().clear();
+        getLogger().logInfo("collected data has been deleted");
     }
 
     private handleOnIsReadyTap(sensorDescription: SensorDescription) {
@@ -143,6 +144,7 @@ export class DeviceViewModel extends Observable {
         const listener = collector.listenSensorUpdates((sensorRecord) => {
             const samples = sensorRecord.samples;
             const deviceId = sensorRecord.deviceId;
+            getStore().addRecord(sensorRecord);
             getLogger().logResultForNode(deviceId, JSON.stringify(samples));
         });
         this.listeners.set(sensorDescription.sensor, listener);
