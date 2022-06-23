@@ -5,7 +5,6 @@ import { Node } from "nativescript-wearos-sensors/node";
 import { CollectorManager, PrepareError, SensorDelay } from "nativescript-wearos-sensors/collection";
 import { getSensorCollector, SensorType } from "nativescript-wearos-sensors/sensors";
 import { wearosSensors } from "nativescript-wearos-sensors";
-import { pascalCase } from "nativescript-wearos-sensors/internal/utils/strings";
 
 export class DeviceViewModel extends Observable {
     private logger;
@@ -39,6 +38,8 @@ export class DeviceViewModel extends Observable {
 
     private batchSize = 50;
 
+    private listeners = new Map<SensorType, number>();
+
     constructor(
         private node: Node
     ) {
@@ -54,7 +55,7 @@ export class DeviceViewModel extends Observable {
                     message: this.status["availableInDevice"],
                     iconColorBg: this.bgColors["availableInDevice"]
                 },
-                icon: this.iconForSensor(sensor),
+                icon: iconForSensor(sensor),
             };
         });
     }
@@ -137,26 +138,31 @@ export class DeviceViewModel extends Observable {
     }
 
     private handleOnStartTap(sensorDescription: SensorDescription) {
-        wearosSensors.emitEvent(
-            `start${pascalCase(sensorDescription.sensor)}Command`,
+        const collector = sensorDescription.collector;
+        const listener = collector.listenSensorUpdates((sensorCallback) => {
+            const records = sensorCallback.records;
+            const deviceId = records[0].deviceId;
+            getLogger().logResultForNode(deviceId, JSON.stringify(records));
+        });
+        this.listeners.set(sensorDescription.sensor, listener);
+        collector.startCollecting(
+            this.node,
             {
-                deviceId: this.node.id,
-                config: {
-                    sensorDelay: this.sensorDelays.getValue(this.selectedDelayIndex),
-                    batchSize: this.batchSize
-                }
+                sensorInterval: this.sensorDelays.getValue(this.selectedDelayIndex),
+                batchSize: this.batchSize
             }
         );
+
         this.updateSensorDescriptionStatus(sensorDescription, Status.LISTENING);
     }
 
     private handleOnStopTap(sensorDescription: SensorDescription) {
-        wearosSensors.emitEvent(
-            `stop${pascalCase(sensorDescription.sensor)}Command`,
-            {
-                deviceId: this.node.id
-            }
-        );
+        const collector = sensorDescription.collector;
+        const listener = this.listeners.get(sensorDescription.sensor);
+        this.listeners.delete(sensorDescription.sensor);
+        collector.stopListenSensorUpdates(listener);
+        collector.stopCollecting(this.node);
+
         this.updateSensorDescriptionStatus(sensorDescription, Status.READY);
     }
 
@@ -168,28 +174,6 @@ export class DeviceViewModel extends Observable {
             iconColorBg: this.bgColors[status]
         }
         this.repeater.refresh();
-    }
-
-    private iconForSensor(sensor): string {
-        let icon;
-        switch (sensor) {
-            case SensorType.ACCELEROMETER:
-                icon = "e89f";
-                break;
-            case SensorType.GYROSCOPE:
-                icon = "e84d";
-                break;
-            case SensorType.MAGNETOMETER:
-                icon = "e87a";
-                break;
-            case SensorType.LOCATION:
-                icon = "e0c8";
-                break;
-            case SensorType.HEART_RATE:
-                icon = "e87d";
-        }
-
-        return String.fromCharCode(parseInt(icon, 16));
     }
 }
 
@@ -213,4 +197,26 @@ enum Status {
     NOT_READY = "notReady",
     READY = "ready",
     LISTENING = "listening"
+}
+
+function iconForSensor(sensor: SensorType): string {
+    let icon;
+    switch (sensor) {
+        case SensorType.ACCELEROMETER:
+            icon = "e89f";
+            break;
+        case SensorType.GYROSCOPE:
+            icon = "e84d";
+            break;
+        case SensorType.MAGNETOMETER:
+            icon = "e87a";
+            break;
+        case SensorType.LOCATION:
+            icon = "e0c8";
+            break;
+        case SensorType.HEART_RATE:
+            icon = "e87d";
+    }
+
+    return String.fromCharCode(parseInt(icon, 16));
 }
