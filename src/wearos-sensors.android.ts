@@ -8,6 +8,10 @@ import { getMagnetometerRecordService } from "./internal/sensors/triaxial/magnet
 import { getLocationRecordService } from "./internal/sensors/location/android/record-messaging-service.android";
 import { getHeartRateRecordService } from "./internal/sensors/heart-rate/android/record-messaging-service.android";
 import { getCommandService } from "./internal/communication/command/command-service.android";
+import {
+    getFreeMessageResultService
+} from "./internal/communication/free-message/android/free-message-result-service.android";
+
 import { SensorType } from "./internal/sensors/sensor-type";
 
 import WearableListenerServiceDelegate = es.uji.geotec.wearos_sensors.messaging.WearableListenerServiceDelegate;
@@ -15,6 +19,7 @@ import WearosSensorsCapabilityAdvertiserService = es.uji.geotec.wearos_sensors.m
 import WearosSensorsResultsMessagingService = es.uji.geotec.wearos_sensors.messaging.WearosSensorsResultsMessagingService;
 import WearosSensorsRecordsMessagingService = es.uji.geotec.wearos_sensors.messaging.WearosSensorsRecordsMessagingService;
 import WearosSensorsCommandService = es.uji.geotec.wearos_sensors.command.WearosCommandService;
+import WearosFreeMessageService = es.uji.geotec.wearos_sensors.freemessage.WearosFreeMessageService;
 import WearSensor = es.uji.geotec.wearos_sensors.WearSensor;
 
 export class WearosSensors extends Common {
@@ -23,6 +28,7 @@ export class WearosSensors extends Common {
 
         this.wireUpCapabilityAdvertiser();
         this.wireUpCommandService();
+        this.wireUpFreeMessageService();
         this.wireUpAccelerometerComponents();
         this.wireUpGyroscopeComponents();
         this.wireUpMagnetometerComponents();
@@ -44,6 +50,15 @@ export class WearosSensors extends Common {
             new WearableListenerServiceDelegate({
                 onMessageReceived: (messageEvent) =>
                     getCommandService().onMessageReceived(messageEvent)
+            })
+        );
+    }
+
+    public wireUpFreeMessageService() {
+        WearosFreeMessageService.setFreeMessageServiceDelegate(
+            new WearableListenerServiceDelegate({
+                onMessageReceived: (messageEvent) =>
+                    getFreeMessageResultService().onMessageReceived(messageEvent)
             })
         );
     }
