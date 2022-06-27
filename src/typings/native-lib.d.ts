@@ -57,6 +57,24 @@ declare namespace es {
 	export namespace uji {
 		export namespace geotec {
 			export namespace wearos_sensors {
+				export namespace freemessage {
+					export class WearosFreeMessageService {
+						public static class: java.lang.Class<es.uji.geotec.wearos_sensors.command.WearosCommandService>;
+						public constructor();
+						public static setFreeMessageServiceDelegate(param0: es.uji.geotec.wearos_sensors.messaging.WearableListenerServiceDelegate): void;
+						public onCreate(): void;
+						public onMessageReceived(param0: com.google.android.gms.wearable.MessageEvent): void;
+					}
+				}
+			}
+		}
+	}
+}
+
+declare namespace es {
+	export namespace uji {
+		export namespace geotec {
+			export namespace wearos_sensors {
 				export namespace messaging {
 					export class MessageReceiverActivationCache {
 						public static class: java.lang.Class<es.uji.geotec.wearos_sensors.messaging.MessageReceiverActivationCache>;

@@ -54,6 +54,18 @@
                     android:scheme="wear" />
             </intent-filter>
         </service>
+
+        <service
+            android:name=".freemessage.WearosFreeMessageService"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.google.android.gms.wearable.MESSAGE_RECEIVED" />
+                <data
+                    android:host="*"
+                    android:pathPattern="/free-message.*"
+                    android:scheme="wear" />
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>
