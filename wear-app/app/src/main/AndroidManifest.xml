@@ -63,6 +63,10 @@
                     android:host="*"
                     android:pathPattern="/.*/stop"
                     android:scheme="wear" />
+                <data
+                    android:host="*"
+                    android:pathPattern="/free-message.*"
+                    android:scheme="wear" />
             </intent-filter>
         </service>
 
