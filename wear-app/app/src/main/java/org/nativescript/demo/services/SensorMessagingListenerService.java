@@ -31,7 +31,7 @@ public class SensorMessagingListenerService extends WearableListenerService {
         } else if (path.contains("location")) {
             new LocationMessagingHandler(this).handleMessage(event);
         } else if (path.contains("free-message")) {
-            new FreeMessageHandler(this).handleMessage(event);
+            FreeMessageHandler.getInstance().handleMessage(event);
         }
     }
 }

@@ -31,6 +31,14 @@ public class FreeMessageClient {
         this.protocol = FreeMessageProtocol.getProtocol();
     }
 
+    public void registerListener(FreeMessageListener listener) {
+        FreeMessageHandler.getInstance().setListener(listener);
+    }
+
+    public void unregisterListener() {
+        FreeMessageHandler.getInstance().clearListener();
+    }
+
     public void send(FreeMessage freeMessage) {
         capabilityClient.getCapability("main-node", CapabilityClient.FILTER_ALL)
                 .addOnSuccessListener(capabilityInfo -> {

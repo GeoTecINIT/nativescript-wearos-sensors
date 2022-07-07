@@ -84,5 +84,22 @@
                     android:onClick="onStopSingleCommandTap"
                     android:visibility="gone"
                     android:text="Stop" />
+
+                <TextView
+                    android:id="@+id/info_free_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:justificationMode="inter_word"
+                    android:text="You can also send and receive custom messages to/from the smartphone. Tap &quot;SEND TEST&quot; to send a message to the smartphone" />
+
+                <Button
+                    android:id="@+id/send_free_message"
+                    style="@style/Widget.AppCompat.Button.Colored"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="10dp"
+                    android:onClick="onSendFreeMessageTap"
+                    android:text="SEND TEST" />
             </LinearLayout>
 </ScrollView>

@@ -7,12 +7,28 @@ import com.google.android.gms.wearable.MessageEvent;
 
 public class FreeMessageHandler {
 
-    private Context context;
-    private FreeMessageProtocol protocol;
+    private static FreeMessageHandler instance;
 
-    public FreeMessageHandler(Context context) {
-        this.context = context;
+    private FreeMessageProtocol protocol;
+    private FreeMessageListener listener;
+
+    private FreeMessageHandler() {
         this.protocol = FreeMessageProtocol.getProtocol();
+    }
+
+    public static FreeMessageHandler getInstance() {
+        if (instance == null) {
+            instance = new FreeMessageHandler();
+        }
+        return instance;
+    }
+
+    public void setListener(FreeMessageListener listener) {
+        this.listener = listener;
+    }
+
+    public void clearListener() {
+        this.listener = null;
     }
 
     public void handleMessage(MessageEvent event) {
@@ -36,8 +52,11 @@ public class FreeMessageHandler {
             message,
             path.equals(this.protocol.getExpectingResponsePath())
         );
-        Log.d("FreeMessageHandler", receivedMessage.toString());
 
-        // TODO: Listener callback
+        if (listener == null) {
+            Log.d("FreeMessageHandler", "received message " + receivedMessage + " but there are no callbacks set");
+        }
+
+        this.listener.onMessageReceived(receivedMessage);
     }
 }

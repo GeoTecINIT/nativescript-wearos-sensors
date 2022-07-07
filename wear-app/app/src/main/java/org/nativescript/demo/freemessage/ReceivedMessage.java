@@ -27,7 +27,7 @@ public class ReceivedMessage {
         this.freeMessage = freeMessage;
     }
 
-    public boolean isRequiresResponse() {
+    public boolean responseRequired() {
         return requiresResponse;
     }
 

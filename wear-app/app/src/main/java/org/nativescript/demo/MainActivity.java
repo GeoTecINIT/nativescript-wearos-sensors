@@ -3,6 +3,7 @@ package org.nativescript.demo;
 import android.app.Activity;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -10,6 +11,10 @@ import android.widget.LinearLayout;
 import android.widget.Spinner;
 
 import org.nativescript.demo.command.CommandClient;
+import org.nativescript.demo.freemessage.FreeMessage;
+import org.nativescript.demo.freemessage.FreeMessageClient;
+import org.nativescript.demo.freemessage.FreeMessageListener;
+import org.nativescript.demo.freemessage.ReceivedMessage;
 import org.nativescript.demo.sensoring.WearSensor;
 
 public class MainActivity extends Activity {
@@ -19,6 +24,7 @@ public class MainActivity extends Activity {
     private Spinner sensorSpinner;
 
     private CommandClient commandClient;
+    private FreeMessageClient messageClient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +36,16 @@ public class MainActivity extends Activity {
         setupSpinner();
 
         commandClient = new CommandClient(this);
+        messageClient = new FreeMessageClient(this);
+        messageClient.registerListener(message -> {
+            Log.d("MainActivity", "received " + message);
+
+            if (message.responseRequired()){
+                Log.d("MainActivity", "response required! sending response...");
+                FreeMessage response = new FreeMessage("PONG!", message.getFreeMessage());
+                messageClient.send(response);
+            }
+        });
     }
 
     public void onStartAllCommandTap(View view) {
@@ -56,6 +72,11 @@ public class MainActivity extends Activity {
         sensorSpinner.setEnabled(true);
 
         commandClient.sendCommand("stop-" + selectedSensor.toLowerCase());
+    }
+
+    public void onSendFreeMessageTap(View view) {
+        FreeMessage message = new FreeMessage("Hi! This is a test message");
+        messageClient.send(message);
     }
 
     private void setupLayout() {
