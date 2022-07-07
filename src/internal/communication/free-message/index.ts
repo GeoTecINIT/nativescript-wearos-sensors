@@ -1,3 +1,15 @@
+import { FreeMessageClient } from "./free-message-client";
+import { Application } from "@nativescript/core";
+import { getFreeMessageAndroidClient } from "./android/free-message-client.android";
+
+export function getFreeMessageClient(): FreeMessageClient {
+    if (Application.android) {
+        return getFreeMessageAndroidClient();
+    } else {
+        return null;
+    }
+}
+
 export interface FreeMessageProtocol {
     withoutResponse: string;
     expectingResponse: string;
@@ -17,3 +29,5 @@ export interface ReceivedMessage {
     senderNodeId: string;
     freeMessage: FreeMessage;
 }
+
+export type FreeMessageListener = (receivedMessage: ReceivedMessage) => void;
