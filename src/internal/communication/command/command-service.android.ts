@@ -2,7 +2,7 @@ import WearableListenerServiceDelegate = es.uji.geotec.wearos_sensors.messaging.
 import { wearOS } from "../../utils/android/wear-os-types.android";
 import { decodeMessage } from "../encoder-decoder";
 import { fromString, SensorType } from "../../sensors/sensor-type";
-import { getSensorCollector } from "../../sensors";
+import { getCollectorManager } from "../../collection";
 import { Node } from "../../node";
 import { CollectionConfiguration } from "../../collection/collection-configuration";
 
@@ -82,7 +82,7 @@ function extractActionAndSensorType(command: string) {
 }
 
 async function executeAction(nodeId: string, action: CommandAction, sensorType: SensorType, config: CollectionConfiguration): Promise<void> {
-    const collector = getSensorCollector(sensorType);
+    const collector = getCollectorManager(sensorType);
     const node = new Node(nodeId, "", [sensorType]);
 
     if (action === CommandAction.STOP) {

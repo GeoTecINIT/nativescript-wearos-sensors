@@ -1,4 +1,4 @@
-import { WearableConfig } from "../../../index";
+import { WearableConfig } from "../../../wearable-config";
 export { getGyroscopeRecordService } from "./record-messaging-service.android";
 
 export function getGyroscopeDefaultWearableConfig(): WearableConfig {

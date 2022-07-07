@@ -1,34 +1,34 @@
-import { SensorType } from "../sensor-type";
-import { WearableConfig } from "../index";
-import { CollectorManager } from "../../collection/collector-manager";
+import { SensorType } from "../../sensors/sensor-type";
+import { WearableConfig } from "../../sensors/wearable-config";
+import { CollectorManager } from "../collector-manager";
 import { AbstractRecordMessagingService } from "../../communication/messaging/android/abstract-record-messaging-service.android";
-import { buildMessagingProtocol } from "./protocol.android";
+import { buildMessagingProtocol } from "../../communication/messaging/protocol";
 import { getSensorCallbackManager } from "../../sensor-callback-manager";
 import { MessagingClientImpl } from "../../communication/messaging/android/messaging-client.android";
 import { getResultMessagingService } from "../../communication/messaging/android/messaging-result-service.android";
-import { CollectorManagerImpl } from "../../collection/collector-manager-impl.android";
+import { CollectorManagerImpl } from "./collector-manager-impl.android";
 import {
     getAccelerometerDefaultWearableConfig,
     getAccelerometerRecordService
-} from "../triaxial/accelerometer/android/index.android";
+} from "../../sensors/triaxial/accelerometer/android/index.android";
 import {
     getGyroscopeDefaultWearableConfig,
     getGyroscopeRecordService
-} from "../triaxial/gyroscope/android/index.android";
+} from "../../sensors/triaxial/gyroscope/android/index.android";
 import {
     getMagnetometerDefaultWearableConfig,
     getMagnetometerRecordService
-} from "../triaxial/magnetometer/android/index.android";
+} from "../../sensors/triaxial/magnetometer/android/index.android";
 import {
     getLocationDefaultWearableConfig,
     getLocationRecordService
-} from "../location/android/index.android";
+} from "../../sensors/location/android/index.android";
 import {
     getHeartRateDefaultWearableConfig,
     getHeartRateRecordService
-} from "../heart-rate/android/index.android";
+} from "../../sensors/heart-rate/android/index.android";
 
-export function getAndroidSensorCollector(
+export function getAndroidCollectorManager(
     sensorType: SensorType,
     config?: WearableConfig
 ): CollectorManager {

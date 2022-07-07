@@ -1,7 +1,7 @@
 import { Node } from "nativescript-wearos-sensors/internal/node";
 import { SensorType } from "nativescript-wearos-sensors/internal/sensors/sensor-type";
 import { MessagingClient } from "nativescript-wearos-sensors/internal/communication/messaging/messaging-client";
-import { CollectorManagerImpl } from "nativescript-wearos-sensors/internal/collection/collector-manager-impl.android";
+import { CollectorManagerImpl } from "nativescript-wearos-sensors/internal/collection/android/collector-manager-impl.android";
 import { buildFakeResolutionResult } from "~/tests/internal/index.spec";
 
 describe("Collector manager implementation", () => {

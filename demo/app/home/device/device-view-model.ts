@@ -2,8 +2,8 @@ import { Button, Color, EventData, Observable, Repeater } from "@nativescript/co
 import { getLogger } from "~/home/logger/logger-view-model";
 import { ValueList } from "nativescript-drop-down";
 import { Node } from "nativescript-wearos-sensors/node";
-import { CollectorManager, PrepareError, NativeSensorDelay } from "nativescript-wearos-sensors/collection";
-import { getSensorCollector, SensorType } from "nativescript-wearos-sensors/sensors";
+import { getCollectorManager, CollectorManager, PrepareError, NativeSensorDelay } from "nativescript-wearos-sensors/collection";
+import { SensorType } from "nativescript-wearos-sensors/sensors";
 import { getStore } from "~/home/store";
 import { getFreeMessageClient, FreeMessageClient } from "nativescript-wearos-sensors/free-message";
 
@@ -53,7 +53,7 @@ export class DeviceViewModel extends Observable {
         this.sensorDescription = this.node.capabilities.map((sensor) => {
             return {
                 parent: this,
-                collector: getSensorCollector(sensor),
+                collector: getCollectorManager(sensor),
                 sensor: sensor,
                 status: {
                     id: Status.AVAILABLE_IN_DEVICE,
