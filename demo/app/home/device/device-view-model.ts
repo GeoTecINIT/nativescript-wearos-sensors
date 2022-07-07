@@ -5,6 +5,8 @@ import { Node } from "nativescript-wearos-sensors/node";
 import { CollectorManager, PrepareError, NativeSensorDelay } from "nativescript-wearos-sensors/collection";
 import { getSensorCollector, SensorType } from "nativescript-wearos-sensors/sensors";
 import { getStore } from "~/home/store";
+import { getFreeMessageClient, FreeMessageClient } from "nativescript-wearos-sensors/free-message";
+
 
 export class DeviceViewModel extends Observable {
     private logger;
@@ -41,6 +43,8 @@ export class DeviceViewModel extends Observable {
 
     private listeners = new Map<SensorType, number>();
 
+    private freeMessageClient: FreeMessageClient;
+
     constructor(
         private node: Node
     ) {
@@ -59,6 +63,24 @@ export class DeviceViewModel extends Observable {
                 icon: iconForSensor(sensor),
             };
         });
+
+        this.freeMessageClient = getFreeMessageClient();
+        this.freeMessageClient.registerListener((receivedMessage) => {
+            this.logger.logResultForNode(this.node.name, `received single message ${JSON.stringify(receivedMessage)}`);
+        });
+    }
+
+    async onTestFreeMessage() {
+        const freeMessage = { message: "You don't have to reply :)"};
+        this.logger.logInfoForNode(this.node.name, `sending ${JSON.stringify(freeMessage)}`);
+        await this.freeMessageClient.send(this.node, freeMessage);
+    }
+
+    async onTestFreeMessageWithResponse() {
+        const freeMessage = { message: "PING!"};
+        this.logger.logInfoForNode(this.node.name, `sending ${JSON.stringify(freeMessage)} and awaiting for response`);
+        const receivedMessage = await this.freeMessageClient.sendExpectingResponse(this.node, freeMessage);
+        this.logger.logResultForNode(this.node.name, `response received: ${JSON.stringify(receivedMessage)}`);
     }
 
     setRepeater(repeater) {
@@ -96,12 +118,12 @@ export class DeviceViewModel extends Observable {
     async onStoreData() {
         const fileName = `${this.node.id}_${Date.now()}.json`
         await getStore().store(fileName);
-        getLogger().logInfo(`collected data has been stored in internal memory as ${fileName}`);
+        this.logger.logInfo(`collected data has been stored in internal memory as ${fileName}`);
     }
 
     onClearData() {
         getStore().clear();
-        getLogger().logInfo("collected data has been deleted");
+        this.logger.logInfo("collected data has been deleted");
     }
 
     private handleOnIsReadyTap(sensorDescription: SensorDescription) {
@@ -145,7 +167,7 @@ export class DeviceViewModel extends Observable {
             const samples = sensorRecord.samples;
             const deviceId = sensorRecord.deviceId;
             getStore().addRecord(sensorRecord);
-            getLogger().logResultForNode(deviceId, JSON.stringify(samples));
+            this.logger.logResultForNode(deviceId, JSON.stringify(samples));
         });
         this.listeners.set(sensorDescription.sensor, listener);
         collector.startCollecting(

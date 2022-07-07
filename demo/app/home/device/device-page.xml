@@ -24,8 +24,19 @@
     </ActionBar>
 
     <StackLayout orientation="vertical">
+        <GridLayout rows="auto, auto" columns="*, *" class="card" height="100">
+            <Label row="0" col="0" colspan="2" class="bold" text="FreeMessages"/>
+            <Button row="1" col="0"
+                    backgroundColor="deepskyblue"
+                    tap="{{ onTestFreeMessage }}"
+                    text="Single"/>
+            <Button row="1" col="1"
+                    backgroundColor="deepskyblue"
+                    tap="{{ onTestFreeMessageWithResponse }}"
+                    text="Single with response"/>
+        </GridLayout>
         <GridLayout class="card" rows="auto, auto" columns="2*, *" height="80">
-            <Label row="0" col="0" text="Sensor interval: "/>
+            <Label row="0" col="0" class="bold" text="Sensor interval: "/>
             <StackLayout row="1" col="0" orientation="horizontal">
                 <dd:DropDown items="{{ sensorIntervals }}" selectedIndex="{{ selectedDelayIndex }}"
                              itemsTextAlignment="center" itemsPadding="5" class="drop-down"/>
@@ -34,7 +45,7 @@
                            keyboardType="number" textAlignment="center" width="50"/>
                 <Label text="ms" verticalAlignment="center"/>
             </StackLayout>
-            <Label row="0" col="1" text="Batch size: "/>
+            <Label row="0" col="1" class="bold" text="Batch size: "/>
             <TextField row="1" col="1" text="{{ batchSize }}" keyboardType="number" textAlignment="center"/>
         </GridLayout>
         <ScrollView verticalAlignment="top">
