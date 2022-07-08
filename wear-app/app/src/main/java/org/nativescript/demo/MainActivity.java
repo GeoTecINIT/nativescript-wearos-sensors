@@ -10,12 +10,11 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 
-import org.nativescript.demo.command.CommandClient;
-import org.nativescript.demo.freemessage.FreeMessage;
-import org.nativescript.demo.freemessage.FreeMessageClient;
-import org.nativescript.demo.freemessage.FreeMessageListener;
-import org.nativescript.demo.freemessage.ReceivedMessage;
-import org.nativescript.demo.sensoring.WearSensor;
+import es.uji.geotec.wearossensors.command.CommandClient;
+import es.uji.geotec.wearossensors.freemessage.FreeMessage;
+import es.uji.geotec.wearossensors.freemessage.FreeMessageClient;
+import es.uji.geotec.wearossensors.permissions.PermissionsManager;
+import es.uji.geotec.wearossensors.sensoring.WearSensor;
 
 public class MainActivity extends Activity {
 
@@ -46,6 +45,8 @@ public class MainActivity extends Activity {
                 messageClient.send(response);
             }
         });
+
+        PermissionsManager.setPermissionsActivity(this, RequestPermissionsActivity.class);
     }
 
     public void onStartAllCommandTap(View view) {

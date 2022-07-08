@@ -1,4 +1,4 @@
-package org.nativescript.demo.permissions;
+package org.nativescript.demo;
 
 import android.content.pm.PackageManager;
 import android.os.Bundle;
@@ -10,14 +10,14 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentActivity;
 
-import org.nativescript.demo.IntentManager;
-import org.nativescript.demo.messaging.MessagingClient;
-import org.nativescript.demo.R;
-import org.nativescript.demo.messaging.ResultMessagingProtocol;
-
 import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
+
+import es.uji.geotec.wearossensors.intent.IntentManager;
+import es.uji.geotec.wearossensors.messaging.MessagingClient;
+import es.uji.geotec.wearossensors.messaging.ResultMessagingProtocol;
+import es.uji.geotec.wearossensors.permissions.PermissionsManager;
 
 public class RequestPermissionsActivity extends FragmentActivity {
 
@@ -68,7 +68,7 @@ public class RequestPermissionsActivity extends FragmentActivity {
         ResultMessagingProtocol protocol = IntentManager.resultProtocolFromIntent(getIntent());
         if (permissionsRejected.size() == 0) {
             messagingClient.sendSuccessfulResponse(sourceNodeId, protocol);
-            descriptionText.setText("Gracias :D");
+            descriptionText.setText("Thanks! :D");
             checkIcon.setVisibility(View.VISIBLE);
             finishDeferred();
             return;
@@ -76,7 +76,7 @@ public class RequestPermissionsActivity extends FragmentActivity {
 
         String failureMessage = buildFailureMessage(permissionsRejected);
         messagingClient.sendFailureResponseWithReason(sourceNodeId, protocol, failureMessage);
-        descriptionText.setText("Permisos denegados :(");
+        descriptionText.setText("Permissions denied :(");
         failIcon.setVisibility(View.VISIBLE);
         finishDeferred();
     }
