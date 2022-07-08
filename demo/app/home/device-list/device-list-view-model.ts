@@ -1,6 +1,7 @@
 import { Observable } from "@nativescript/core";
 import { getLogger } from "~/home/logger/logger-view-model";
 import { getNodeDiscoverer } from "nativescript-wearos-sensors/node";
+import { getFreeMessageClient } from "nativescript-wearos-sensors/internal/communication/free-message";
 
 export class DeviceListViewModel extends Observable {
 
@@ -13,6 +14,10 @@ export class DeviceListViewModel extends Observable {
         this.logger = getLogger();
         this.scanning = false;
         this.nodes = [];
+
+        getFreeMessageClient().registerListener((receivedMessage) => {
+            this.logger.logInfo(`received single message ${JSON.stringify(receivedMessage)}`);
+        });
     }
 
     getNode(index: number): ConnectedNode {

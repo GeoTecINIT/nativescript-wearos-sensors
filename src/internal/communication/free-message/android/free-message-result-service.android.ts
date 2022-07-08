@@ -1,6 +1,6 @@
 import { CommunicationResultService } from "../../communication-result-service";
 import WearableListenerServiceDelegate = es.uji.geotec.wearos_sensors.messaging.WearableListenerServiceDelegate;
-import { FreeMessage, FreeMessageListener, FreeMessageProtocol, ReceivedMessage } from "../index";
+import { FreeMessage, FreeMessageListener, freeMessageProtocol, FreeMessageProtocol, ReceivedMessage } from "../index";
 import { CommunicationProtocol } from "../../communication-protocol";
 import { wearOS } from "../../../utils/android/wear-os-types.android";
 import { decodeMessage } from "../../encoder-decoder";
@@ -8,7 +8,7 @@ import { decodeFreeMessage } from "../encoder-decoder";
 
 export class FreeMessageResultService implements CommunicationResultService, WearableListenerServiceDelegate {
 
-    private protocol: FreeMessageProtocol;
+    private protocol: FreeMessageProtocol = freeMessageProtocol;
     private resolutionCallbacks = new Map<string, FreeMessageListener>();
     private defaultListener: FreeMessageListener;
 

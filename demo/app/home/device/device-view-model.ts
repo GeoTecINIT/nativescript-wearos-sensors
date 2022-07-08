@@ -65,9 +65,6 @@ export class DeviceViewModel extends Observable {
         });
 
         this.freeMessageClient = getFreeMessageClient();
-        this.freeMessageClient.registerListener((receivedMessage) => {
-            this.logger.logResultForNode(this.node.name, `received single message ${JSON.stringify(receivedMessage)}`);
-        });
     }
 
     async onTestFreeMessage() {
