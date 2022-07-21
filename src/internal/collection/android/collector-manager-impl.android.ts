@@ -1,5 +1,10 @@
 import { CollectorManager, PrepareError } from "../collector-manager";
-import { ListenerFilter, SensorListener, SensorListenerManager } from "../../sensor-listener-manager";
+import {
+    getSensorListenerManager,
+    ListenerFilter,
+    SensorListener,
+    SensorListenerManager
+} from "../../sensor-listener-manager";
 import { Node } from "../../node";
 import { MessagingClient } from "../../communication/messaging/messaging-client";
 import { SensorType } from "../../sensors/sensor-type";
@@ -10,7 +15,7 @@ export class CollectorManagerImpl implements CollectorManager {
     constructor(
        private sensor: SensorType,
        private messagingClient: MessagingClient,
-       private listenerManager: SensorListenerManager,
+       private listenerManager: SensorListenerManager = getSensorListenerManager(),
     ) {
     }
 

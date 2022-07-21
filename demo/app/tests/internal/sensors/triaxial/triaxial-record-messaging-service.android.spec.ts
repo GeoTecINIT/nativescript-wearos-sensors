@@ -2,19 +2,18 @@ import { buildFakeMessageEvent, getFakeMessagingProtocol } from "../../index.spe
 import { TriAxialRecordMessagingService } from "nativescript-wearos-sensors/internal/sensors/triaxial/triaxial-record-messaging-service.android";
 import { TriAxialSensorSample } from "nativescript-wearos-sensors/internal/sensors/triaxial/sample";
 import { buildFakeEncodedMessage, getFakeTriAxialData } from "~/tests/internal/sensors/triaxial/index.spec";
+import { SensorListenerManager } from "nativescript-wearos-sensors/internal/sensor-listener-manager";
 
 describe("TriAxial record messaging service", () => {
     const nodeId = "testNode";
     const protocol = getFakeMessagingProtocol();
 
-    let listenerManager;
     let recordMessagingService: TriAxialRecordMessagingService;
 
     beforeEach(() => {
-        listenerManager = jasmine.createSpyObj("listenerManagerSpy", ['notify']);
         recordMessagingService = new TriAxialRecordMessagingService();
         recordMessagingService.setProtocol(protocol);
-        recordMessagingService.setListenerManager(listenerManager);
+        spyOn(SensorListenerManager.prototype, "notify").and.callFake(() => {});
         spyOn(recordMessagingService, "decodeSamples").and.callThrough();
     });
 
@@ -23,7 +22,7 @@ describe("TriAxial record messaging service", () => {
         recordMessagingService.onMessageReceived(messageEvent);
 
         expect(recordMessagingService.decodeSamples).not.toHaveBeenCalled();
-        expect(listenerManager.notify).not.toHaveBeenCalled();
+        expect(SensorListenerManager.prototype.notify).not.toHaveBeenCalled();
     });
 
     it("does nothing when receives a messages without data", () => {
@@ -31,7 +30,7 @@ describe("TriAxial record messaging service", () => {
         recordMessagingService.onMessageReceived(messageEvent);
 
         expect(recordMessagingService.decodeSamples).not.toHaveBeenCalled();
-        expect(listenerManager.notify).not.toHaveBeenCalled();
+        expect(SensorListenerManager.prototype.notify).not.toHaveBeenCalled();
     });
 
     it("decodes the message data building a new record", () => {
@@ -68,6 +67,6 @@ describe("TriAxial record messaging service", () => {
         recordMessagingService.onMessageReceived(messageEvent);
 
         expect(recordMessagingService.decodeSamples).toHaveBeenCalledWith(messageEvent);
-        expect(listenerManager.notify).toHaveBeenCalled();
+        expect(SensorListenerManager.prototype.notify).toHaveBeenCalled();
     });
 })
