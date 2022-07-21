@@ -7,14 +7,14 @@ describe("TriAxial record messaging service", () => {
     const nodeId = "testNode";
     const protocol = getFakeMessagingProtocol();
 
-    let callbackManager;
+    let listenerManager;
     let recordMessagingService: TriAxialRecordMessagingService;
 
     beforeEach(() => {
-        callbackManager = jasmine.createSpyObj("callbackManagerSpy", ['notifyAll']);
+        listenerManager = jasmine.createSpyObj("listenerManagerSpy", ['notify']);
         recordMessagingService = new TriAxialRecordMessagingService();
         recordMessagingService.setProtocol(protocol);
-        recordMessagingService.setCallbackManager(callbackManager);
+        recordMessagingService.setListenerManager(listenerManager);
         spyOn(recordMessagingService, "decodeSamples").and.callThrough();
     });
 
@@ -23,7 +23,7 @@ describe("TriAxial record messaging service", () => {
         recordMessagingService.onMessageReceived(messageEvent);
 
         expect(recordMessagingService.decodeSamples).not.toHaveBeenCalled();
-        expect(callbackManager.notifyAll).not.toHaveBeenCalled();
+        expect(listenerManager.notify).not.toHaveBeenCalled();
     });
 
     it("does nothing when receives a messages without data", () => {
@@ -31,7 +31,7 @@ describe("TriAxial record messaging service", () => {
         recordMessagingService.onMessageReceived(messageEvent);
 
         expect(recordMessagingService.decodeSamples).not.toHaveBeenCalled();
-        expect(callbackManager.notifyAll).not.toHaveBeenCalled();
+        expect(listenerManager.notify).not.toHaveBeenCalled();
     });
 
     it("decodes the message data building a new record", () => {
@@ -68,6 +68,6 @@ describe("TriAxial record messaging service", () => {
         recordMessagingService.onMessageReceived(messageEvent);
 
         expect(recordMessagingService.decodeSamples).toHaveBeenCalledWith(messageEvent);
-        expect(callbackManager.notifyAll).toHaveBeenCalled();
+        expect(listenerManager.notify).toHaveBeenCalled();
     });
 })

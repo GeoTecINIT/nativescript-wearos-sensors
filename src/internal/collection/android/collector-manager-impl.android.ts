@@ -1,5 +1,5 @@
 import { CollectorManager, PrepareError } from "../collector-manager";
-import { SensorCallback, SensorCallbackManager } from "../../sensor-callback-manager";
+import { ListenerFilter, SensorListener, SensorListenerManager } from "../../sensor-listener-manager";
 import { Node } from "../../node";
 import { MessagingClient } from "../../communication/messaging/messaging-client";
 import { SensorType } from "../../sensors/sensor-type";
@@ -10,7 +10,7 @@ export class CollectorManagerImpl implements CollectorManager {
     constructor(
        private sensor: SensorType,
        private messagingClient: MessagingClient,
-       private callbackManager: SensorCallbackManager,
+       private listenerManager: SensorListenerManager,
     ) {
     }
 
@@ -62,15 +62,15 @@ export class CollectorManagerImpl implements CollectorManager {
         await this.messagingClient.sendStopMessage(node);
     }
 
-    listenSensorUpdates(callback: SensorCallback): number {
-        return this.callbackManager.add(callback, this.sensor);
+    addSensorListener(listener: SensorListener, filters?: ListenerFilter): number {
+        return this.listenerManager.add(listener, filters);
     }
 
-    stopListenSensorUpdates(listenerId?: number) {
+    removeSensorListener(listenerId?: number) {
         if (typeof listenerId === "number") {
-            this.callbackManager.remove(listenerId);
+            this.listenerManager.remove(listenerId);
         } else {
-            this.callbackManager.removeAllForEvent(this.sensor);
+            this.listenerManager.removeAll();
         }
     }
 }
