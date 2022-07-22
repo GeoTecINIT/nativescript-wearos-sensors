@@ -6,13 +6,10 @@ import WearableListenerServiceDelegate = es.uji.geotec.wearos_sensors.messaging.
 
 export abstract class AbstractRecordMessagingService implements WearableListenerServiceDelegate {
 
-    private protocol: MessagingProtocol;
-
-    constructor(private listenerManager = getSensorListenerManager()) {
-    }
-
-    public setProtocol(protocol) {
-        this.protocol = protocol;
+    constructor(
+        private protocol: MessagingProtocol,
+        private listenerManager = getSensorListenerManager()
+    ) {
     }
 
     onMessageReceived(message: wearOS.MessageEvent) {

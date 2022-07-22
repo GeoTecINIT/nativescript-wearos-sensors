@@ -6,17 +6,20 @@ import {
 import { Node } from "nativescript-wearos-sensors/internal/node";
 import { MessagingResultService } from "nativescript-wearos-sensors/internal/communication/messaging/android/messaging-result-service.android";
 import { MessagingClientImpl } from "nativescript-wearos-sensors/internal/communication/messaging/android/messaging-client.android";
+import { SensorType } from "nativescript-wearos-sensors/internal/sensors/sensor-type";
+import { MessagingClient } from "nativescript-wearos-sensors/internal/communication/messaging/messaging-client";
 
 describe("Messaging client", () => {
     const node = new Node("node1", "node1", []);
     const protocol = getFakeMessagingProtocol();
 
-    let resultMessagingService;
-    let messagingClient;
+    let resultMessagingService: MessagingResultService;
+    let messagingClient: MessagingClient;
 
     beforeEach(() => {
         resultMessagingService = new MessagingResultService();
-        messagingClient = new MessagingClientImpl(protocol, resultMessagingService);
+
+        messagingClient = new MessagingClientImpl(SensorType.ACCELEROMETER, protocol, resultMessagingService);
         spyOn<any>(messagingClient, "sendMessage").and.callFake(() => Promise.resolve());
     });
 

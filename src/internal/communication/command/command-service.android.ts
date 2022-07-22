@@ -82,24 +82,24 @@ function extractActionAndSensorType(command: string) {
 }
 
 async function executeAction(nodeId: string, action: CommandAction, sensorType: SensorType, config: CollectionConfiguration): Promise<void> {
-    const collector = getCollectorManager(sensorType);
+    const collector = getCollectorManager();
     const node = new Node(nodeId, "", [sensorType]);
 
     if (action === CommandAction.STOP) {
-        await collector.stopCollecting(node);
+        await collector.stopCollecting(node, sensorType);
         return;
     }
 
-    const isReady = await collector.isReady(node);
+    const isReady = await collector.isReady(node, sensorType);
     if (!isReady) {
-        const errors = await collector.prepare(node);
+        const errors = await collector.prepare(node, sensorType);
         if (errors) {
             console.log(`[Command Service] - prepare error: ${JSON.stringify(errors)}`);
             return;
         }
     }
 
-    await collector.startCollecting(node, config);
+    await collector.startCollecting(node, sensorType, config);
 }
 
 let _instance: CommandService;

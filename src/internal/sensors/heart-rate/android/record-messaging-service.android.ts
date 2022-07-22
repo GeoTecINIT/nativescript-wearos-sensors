@@ -1,11 +1,18 @@
-import { AbstractRecordMessagingService } from "../../../communication/messaging/android/abstract-record-messaging-service.android";
+import {
+    AbstractRecordMessagingService
+} from "../../../communication/messaging/android/abstract-record-messaging-service.android";
 import { wearOS } from "../../../utils/android/wear-os-types.android";
 import { SensorRecord } from "../../sensor-record";
 import { HeartRateSensorSample } from "../sample";
 import { SensorType } from "../../sensor-type";
+import { protocols } from "../../../communication/messaging/protocol";
 import ByteBuffer = java.nio.ByteBuffer;
 
 export class HeartRateRecordMessagingService extends AbstractRecordMessagingService {
+
+    constructor() {
+        super(protocols.get(SensorType.HEART_RATE));
+    }
 
     decodeSamples(messageEvent: wearOS.MessageEvent): SensorRecord<HeartRateSensorSample> {
         const buff = ByteBuffer.wrap(messageEvent.getData());

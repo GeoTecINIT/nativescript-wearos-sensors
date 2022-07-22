@@ -11,8 +11,7 @@ describe("TriAxial record messaging service", () => {
     let recordMessagingService: TriAxialRecordMessagingService;
 
     beforeEach(() => {
-        recordMessagingService = new TriAxialRecordMessagingService();
-        recordMessagingService.setProtocol(protocol);
+        recordMessagingService = new TriAxialRecordMessagingService(protocol);
         spyOn(SensorListenerManager.prototype, "notify").and.callFake(() => {});
         spyOn(recordMessagingService, "decodeSamples").and.callThrough();
     });

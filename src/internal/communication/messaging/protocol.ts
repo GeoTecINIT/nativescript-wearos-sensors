@@ -1,4 +1,5 @@
 import { MessagingProtocol } from "./index";
+import { SensorType } from "../../sensors/sensor-type";
 
 const DEFAULT_START_SUFFIX = "start";
 const DEFAULT_STOP_SUFFIX = "stop";
@@ -8,7 +9,7 @@ const DEFAULT_SUCCESS_RESPONSE = "success";
 const DEFAULT_FAILURE_RESPONSE = "failure";
 const DEFAULT_NEW_RECORD_SUFFIX = "new-record";
 
-export function buildMessagingProtocol(prefix: string): MessagingProtocol {
+function buildMessagingProtocol(prefix: string): MessagingProtocol {
     return {
         startMessagePath: joinPrefixSuffix(prefix, DEFAULT_START_SUFFIX),
         stopMessagePath: joinPrefixSuffix(prefix, DEFAULT_STOP_SUFFIX),
@@ -29,3 +30,13 @@ export function buildMessagingProtocol(prefix: string): MessagingProtocol {
 function joinPrefixSuffix(prefix: string, suffix: string): string {
     return `/${prefix}/${suffix}`;
 }
+
+export const protocols = new Map<SensorType, MessagingProtocol>(
+    [
+        [SensorType.ACCELEROMETER, buildMessagingProtocol(SensorType.ACCELEROMETER.toLowerCase())],
+        [SensorType.GYROSCOPE, buildMessagingProtocol(SensorType.GYROSCOPE.toLowerCase())],
+        [SensorType.MAGNETOMETER, buildMessagingProtocol(SensorType.MAGNETOMETER.toLowerCase())],
+        [SensorType.LOCATION, buildMessagingProtocol(SensorType.LOCATION.toLowerCase())],
+        [SensorType.HEART_RATE, buildMessagingProtocol(SensorType.HEART_RATE.toLowerCase())],
+    ]
+);

@@ -1,15 +1,10 @@
-import { SensorType } from "../sensors/sensor-type";
 import { CollectorManager } from "./collector-manager";
 import { Application } from "@nativescript/core";
-import { getAndroidCollectorManager } from "./android/index.android";
-import { WearableConfig } from "../sensors/wearable-config";
+import { getAndroidCollectorManager } from "./android/collector-manager-impl.android";
 
-export function getCollectorManager(
-    sensorType: SensorType,
-    config?: WearableConfig
-): CollectorManager {
+export function getCollectorManager(): CollectorManager {
     if (Application.android) {
-        return getAndroidCollectorManager(sensorType, config);
+        return getAndroidCollectorManager();
     } else {
         return null;
     }
