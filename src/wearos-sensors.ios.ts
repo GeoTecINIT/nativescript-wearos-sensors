@@ -1,5 +1,9 @@
-import { Common } from './wearos-sensors.common';
+import { Common, defaultConfig, WearosSensorsConfig } from './wearos-sensors.common';
 
-export class WearosSensors extends Common {
-
+class WearosSensors extends Common {
+    public async init(config: WearosSensorsConfig = defaultConfig): Promise<void> {
+        throw new Error("plugin not supported for iOS devices!!");
+    }
 }
+
+export const wearosSensors = new WearosSensors();

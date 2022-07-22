@@ -33,7 +33,6 @@ export class CommunicationClient<T> {
             node,
             timeout
         );
-        console.log(resolutionPromise);
         await this.sendMessage(node, protocol.messagePath);
         return await resolutionPromise;
     }

@@ -65,12 +65,21 @@ export class DeviceViewModel extends Observable {
     }
 
     async onTestFreeMessage() {
+        if (!this.freeMessageClient.enabled()) {
+            this.logger.logInfo(`Free messages are not enabled`);
+            return;
+        }
         const freeMessage = { message: "You don't have to reply :)"};
         this.logger.logInfoForNode(this.node.name, `sending ${JSON.stringify(freeMessage)}`);
         await this.freeMessageClient.send(this.node, freeMessage);
     }
 
     async onTestFreeMessageWithResponse() {
+        if (!this.freeMessageClient.enabled()) {
+            this.logger.logInfo(`Free messages are not enabled`);
+            return;
+        }
+
         const freeMessage = { message: "PING!"};
         this.logger.logInfoForNode(this.node.name, `sending ${JSON.stringify(freeMessage)} and awaiting for response`);
         const receivedMessage = await this.freeMessageClient.sendExpectingResponse(this.node, freeMessage);

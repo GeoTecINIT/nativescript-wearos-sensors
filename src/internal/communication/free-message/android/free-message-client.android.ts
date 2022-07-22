@@ -1,5 +1,11 @@
 import { CommunicationClient } from "../../communication-client.android";
-import { freeMessageProtocol, FreeMessage, ReceivedMessage, FreeMessageListener } from "../index";
+import {
+    freeMessageProtocol,
+    FreeMessage,
+    ReceivedMessage,
+    FreeMessageListener,
+    areFreeMessagesEnabled
+} from "../index";
 import { FreeMessageClient } from "../free-message-client";
 import { Node } from "../../../node";
 import { getFreeMessageResultService } from "./free-message-result-service.android";
@@ -9,10 +15,15 @@ export class FreeMessageAndroidClient extends CommunicationClient<ReceivedMessag
 
     constructor(
         private protocol = freeMessageProtocol,
-        private freeMessageResultService = getFreeMessageResultService()
+        private freeMessageResultService = getFreeMessageResultService(),
+        private freeMessagesEnabled = areFreeMessagesEnabled()
     ) {
         super(freeMessageResultService);
         freeMessageResultService.setProtocol(protocol);
+    }
+
+    public enabled(): boolean {
+        return this.freeMessagesEnabled;
     }
 
     public registerListener(listener: FreeMessageListener): void {
@@ -24,11 +35,15 @@ export class FreeMessageAndroidClient extends CommunicationClient<ReceivedMessag
     }
 
     public async send(node: Node, freeMessage: FreeMessage): Promise<void> {
+        if (!this.enabled()) return;
+
         const message = encodeFreeMessage(freeMessage);
         await this.sendMessage(node, this.protocol.withoutResponse, message);
     }
 
     public async sendExpectingResponse(node: Node, freeMessage: FreeMessage, timeout: number = 5000): Promise<ReceivedMessage> {
+        if (!this.enabled()) return undefined;
+
         const resolutionPromise = this.createResolutionPromise(
             this.protocol,
             node,

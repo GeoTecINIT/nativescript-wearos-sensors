@@ -9,17 +9,23 @@ import { Node } from "../../node";
 import { SensorType } from "../../sensors/sensor-type";
 import { CollectionConfiguration, configAsString, defaultCollectionConfiguration } from "../collection-configuration";
 import { getMessagingClient } from "../../communication/messaging/android/messaging-client.android";
+import { getEnabledSensors } from "../enabled-sensors";
 
 export class CollectorManagerImpl implements CollectorManager {
 
     constructor(
         private messagingClient = (sensor) => getMessagingClient(sensor),
         private listenerManager: SensorListenerManager = getSensorListenerManager(),
+        private enabledSensors: SensorType[] = getEnabledSensors()
     ) {
     }
 
+    isEnabled(sensor: SensorType): boolean {
+        return this.enabledSensors.indexOf(sensor) !== -1;
+    }
+
     async isReady(node: Node, sensor: SensorType): Promise<boolean> {
-        if (!hasCapability(node, sensor)) {
+        if (!hasCapability(node, sensor) || !this.isEnabled(sensor)) {
             return false;
         }
 
@@ -35,6 +41,13 @@ export class CollectorManagerImpl implements CollectorManager {
                 message: `Node ${node.name} (${node.id}) has not ${sensor} available`
             };
 
+        if (!this.isEnabled(sensor)) {
+            return {
+                node: node,
+                message: `${sensor} is not enabled at plugin initialization`
+            };
+        }
+
         const result = await this.messagingClient(sensor).sendPrepareMessage(node);
 
         if (result.success)
@@ -48,7 +61,7 @@ export class CollectorManagerImpl implements CollectorManager {
     }
 
     async startCollecting(node: Node, sensor: SensorType, config?: CollectionConfiguration): Promise<void> {
-        if (!hasCapability(node, sensor))
+        if (!hasCapability(node, sensor) || !this.isEnabled(sensor))
             return;
 
         const message = config ? configAsString(config) : configAsString(defaultCollectionConfiguration(sensor));
@@ -56,7 +69,7 @@ export class CollectorManagerImpl implements CollectorManager {
     }
 
     async stopCollecting(node: Node, sensor: SensorType): Promise<void> {
-        if (!hasCapability(node, sensor))
+        if (!hasCapability(node, sensor) || !this.isEnabled(sensor))
             return;
 
         await this.messagingClient(sensor).sendStopMessage(node, sensor);

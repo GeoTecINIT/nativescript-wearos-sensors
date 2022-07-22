@@ -1,5 +1,5 @@
 import { Application } from "@nativescript/core";
-import { wearosSensors } from "nativescript-wearos-sensors/wearos-sensors.android";
+import { wearosSensors } from "nativescript-wearos-sensors";
 
 wearosSensors.init();
 
