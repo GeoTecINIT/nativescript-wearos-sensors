@@ -1,5 +1,5 @@
 import { CommunicationResultService } from "../../communication-result-service";
-import WearableListenerServiceDelegate = es.uji.geotec.wearos_sensors.messaging.WearableListenerServiceDelegate;
+import WearableListenerServiceDelegate = es.uji.geotec.wearossensors.WearableListenerServiceDelegate;
 import { FreeMessage, FreeMessageListener, freeMessageProtocol, FreeMessageProtocol, ReceivedMessage } from "../index";
 import { CommunicationProtocol } from "../../communication-protocol";
 import { wearOS } from "../../../utils/android/wear-os-types.android";

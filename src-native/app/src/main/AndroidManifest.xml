@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="es.uji.geotec.wearos_sensors">
+    package="es.uji.geotec.wearossensors">
 
     <application>
         <service
-            android:name=".messaging.WearosSensorsResultsMessagingService"
+            android:name=".sensors.WearosSensorsResultsMessagingService"
             android:exported="true">
             <intent-filter>
                 <action android:name="com.google.android.gms.wearable.MESSAGE_RECEIVED" />
@@ -20,7 +20,7 @@
         </service>
 
         <service
-            android:name=".messaging.WearosSensorsRecordsMessagingService"
+            android:name=".sensors.WearosSensorsRecordsMessagingService"
             android:exported="true">
             <intent-filter>
                 <action android:name="com.google.android.gms.wearable.MESSAGE_RECEIVED" />
@@ -32,7 +32,7 @@
         </service>
 
         <service
-            android:name=".messaging.WearosSensorsCapabilityAdvertiserService"
+            android:name=".capability.WearosSensorsCapabilityAdvertiserService"
             android:exported="true">
             <intent-filter>
                 <action android:name="com.google.android.gms.wearable.MESSAGE_RECEIVED" />
@@ -44,7 +44,7 @@
         </service>
 
         <service
-            android:name=".command.WearosCommandService"
+            android:name=".command.WearosSensorsCommandService"
             android:exported="true">
             <intent-filter>
                 <action android:name="com.google.android.gms.wearable.MESSAGE_RECEIVED" />
@@ -56,7 +56,7 @@
         </service>
 
         <service
-            android:name=".freemessage.WearosFreeMessageService"
+            android:name=".freemessage.WearosSensorsFreeMessageService"
             android:exported="true">
             <intent-filter>
                 <action android:name="com.google.android.gms.wearable.MESSAGE_RECEIVED" />

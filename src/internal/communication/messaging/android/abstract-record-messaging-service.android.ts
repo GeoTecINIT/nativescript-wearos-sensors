@@ -2,7 +2,7 @@ import { wearOS } from "../../../utils/android/wear-os-types.android";
 import { MessagingProtocol } from "../index";
 import { SensorRecord } from "../../../sensors/sensor-record";
 import { getSensorListenerManager } from "../../../sensor-listener-manager";
-import WearableListenerServiceDelegate = es.uji.geotec.wearos_sensors.messaging.WearableListenerServiceDelegate;
+import WearableListenerServiceDelegate = es.uji.geotec.wearossensors.WearableListenerServiceDelegate;
 
 export abstract class AbstractRecordMessagingService implements WearableListenerServiceDelegate {
 

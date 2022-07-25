@@ -1,4 +1,4 @@
-package es.uji.geotec.wearos_sensors.messaging;
+package es.uji.geotec.wearossensors;
 
 import com.google.android.gms.wearable.MessageEvent;
 

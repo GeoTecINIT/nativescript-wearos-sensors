@@ -1,4 +1,4 @@
-package es.uji.geotec.wearos_sensors;
+package es.uji.geotec.wearossensors;
 
 public enum WearSensor {
     ACCELEROMETER,

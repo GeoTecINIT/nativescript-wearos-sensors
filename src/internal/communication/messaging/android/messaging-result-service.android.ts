@@ -1,5 +1,5 @@
 import { CommunicationResultService } from "../../communication-result-service";
-import WearableListenerServiceDelegate = es.uji.geotec.wearos_sensors.messaging.WearableListenerServiceDelegate;
+import WearableListenerServiceDelegate = es.uji.geotec.wearossensors.WearableListenerServiceDelegate;
 import { wearOS } from "../../../utils/android/wear-os-types.android";
 import { ResultMessagingProtocol } from "../index";
 import { decodeMessage } from "../../encoder-decoder";

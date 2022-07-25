@@ -1,4 +1,4 @@
-import WearableListenerServiceDelegate = es.uji.geotec.wearos_sensors.messaging.WearableListenerServiceDelegate;
+import WearableListenerServiceDelegate = es.uji.geotec.wearossensors.WearableListenerServiceDelegate;
 import { wearOS } from "../../utils/android/wear-os-types.android";
 import { decodeMessage } from "../encoder-decoder";
 import { fromString, SensorType } from "../../sensors/sensor-type";

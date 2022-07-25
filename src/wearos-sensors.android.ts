@@ -8,15 +8,17 @@ import { getFreeMessageResultService } from "./internal/communication/free-messa
 
 import { SensorType } from "./internal/sensors/sensor-type";
 
-import WearableListenerServiceDelegate = es.uji.geotec.wearos_sensors.messaging.WearableListenerServiceDelegate;
-import WearosSensorsCapabilityAdvertiserService = es.uji.geotec.wearos_sensors.messaging.WearosSensorsCapabilityAdvertiserService;
-import WearosSensorsResultsMessagingService = es.uji.geotec.wearos_sensors.messaging.WearosSensorsResultsMessagingService;
-import WearosSensorsRecordsMessagingService = es.uji.geotec.wearos_sensors.messaging.WearosSensorsRecordsMessagingService;
-import WearosSensorsCommandService = es.uji.geotec.wearos_sensors.command.WearosCommandService;
-import WearosFreeMessageService = es.uji.geotec.wearos_sensors.freemessage.WearosFreeMessageService;
-import WearSensor = es.uji.geotec.wearos_sensors.WearSensor;
 import { setEnabledSensors } from "./internal/collection/enabled-sensors";
 import { setFreeMessagesEnabled } from "./internal/communication/free-message";
+
+import WearosSensorsCapabilityAdvertiserService = es.uji.geotec.wearossensors.capability.WearosSensorsCapabilityAdvertiserService;
+import WearableListenerServiceDelegate = es.uji.geotec.wearossensors.WearableListenerServiceDelegate;
+import WearosSensorsResultsMessagingService = es.uji.geotec.wearossensors.sensors.WearosSensorsResultsMessagingService;
+import WearosSensorsRecordsMessagingService = es.uji.geotec.wearossensors.sensors.WearosSensorsRecordsMessagingService;
+import WearosSensorsCommandService = es.uji.geotec.wearossensors.command.WearosSensorsCommandService;
+import WearosSensorsFreeMessageService = es.uji.geotec.wearossensors.freemessage.WearosSensorsFreeMessageService;
+import WearSensor = es.uji.geotec.wearossensors.WearSensor;
+import WearService = es.uji.geotec.wearossensors.WearService;
 
 class WearosSensors extends Common {
     public async init(config: WearosSensorsConfig = defaultConfig): Promise<void> {
@@ -38,7 +40,8 @@ class WearosSensors extends Common {
     }
 
     private wireUpCapabilityAdvertiser(): void {
-        WearosSensorsCapabilityAdvertiserService.setCapabilityAdvertiserDelegate(
+        WearosSensorsCapabilityAdvertiserService.setServiceDelegate(
+            WearService.CAPABILITY,
             new WearableListenerServiceDelegate({
                 onMessageReceived: (messageEvent) =>
                     getCapabilityAdvertiserResultService().onMessageReceived(messageEvent)
@@ -66,7 +69,8 @@ class WearosSensors extends Common {
     }
 
     private wireUpCommandService(): void {
-        WearosSensorsCommandService.setCommandServiceDelegate(
+        WearosSensorsCommandService.setServiceDelegate(
+            WearService.COMMAND,
             new WearableListenerServiceDelegate({
                 onMessageReceived: (messageEvent) =>
                     getCommandService().onMessageReceived(messageEvent)
@@ -75,7 +79,8 @@ class WearosSensors extends Common {
     }
 
     private wireUpFreeMessageService(): void {
-        WearosFreeMessageService.setFreeMessageServiceDelegate(
+        WearosSensorsFreeMessageService.setServiceDelegate(
+            WearService.FREE_MESSAGE,
             new WearableListenerServiceDelegate({
                 onMessageReceived: (messageEvent) =>
                     getFreeMessageResultService().onMessageReceived(messageEvent)
