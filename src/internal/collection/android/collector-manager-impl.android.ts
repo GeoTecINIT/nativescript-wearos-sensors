@@ -1,41 +1,54 @@
 import { CollectorManager, PrepareError } from "../collector-manager";
-import { SensorCallback, SensorCallbackManager } from "../../sensor-callback-manager";
+import {
+    getSensorListenerManager,
+    ListenerFilter,
+    SensorListener,
+    SensorListenerManager
+} from "../../sensor-listener-manager";
 import { Node } from "../../node";
-import { MessagingClient } from "../../communication/messaging/messaging-client";
 import { SensorType } from "../../sensors/sensor-type";
 import { CollectionConfiguration, configAsString, defaultCollectionConfiguration } from "../collection-configuration";
+import { getMessagingClient } from "../../communication/messaging/android/messaging-client.android";
+import { getEnabledSensors } from "../enabled-sensors";
 
 export class CollectorManagerImpl implements CollectorManager {
 
     constructor(
-       private sensor: SensorType,
-       private messagingClient: MessagingClient,
-       private callbackManager: SensorCallbackManager,
+        private messagingClient = (sensor) => getMessagingClient(sensor),
+        private listenerManager: SensorListenerManager = getSensorListenerManager(),
+        private enabledSensors: SensorType[] = getEnabledSensors()
     ) {
     }
 
-    private hasCapability(node: Node): boolean {
-        return node.capabilities.indexOf(this.sensor) !== -1;
+    isEnabled(sensor: SensorType): boolean {
+        return this.enabledSensors.indexOf(sensor) !== -1;
     }
 
-    async isReady(node: Node): Promise<boolean> {
-        if (!this.hasCapability(node)) {
+    async isReady(node: Node, sensor: SensorType): Promise<boolean> {
+        if (!hasCapability(node, sensor) || !this.isEnabled(sensor)) {
             return false;
         }
 
-        const result = await this.messagingClient.sendIsReadyMessage(node);
+        const result = await this.messagingClient(sensor).sendIsReadyMessage(node);
 
         return result.success;
     }
 
-    async prepare(node: Node): Promise<PrepareError> {
-        if (!this.hasCapability(node))
+    async prepare(node: Node, sensor: SensorType): Promise<PrepareError> {
+        if (!hasCapability(node, sensor))
             return {
                 node: node,
-                message: `Node ${node.name} (${node.id}) has not ${this.sensor} available`
+                message: `Node ${node.name} (${node.id}) has not ${sensor} available`
             };
 
-        const result = await this.messagingClient.sendPrepareMessage(node);
+        if (!this.isEnabled(sensor)) {
+            return {
+                node: node,
+                message: `${sensor} is not enabled at plugin initialization`
+            };
+        }
+
+        const result = await this.messagingClient(sensor).sendPrepareMessage(node);
 
         if (result.success)
             return undefined;
@@ -47,30 +60,42 @@ export class CollectorManagerImpl implements CollectorManager {
         }
     }
 
-    async startCollecting(node: Node, config?: CollectionConfiguration): Promise<void> {
-        if (!this.hasCapability(node))
+    async startCollecting(node: Node, sensor: SensorType, config?: CollectionConfiguration): Promise<void> {
+        if (!hasCapability(node, sensor) || !this.isEnabled(sensor))
             return;
 
-        const message = config ? configAsString(config) : configAsString(defaultCollectionConfiguration(this.sensor));
-        await this.messagingClient.sendStartMessage(node, message);
+        const message = config ? configAsString(config) : configAsString(defaultCollectionConfiguration(sensor));
+        await this.messagingClient(sensor).sendStartMessage(node, message);
     }
 
-    async stopCollecting(node: Node): Promise<void> {
-        if (!this.hasCapability(node))
+    async stopCollecting(node: Node, sensor: SensorType): Promise<void> {
+        if (!hasCapability(node, sensor) || !this.isEnabled(sensor))
             return;
 
-        await this.messagingClient.sendStopMessage(node);
+        await this.messagingClient(sensor).sendStopMessage(node, sensor);
     }
 
-    listenSensorUpdates(callback: SensorCallback): number {
-        return this.callbackManager.add(callback, this.sensor);
+    addSensorListener(listener: SensorListener, filters?: ListenerFilter): number {
+        return this.listenerManager.add(listener, filters);
     }
 
-    stopListenSensorUpdates(listenerId?: number) {
+    removeSensorListener(listenerId?: number) {
         if (typeof listenerId === "number") {
-            this.callbackManager.remove(listenerId);
+            this.listenerManager.remove(listenerId);
         } else {
-            this.callbackManager.removeAllForEvent(this.sensor);
+            this.listenerManager.removeAll();
         }
     }
+}
+
+function hasCapability(node: Node, sensor: SensorType): boolean {
+    return node.capabilities.indexOf(sensor) !== -1;
+}
+
+let _instance: CollectorManager;
+export function getAndroidCollectorManager(): CollectorManager {
+    if (!_instance) {
+        _instance = new CollectorManagerImpl();
+    }
+    return _instance;
 }

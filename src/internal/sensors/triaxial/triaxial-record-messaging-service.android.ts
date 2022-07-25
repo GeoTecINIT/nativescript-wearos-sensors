@@ -4,8 +4,13 @@ import { TriAxialSensorSample } from "./sample";
 import { SensorRecord } from "../sensor-record";
 
 import ByteBuffer = java.nio.ByteBuffer;
+import { MessagingProtocol } from "../../communication/messaging";
 
 export class TriAxialRecordMessagingService extends AbstractRecordMessagingService {
+
+    constructor(protocol: MessagingProtocol) {
+        super(protocol);
+    }
 
     decodeSamples(messageEvent: wearOS.MessageEvent): SensorRecord<TriAxialSensorSample> {
         const buff = ByteBuffer.wrap(messageEvent.getData());

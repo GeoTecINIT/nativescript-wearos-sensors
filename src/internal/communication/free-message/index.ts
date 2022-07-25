@@ -31,3 +31,12 @@ export interface ReceivedMessage {
 }
 
 export type FreeMessageListener = (receivedMessage: ReceivedMessage) => void;
+
+let _freeMessagesEnabled: boolean;
+export function setFreeMessagesEnabled(enabled: boolean): void {
+    _freeMessagesEnabled = enabled;
+}
+
+export function areFreeMessagesEnabled(): boolean {
+    return _freeMessagesEnabled;
+}

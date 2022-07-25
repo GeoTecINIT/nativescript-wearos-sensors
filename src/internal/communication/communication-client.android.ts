@@ -1,10 +1,11 @@
-import { Application } from "@nativescript/core";
+import { Utils } from "@nativescript/core";
 import { WearMessageClient, wearOS } from "../utils/android/wear-os-types.android";
 import { Node } from "../node";
 import { encodeMessage } from "./encoder-decoder";
 import { promisify } from "../utils/android/utils.android";
 import { CommunicationResultService } from "./communication-result-service";
 import { CommunicationProtocol } from "./communication-protocol";
+import { ResultMessagingProtocol } from "./messaging";
 
 export class CommunicationClient<T> {
 
@@ -13,18 +14,27 @@ export class CommunicationClient<T> {
     protected constructor(
         private communicationResultService: CommunicationResultService,
     ) {
-        this.messageClient = wearOS.Wearable.getMessageClient(Application.android.context);
+        this.messageClient = wearOS.Wearable.getMessageClient(Utils.android.getApplicationContext());
     }
 
     protected async sendMessage(node: Node, path: string, message?: string): Promise<void> {
         const messageArray = message ?
             encodeMessage(message) :
             null;
-        console.log(`Going to send message: ${node.id}, ${path}, ${messageArray}`);
 
         await promisify(
             this.messageClient.sendMessage(node.id, path, messageArray)
         );
+    }
+
+    protected async sendMessageAndWaitForResolution(node: Node, protocol: ResultMessagingProtocol, timeout?: number) {
+        const resolutionPromise = this.createResolutionPromise(
+            protocol,
+            node,
+            timeout
+        );
+        await this.sendMessage(node, protocol.messagePath);
+        return await resolutionPromise;
     }
 
     protected createResolutionPromise(protocol: CommunicationProtocol, node: Node, timeout?: number): Promise<T> {

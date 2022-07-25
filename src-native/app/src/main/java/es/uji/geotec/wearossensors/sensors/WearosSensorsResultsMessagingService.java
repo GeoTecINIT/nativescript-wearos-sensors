@@ -1,4 +1,4 @@
-package es.uji.geotec.wearos_sensors.messaging;
+package es.uji.geotec.wearossensors.sensors;
 
 import android.util.Log;
 
@@ -7,7 +7,10 @@ import com.google.android.gms.wearable.WearableListenerService;
 
 import java.util.HashMap;
 
-import es.uji.geotec.wearos_sensors.WearSensor;
+import es.uji.geotec.wearossensors.MessageReceiverActivationCache;
+import es.uji.geotec.wearossensors.WearSensor;
+import es.uji.geotec.wearossensors.WearableListenerServiceDelegate;
+
 
 public class WearosSensorsResultsMessagingService extends WearableListenerService {
 

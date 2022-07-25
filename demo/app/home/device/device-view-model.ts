@@ -2,7 +2,7 @@ import { Button, Color, EventData, Observable, Repeater } from "@nativescript/co
 import { getLogger } from "~/home/logger/logger-view-model";
 import { ValueList } from "nativescript-drop-down";
 import { Node } from "nativescript-wearos-sensors/node";
-import { getCollectorManager, CollectorManager, PrepareError, NativeSensorDelay } from "nativescript-wearos-sensors/collection";
+import { getCollectorManager, PrepareError, NativeSensorDelay } from "nativescript-wearos-sensors/collection";
 import { SensorType } from "nativescript-wearos-sensors/sensors";
 import { getStore } from "~/home/store";
 import { getFreeMessageClient, FreeMessageClient } from "nativescript-wearos-sensors/free-message";
@@ -41,8 +41,6 @@ export class DeviceViewModel extends Observable {
 
     private batchSize = 50;
 
-    private listeners = new Map<SensorType, number>();
-
     private freeMessageClient: FreeMessageClient;
 
     constructor(
@@ -53,7 +51,6 @@ export class DeviceViewModel extends Observable {
         this.sensorDescription = this.node.capabilities.map((sensor) => {
             return {
                 parent: this,
-                collector: getCollectorManager(sensor),
                 sensor: sensor,
                 status: {
                     id: Status.AVAILABLE_IN_DEVICE,
@@ -65,18 +62,24 @@ export class DeviceViewModel extends Observable {
         });
 
         this.freeMessageClient = getFreeMessageClient();
-        this.freeMessageClient.registerListener((receivedMessage) => {
-            this.logger.logResultForNode(this.node.name, `received single message ${JSON.stringify(receivedMessage)}`);
-        });
     }
 
     async onTestFreeMessage() {
+        if (!this.freeMessageClient.enabled()) {
+            this.logger.logInfo(`Free messages are not enabled`);
+            return;
+        }
         const freeMessage = { message: "You don't have to reply :)"};
         this.logger.logInfoForNode(this.node.name, `sending ${JSON.stringify(freeMessage)}`);
         await this.freeMessageClient.send(this.node, freeMessage);
     }
 
     async onTestFreeMessageWithResponse() {
+        if (!this.freeMessageClient.enabled()) {
+            this.logger.logInfo(`Free messages are not enabled`);
+            return;
+        }
+
         const freeMessage = { message: "PING!"};
         this.logger.logInfoForNode(this.node.name, `sending ${JSON.stringify(freeMessage)} and awaiting for response`);
         const receivedMessage = await this.freeMessageClient.sendExpectingResponse(this.node, freeMessage);
@@ -130,7 +133,7 @@ export class DeviceViewModel extends Observable {
         this.updateSensorDescriptionStatus(sensorDescription, Status.WAITING_FOR_RESPONSE);
 
         this.logger.logInfoForNode(this.node.name, `Sending isReady request and waiting for response...`);
-        sensorDescription.collector.isReady(this.node).then((ready) => {
+        getCollectorManager().isReady(this.node, sensorDescription.sensor).then((ready) => {
             this.logger.logResultForNode(this.node.name, `Ready response: ${ ready ? 'node ready' : 'node not ready. Should prepare node'}`);
             let status;
             if (ready) {
@@ -147,7 +150,7 @@ export class DeviceViewModel extends Observable {
         this.updateSensorDescriptionStatus(sensorDescription, Status.WAITING_FOR_RESPONSE)
 
         this.logger.logInfoForNode(this.node.name, `Sending prepare request to node and waiting for response. Should look at wearable device...`);
-        sensorDescription.collector.prepare(this.node).then((prepareError: PrepareError) => {
+        getCollectorManager().prepare(this.node, sensorDescription.sensor).then((prepareError: PrepareError) => {
             this.logger.logResultForNode(this.node.name, `Prepare response: ${ prepareError ? prepareError.message : 'device prepared successfully'}`);
             let status;
             if (prepareError) {
@@ -162,16 +165,9 @@ export class DeviceViewModel extends Observable {
     }
 
     private handleOnStartTap(sensorDescription: SensorDescription) {
-        const collector = sensorDescription.collector;
-        const listener = collector.listenSensorUpdates((sensorRecord) => {
-            const samples = sensorRecord.samples;
-            const deviceId = sensorRecord.deviceId;
-            getStore().addRecord(sensorRecord);
-            this.logger.logResultForNode(deviceId, JSON.stringify(samples));
-        });
-        this.listeners.set(sensorDescription.sensor, listener);
-        collector.startCollecting(
+        getCollectorManager().startCollecting(
             this.node,
+            sensorDescription.sensor,
             {
                 sensorInterval: this.customSensorInterval ?? this.sensorIntervals.getValue(this.selectedDelayIndex),
                 batchSize: this.batchSize
@@ -182,11 +178,7 @@ export class DeviceViewModel extends Observable {
     }
 
     private handleOnStopTap(sensorDescription: SensorDescription) {
-        const collector = sensorDescription.collector;
-        const listener = this.listeners.get(sensorDescription.sensor);
-        this.listeners.delete(sensorDescription.sensor);
-        collector.stopListenSensorUpdates(listener);
-        collector.stopCollecting(this.node);
+        getCollectorManager().stopCollecting(this.node, sensorDescription.sensor);
 
         this.updateSensorDescriptionStatus(sensorDescription, Status.READY);
     }
@@ -204,7 +196,6 @@ export class DeviceViewModel extends Observable {
 
 interface SensorDescription {
     parent: DeviceViewModel,
-    collector: CollectorManager,
     sensor: SensorType,
     status: SensorStatus,
     icon: string,
