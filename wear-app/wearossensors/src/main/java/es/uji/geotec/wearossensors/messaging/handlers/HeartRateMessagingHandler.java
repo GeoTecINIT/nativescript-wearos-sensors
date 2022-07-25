@@ -24,11 +24,11 @@ public class HeartRateMessagingHandler extends AbstractMessagingHandler {
     @Override
     protected MessagingProtocol getProtocol() {
         return new MessagingProtocol(
-                "/heart-rate/start",
-                "/heart-rate/stop",
-                "/heart-rate/new-record",
-                new ResultMessagingProtocol("/heart-rate/ready"),
-                new ResultMessagingProtocol("/heart-rate/prepare")
+                "/heart_rate/start",
+                "/heart_rate/stop",
+                "/heart_rate/new-record",
+                new ResultMessagingProtocol("/heart_rate/ready"),
+                new ResultMessagingProtocol("/heart_rate/prepare")
         );
     }
 

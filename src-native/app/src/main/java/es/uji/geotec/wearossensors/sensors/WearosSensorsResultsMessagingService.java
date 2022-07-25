@@ -36,7 +36,7 @@ public class WearosSensorsResultsMessagingService extends WearableListenerServic
             handleMessage(WearSensor.MAGNETOMETER, messageEvent);
         } else if (path.contains("location")) {
             handleMessage(WearSensor.LOCATION, messageEvent);
-        } else if (path.contains("heart-rate")) {
+        } else if (path.contains("heart_rate")) {
             handleMessage(WearSensor.HEART_RATE, messageEvent);
         }
     }

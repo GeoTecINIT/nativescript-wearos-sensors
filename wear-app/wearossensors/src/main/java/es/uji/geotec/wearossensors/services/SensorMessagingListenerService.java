@@ -26,7 +26,7 @@ public class SensorMessagingListenerService extends WearableListenerService {
             new GyroscopeMessagingHandler(this).handleMessage(event);
         } else if (path.contains("magnetometer")) {
             new MagnetometerMessagingHandler(this).handleMessage(event);
-        } else if(path.contains("heart-rate")) {
+        } else if(path.contains("heart_rate")) {
             new HeartRateMessagingHandler(this).handleMessage(event);
         } else if (path.contains("location")) {
             new LocationMessagingHandler(this).handleMessage(event);
