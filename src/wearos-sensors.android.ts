@@ -1,42 +1,47 @@
-import { Common } from './wearos-sensors.common';
+import { Common, defaultConfig, WearosSensorsConfig } from './wearos-sensors.common';
 
 import { getCapabilityAdvertiserResultService } from "./internal/communication/capabilities/android/capability-advertiser-result-service.android";
 import { getResultMessagingService } from "./internal/communication/messaging/android/messaging-result-service.android";
-import { getAccelerometerRecordService } from "./internal/sensors/triaxial/accelerometer/android/record-messaging-service.android";
-import { getGyroscopeRecordService } from "./internal/sensors/triaxial/gyroscope/android/record-messaging-service.android";
-import { getMagnetometerRecordService } from "./internal/sensors/triaxial/magnetometer/android/record-messaging-service.android";
-import { getLocationRecordService } from "./internal/sensors/location/android/record-messaging-service.android";
-import { getHeartRateRecordService } from "./internal/sensors/heart-rate/android/record-messaging-service.android";
+import { getSensorRecordService } from "./internal/sensors/records-service";
 import { getCommandService } from "./internal/communication/command/command-service.android";
+import { getFreeMessageResultService } from "./internal/communication/free-message/android/free-message-result-service.android";
+
 import { SensorType } from "./internal/sensors/sensor-type";
 
-import { Task } from "nativescript-task-dispatcher/tasks";
-import { TaskGraph } from "nativescript-task-dispatcher/internal/tasks/graph";
-import WearableListenerServiceDelegate = es.uji.geotec.wearos_sensors.messaging.WearableListenerServiceDelegate;
-import WearosSensorsCapabilityAdvertiserService = es.uji.geotec.wearos_sensors.messaging.WearosSensorsCapabilityAdvertiserService;
-import WearosSensorsResultsMessagingService = es.uji.geotec.wearos_sensors.messaging.WearosSensorsResultsMessagingService;
-import WearosSensorsRecordsMessagingService = es.uji.geotec.wearos_sensors.messaging.WearosSensorsRecordsMessagingService;
-import WearosSensorsCommandService = es.uji.geotec.wearos_sensors.command.WearosCommandService;
-import WearSensor = es.uji.geotec.wearos_sensors.WearSensor;
+import { setEnabledSensors } from "./internal/collection/enabled-sensors";
+import { setFreeMessagesEnabled } from "./internal/communication/free-message";
 
-export class WearosSensors extends Common {
-    async init(
-        appTasks: Array<Task>,
-        taskGraph: TaskGraph
-    ): Promise<void> {
-        await super.init(appTasks, taskGraph);
+import WearosSensorsCapabilityAdvertiserService = es.uji.geotec.wearossensors.capability.WearosSensorsCapabilityAdvertiserService;
+import WearableListenerServiceDelegate = es.uji.geotec.wearossensors.WearableListenerServiceDelegate;
+import WearosSensorsResultsMessagingService = es.uji.geotec.wearossensors.sensors.WearosSensorsResultsMessagingService;
+import WearosSensorsRecordsMessagingService = es.uji.geotec.wearossensors.sensors.WearosSensorsRecordsMessagingService;
+import WearosSensorsCommandService = es.uji.geotec.wearossensors.command.WearosSensorsCommandService;
+import WearosSensorsFreeMessageService = es.uji.geotec.wearossensors.freemessage.WearosSensorsFreeMessageService;
+import WearSensor = es.uji.geotec.wearossensors.WearSensor;
+import WearService = es.uji.geotec.wearossensors.WearService;
 
+class WearosSensors extends Common {
+    public async init(config: WearosSensorsConfig = defaultConfig): Promise<void> {
         this.wireUpCapabilityAdvertiser();
-        this.wireUpCommandService();
-        this.wireUpAccelerometerComponents();
-        this.wireUpGyroscopeComponents();
-        this.wireUpMagnetometerComponents();
-        this.wireUpLocationComponents();
-        this.wireUpHeartRateComponents();
+
+        setEnabledSensors(config.sensors);
+        if (config.sensors && config.sensors.length > 0) {
+            this.wireUpSensorComponents(config.sensors);
+        }
+
+        if (!config.disableWearCommands) {
+            this.wireUpCommandService();
+        }
+
+        setFreeMessagesEnabled(!config.disableFreeMessaging);
+        if (!config.disableFreeMessaging) {
+            this.wireUpFreeMessageService();
+        }
     }
 
-    public wireUpCapabilityAdvertiser() {
-        WearosSensorsCapabilityAdvertiserService.setCapabilityAdvertiserDelegate(
+    private wireUpCapabilityAdvertiser(): void {
+        WearosSensorsCapabilityAdvertiserService.setServiceDelegate(
+            WearService.CAPABILITY,
             new WearableListenerServiceDelegate({
                 onMessageReceived: (messageEvent) =>
                     getCapabilityAdvertiserResultService().onMessageReceived(messageEvent)
@@ -44,8 +49,28 @@ export class WearosSensors extends Common {
         );
     }
 
-    public wireUpCommandService() {
-        WearosSensorsCommandService.setCommandServiceDelegate(
+    private wireUpSensorComponents(sensors: SensorType[]): void {
+        sensors.forEach((sensor) => {
+            WearosSensorsResultsMessagingService.setResultServiceDelegate(
+                sensorTypeToWearSensor(sensor),
+                new WearableListenerServiceDelegate({
+                    onMessageReceived: (messageEvent) =>
+                        getResultMessagingService(sensor).onMessageReceived(messageEvent)
+                })
+            );
+            WearosSensorsRecordsMessagingService.setRecordServiceDelegate(
+                sensorTypeToWearSensor(sensor),
+                new WearableListenerServiceDelegate({
+                    onMessageReceived: (messageEvent) =>
+                        getSensorRecordService(sensor).onMessageReceived(messageEvent)
+                })
+            );
+        });
+    }
+
+    private wireUpCommandService(): void {
+        WearosSensorsCommandService.setServiceDelegate(
+            WearService.COMMAND,
             new WearableListenerServiceDelegate({
                 onMessageReceived: (messageEvent) =>
                     getCommandService().onMessageReceived(messageEvent)
@@ -53,89 +78,31 @@ export class WearosSensors extends Common {
         );
     }
 
-    public wireUpAccelerometerComponents() {
-        WearosSensorsResultsMessagingService.setResultServiceDelegate(
-            WearSensor.ACCELEROMETER,
+    private wireUpFreeMessageService(): void {
+        WearosSensorsFreeMessageService.setServiceDelegate(
+            WearService.FREE_MESSAGE,
             new WearableListenerServiceDelegate({
                 onMessageReceived: (messageEvent) =>
-                    getResultMessagingService(SensorType.ACCELEROMETER).onMessageReceived(messageEvent)
-            })
-        );
-        WearosSensorsRecordsMessagingService.setRecordServiceDelegate(
-            WearSensor.ACCELEROMETER,
-            new WearableListenerServiceDelegate({
-                onMessageReceived: (messageEvent) =>
-                    getAccelerometerRecordService().onMessageReceived(messageEvent)
+                    getFreeMessageResultService().onMessageReceived(messageEvent)
             })
         );
     }
+}
 
-    public wireUpGyroscopeComponents() {
-        WearosSensorsResultsMessagingService.setResultServiceDelegate(
-            WearSensor.GYROSCOPE,
-            new WearableListenerServiceDelegate({
-                onMessageReceived: (messageEvent) =>
-                    getResultMessagingService(SensorType.GYROSCOPE).onMessageReceived(messageEvent)
-            })
-        );
-        WearosSensorsRecordsMessagingService.setRecordServiceDelegate(
-            WearSensor.GYROSCOPE,
-            new WearableListenerServiceDelegate({
-                onMessageReceived: (messageEvent) =>
-                    getGyroscopeRecordService().onMessageReceived(messageEvent)
-            })
-        );
-    }
-
-    public wireUpMagnetometerComponents() {
-        WearosSensorsResultsMessagingService.setResultServiceDelegate(
-            WearSensor.MAGNETOMETER,
-            new WearableListenerServiceDelegate({
-                onMessageReceived: (messageEvent) =>
-                    getResultMessagingService(SensorType.MAGNETOMETER).onMessageReceived(messageEvent)
-            })
-        );
-        WearosSensorsRecordsMessagingService.setRecordServiceDelegate(
-            WearSensor.MAGNETOMETER,
-            new WearableListenerServiceDelegate({
-                onMessageReceived: (messageEvent) =>
-                    getMagnetometerRecordService().onMessageReceived(messageEvent)
-            })
-        );
-    }
-
-    public wireUpLocationComponents() {
-        WearosSensorsResultsMessagingService.setResultServiceDelegate(
-            WearSensor.LOCATION,
-            new WearableListenerServiceDelegate({
-                onMessageReceived: (messageEvent) =>
-                    getResultMessagingService(SensorType.LOCATION).onMessageReceived(messageEvent)
-            })
-        );
-        WearosSensorsRecordsMessagingService.setRecordServiceDelegate(
-            WearSensor.LOCATION,
-            new WearableListenerServiceDelegate({
-                onMessageReceived: (messageEvent) =>
-                    getLocationRecordService().onMessageReceived(messageEvent)
-            })
-        );
-    }
-
-    public wireUpHeartRateComponents() {
-        WearosSensorsResultsMessagingService.setResultServiceDelegate(
-            WearSensor.HEART_RATE,
-            new WearableListenerServiceDelegate({
-                onMessageReceived: (messageEvent) =>
-                    getResultMessagingService(SensorType.HEART_RATE).onMessageReceived(messageEvent)
-            })
-        );
-        WearosSensorsRecordsMessagingService.setRecordServiceDelegate(
-            WearSensor.HEART_RATE,
-            new WearableListenerServiceDelegate({
-                onMessageReceived: (messageEvent) =>
-                    getHeartRateRecordService().onMessageReceived(messageEvent)
-            })
-        );
+function sensorTypeToWearSensor(sensorType: SensorType): WearSensor {
+    switch (sensorType) {
+        case SensorType.ACCELEROMETER:
+            return WearSensor.ACCELEROMETER;
+        case SensorType.GYROSCOPE:
+            return WearSensor.GYROSCOPE;
+        case SensorType.MAGNETOMETER:
+            return WearSensor.MAGNETOMETER;
+        case SensorType.HEART_RATE:
+            return WearSensor.HEART_RATE;
+        case SensorType.LOCATION:
+            return WearSensor.LOCATION;
+        default:
+            return undefined;
     }
 }
 

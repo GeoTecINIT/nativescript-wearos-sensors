@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -29,7 +28,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:justificationMode="inter_word"
-                    android:text='Tap "START ALL"/"STOP ALL" to instruct the smartphone to request/cancel updates for each sensor' />
+                    android:text='@string/info_command_txt' />
 
                 <Button
                     android:id="@+id/start_all_command"
@@ -39,7 +38,7 @@
                     android:layout_gravity="center|center_horizontal"
                     android:layout_margin="10dp"
                     android:onClick="onStartAllCommandTap"
-                    android:text="Start all" />
+                    android:text="@string/start_all_btn" />
 
                 <Button
                     android:id="@+id/stop_all_command"
@@ -50,14 +49,14 @@
                     android:layout_margin="10dp"
                     android:onClick="onStopAllCommandTap"
                     android:visibility="gone"
-                    android:text="Stop all" />
+                    android:text="@string/stop_all_btn" />
 
                 <TextView
                     android:id="@+id/info_command_single"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:justificationMode="inter_word"
-                    android:text='Tap "START"/"STOP" to instruct the smartphone to request/cancel updates for the selected sensor' />
+                    android:text='@string/info_command_single_txt' />
 
                 <Spinner
                     android:id="@+id/sensor_spinner"
@@ -73,7 +72,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:onClick="onStartSingleCommandTap"
-                    android:text="Start" />
+                    android:text="@string/start_btn" />
 
                 <Button
                     android:id="@+id/stop_single_command"
@@ -83,6 +82,23 @@
                     android:layout_gravity="center"
                     android:onClick="onStopSingleCommandTap"
                     android:visibility="gone"
-                    android:text="Stop" />
+                    android:text="@string/stop_btn" />
+
+                <TextView
+                    android:id="@+id/info_free_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:justificationMode="inter_word"
+                    android:text="@string/info_free_txt" />
+
+                <Button
+                    android:id="@+id/send_free_message"
+                    style="@style/Widget.AppCompat.Button.Colored"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="10dp"
+                    android:onClick="onSendFreeMessageTap"
+                    android:text="@string/send_free_btn" />
             </LinearLayout>
 </ScrollView>

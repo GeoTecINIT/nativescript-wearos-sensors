@@ -1,28 +1,26 @@
 import { Observable } from "@nativescript/core";
-import { Task } from "nativescript-task-dispatcher/tasks";
-import { TaskGraph } from "nativescript-task-dispatcher/internal/tasks/graph";
-import { taskDispatcher } from "nativescript-task-dispatcher";
-import { internalTasks } from "./internal/tasks";
-import { EventData } from "nativescript-task-dispatcher/events";
+import { SensorType } from "./internal/sensors/sensor-type";
 
 
 export class Common extends Observable {
-  async init(
-      appTasks: Array<Task>,
-      taskGraph: TaskGraph
-  ): Promise<void> {
-      await taskDispatcher.init([...internalTasks, ...appTasks], taskGraph);
-  }
-
-  public emitEvent(eventName: string, eventData?: EventData) {
-      taskDispatcher.emitEvent(eventName, eventData);
-  }
-
-  public isReady(): Promise<boolean> {
-      return taskDispatcher.isReady();
-  }
-
-  public prepare(): Promise<void> {
-      return taskDispatcher.prepare();
+  public async init(config: WearosSensorsConfig): Promise<void> {
   }
 }
+
+export const allSensors = [
+  SensorType.ACCELEROMETER,
+  SensorType.GYROSCOPE,
+  SensorType.MAGNETOMETER,
+  SensorType.HEART_RATE,
+  SensorType.LOCATION
+];
+
+export interface WearosSensorsConfig {
+  sensors?: SensorType[];
+  disableFreeMessaging?: boolean;
+  disableWearCommands?: boolean;
+}
+
+export const defaultConfig = {
+  sensors: allSensors,
+};

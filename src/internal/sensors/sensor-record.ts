@@ -1,11 +1,8 @@
+import { SensorSample } from "./sample";
 import { SensorType } from "./sensor-type";
 
-export interface SensorRecord {
-    deviceId: string;
-    timestamp: number;
-}
-
-export interface SensorRecords<T extends SensorRecord> {
+export interface SensorRecord<T extends SensorSample> {
     type: SensorType;
-    records: T[];
+    deviceId: string;
+    samples: T[];
 }

@@ -1,7 +1,7 @@
 import { AccelerometerRecordMessagingService } from "nativescript-wearos-sensors/internal/sensors/triaxial/accelerometer/android/record-messaging-service.android";
 import { buildFakeEncodedMessage, getFakeTriAxialData } from "../../index.spec";
 import { buildFakeMessageEvent, getFakeMessagingProtocol } from "~/tests/internal/index.spec";
-import { TriAxialSensorRecord } from "nativescript-wearos-sensors/internal/sensors/triaxial/record";
+import { TriAxialSensorSample } from "nativescript-wearos-sensors/internal/sensors/triaxial/sample";
 import { SensorType } from "nativescript-wearos-sensors/internal/sensors/sensor-type";
 
 describe("Accelerometer record messaging service", () => {
@@ -11,24 +11,18 @@ describe("Accelerometer record messaging service", () => {
 
     it("decodes the message data building an array of accelerometer records", () => {
         const recordMessagingService = new AccelerometerRecordMessagingService();
-        const expectedRecords: TriAxialSensorRecord[] = [
-            {
-                deviceId: nodeId,
-                ...getFakeTriAxialData()
-            },
-            {
-                deviceId: nodeId,
-                ...getFakeTriAxialData()
-            }
+        const expectedSamples: TriAxialSensorSample[] = [
+            { ...getFakeTriAxialData() },
+            { ...getFakeTriAxialData() }
         ]
         const messageEvent = buildFakeMessageEvent(
             nodeId,
             protocol.newRecordMessagePath,
-            buildFakeEncodedMessage(expectedRecords)
+            buildFakeEncodedMessage(expectedSamples)
         )
 
-        const decodedRecords = recordMessagingService.decodeRecords(messageEvent);
-        expect(decodedRecords.type).toBe(SensorType.ACCELEROMETER);
-        expect(decodedRecords.records.length).toBe(2);
+        const decodedRecord = recordMessagingService.decodeSamples(messageEvent);
+        expect(decodedRecord.type).toBe(SensorType.ACCELEROMETER);
+        expect(decodedRecord.samples.length).toBe(2);
     });
 });

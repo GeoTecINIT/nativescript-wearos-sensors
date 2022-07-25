@@ -2,6 +2,7 @@ package org.nativescript.demo.sensoring;
 
 import android.content.Context;
 import android.hardware.SensorEventListener;
+import android.util.Log;
 
 import com.google.android.gms.location.LocationCallback;
 
@@ -58,7 +59,7 @@ public class CollectorManager {
                 if (locationListener == null)
                     return false;
 
-                return wearSensorManager.startCollectingLocations(locationListener);
+                return wearSensorManager.startCollectingLocations(locationListener, sensoringConfiguration.getSensorDelay());
             default:
                 return false;
         }

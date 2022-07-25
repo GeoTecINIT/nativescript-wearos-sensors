@@ -1,20 +1,15 @@
 import { wearOS } from "../../../utils/android/wear-os-types.android";
 import { MessagingProtocol } from "../index";
-import { SensorRecords } from "../../../sensors/sensor-record";
-import { SensorCallbackManager } from "../../../sensor-callback-manager";
-import WearableListenerServiceDelegate = es.uji.geotec.wearos_sensors.messaging.WearableListenerServiceDelegate;
+import { SensorRecord } from "../../../sensors/sensor-record";
+import { getSensorListenerManager } from "../../../sensor-listener-manager";
+import WearableListenerServiceDelegate = es.uji.geotec.wearossensors.WearableListenerServiceDelegate;
 
 export abstract class AbstractRecordMessagingService implements WearableListenerServiceDelegate {
 
-    private protocol: MessagingProtocol;
-    private callbackManager: SensorCallbackManager;
-
-    public setProtocol(protocol) {
-        this.protocol = protocol;
-    }
-
-    public setCallbackManager(callbackManager) {
-        this.callbackManager = callbackManager;
+    constructor(
+        private protocol: MessagingProtocol,
+        private listenerManager = getSensorListenerManager()
+    ) {
     }
 
     onMessageReceived(message: wearOS.MessageEvent) {
@@ -28,9 +23,9 @@ export abstract class AbstractRecordMessagingService implements WearableListener
             return;
         }
 
-        const records = this.decodeRecords(message);
-        this.callbackManager.notifyAll(records);
+        const record = this.decodeSamples(message);
+        this.listenerManager.notify(record);
     }
 
-    abstract decodeRecords(messageEvent: wearOS.MessageEvent): SensorRecords<any>;
+    abstract decodeSamples(messageEvent: wearOS.MessageEvent): SensorRecord<any>;
 }

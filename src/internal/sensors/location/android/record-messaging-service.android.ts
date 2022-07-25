@@ -1,26 +1,32 @@
-import { AbstractRecordMessagingService } from "../../../communication/messaging/android/abstract-record-messaging-service.android";
+import {
+    AbstractRecordMessagingService
+} from "../../../communication/messaging/android/abstract-record-messaging-service.android";
 import { wearOS } from "../../../utils/android/wear-os-types.android";
-import { SensorRecords } from "../../sensor-record";
-import { LocationSensorRecord } from "../record";
+import { SensorRecord } from "../../sensor-record";
+import { LocationSensorSample } from "../sample";
 import { SensorType } from "../../sensor-type";
+import { protocols } from "../../../communication/messaging/protocol";
 import ByteBuffer = java.nio.ByteBuffer;
 
 export class LocationRecordMessagingService extends AbstractRecordMessagingService {
 
-    decodeRecords(messageEvent: wearOS.MessageEvent): SensorRecords<LocationSensorRecord> {
+    constructor() {
+        super(protocols.get(SensorType.LOCATION));
+    }
+
+    decodeSamples(messageEvent: wearOS.MessageEvent): SensorRecord<LocationSensorSample> {
         const buff = ByteBuffer.wrap(messageEvent.getData());
         const size = buff.getInt();
         let lat, lon, alt, time;
 
-        const records: LocationSensorRecord[] = [];
+        const samples: LocationSensorSample[] = [];
         for (let i = 0; i < size; i++) {
             lat = buff.getDouble();
             lon = buff.getDouble();
             alt = buff.getDouble();
             time = buff.getLong();
 
-            records.push({
-                deviceId: messageEvent.getSourceNodeId(),
+            samples.push({
                 timestamp: time,
                 latitude: lat,
                 longitude: lon,
@@ -30,7 +36,8 @@ export class LocationRecordMessagingService extends AbstractRecordMessagingServi
 
         return {
             type: SensorType.LOCATION,
-            records,
+            deviceId: messageEvent.getSourceNodeId(),
+            samples: samples,
         };
     }
 }

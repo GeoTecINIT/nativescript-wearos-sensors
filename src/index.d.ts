@@ -1,7 +1,6 @@
-import { Common } from './wearos-sensors.common';
+import { Common, WearosSensorsConfig } from './wearos-sensors.common';
 export declare class WearosSensors extends Common {
-  // define your typings manually
-  // or..
-  // take the ios or android .d.ts files and copy/paste them here
+    init(config?: WearosSensorsConfig): Promise<void>;
 }
 export declare const wearosSensors: WearosSensors;
+export { WearosSensorsConfig } from './wearos-sensors.common';

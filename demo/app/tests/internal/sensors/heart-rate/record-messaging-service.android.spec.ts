@@ -1,6 +1,6 @@
 import { buildFakeMessageEvent, getFakeMessagingProtocol } from "~/tests/internal/index.spec";
 import { HeartRateRecordMessagingService } from "nativescript-wearos-sensors/internal/sensors/heart-rate/android/record-messaging-service.android";
-import { HeartRateSensorRecord } from "nativescript-wearos-sensors/internal/sensors/heart-rate/record";
+import { HeartRateSensorSample } from "nativescript-wearos-sensors/internal/sensors/heart-rate/sample";
 import { SensorType } from "nativescript-wearos-sensors/internal/sensors/sensor-type";
 
 describe("Heart rate record messaging service", () => {
@@ -9,28 +9,22 @@ describe("Heart rate record messaging service", () => {
 
     it("decodes the message data building an array of heart rate records", () => {
         const recordMessagingService = new HeartRateRecordMessagingService();
-        const expectedRecords: HeartRateSensorRecord[] = [
-            {
-                deviceId: nodeId,
-                ...getFakeHeartRateData(),
-            },
-            {
-                deviceId: nodeId,
-                ...getFakeHeartRateData(),
-            }
+        const expectedSamples: HeartRateSensorSample[] = [
+            { ...getFakeHeartRateData() },
+            { ...getFakeHeartRateData() }
         ];
 
         const messageEvent = buildFakeMessageEvent(
             nodeId,
             protocol.newRecordMessagePath,
-            buildFakeEncodedMessage(expectedRecords)
+            buildFakeEncodedMessage(expectedSamples)
         );
 
-        const decodedRecord = recordMessagingService.decodeRecords(messageEvent);
+        const decodedRecord = recordMessagingService.decodeSamples(messageEvent);
         expect(decodedRecord.type).toBe(SensorType.HEART_RATE);
-        const { records } = decodedRecord;
-        records.forEach((record, i) => {
-            expect(record.value).toEqual(expectedRecords[i].value);
+        const { samples } = decodedRecord;
+        samples.forEach((sample, i) => {
+            expect(sample.value).toEqual(expectedSamples[i].value);
         })
     });
 });
@@ -42,16 +36,16 @@ function getFakeHeartRateData() {
     };
 }
 
-function buildFakeEncodedMessage(expectedRecords: HeartRateSensorRecord[]) {
-    const bytes = Array.create("byte", (4 + (12) * expectedRecords.length));
+function buildFakeEncodedMessage(expectedSamples: HeartRateSensorSample[]) {
+    const bytes = Array.create("byte", (4 + (12) * expectedSamples.length));
     for (let i = 0; i < bytes.length; i++) {
         bytes[i] = 0;
     }
     const buff = java.nio.ByteBuffer.wrap(bytes);
-    buff.putInt(expectedRecords.length);
-    expectedRecords.forEach((record) => {
-        buff.putInt(record.value);
-        buff.putLong(record.timestamp);
+    buff.putInt(expectedSamples.length);
+    expectedSamples.forEach((sample) => {
+        buff.putInt(sample.value);
+        buff.putLong(sample.timestamp);
     })
 
     return bytes;

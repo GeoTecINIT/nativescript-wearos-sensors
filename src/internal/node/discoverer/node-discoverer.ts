@@ -1,9 +1,8 @@
 import { Node } from "../index";
-import { Observable } from "rxjs";
 
 export interface NodeDiscoverer {
     getLocalNode(): Promise<Node>;
-    getConnectedNodes(): Observable<NodeDiscovered>;
+    getConnectedNodes(timeout?: number): Promise<NodeDiscovered[]>;
 }
 
 export interface NodeDiscovered {

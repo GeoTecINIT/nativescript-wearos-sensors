@@ -1,24 +1,30 @@
-import { AbstractRecordMessagingService } from "../../../communication/messaging/android/abstract-record-messaging-service.android";
+import {
+    AbstractRecordMessagingService
+} from "../../../communication/messaging/android/abstract-record-messaging-service.android";
 import { wearOS } from "../../../utils/android/wear-os-types.android";
-import { SensorRecords } from "../../sensor-record";
-import { HeartRateSensorRecord } from "../record";
+import { SensorRecord } from "../../sensor-record";
+import { HeartRateSensorSample } from "../sample";
 import { SensorType } from "../../sensor-type";
+import { protocols } from "../../../communication/messaging/protocol";
 import ByteBuffer = java.nio.ByteBuffer;
 
 export class HeartRateRecordMessagingService extends AbstractRecordMessagingService {
 
-    decodeRecords(messageEvent: wearOS.MessageEvent): SensorRecords<HeartRateSensorRecord> {
+    constructor() {
+        super(protocols.get(SensorType.HEART_RATE));
+    }
+
+    decodeSamples(messageEvent: wearOS.MessageEvent): SensorRecord<HeartRateSensorSample> {
         const buff = ByteBuffer.wrap(messageEvent.getData());
         const size = buff.getInt();
         let value, time;
 
-        const records: HeartRateSensorRecord[] = [];
+        const samples: HeartRateSensorSample[] = [];
         for (let i = 0; i < size; i++) {
             value = buff.getInt();
             time = buff.getLong();
 
-            records.push({
-                deviceId: messageEvent.getSourceNodeId(),
+            samples.push({
                 timestamp: time,
                 value,
             });
@@ -26,7 +32,8 @@ export class HeartRateRecordMessagingService extends AbstractRecordMessagingServ
 
         return {
             type: SensorType.HEART_RATE,
-            records,
+            deviceId: messageEvent.getSourceNodeId(),
+            samples: samples,
         };
     }
 }

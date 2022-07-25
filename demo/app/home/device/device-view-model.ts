@@ -2,10 +2,11 @@ import { Button, Color, EventData, Observable, Repeater } from "@nativescript/co
 import { getLogger } from "~/home/logger/logger-view-model";
 import { ValueList } from "nativescript-drop-down";
 import { Node } from "nativescript-wearos-sensors/node";
-import { CollectorManager, PrepareError, SensorDelay } from "nativescript-wearos-sensors/collection";
-import { getSensorCollector, SensorType } from "nativescript-wearos-sensors/sensors";
-import { wearosSensors } from "nativescript-wearos-sensors";
-import { pascalCase } from "nativescript-wearos-sensors/internal/utils/strings";
+import { getCollectorManager, PrepareError, NativeSensorDelay } from "nativescript-wearos-sensors/collection";
+import { SensorType } from "nativescript-wearos-sensors/sensors";
+import { getStore } from "~/home/store";
+import { getFreeMessageClient, FreeMessageClient } from "nativescript-wearos-sensors/free-message";
+
 
 export class DeviceViewModel extends Observable {
     private logger;
@@ -29,15 +30,18 @@ export class DeviceViewModel extends Observable {
 
     private repeater: Repeater;
 
-    private sensorDelays = new ValueList([
-        { value: SensorDelay.NORMAL, display: "NORMAL" },
-        { value: SensorDelay.UI, display: "UI" },
-        { value: SensorDelay.GAME, display: "GAME" },
-        { value: SensorDelay.FASTEST, display: "FASTEST" }
+    private customSensorInterval: number;
+    private sensorIntervals = new ValueList([
+        { value: NativeSensorDelay.NORMAL, display: "NORMAL" },
+        { value: NativeSensorDelay.UI, display: "UI" },
+        { value: NativeSensorDelay.GAME, display: "GAME" },
+        { value: NativeSensorDelay.FASTEST, display: "FASTEST" }
     ]);
     private selectedDelayIndex = 0;
 
     private batchSize = 50;
+
+    private freeMessageClient: FreeMessageClient;
 
     constructor(
         private node: Node
@@ -47,16 +51,39 @@ export class DeviceViewModel extends Observable {
         this.sensorDescription = this.node.capabilities.map((sensor) => {
             return {
                 parent: this,
-                collector: getSensorCollector(sensor),
                 sensor: sensor,
                 status: {
                     id: Status.AVAILABLE_IN_DEVICE,
                     message: this.status["availableInDevice"],
                     iconColorBg: this.bgColors["availableInDevice"]
                 },
-                icon: this.iconForSensor(sensor),
+                icon: iconForSensor(sensor),
             };
         });
+
+        this.freeMessageClient = getFreeMessageClient();
+    }
+
+    async onTestFreeMessage() {
+        if (!this.freeMessageClient.enabled()) {
+            this.logger.logInfo(`Free messages are not enabled`);
+            return;
+        }
+        const freeMessage = { message: "You don't have to reply :)"};
+        this.logger.logInfoForNode(this.node.name, `sending ${JSON.stringify(freeMessage)}`);
+        await this.freeMessageClient.send(this.node, freeMessage);
+    }
+
+    async onTestFreeMessageWithResponse() {
+        if (!this.freeMessageClient.enabled()) {
+            this.logger.logInfo(`Free messages are not enabled`);
+            return;
+        }
+
+        const freeMessage = { message: "PING!"};
+        this.logger.logInfoForNode(this.node.name, `sending ${JSON.stringify(freeMessage)} and awaiting for response`);
+        const receivedMessage = await this.freeMessageClient.sendExpectingResponse(this.node, freeMessage);
+        this.logger.logResultForNode(this.node.name, `response received: ${JSON.stringify(receivedMessage)}`);
     }
 
     setRepeater(repeater) {
@@ -91,21 +118,22 @@ export class DeviceViewModel extends Observable {
         parent.handleOnStopTap(sensorDescription);
     }
 
-    onStoreData() {
-        wearosSensors.emitEvent("storeCollectedData", {
-            deviceId: this.node.id
-        });
+    async onStoreData() {
+        const fileName = `${this.node.id}_${Date.now()}.json`
+        await getStore().store(fileName);
+        this.logger.logInfo(`collected data has been stored in internal memory as ${fileName}`);
     }
 
     onClearData() {
-        wearosSensors.emitEvent("clearCollectedData");
+        getStore().clear();
+        this.logger.logInfo("collected data has been deleted");
     }
 
     private handleOnIsReadyTap(sensorDescription: SensorDescription) {
         this.updateSensorDescriptionStatus(sensorDescription, Status.WAITING_FOR_RESPONSE);
 
         this.logger.logInfoForNode(this.node.name, `Sending isReady request and waiting for response...`);
-        sensorDescription.collector.isReady(this.node).then((ready) => {
+        getCollectorManager().isReady(this.node, sensorDescription.sensor).then((ready) => {
             this.logger.logResultForNode(this.node.name, `Ready response: ${ ready ? 'node ready' : 'node not ready. Should prepare node'}`);
             let status;
             if (ready) {
@@ -122,7 +150,7 @@ export class DeviceViewModel extends Observable {
         this.updateSensorDescriptionStatus(sensorDescription, Status.WAITING_FOR_RESPONSE)
 
         this.logger.logInfoForNode(this.node.name, `Sending prepare request to node and waiting for response. Should look at wearable device...`);
-        sensorDescription.collector.prepare(this.node).then((prepareError: PrepareError) => {
+        getCollectorManager().prepare(this.node, sensorDescription.sensor).then((prepareError: PrepareError) => {
             this.logger.logResultForNode(this.node.name, `Prepare response: ${ prepareError ? prepareError.message : 'device prepared successfully'}`);
             let status;
             if (prepareError) {
@@ -137,26 +165,21 @@ export class DeviceViewModel extends Observable {
     }
 
     private handleOnStartTap(sensorDescription: SensorDescription) {
-        wearosSensors.emitEvent(
-            `start${pascalCase(sensorDescription.sensor)}Command`,
+        getCollectorManager().startCollecting(
+            this.node,
+            sensorDescription.sensor,
             {
-                deviceId: this.node.id,
-                config: {
-                    sensorDelay: this.sensorDelays.getValue(this.selectedDelayIndex),
-                    batchSize: this.batchSize
-                }
+                sensorInterval: this.customSensorInterval ?? this.sensorIntervals.getValue(this.selectedDelayIndex),
+                batchSize: this.batchSize
             }
         );
+
         this.updateSensorDescriptionStatus(sensorDescription, Status.LISTENING);
     }
 
     private handleOnStopTap(sensorDescription: SensorDescription) {
-        wearosSensors.emitEvent(
-            `stop${pascalCase(sensorDescription.sensor)}Command`,
-            {
-                deviceId: this.node.id
-            }
-        );
+        getCollectorManager().stopCollecting(this.node, sensorDescription.sensor);
+
         this.updateSensorDescriptionStatus(sensorDescription, Status.READY);
     }
 
@@ -169,33 +192,10 @@ export class DeviceViewModel extends Observable {
         }
         this.repeater.refresh();
     }
-
-    private iconForSensor(sensor): string {
-        let icon;
-        switch (sensor) {
-            case SensorType.ACCELEROMETER:
-                icon = "e89f";
-                break;
-            case SensorType.GYROSCOPE:
-                icon = "e84d";
-                break;
-            case SensorType.MAGNETOMETER:
-                icon = "e87a";
-                break;
-            case SensorType.LOCATION:
-                icon = "e0c8";
-                break;
-            case SensorType.HEART_RATE:
-                icon = "e87d";
-        }
-
-        return String.fromCharCode(parseInt(icon, 16));
-    }
 }
 
 interface SensorDescription {
     parent: DeviceViewModel,
-    collector: CollectorManager,
     sensor: SensorType,
     status: SensorStatus,
     icon: string,
@@ -213,4 +213,26 @@ enum Status {
     NOT_READY = "notReady",
     READY = "ready",
     LISTENING = "listening"
+}
+
+function iconForSensor(sensor: SensorType): string {
+    let icon;
+    switch (sensor) {
+        case SensorType.ACCELEROMETER:
+            icon = "e89f";
+            break;
+        case SensorType.GYROSCOPE:
+            icon = "e84d";
+            break;
+        case SensorType.MAGNETOMETER:
+            icon = "e87a";
+            break;
+        case SensorType.LOCATION:
+            icon = "e0c8";
+            break;
+        case SensorType.HEART_RATE:
+            icon = "e87d";
+    }
+
+    return String.fromCharCode(parseInt(icon, 16));
 }

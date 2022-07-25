@@ -67,13 +67,13 @@ public class WearSensorManager {
     }
 
     @SuppressLint("MissingPermission")
-    public boolean startCollectingLocations(LocationCallback listener) {
+    public boolean startCollectingLocations(LocationCallback listener, int interval) {
         if (!isSensorAvailable(WearSensor.LOCATION) || listener == null)
             return false;
 
         LocationRequest request = LocationRequest.create()
                 .setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY)
-                .setInterval(1000);
+                .setInterval(interval);
 
         LocationServices.getFusedLocationProviderClient(context)
                 .requestLocationUpdates(request, listener, null);

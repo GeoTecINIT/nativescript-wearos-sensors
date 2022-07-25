@@ -1,6 +1,9 @@
 import { Observable } from "@nativescript/core";
 import { getLogger } from "~/home/logger/logger-view-model";
-import { getNodeDiscoverer, NodeDiscovered } from "nativescript-wearos-sensors/node";
+import { getNodeDiscoverer } from "nativescript-wearos-sensors/node";
+import { getFreeMessageClient } from "nativescript-wearos-sensors/internal/communication/free-message";
+import { getCollectorManager } from "nativescript-wearos-sensors/internal/collection";
+import { getStore } from "~/home/store";
 
 export class DeviceListViewModel extends Observable {
 
@@ -13,6 +16,16 @@ export class DeviceListViewModel extends Observable {
         this.logger = getLogger();
         this.scanning = false;
         this.nodes = [];
+
+        getCollectorManager().addSensorListener((sensorRecord) => {
+            const samples = sensorRecord.samples;
+            const deviceId = sensorRecord.deviceId;
+            getStore().addRecord(sensorRecord);
+            this.logger.logResultForNode(deviceId, JSON.stringify(samples));
+        });
+        getFreeMessageClient().registerListener((receivedMessage) => {
+            this.logger.logInfo(`received single message ${JSON.stringify(receivedMessage)}`);
+        });
     }
 
     getNode(index: number): ConnectedNode {
@@ -29,32 +42,31 @@ export class DeviceListViewModel extends Observable {
         this.notifyPropertyChange("nodes", this.nodes);
         this.notifyPropertyChange("scanning", this.scanning);
 
-        nodeDiscoverer.getConnectedNodes().subscribe({
-            next: (nodeDiscovered: NodeDiscovered) => {
-                if (nodeDiscovered.error) {
-                    this.logger.logResult(nodeDiscovered.error);
-                    return;
-                }
+        nodeDiscoverer.getConnectedNodes()
+            .then((nodesDiscovered) => {
+                nodesDiscovered.forEach((nodeDiscovered) => {
+                    if (nodeDiscovered.error) {
+                        this.logger.logResult(nodeDiscovered.error);
+                        return;
+                    }
 
-                const node = nodeDiscovered.node;
-                this.logger.logResult(`Connected node --> ${JSON.stringify(node)}`);
+                    const node = nodeDiscovered.node;
+                    this.logger.logResult(`Connected node --> ${JSON.stringify(node)}`);
 
-                const sensorsAvailability = {};
-                node.capabilities.forEach((capability) => sensorsAvailability[capability.toLowerCase()] = true)
+                    const sensorsAvailability = {};
+                    node.capabilities.forEach((capability) => sensorsAvailability[capability.toLowerCase()] = true)
 
-                this.nodes.push({
-                    id: node.id,
-                    name: node.name,
-                    sensorsAvailability: sensorsAvailability,
+                    this.nodes.push({
+                        id: node.id,
+                        name: node.name,
+                        sensorsAvailability: sensorsAvailability,
+                    });
                 });
                 this.notifyPropertyChange("nodes", this.nodes);
-            },
-            complete: () => {
                 this.logger.logInfo("Scan ended");
                 this.scanning = false;
                 this.notifyPropertyChange("scanning", this.scanning);
-            }
-        });
+            });
     }
 }
 

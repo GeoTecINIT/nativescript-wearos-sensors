@@ -1,4 +1,4 @@
-import { TriAxialSensorRecord } from "nativescript-wearos-sensors/internal/sensors/triaxial/record";
+import { TriAxialSensorSample } from "nativescript-wearos-sensors/internal/sensors/triaxial/sample";
 
 export function getFakeTriAxialData() {
     return {
@@ -9,18 +9,18 @@ export function getFakeTriAxialData() {
     };
 }
 
-export function buildFakeEncodedMessage(expectedRecords: TriAxialSensorRecord[]) {
-    const bytes = Array.create("byte", (4 + (20) * expectedRecords.length));
+export function buildFakeEncodedMessage(expectedSamples: TriAxialSensorSample[]) {
+    const bytes = Array.create("byte", (4 + (20) * expectedSamples.length));
     for (let i = 0; i < bytes.length; i++) {
         bytes[i] = 0;
     }
     const buff = java.nio.ByteBuffer.wrap(bytes);
-    buff.putInt(expectedRecords.length);
-    expectedRecords.forEach((record) => {
-        buff.putFloat(record.x);
-        buff.putFloat(record.y);
-        buff.putFloat(record.z);
-        buff.putLong(record.timestamp);
+    buff.putInt(expectedSamples.length);
+    expectedSamples.forEach((sample) => {
+        buff.putFloat(sample.x);
+        buff.putFloat(sample.y);
+        buff.putFloat(sample.z);
+        buff.putLong(sample.timestamp);
     })
 
     return bytes;

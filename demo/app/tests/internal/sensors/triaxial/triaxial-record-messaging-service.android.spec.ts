@@ -1,64 +1,55 @@
 import { buildFakeMessageEvent, getFakeMessagingProtocol } from "../../index.spec";
 import { TriAxialRecordMessagingService } from "nativescript-wearos-sensors/internal/sensors/triaxial/triaxial-record-messaging-service.android";
-import { TriAxialSensorRecord } from "nativescript-wearos-sensors/internal/sensors/triaxial/record";
+import { TriAxialSensorSample } from "nativescript-wearos-sensors/internal/sensors/triaxial/sample";
 import { buildFakeEncodedMessage, getFakeTriAxialData } from "~/tests/internal/sensors/triaxial/index.spec";
+import { SensorListenerManager } from "nativescript-wearos-sensors/internal/sensor-listener-manager";
 
 describe("TriAxial record messaging service", () => {
     const nodeId = "testNode";
     const protocol = getFakeMessagingProtocol();
 
-    let callbackManager;
     let recordMessagingService: TriAxialRecordMessagingService;
 
     beforeEach(() => {
-        callbackManager = jasmine.createSpyObj("callbackManagerSpy", ['notifyAll']);
-        recordMessagingService = new TriAxialRecordMessagingService();
-        recordMessagingService.setProtocol(protocol);
-        recordMessagingService.setCallbackManager(callbackManager);
-        spyOn(recordMessagingService, "decodeRecords").and.callThrough();
+        recordMessagingService = new TriAxialRecordMessagingService(protocol);
+        spyOn(SensorListenerManager.prototype, "notify").and.callFake(() => {});
+        spyOn(recordMessagingService, "decodeSamples").and.callThrough();
     });
 
     it("does nothing when receives a messages with an unknown protocol", () => {
         const messageEvent = buildFakeMessageEvent(nodeId, "unknownProtocol");
         recordMessagingService.onMessageReceived(messageEvent);
 
-        expect(recordMessagingService.decodeRecords).not.toHaveBeenCalled();
-        expect(callbackManager.notifyAll).not.toHaveBeenCalled();
+        expect(recordMessagingService.decodeSamples).not.toHaveBeenCalled();
+        expect(SensorListenerManager.prototype.notify).not.toHaveBeenCalled();
     });
 
     it("does nothing when receives a messages without data", () => {
         const messageEvent = buildFakeMessageEvent(nodeId, protocol.newRecordMessagePath);
         recordMessagingService.onMessageReceived(messageEvent);
 
-        expect(recordMessagingService.decodeRecords).not.toHaveBeenCalled();
-        expect(callbackManager.notifyAll).not.toHaveBeenCalled();
+        expect(recordMessagingService.decodeSamples).not.toHaveBeenCalled();
+        expect(SensorListenerManager.prototype.notify).not.toHaveBeenCalled();
     });
 
     it("decodes the message data building a new record", () => {
-        const expectedRecords: TriAxialSensorRecord[] = [
-            {
-                deviceId: nodeId,
-                ...getFakeTriAxialData()
-            },
-            {
-                deviceId: nodeId,
-                ...getFakeTriAxialData()
-            },
+        const expectedSamples: TriAxialSensorSample[] = [
+            { ...getFakeTriAxialData() },
+            { ...getFakeTriAxialData() },
         ];
         const messageEvent = buildFakeMessageEvent(
             nodeId,
             protocol.newRecordMessagePath,
-            buildFakeEncodedMessage(expectedRecords)
+            buildFakeEncodedMessage(expectedSamples)
         );
 
-        const { records } = recordMessagingService.decodeRecords(messageEvent);
-        expect(records.length).toBe(2);
-        records.forEach((record, i) => {
-            expect(record.deviceId).toEqual(expectedRecords[i].deviceId);
-            expect(record.timestamp).toEqual(expectedRecords[i].timestamp);
-            expect(record.x).toBeCloseTo(expectedRecords[i].x, 6);
-            expect(record.y).toBeCloseTo(expectedRecords[i].y, 6);
-            expect(record.z).toBeCloseTo(expectedRecords[i].z, 6);
+        const { samples } = recordMessagingService.decodeSamples(messageEvent);
+        expect(samples.length).toBe(2);
+        samples.forEach((sample, i) => {
+            expect(sample.timestamp).toEqual(expectedSamples[i].timestamp);
+            expect(sample.x).toBeCloseTo(expectedSamples[i].x, 6);
+            expect(sample.y).toBeCloseTo(expectedSamples[i].y, 6);
+            expect(sample.z).toBeCloseTo(expectedSamples[i].z, 6);
         })
 
     });
@@ -68,16 +59,13 @@ describe("TriAxial record messaging service", () => {
             nodeId,
             protocol.newRecordMessagePath,
             buildFakeEncodedMessage([
-                {
-                    deviceId: nodeId,
-                    ...getFakeTriAxialData()
-                }
+                { ...getFakeTriAxialData() }
             ])
         );
 
         recordMessagingService.onMessageReceived(messageEvent);
 
-        expect(recordMessagingService.decodeRecords).toHaveBeenCalledWith(messageEvent);
-        expect(callbackManager.notifyAll).toHaveBeenCalled();
+        expect(recordMessagingService.decodeSamples).toHaveBeenCalledWith(messageEvent);
+        expect(SensorListenerManager.prototype.notify).toHaveBeenCalled();
     });
 })

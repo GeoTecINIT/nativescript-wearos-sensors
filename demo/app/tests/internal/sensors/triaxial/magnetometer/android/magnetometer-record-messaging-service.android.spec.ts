@@ -1,7 +1,7 @@
 import { buildFakeMessageEvent, getFakeMessagingProtocol } from "~/tests/internal/index.spec";
 import { buildFakeEncodedMessage, getFakeTriAxialData } from "~/tests/internal/sensors/triaxial/index.spec";
 import { MagnetometerRecordMessagingService } from "nativescript-wearos-sensors/internal/sensors/triaxial/magnetometer/android/record-messaging-service.android";
-import { TriAxialSensorRecord } from "nativescript-wearos-sensors/internal/sensors/triaxial/record";
+import { TriAxialSensorSample } from "nativescript-wearos-sensors/internal/sensors/triaxial/sample";
 import { SensorType } from "nativescript-wearos-sensors/internal/sensors/sensor-type";
 
 describe("Magnetometer record messaging service", () => {
@@ -11,24 +11,18 @@ describe("Magnetometer record messaging service", () => {
 
     it("decodes the message data building an array of gyroscope records", () => {
         const recordMessagingService = new MagnetometerRecordMessagingService();
-        const expectedRecords: TriAxialSensorRecord[] = [
-            {
-                deviceId: nodeId,
-                ...getFakeTriAxialData()
-            },
-            {
-                deviceId: nodeId,
-                ...getFakeTriAxialData()
-            }
+        const expectedSamples: TriAxialSensorSample[] = [
+            { ...getFakeTriAxialData() },
+            { ...getFakeTriAxialData() }
         ]
         const messageEvent = buildFakeMessageEvent(
             nodeId,
             protocol.newRecordMessagePath,
-            buildFakeEncodedMessage(expectedRecords)
+            buildFakeEncodedMessage(expectedSamples)
         )
 
-        const decodedRecords = recordMessagingService.decodeRecords(messageEvent);
-        expect(decodedRecords.type).toBe(SensorType.MAGNETOMETER);
-        expect(decodedRecords.records.length).toBe(2);
+        const decodedRecord = recordMessagingService.decodeSamples(messageEvent);
+        expect(decodedRecord.type).toBe(SensorType.MAGNETOMETER);
+        expect(decodedRecord.samples.length).toBe(2);
     });
 });
