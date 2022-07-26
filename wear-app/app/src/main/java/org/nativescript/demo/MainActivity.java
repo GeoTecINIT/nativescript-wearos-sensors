@@ -14,7 +14,7 @@ import es.uji.geotec.wearossensors.command.CommandClient;
 import es.uji.geotec.wearossensors.freemessage.FreeMessage;
 import es.uji.geotec.wearossensors.freemessage.FreeMessageClient;
 import es.uji.geotec.wearossensors.permissions.PermissionsManager;
-import es.uji.geotec.wearossensors.sensoring.WearSensor;
+import es.uji.geotec.wearossensors.sensor.WearSensor;
 
 public class MainActivity extends Activity {
 
