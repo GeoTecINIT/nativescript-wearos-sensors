@@ -8,7 +8,7 @@ import java.util.Arrays;
 
 import es.uji.geotec.wearossensors.messaging.MessagingProtocol;
 import es.uji.geotec.wearossensors.messaging.ResultMessagingProtocol;
-import es.uji.geotec.wearossensors.sensoring.WearSensor;
+import es.uji.geotec.wearossensors.sensor.WearSensor;
 
 public class LocationMessagingHandler extends AbstractMessagingHandler{
 
