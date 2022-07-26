@@ -21,10 +21,6 @@ public class NotificationProvider {
     private static final int REQUEST_PERMISSIONS_DESCRIPTION = R.string.request_permissions_channel_description;
     private static final int REQUEST_PERMISSIONS_NOTIFICATION_ID = 23;
 
-    private static final String SENSOR_RECORDING_CHANNEL = "SENSOR_RECORDING_CHANNEL";
-    private static final int SENSOR_RECORDING_DESCRIPTION = R.string.sensor_recording_channel_description;
-    private static final int SENSOR_RECORDING_NOTIFICATION_ID = 24;
-
     private Context context;
     private NotificationManagerCompat notificationManager;
 
@@ -60,24 +56,6 @@ public class NotificationProvider {
         );
 
         notificationManager.notify(REQUEST_PERMISSIONS_NOTIFICATION_ID, notification);
-    }
-
-    public Notification getNotificationForRecordingService() {
-        setupNotificationChannelIfNeeded(
-                SENSOR_RECORDING_CHANNEL,
-                context.getString(SENSOR_RECORDING_DESCRIPTION)
-        );
-
-        return buildNotification(
-                SENSOR_RECORDING_CHANNEL,
-                context.getString(R.string.sensorization_notification_title),
-                context.getString(R.string.sensorization_notification_text),
-                null
-        );
-    }
-
-    public int getRecordingServiceNotificationId() {
-        return SENSOR_RECORDING_NOTIFICATION_ID;
     }
 
     private void setupNotificationChannelIfNeeded(String id, String name) {
