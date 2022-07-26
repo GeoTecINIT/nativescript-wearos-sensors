@@ -2,7 +2,7 @@ package es.uji.geotec.wearossensors.records.callbacks;
 
 import android.content.Context;
 
-import es.uji.geotec.wearossensors.sensoring.WearSensor;
+import es.uji.geotec.wearossensors.sensor.WearSensor;
 
 public class RecordCallbackProvider {
     private RecordCallbackProvider() {

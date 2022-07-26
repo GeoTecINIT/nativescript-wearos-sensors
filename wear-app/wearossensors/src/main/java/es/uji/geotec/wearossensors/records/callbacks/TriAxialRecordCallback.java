@@ -5,7 +5,7 @@ import android.content.Context;
 import java.nio.ByteBuffer;
 import java.util.List;
 
-import es.uji.geotec.wearossensors.records.TriAxialRecord;
+import es.uji.geotec.backgroundsensors.record.TriAxialRecord;
 
 
 public class TriAxialRecordCallback extends AbstractRecordCallback<TriAxialRecord> {
