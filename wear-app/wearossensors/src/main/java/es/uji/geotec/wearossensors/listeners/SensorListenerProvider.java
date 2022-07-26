@@ -4,8 +4,9 @@ import android.hardware.SensorEventListener;
 
 import com.google.android.gms.location.LocationCallback;
 
-import es.uji.geotec.wearossensors.records.accumulator.RecordAccumulator;
-import es.uji.geotec.wearossensors.sensoring.WearSensor;
+import es.uji.geotec.backgroundsensors.listener.TriAxialSensorListener;
+import es.uji.geotec.backgroundsensors.record.accumulator.RecordAccumulator;
+import es.uji.geotec.wearossensors.sensor.WearSensor;
 
 public class SensorListenerProvider {
     private SensorListenerProvider() {

@@ -6,8 +6,8 @@ import com.google.android.gms.location.LocationAvailability;
 import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationResult;
 
+import es.uji.geotec.backgroundsensors.record.accumulator.RecordAccumulator;
 import es.uji.geotec.wearossensors.records.LocationRecord;
-import es.uji.geotec.wearossensors.records.accumulator.RecordAccumulator;
 
 public class LocationSensorListener extends LocationCallback {
 
