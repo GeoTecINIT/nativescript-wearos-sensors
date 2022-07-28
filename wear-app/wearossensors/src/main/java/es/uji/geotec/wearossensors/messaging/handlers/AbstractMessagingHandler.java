@@ -7,8 +7,8 @@ import com.google.android.gms.wearable.MessageEvent;
 import java.util.ArrayList;
 
 import es.uji.geotec.backgroundsensors.collection.CollectionConfiguration;
+import es.uji.geotec.backgroundsensors.sensor.SensorManager;
 import es.uji.geotec.backgroundsensors.service.manager.ServiceManager;
-import es.uji.geotec.wearossensors.collection.WearCollectorManager;
 import es.uji.geotec.wearossensors.messaging.MessagingClient;
 import es.uji.geotec.wearossensors.messaging.MessagingProtocol;
 import es.uji.geotec.wearossensors.messaging.ResultMessagingProtocol;
@@ -111,9 +111,9 @@ public abstract class AbstractMessagingHandler {
     }
 
     private boolean isSensorSupported() {
-        WearCollectorManager collectorManager = new WearCollectorManager(context);
+        SensorManager sensorManager = new SensorManager(context);
         WearSensor wearSensor = getWearSensorType();
-        return collectorManager.isSensorAvailable(wearSensor);
+        return sensorManager.isSensorAvailable(wearSensor);
     }
 
     protected abstract ArrayList<String> getRequiredPermissions();

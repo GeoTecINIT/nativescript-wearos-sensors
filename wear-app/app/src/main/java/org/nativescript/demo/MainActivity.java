@@ -10,6 +10,8 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 
+import es.uji.geotec.backgroundsensors.sensor.Sensor;
+import es.uji.geotec.backgroundsensors.sensor.SensorManager;
 import es.uji.geotec.wearossensors.command.CommandClient;
 import es.uji.geotec.wearossensors.freemessage.FreeMessage;
 import es.uji.geotec.wearossensors.freemessage.FreeMessageClient;
@@ -98,9 +100,11 @@ public class MainActivity extends Activity {
     private void setupSpinner() {
         sensorSpinner = findViewById(R.id.sensor_spinner);
 
+        SensorManager sensorManager = new SensorManager(this);
+
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        for (WearSensor sensor : WearSensor.values()) {
+        for (Sensor sensor : sensorManager.availableSensors(WearSensor.values())) {
             adapter.add(sensor.toString());
         }
 

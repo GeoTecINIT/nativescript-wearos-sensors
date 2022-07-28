@@ -9,13 +9,13 @@ import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.location.Priority;
 
-import java.util.Arrays;
-
 import es.uji.geotec.backgroundsensors.collection.CollectionConfiguration;
 import es.uji.geotec.backgroundsensors.collection.CollectorManager;
 import es.uji.geotec.backgroundsensors.record.accumulator.RecordAccumulator;
 import es.uji.geotec.backgroundsensors.record.callback.RecordCallback;
 import es.uji.geotec.backgroundsensors.sensor.Sensor;
+import es.uji.geotec.backgroundsensors.time.DefaultTimeProvider;
+import es.uji.geotec.backgroundsensors.time.TimeProvider;
 import es.uji.geotec.wearossensors.listeners.SensorListenerProvider;
 import es.uji.geotec.wearossensors.sensor.WearSensor;
 
@@ -24,7 +24,11 @@ public class WearCollectorManager extends CollectorManager {
     private LocationCallback locationListener;
 
     public WearCollectorManager(Context context) {
-        super(context, Arrays.asList(WearSensor.values()));
+        super(context, new DefaultTimeProvider());
+    }
+
+    public WearCollectorManager(Context context, TimeProvider timeProvider) {
+        super(context, timeProvider);
     }
 
     @SuppressLint("MissingPermission")
@@ -35,7 +39,7 @@ public class WearCollectorManager extends CollectorManager {
     ) {
         WearSensor sensor = (WearSensor) collectionConfiguration.getSensor();
 
-        if (!isSensorAvailable(sensor))
+        if (!sensorManager.isSensorAvailable(sensor))
             return false;
 
         RecordAccumulator accumulator = new RecordAccumulator(
@@ -48,20 +52,20 @@ public class WearCollectorManager extends CollectorManager {
             case GYROSCOPE:
             case MAGNETOMETER:
             case HEART_RATE:
-                SensorEventListener listener = SensorListenerProvider.getListenerFor(sensor, accumulator);
+                SensorEventListener listener = SensorListenerProvider.getListenerFor(sensor, accumulator, timeProvider);
                 if (listener == null)
                     return false;
 
                 listeners.put(sensor, listener);
 
                 android.hardware.Sensor androidSensor = this.getAndroidSensor(sensor);
-                return sensorManager.registerListener(
+                return androidSensorManager.registerListener(
                         listener,
                         androidSensor,
                         collectionConfiguration.getSensorDelay()
                 );
             case LOCATION:
-                locationListener = SensorListenerProvider.getLocationListener(accumulator);
+                locationListener = SensorListenerProvider.getLocationListener(accumulator, timeProvider);
                 if (locationListener == null)
                     return false;
 
@@ -90,7 +94,7 @@ public class WearCollectorManager extends CollectorManager {
 
                 listeners.remove(sensor);
                 android.hardware.Sensor androidSensor = this.getAndroidSensor(sensor);
-                sensorManager.unregisterListener(listener, androidSensor);
+                androidSensorManager.unregisterListener(listener, androidSensor);
                 return;
             case LOCATION:
                 if (locationListener == null)
