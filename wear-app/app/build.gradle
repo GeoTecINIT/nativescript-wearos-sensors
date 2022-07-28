@@ -34,7 +34,6 @@ dependencies {
     implementation 'androidx.recyclerview:recyclerview:1.2.0'
     implementation 'androidx.wear:wear:1.0.0'
     implementation 'com.google.code.gson:gson:2.9.0'
-    implementation 'es.uji.geotec:backgroundsensors:1.0.0'
     implementation project(path: ':wearossensors')
     compileOnly 'com.google.android.wearable:wearable:2.8.1'
 }
