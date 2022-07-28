@@ -7,7 +7,6 @@ import android.content.Intent;
 import java.util.ArrayList;
 
 import es.uji.geotec.wearossensors.messaging.ResultMessagingProtocol;
-import es.uji.geotec.wearossensors.services.SensorRecordingService;
 
 public class IntentManager {
 
@@ -18,10 +17,6 @@ public class IntentManager {
     private static final String PROTOCOL = "PROTOCOL";
 
     private IntentManager() {
-    }
-
-    public static Intent intentForSensorRecordingService(Context context) {
-        return new Intent(context, SensorRecordingService.class);
     }
 
     public static PendingIntent pendingIntentFromPermissionsToRequest(

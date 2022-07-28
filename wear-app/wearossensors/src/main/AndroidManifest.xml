@@ -36,6 +36,6 @@
             </intent-filter>
         </service>
 
-        <service android:name=".services.SensorRecordingService" android:exported="true" />
+        <service android:name=".services.WearSensorRecordingService" android:exported="true" />
     </application>
 </manifest>

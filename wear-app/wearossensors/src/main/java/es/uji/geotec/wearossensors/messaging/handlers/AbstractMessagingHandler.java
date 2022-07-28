@@ -1,33 +1,31 @@
 package es.uji.geotec.wearossensors.messaging.handlers;
 
-import android.content.ComponentName;
 import android.content.Context;
-import android.content.Intent;
-import android.content.ServiceConnection;
-import android.os.IBinder;
 
 import com.google.android.gms.wearable.MessageEvent;
 
 import java.util.ArrayList;
 
-import es.uji.geotec.wearossensors.intent.IntentManager;
+import es.uji.geotec.backgroundsensors.collection.CollectionConfiguration;
+import es.uji.geotec.backgroundsensors.sensor.SensorManager;
+import es.uji.geotec.backgroundsensors.service.manager.ServiceManager;
 import es.uji.geotec.wearossensors.messaging.MessagingClient;
 import es.uji.geotec.wearossensors.messaging.MessagingProtocol;
 import es.uji.geotec.wearossensors.messaging.ResultMessagingProtocol;
 import es.uji.geotec.wearossensors.notifications.NotificationProvider;
 import es.uji.geotec.wearossensors.permissions.PermissionsManager;
-import es.uji.geotec.wearossensors.sensoring.SensoringConfiguration;
-import es.uji.geotec.wearossensors.sensoring.WearSensor;
-import es.uji.geotec.wearossensors.sensoring.WearSensorManager;
-import es.uji.geotec.wearossensors.services.SensorRecordingService;
-import es.uji.geotec.wearossensors.services.ServiceAction;
+import es.uji.geotec.wearossensors.records.callbacks.RecordCallbackProvider;
+import es.uji.geotec.wearossensors.sensor.WearSensor;
+import es.uji.geotec.wearossensors.services.WearSensorRecordingService;
 
 public abstract class AbstractMessagingHandler {
 
     private Context context;
+    private ServiceManager serviceManager;
 
     public AbstractMessagingHandler(Context context) {
         this.context = context;
+        this.serviceManager = new ServiceManager(context, WearSensorRecordingService.class);
     }
 
     public void handleMessage(MessageEvent event) {
@@ -42,7 +40,7 @@ public abstract class AbstractMessagingHandler {
         } else if (path.equals(protocol.getStartMessagePath())) {
             handleStartRequest(sourceNodeId, event.getData());
         } else if (path.equals(protocol.getStopMessagePath())) {
-            handleStopRequest(sourceNodeId);
+            handleStopRequest();
         }
     }
 
@@ -91,66 +89,31 @@ public abstract class AbstractMessagingHandler {
 
     private void handleStartRequest(String sourceNodeId, byte[] configuration) {
         String[] configParams = new String(configuration).split("#");
-        Intent intent = IntentManager.intentForSensorRecordingService(context);
-        context.bindService(
-                intent,
-                getServiceConnectionForAction(
-                        ServiceAction.START_COLLECTING,
+        CollectionConfiguration wearConfig = new CollectionConfiguration(
+                getWearSensorType(),
+                Integer.parseInt(configParams[0]),
+                Integer.parseInt(configParams[1])
+        );
+
+        serviceManager.startCollection(
+                wearConfig,
+                RecordCallbackProvider.getRecordCallbackFor(
+                        getWearSensorType(),
+                        context,
                         sourceNodeId,
-                        Integer.parseInt(configParams[0]),
-                        Integer.parseInt(configParams[1])
-                ),
-                0);
-        context.startForegroundService(intent);
+                        getProtocol().getNewRecordMessagePath()
+                )
+        );
     }
 
-    private void handleStopRequest(String sourceNodeId) {
-        Intent intent = IntentManager.intentForSensorRecordingService(context);
-        context.bindService(
-                intent,
-                getServiceConnectionForAction(ServiceAction.STOP_COLLECTING, sourceNodeId, -1, -1),
-                0
-        );
-        //context.startForegroundService(intent);
+    private void handleStopRequest() {
+        serviceManager.stopCollection(getWearSensorType());
     }
 
     private boolean isSensorSupported() {
-        WearSensorManager wearSensorManager = new WearSensorManager(context);
+        SensorManager sensorManager = new SensorManager(context);
         WearSensor wearSensor = getWearSensorType();
-        return wearSensorManager.isSensorAvailable(wearSensor);
-    }
-
-    private ServiceConnection getServiceConnectionForAction(final ServiceAction action, final String sourceNodeId, final int sensorDelay, final int batchSize) {
-        return new ServiceConnection() {
-
-            @Override
-            public void onServiceConnected(ComponentName name, IBinder service) {
-                SensorRecordingService.SensorRecordingBinder binder =
-                        (SensorRecordingService.SensorRecordingBinder) service;
-                WearSensor wearSensor = getWearSensorType();
-                switch (action) {
-                    case START_COLLECTING:
-                        SensoringConfiguration sensoringConfiguration = new SensoringConfiguration(
-                                wearSensor,
-                                sourceNodeId,
-                                getProtocol().getNewRecordMessagePath(),
-                                sensorDelay,
-                                batchSize
-                        );
-                        binder.startRecordingFor(sensoringConfiguration);
-                        break;
-                    case STOP_COLLECTING:
-                        binder.stopRecordingFor(wearSensor);
-                        break;
-                }
-                context.unbindService(this);
-            }
-
-            @Override
-            public void onServiceDisconnected(ComponentName name) {
-                return;
-            }
-        };
+        return sensorManager.isSensorAvailable(wearSensor);
     }
 
     protected abstract ArrayList<String> getRequiredPermissions();

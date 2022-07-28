@@ -8,21 +8,22 @@ import com.google.android.gms.wearable.Wearable;
 
 import java.util.List;
 
-import es.uji.geotec.wearossensors.sensoring.WearSensor;
-import es.uji.geotec.wearossensors.sensoring.WearSensorManager;
+import es.uji.geotec.backgroundsensors.sensor.Sensor;
+import es.uji.geotec.backgroundsensors.sensor.SensorManager;
+import es.uji.geotec.wearossensors.sensor.WearSensor;
 
 public class CapabilityAdvertisementHandler {
 
     private MessageClient messageClient;
-    private WearSensorManager sensorManager;
+    private SensorManager sensorManager;
 
     public CapabilityAdvertisementHandler(Context context) {
         this.messageClient = Wearable.getMessageClient(context);
-        this.sensorManager = new WearSensorManager(context);
+        this.sensorManager = new SensorManager(context);
     }
 
     public void handleRequest(MessageEvent event) {
-        List<WearSensor> availableSensors = this.sensorManager.availableSensors();
+        List<Sensor> availableSensors = this.sensorManager.availableSensors(WearSensor.values());
 
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < availableSensors.size(); i++) {

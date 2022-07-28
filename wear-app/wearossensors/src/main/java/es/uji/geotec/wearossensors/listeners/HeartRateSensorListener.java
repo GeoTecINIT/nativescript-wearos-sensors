@@ -4,9 +4,9 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 
+import es.uji.geotec.backgroundsensors.record.accumulator.RecordAccumulator;
 import es.uji.geotec.wearossensors.records.HeartRateRecord;
-import es.uji.geotec.wearossensors.records.accumulator.RecordAccumulator;
-import es.uji.geotec.wearossensors.sensoring.WearSensor;
+import es.uji.geotec.wearossensors.sensor.WearSensor;
 
 
 public class HeartRateSensorListener implements SensorEventListener {
@@ -21,7 +21,7 @@ public class HeartRateSensorListener implements SensorEventListener {
 
     @Override
     public void onSensorChanged(SensorEvent event) {
-        if (event.sensor.getType() != sensor.getSensorType())
+        if (event.sensor.getType() != sensor.getType())
             return;
 
         int value = (int) event.values[0];
