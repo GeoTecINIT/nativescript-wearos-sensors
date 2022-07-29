@@ -78,7 +78,7 @@ As stated above, the data collection can be started/stopped by both devices, but
 the collected data. 
 
 To receive the collected data, the smartphone has to register a listener (at least one) via the
-`CollectorManager`. A listener can be set up for a specific node/s (i.e., smartwatch) and a specific sensor/s. This means
+[`CollectorManager`](#collectormanager). A listener can be set up for a specific node/s (i.e., smartwatch) and a specific sensor/s. This means
 that there can be several listeners registered, all of them listening for different nodes or sensors. This behaviour can be
 achieved using `ListenerFilters`. Here's an example of registering different listeners:
 
@@ -130,8 +130,8 @@ function registerListenerForNodeAndSensors(node: Node, sensors: SensorType[]) {
 ```
 
 #### Start/stop data collection from smartphone
-In order to start the data collection for node, first you have to get the nodes using the `NodeDiscoverer`. Then, once
-you have the connected node, you have to follow some steps to start the data collection:
+In order to start the data collection for node, first you have to get the nodes using the [`NodeDiscoverer`](#nodediscoverer).
+Then, once you have the connected node, you have to follow some steps to start the data collection:
 
 1. Check if a specific sensor on the node is ready to be collected from.
 2. If it is not ready:
@@ -198,7 +198,7 @@ the collected data.
 
 ### FreeMessaging
 With a system composed by several devices, it is important to have a way to communicate. We provide the 
-[`FreeMessageClient`](src/internal/communication/free-message/free-message-client.ts), which allows to send and
+[`FreeMessageClient`](#freemessageclient), which allows to send and
 receive string based messages. There are two types of received messages: the ones which require a response and the
 ones which don't. Here's an example on how to use the messaging feature:
 
@@ -230,13 +230,164 @@ async function sendMessageAndWaitResponse(node: Node, message: string): void {
 
 ## API
 
-Describe your plugin methods and properties here. See [nativescript-feedback](https://github.com/EddyVerbruggen/nativescript-feedback) for example.
-    
-| Property | Default | Description |
-| --- | --- | --- |
-| some property | property default value | property description, default values, etc.. |
-| another property | property default value | property description, default values, etc.. |
+### wearosSensors - Methods
+
+| Name                                 | Return type     | Description                                                                |
+|--------------------------------------|-----------------|----------------------------------------------------------------------------|
+| `init(config?: WearosSensorsConfig)` | `Promise<void>` | Initializes the native components depending on the provided configuration. |
+
+#### WearosSensorsConfig
+
+| Property                | Type           | Description                                              |
+|-------------------------|----------------|----------------------------------------------------------|
+| `sensors?`              | `SensorType[]` | Sensors that are going to be used. Default: all sensors. |
+| `disableFreeMessaging?` | `boolean`      | Disable free messaging feature. Default: false.          |
+| `disableWearCommands?`  | `boolean`      | Disable wear commands feature. Default: false.           |
+
+### [`NodeDiscoverer`](src/internal/node/discoverer/node-discoverer.android.ts)
+
+| Function                                    | Return type                | Description                                                                                                                            |
+|---------------------------------------------|----------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+| `getLocalNode()`                            | `Promise<Node>`            | Get a reference to the local node (smartphone).                                                                                        |
+| `getConnectedNodes(timeout: number = 5000)` | `Promise<NodeDiscovered[]` | Get the currently connected nodes. Timeout indicates the maximum wait time for the connected nodes to communicate with the smartphone. |
+
+#### [`Node`](src/internal/node/index.ts)
+
+| Field          | Type           | Description                               |
+|----------------|----------------|-------------------------------------------|
+| `name`         | `string`       | Name of the device.                       |
+| `id`           | `string`       | Id number of the device.                  |
+| `capabilities` | `SensorType[]` | Sensors that are available on the device. |
+
+
+#### [`NodeDiscovered`](src/internal/node/discoverer/node-discoverer.ts)
+
+| Field    | Type   | Description                                                                                                     |
+|----------|--------|-----------------------------------------------------------------------------------------------------------------|
+| `node`   | `Node` | Reference to a Node.                                                                                            |
+| `error?` | `any`  | An error message. Present if the Node was not able to communicate with the smartphone in the specified timeout. |
+
+
+### [`SensorType`](src/internal/sensors/sensor-type.ts)
+
+| Value           | Description                          |
+|-----------------|--------------------------------------|
+| `ACCELEROMETER` | Represents the accelerometer sensor. |
+| `GYROSCOPE`     | Represents the gyroscope sensor.     |
+| `MAGNETOMETER`  | Represents the magnetometer sensor.  |
+| `HEART_RATE`    | Represents the heart rate sensor.    |
+| `LOCATION`      | Represents the GPS sensor.           |
+
+
+### [`CollectorManager`](src/internal/collection/android/collector-manager-impl.android.ts)
+
+| Method                                                                             | Return type             | Description                                                                                                                                                            |
+|------------------------------------------------------------------------------------|-------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `isEnabled(sensor: SensorType)`                                                    | `boolean`               | Returns true if the sensor type is enabled in the initial configuration.                                                                                               |
+| `isReady(node: Node, sensor: SensorType)`                                          | `Promise<boolean>`      | Return true if the sensor is ready to collect data from.                                                                                                               |
+| `prepare(node: Node, sensor: SensorType)`                                          | `Promise<PrepareError>` | Returns a `PrepareError` if anything failed in the preparation (e.g., sensor unavailable, no permissions, etc). Returns `undefined` if the preparation was successful. |
+| `startCollecting(node: Node, sensor: SensorType, config?: CollectionConfiguration` | `Promise<void>`         | Starts the data collection of a sensor in a node with the specified configuration.                                                                                     |
+| `stopCollecting(node: Node, sensor: SensorType)`                                   | `Promise<void>`         | Stops the data collection of a sensor in a node.                                                                                                                       |
+| `addSensorListener(listener: SensorListener, filters?: ListenerFilter)`            | `number`                | Adds a listener with the specified filters and returns a listener identifier.                                                                                          |
+| `removeSensorListener(listenerId?: number)`                                        | `void`                  | Removes the listener specified by the `listenerId`. If not provided, removes all listeners.                                                                            |
+
+#### `PrepareError`
+
+| Property  | Type     | Description                                              |
+|-----------|----------|----------------------------------------------------------|
+| `node`    | `Node`   | Reference to the Node where the PrepareError comes from. |
+| `message` | `string` | Message describing the error.                            |
+
+#### `CollectionConfiguration`
+
+| Property         | Type             | Description                                                                                       |
+|------------------|------------------|---------------------------------------------------------------------------------------------------|
+| `sensorInterval` | `SensorInterval` | Time between each consecutive sample. Can be a `NativeSensorInterval` or a value in milliseconds. |
+| `batchSize`      | `number`         | Amount of samples to be sent in each record.                                                      |
+
+
+#### `SensorListener`
+
+`(sensorRecord: SensorRecord<any>) => void`
+
+#### `ListenerFilter`
+
+| Property   | Type           | Description                                     |
+|------------|----------------|-------------------------------------------------|
+| `nodes?`   | `Node[]`       | For which nodes the related listener applies.   |
+| `sensors?` | `SensorType[]` | For which sensors the related listener applies. |
+
+> **Note**: filter works as follows:
+> ```typescript
+> { 
+>   nodes: [node1, node2] // OR
+>   // AND
+>   sensors: [SensorType.ACCELEROMETER, SensorType.GYROSCOPE] // OR
+> }
+> ```
+
+### [`SensorRecord`](src/internal/sensors/sensor-record.ts)
+
+| Property   | Type         | Description                                                                                            |
+|------------|--------------|--------------------------------------------------------------------------------------------------------|
+| `type`     | `SensorType` | Type of the collected data.                                                                            |
+| `deviceId` | `string`     | Id of the device where the collected data comes from.                                                  |
+| `samples`  | `T[]`        | List of samples, where T is `TriAxialSensorSample`, `HeartRateSensorSample`, or `LocationSensorSample` |
+
+#### [`TriAxialSensorSample`](src/internal/sensors/triaxial/sample.ts)
+
+| Property  | Type      | Description    |
+|-----------|-----------|----------------|
+| `x`       | `number`  | Component _x_. |
+| `y`       | `number`  | Component _y_. |
+| `z`       | `number`  | Component _z_. |
+
+
+#### [`HeartRateSensorSample`](src/internal/sensors/heart-rate/sample.ts)
+
+| Property | Type      | Description       |
+|----------|-----------|-------------------|
+| `value`  | `number`  | Heart rate value. |
+
+
+#### [`LocationSensorSample`](src/internal/sensors/location/sample.ts)
+
+| Property    | Type      | Description                     |
+|-------------|-----------|---------------------------------|
+| `latitude`  | `number`  | Latitude coordinate component.  |
+| `longitude` | `number`  | Longitude coordinate component. |
+| `altitude`  | `number`  | Altitude coordinate component.  |
+
+### [`FreeMessageClient`](src/internal/communication/free-message/android/free-message-client.android.ts)
+
+| Function                                                                        | Return type                | Description                                                                       |
+|---------------------------------------------------------------------------------|----------------------------|-----------------------------------------------------------------------------------|
+| `enabled()`                                                                     | `boolean`                  | Returns true if the free message feature is enabled in the initial configuration. |
+| `registerListener(listener: FreeMessageListener)`                               | `void`                     | Registers the listener for the feature.                                           |
+| `unregisterListener()`                                                          | `void`                     | Unregisters the listener for the feature.                                         |
+| `send(node: Node, freeMessage: FreeMessage)`                                    | `Promise<void>`            | Sends a message to the specified Node.                                            |
+| `sendExpectingResponse(node: Node, freeMessage: FreeMessage, timeout?: number)` | `Promise<ReceivedMessage>` | Sends a message to the specified Node and wait `timeout` ms for a response.       |
+
+#### `FreeMessage`
+
+| Property        | Type          | Description                                                                                                                             |
+|-----------------|---------------|-----------------------------------------------------------------------------------------------------------------------------------------|
+| `message`       | `string`      | Content of the message.                                                                                                                 |
+| `inResponseTo?` | `FreeMessage` | Contains the message at which the current message is responding. `undefined` means that the message is not responding to other message. |
+
+#### `ReceivedMessage`
+
+| Property       | Type          | Description                          |
+|----------------|---------------|--------------------------------------|
+| `senderNodeId` | `string`      | Id of the node who sent the message. |
+| `freeMessage`  | `FreeMessage` | Message received.                    |
+
+#### `FreeMessageListener`
+
+`(receivedMessage: ReceivedMessage) => void`
     
 ## License
 
-Apache License Version 2.0, January 2004
+Apache License 2.0
+
+See [LICENSE](LICENSE).
