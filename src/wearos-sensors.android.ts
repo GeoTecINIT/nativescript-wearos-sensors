@@ -1,4 +1,4 @@
-import { Common, defaultConfig, WearosSensorsConfig } from './wearos-sensors.common';
+import { allSensors, Common, defaultConfig, WearosSensorsConfig } from './wearos-sensors.common';
 
 import { getCapabilityAdvertiserResultService } from "./internal/communication/capabilities/android/capability-advertiser-result-service.android";
 import { getResultMessagingService } from "./internal/communication/messaging/android/messaging-result-service.android";
@@ -24,9 +24,13 @@ class WearosSensors extends Common {
     public async init(config: WearosSensorsConfig = defaultConfig): Promise<void> {
         this.wireUpCapabilityAdvertiser();
 
-        setEnabledSensors(config.sensors);
-        if (config.sensors && config.sensors.length > 0) {
-            this.wireUpSensorComponents(config.sensors);
+        const sensors = config.sensors
+            ? config.sensors
+            : allSensors;
+
+        setEnabledSensors(sensors);
+        if (sensors.length > 0) {
+            this.wireUpSensorComponents(sensors);
         }
 
         if (!config.disableWearCommands) {
