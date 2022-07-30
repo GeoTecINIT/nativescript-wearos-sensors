@@ -1,8 +1,8 @@
 import { Observable } from "@nativescript/core";
 import { getLogger } from "~/home/logger/logger-view-model";
 import { getNodeDiscoverer } from "nativescript-wearos-sensors/node";
-import { getFreeMessageClient } from "nativescript-wearos-sensors/internal/communication/free-message";
-import { getCollectorManager } from "nativescript-wearos-sensors/internal/collection";
+import { getFreeMessageClient } from "nativescript-wearos-sensors/free-message";
+import { getCollectorManager } from "nativescript-wearos-sensors/collection";
 import { getStore } from "~/home/store";
 
 export class DeviceListViewModel extends Observable {
