@@ -41,7 +41,7 @@ The plugin offers two features:
   The smartwatch is able to start and stop the data collection thanks to the WearCommands feature.
 - [FreeMessaging](#freemessaging): it allows to send and receive simple messages between both devices.
 
-In first place, you need to initialize the plugin in your app.ts (TypeScript app) or main.ts (Angular app) file:
+In first place, you need to initialize the plugin with a [`WearosSensorsConfig`](#wearossensorsconfig) in your app.ts (TypeScript app) or main.ts (Angular app) file:
 
 ```typescript
 // TypeScript App:
@@ -232,17 +232,27 @@ async function sendMessageAndWaitResponse(node: Node, message: string): void {
 
 ### wearosSensors - Methods
 
-| Name                                 | Return type     | Description                                                                |
-|--------------------------------------|-----------------|----------------------------------------------------------------------------|
-| `init(config?: WearosSensorsConfig)` | `Promise<void>` | Initializes the native components depending on the provided configuration. |
+| Name                                 | Return type     | Description                                                                                                                          |
+|--------------------------------------|-----------------|--------------------------------------------------------------------------------------------------------------------------------------|
+| `init(config?: WearosSensorsConfig)` | `Promise<void>` | Initializes the native components depending on the provided configuration. If no configuration provided defaults to `defaultConfig`. |
 
-#### WearosSensorsConfig
+#### [`WearosSensorsConfig`](src/wearos-sensors.common.ts)
 
 | Property                | Type           | Description                                              |
 |-------------------------|----------------|----------------------------------------------------------|
 | `sensors?`              | `SensorType[]` | Sensors that are going to be used. Default: all sensors. |
 | `disableFreeMessaging?` | `boolean`      | Disable free messaging feature. Default: false.          |
 | `disableWearCommands?`  | `boolean`      | Disable wear commands feature. Default: false.           |
+
+##### `defaultConfig`
+
+```typescript
+export const defaultConfig = {
+    sensors: allSensors, // Constant containing all the sensors
+    disableFreeMessaging: false,
+    disableWearCommands: false
+};
+```
 
 ### [`NodeDiscoverer`](src/internal/node/discoverer/node-discoverer.android.ts)
 
