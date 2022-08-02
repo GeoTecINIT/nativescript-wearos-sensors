@@ -1,4 +1,7 @@
 # nativescript-wearos-sensors
+[![npm](https://img.shields.io/npm/v/nativescript-wearos-sensors.svg)](https://www.npmjs.com/package/nativescript-wearos-sensors)
+[![npm](https://img.shields.io/npm/dm/nativescript-wearos-sensors.svg)](https://www.npmjs.com/package/nativescript-wearos-sensors)
+
 The _nativescript-wearos-sensors_ is a plugin developed with the
 [`NativeScript`](https://nativescript.org) framework. It allows to develop smartphone applications for collecting 
 data from the IMU sensors (i.e., accelerometer and gyroscope), the magnetometer, the heart rate and the GPS of a paired
