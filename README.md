@@ -255,10 +255,11 @@ export const defaultConfig = {
 
 ### [`NodeDiscoverer`](src/internal/node/discoverer/node-discoverer.android.ts)
 
-| Function                                    | Return type                | Description                                                                                                                            |
-|---------------------------------------------|----------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
-| `getLocalNode()`                            | `Promise<Node>`            | Get a reference to the local node (smartphone).                                                                                        |
-| `getConnectedNodes(timeout: number = 5000)` | `Promise<NodeDiscovered[]` | Get the currently connected nodes. Timeout indicates the maximum wait time for the connected nodes to communicate with the smartphone. |
+| Function                                    | Return type                | Description                                                                                                                                                        |
+|---------------------------------------------|----------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `getLocalNode()`                            | `Promise<Node>`            | Get a reference to the local node (smartphone).                                                                                                                    |
+| `areConnectedNodes()`                       | `Promise<boolean>`         | Returns true if there are connected nodes.                                                                                                                         |
+| `getConnectedNodes(timeout: number = 5000)` | `Promise<NodeDiscovered[]` | Get the currently connected nodes and their available sensors. Timeout indicates the maximum wait time for the connected nodes to communicate with the smartphone. |
 
 #### [`Node`](src/internal/node/index.ts)
 

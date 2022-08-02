@@ -37,6 +37,22 @@ export class AndroidNodeDiscoverer implements NodeDiscoverer {
         });
     }
 
+    public areConnectedNodes(): Promise<boolean> {
+        const connectedNodes = this.nodeClient.getConnectedNodes();
+        return new Promise<boolean>((resolve) => {
+            connectedNodes.addOnCompleteListener(new OnCompleteListener({
+                onComplete: task => {
+                    if (!task.isSuccessful()) {
+                        return resolve(false);
+                    }
+
+                    const nodes = task.getResult();
+                    resolve(nodes.size() !== 0);
+                }
+            }));
+        });
+    }
+
     public getConnectedNodes(timeout: number = 5000): Promise<NodeDiscovered[]> {
         return firstValueFrom(
             this.scanConnectedNodes(timeout)
