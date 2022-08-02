@@ -5,7 +5,9 @@ import { Node } from "nativescript-wearos-sensors/node";
 import { getCollectorManager, PrepareError, NativeSensorDelay } from "nativescript-wearos-sensors/collection";
 import { SensorType } from "nativescript-wearos-sensors/sensors";
 import { getStore } from "~/home/store";
-import { getFreeMessageClient, FreeMessageClient } from "nativescript-wearos-sensors/free-message";
+import {
+    getPlainMessageClient, PlainMessageClient
+} from "nativescript-wearos-sensors/plain-message";
 
 
 export class DeviceViewModel extends Observable {
@@ -41,7 +43,7 @@ export class DeviceViewModel extends Observable {
 
     private batchSize = 50;
 
-    private freeMessageClient: FreeMessageClient;
+    private plainMessageClient: PlainMessageClient;
 
     constructor(
         private node: Node
@@ -61,28 +63,28 @@ export class DeviceViewModel extends Observable {
             };
         });
 
-        this.freeMessageClient = getFreeMessageClient();
+        this.plainMessageClient = getPlainMessageClient();
     }
 
-    async onTestFreeMessage() {
-        if (!this.freeMessageClient.enabled()) {
-            this.logger.logInfo(`Free messages are not enabled`);
+    async onTestPlainMessage() {
+        if (!this.plainMessageClient.enabled()) {
+            this.logger.logInfo(`Plain messages are not enabled`);
             return;
         }
-        const freeMessage = { message: "You don't have to reply :)"};
-        this.logger.logInfoForNode(this.node.name, `sending ${JSON.stringify(freeMessage)}`);
-        await this.freeMessageClient.send(this.node, freeMessage);
+        const plainMessage = { message: "You don't have to reply :)"};
+        this.logger.logInfoForNode(this.node.name, `sending ${JSON.stringify(plainMessage)}`);
+        await this.plainMessageClient.send(this.node, plainMessage);
     }
 
-    async onTestFreeMessageWithResponse() {
-        if (!this.freeMessageClient.enabled()) {
-            this.logger.logInfo(`Free messages are not enabled`);
+    async onTestPlainMessageWithResponse() {
+        if (!this.plainMessageClient.enabled()) {
+            this.logger.logInfo(`Plain messages are not enabled`);
             return;
         }
 
-        const freeMessage = { message: "PING!"};
-        this.logger.logInfoForNode(this.node.name, `sending ${JSON.stringify(freeMessage)} and awaiting for response`);
-        const receivedMessage = await this.freeMessageClient.sendExpectingResponse(this.node, freeMessage);
+        const plainMessage = { message: "PING!"};
+        this.logger.logInfoForNode(this.node.name, `sending ${JSON.stringify(plainMessage)} and awaiting for response`);
+        const receivedMessage = await this.plainMessageClient.sendExpectingResponse(this.node, plainMessage);
         this.logger.logResultForNode(this.node.name, `response received: ${JSON.stringify(receivedMessage)}`);
     }
 

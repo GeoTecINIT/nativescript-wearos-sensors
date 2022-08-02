@@ -1,26 +1,26 @@
 import { CommunicationResultService } from "../../communication-result-service";
 import WearableListenerServiceDelegate = es.uji.geotec.wearossensors.WearableListenerServiceDelegate;
-import { FreeMessage, FreeMessageListener, freeMessageProtocol, FreeMessageProtocol, ReceivedMessage } from "../index";
+import { PlainMessage, PlainMessageListener, plainMessageProtocol, PlainMessageProtocol, ReceivedMessage } from "../index";
 import { CommunicationProtocol } from "../../communication-protocol";
 import { wearOS } from "../../../utils/android/wear-os-types.android";
 import { decodeMessage } from "../../encoder-decoder";
-import { decodeFreeMessage } from "../encoder-decoder";
+import { decodePlainMessage } from "../encoder-decoder";
 
-export class FreeMessageResultService implements CommunicationResultService, WearableListenerServiceDelegate {
+export class PlainMessageResultService implements CommunicationResultService, WearableListenerServiceDelegate {
 
-    private protocol: FreeMessageProtocol = freeMessageProtocol;
-    private resolutionCallbacks = new Map<string, FreeMessageListener>();
-    private defaultListener: FreeMessageListener;
+    private protocol: PlainMessageProtocol = plainMessageProtocol;
+    private resolutionCallbacks = new Map<string, PlainMessageListener>();
+    private defaultListener: PlainMessageListener;
 
     setProtocol(protocol: CommunicationProtocol): void {
-        this.protocol = protocol as FreeMessageProtocol;
+        this.protocol = protocol as PlainMessageProtocol;
     }
 
-    setResolutionCallbackForNode(nodeId: string, callback: (freeMessage) => void): void {
+    setResolutionCallbackForNode(nodeId: string, callback: (plainMessage) => void): void {
         this.resolutionCallbacks.set(nodeId, callback);
     }
 
-    setDefaultListener(listener: FreeMessageListener): void {
+    setDefaultListener(listener: PlainMessageListener): void {
         this.defaultListener = listener;
     }
 
@@ -42,13 +42,13 @@ export class FreeMessageResultService implements CommunicationResultService, Wea
         }
 
         const stringMessage: string = decodeMessage(message.getData());
-        const freeMessage: FreeMessage = decodeFreeMessage(stringMessage);
+        const plainMessage: PlainMessage = decodePlainMessage(stringMessage);
         const receivedMessage: ReceivedMessage = {
             senderNodeId,
-            freeMessage
+            plainMessage
         };
 
-        if (freeMessage.inResponseTo && this.resolutionCallbacks.has(senderNodeId)) {
+        if (plainMessage.inResponseTo && this.resolutionCallbacks.has(senderNodeId)) {
             const callback = this.resolutionCallbacks.get(senderNodeId);
             callback(receivedMessage);
             this.resolutionCallbacks.delete(senderNodeId);
@@ -64,9 +64,9 @@ export class FreeMessageResultService implements CommunicationResultService, Wea
 }
 
 let _instance;
-export function getFreeMessageResultService(): FreeMessageResultService {
+export function getPlainMessageResultService(): PlainMessageResultService {
     if (!_instance) {
-        _instance = new FreeMessageResultService();
+        _instance = new PlainMessageResultService();
     }
     return _instance;
 }

@@ -4,6 +4,7 @@ import { MessagingClient } from "nativescript-wearos-sensors/internal/communicat
 import { CollectorManagerImpl } from "nativescript-wearos-sensors/internal/collection/android/collector-manager-impl.android";
 import { buildFakeResolutionResult } from "~/tests/internal/index.spec";
 import { CollectorManager } from "nativescript-wearos-sensors/internal/collection/collector-manager";
+import { allSensors } from "nativescript-wearos-sensors/wearos-sensors.common";
 
 describe("Collector manager implementation", () => {
     const node1 = new Node("node1", "node1", [SensorType.ACCELEROMETER, SensorType.GYROSCOPE]);
@@ -15,7 +16,7 @@ describe("Collector manager implementation", () => {
 
     beforeEach(() => {
         messagingClient = buildFakeMessagingClient();
-        collectorManager = new CollectorManagerImpl((_) => messagingClient, null);
+        collectorManager = new CollectorManagerImpl((_) => messagingClient, null, allSensors);
     });
 
     it("isReady returns true when a node has a determined capability and false otherwise", async() => {

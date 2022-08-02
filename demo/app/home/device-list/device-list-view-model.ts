@@ -1,7 +1,7 @@
 import { Observable } from "@nativescript/core";
 import { getLogger } from "~/home/logger/logger-view-model";
 import { getNodeDiscoverer } from "nativescript-wearos-sensors/node";
-import { getFreeMessageClient } from "nativescript-wearos-sensors/free-message";
+import { getPlainMessageClient } from "nativescript-wearos-sensors/plain-message";
 import { getCollectorManager } from "nativescript-wearos-sensors/collection";
 import { getStore } from "~/home/store";
 
@@ -23,7 +23,7 @@ export class DeviceListViewModel extends Observable {
             getStore().addRecord(sensorRecord);
             this.logger.logResultForNode(deviceId, JSON.stringify(samples));
         });
-        getFreeMessageClient().registerListener((receivedMessage) => {
+        getPlainMessageClient().registerListener((receivedMessage) => {
             this.logger.logInfo(`received single message ${JSON.stringify(receivedMessage)}`);
         });
     }

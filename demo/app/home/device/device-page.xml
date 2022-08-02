@@ -25,14 +25,14 @@
 
     <StackLayout orientation="vertical">
         <GridLayout rows="auto, auto" columns="*, *" class="card" height="100">
-            <Label row="0" col="0" colspan="2" class="bold" text="FreeMessages"/>
+            <Label row="0" col="0" colspan="2" class="bold" text="PlainMessages"/>
             <Button row="1" col="0"
                     backgroundColor="deepskyblue"
-                    tap="{{ onTestFreeMessage }}"
+                    tap="{{ onTestPlainMessage }}"
                     text="Single"/>
             <Button row="1" col="1"
                     backgroundColor="deepskyblue"
-                    tap="{{ onTestFreeMessageWithResponse }}"
+                    tap="{{ onTestPlainMessageWithResponse }}"
                     text="Single with response"/>
         </GridLayout>
         <GridLayout class="card" rows="auto, auto" columns="2*, *" height="80">
