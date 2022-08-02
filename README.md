@@ -1,10 +1,10 @@
 # nativescript-wearos-sensors
-The _nativescript-wearos-sensors_ is a plugin applications developed with the
-[`NativeScript`](https://nativescript.org) framework. It allows collecting data from the IMU sensors
-(i.e., accelerometer and gyroscope), the magnetometer, the heart rate and the GPS of an Android WearOS
-smartwatch (if the corresponding sensor is available in the device).
+The _nativescript-wearos-sensors_ is a plugin developed with the
+[`NativeScript`](https://nativescript.org) framework. It allows to develop smartphone applications for collecting 
+data from the IMU sensors (i.e., accelerometer and gyroscope), the magnetometer, the heart rate and the GPS of a paired
+Android WearOS smartwatch (if the corresponding sensor is available in the device).
 
-The Android WearOS smartwatch must run a counterpart application built using the [_WearOSSensors_](https://github.com/GeoTecINIT/WearOSSensors) library.
+The Android WearOS smartwatch must run a counterpart application built using the native [_WearOSSensors_](https://github.com/GeoTecINIT/WearOSSensors) library.
 Then, the smartphone application can request the smartwatch to start/stop the collection of the specified sensor, and
 the smartwatch will send the collected samples to the smartphone application.
 
@@ -23,16 +23,16 @@ ns plugin add nativescript-wearos-sensors
 ```
 
 ## Requirements
-This plugin is **only supported** for Android smartphones. To use it to build an application, the following requirements apply:
+This plugin is **only supported** by Android smartphones. To use it to build an application, the following requirements apply:
 
-- An Android smartphone running Android 6 (API level 23) or higher. In addition, the smartphone must be paired
- with a smartwatch with the counterpart application installed.
-
-> **Note**: to link a smartwatch to the smartphone, you must also install the [Smartwatch WearOS by Google](https://play.google.com/store/apps/details?id=com.google.android.wearable.app)
-> and follow the procedure to link both devices.
+- An Android smartphone running Android 6 (API level 23) or higher. 
+- In addition, the smartphone must be paired with a smartwatch with the counterpart application installed. To link a smartwatch 
+ to the smartphone, you must also install the [Smartwatch WearOS by Google](https://play.google.com/store/apps/details?id=com.google.android.wearable.app)
+ and follow the procedure to link both devices.
 
 > **Warning**: both applications (smartphone and smartwatch apps) must have the same application id.
-> If that's not the case, the applications will not be able to interact.
+> If that's not the case, the applications will not be able to interact. You can change the application id of a 
+> NativeScript application in the `nativescript.config.ts`.
 
 ## Usage 
 The plugin offers two features:
@@ -130,7 +130,7 @@ function registerListenerForNodeAndSensors(node: Node, sensors: SensorType[]) {
 ```
 
 #### Start/stop data collection from smartphone
-In order to start the data collection for node, first you have to get the nodes using the [`NodeDiscoverer`](#nodediscoverer).
+In order to start the data collection for node, first you have to get the connected nodes using the [`NodeDiscoverer`](#nodediscoverer).
 Then, once you have the connected node, you have to follow some steps to start the data collection:
 
 1. Check if a specific sensor on the node is ready to be collected from.
@@ -141,7 +141,7 @@ Then, once you have the connected node, you have to follow some steps to start t
    1. If permissions are rejected, it's the end of the way...
    2. If permissions are granted, we can start the collection!!
 
-To start the data collection, we also should to specify a `CollectionConfiguration`, where we can indicate the desired
+To start the data collection, we also should specify a `CollectionConfiguration`, where we can indicate the desired
 time between consecutive samples (`sensorDelay`), and the amount of samples to deliver each time (`batchSize`). The 
 configuration is optional, if no configuration is provided then default values apply.
 
@@ -232,9 +232,9 @@ async function sendMessageAndWaitResponse(node: Node, message: string): void {
 
 ### wearosSensors - Methods
 
-| Name                                 | Return type     | Description                                                                                                                          |
-|--------------------------------------|-----------------|--------------------------------------------------------------------------------------------------------------------------------------|
-| `init(config?: WearosSensorsConfig)` | `Promise<void>` | Initializes the native components depending on the provided configuration. If no configuration provided defaults to `defaultConfig`. |
+| Name                                 | Return type     | Description                                                                                                                           |
+|--------------------------------------|-----------------|---------------------------------------------------------------------------------------------------------------------------------------|
+| `init(config?: WearosSensorsConfig)` | `Promise<void>` | Initializes the native components depending on the provided configuration. If no configuration provided, defaults to `defaultConfig`. |
 
 #### [`WearosSensorsConfig`](src/wearos-sensors.common.ts)
 
@@ -330,9 +330,9 @@ export const defaultConfig = {
 > **Note**: filter works as follows:
 > ```typescript
 > { 
->   nodes: [node1, node2] // OR
+>   nodes: [node1, /* OR */ node2]
 >   // AND
->   sensors: [SensorType.ACCELEROMETER, SensorType.GYROSCOPE] // OR
+>   sensors: [SensorType.ACCELEROMETER, /* OR */ SensorType.GYROSCOPE]
 > }
 > ```
 
