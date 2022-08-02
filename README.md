@@ -39,7 +39,7 @@ The plugin offers two features:
 
 - [Sensor data collection](#sensor-data-collection) from the paired smartwatch: it can be started/stopped from the smartphone and from the smartwatch.
   The smartwatch is able to start and stop the data collection thanks to the WearCommands feature.
-- [FreeMessaging](#freemessaging): it allows to send and receive simple messages between both devices.
+- [Plain Messaging](#plainmessaging): it allows to send and receive simple messages between both devices.
 
 In first place, you need to initialize the plugin with a [`WearosSensorsConfig`](#wearossensorsconfig) in your app.ts (TypeScript app) or main.ts (Angular app) file:
 
@@ -51,12 +51,11 @@ import { platformNativeScriptDynamic } from "nativescript-angular/platform";
 import { AppModule } from "./app/app.module";
 
 // WearOSSensors import
-import { wearosSensors } from "nativescript-wearos-sensors";
-import { allSensors } from "nativescript-wearos-sensors/wearos-sensors.common";
+import { wearosSensors, allSensors } from "nativescript-wearos-sensors";
 
 wearosSensors.init({
     sensors: allSensors,
-    disableFreeMessaging: false,
+    disablePlainMessaging: false,
     disableWearCommands: false
 });
 
@@ -66,8 +65,8 @@ Application.run({ moduleName: "app-root" });
 platformNativeScriptDynamic().bootstrapModule(AppModule);
 ```
 
-The initialization parameter is optional, and it allows specifying which sensors are enabled (`sensors`), and if FreeMessaging
-(`disableFreeMessaging`) and WearCommands (`disableWearCommands`) features are enabled. The default configuration is
+The initialization parameter is optional, and it allows specifying which sensors are enabled (`sensors`), and if PlainMessaging
+(`disablePlainMessaging`) and WearCommands (`disableWearCommands`) features are enabled. The default configuration is
 the one shown in the example above: all sensors and features enabled.
 
 > **Note**: the configuration allows conditionally wire up native components with the core of the plugin. This allows
@@ -196,37 +195,37 @@ the collected data.
 > **Warning**: the WearCommands feature must be enabled at plugin initialization.
 
 
-### FreeMessaging
+### PlainMessaging
 With a system composed by several devices, it is important to have a way to communicate. We provide the 
-[`FreeMessageClient`](#freemessageclient), which allows to send and
+[`PlainMessageClient`](#plainmessageclient), which allows to send and
 receive string based messages. There are two types of received messages: the ones which require a response and the
 ones which don't. Here's an example on how to use the messaging feature:
 
 ```typescript
-import { getFreeMessageClient } from "nativescript-wearos-sensors/internal/communication/free-message";
+import { getPlainMessageClient } from "src/internal/communication/plain-message";
 
 function registerListener(): void {
     // Register a listener to receive messages from the smartwatch
-    getFreeMessageClient().registerListener((receivedMessage) => {
+    getPlainMessageClient().registerListener((receivedMessage) => {
         console.log(`received single message ${JSON.stringify(receivedMessage)}`);
     });
 }
 
 async function sendMessage(node: Node, message: string): void {
     // Send a message to the smartwatch
-    const freeMessage = { message: "You don't have to reply :)" };
-    await getFreeMessageClient().send(node, freeMessage);
+    const plainMessage = {message: "You don't have to reply :)"};
+    await getPlainMessageClient().send(node, plainMessage);
 }
 
 async function sendMessageAndWaitResponse(node: Node, message: string): void {
     // Send a message to the smartwatch and wait for a response
-    const freeMessage = { message: "PING!"};
-    const receivedMessage = await getFreeMessageClient().sendExpectingResponse(node, freeMessage);
+    const plainMessage = {message: "PING!"};
+    const receivedMessage = await getPlainMessageClient().sendExpectingResponse(node, plainMessage);
     console.log(`response received: ${JSON.stringify(receivedMessage)}`);
 }
 ```
 
-> **Warning**: the FreeMessaging feature must be enabled at plugin initialization.
+> **Warning**: the PlainMessaging feature must be enabled at plugin initialization.
 
 ## API
 
@@ -238,18 +237,18 @@ async function sendMessageAndWaitResponse(node: Node, message: string): void {
 
 #### [`WearosSensorsConfig`](src/wearos-sensors.common.ts)
 
-| Property                | Type           | Description                                              |
-|-------------------------|----------------|----------------------------------------------------------|
-| `sensors?`              | `SensorType[]` | Sensors that are going to be used. Default: all sensors. |
-| `disableFreeMessaging?` | `boolean`      | Disable free messaging feature. Default: false.          |
-| `disableWearCommands?`  | `boolean`      | Disable wear commands feature. Default: false.           |
+| Property                 | Type           | Description                                              |
+|--------------------------|----------------|----------------------------------------------------------|
+| `sensors?`               | `SensorType[]` | Sensors that are going to be used. Default: all sensors. |
+| `disablePlainMessaging?` | `boolean`      | Disable plain messaging feature. Default: false.         |
+| `disableWearCommands?`   | `boolean`      | Disable wear commands feature. Default: false.           |
 
 ##### `defaultConfig`
 
 ```typescript
 export const defaultConfig = {
     sensors: allSensors, // Constant containing all the sensors
-    disableFreeMessaging: false,
+    disablePlainMessaging: false,
     disableWearCommands: false
 };
 ```
@@ -368,31 +367,31 @@ export const defaultConfig = {
 | `longitude` | `number`  | Longitude coordinate component. |
 | `altitude`  | `number`  | Altitude coordinate component.  |
 
-### [`FreeMessageClient`](src/internal/communication/free-message/android/free-message-client.android.ts)
+### [`PlainMessageClient`](src/internal/communication/plain-message/android/plain-message-client.android.ts)
 
-| Function                                                                        | Return type                | Description                                                                       |
-|---------------------------------------------------------------------------------|----------------------------|-----------------------------------------------------------------------------------|
-| `enabled()`                                                                     | `boolean`                  | Returns true if the free message feature is enabled in the initial configuration. |
-| `registerListener(listener: FreeMessageListener)`                               | `void`                     | Registers the listener for the feature.                                           |
-| `unregisterListener()`                                                          | `void`                     | Unregisters the listener for the feature.                                         |
-| `send(node: Node, freeMessage: FreeMessage)`                                    | `Promise<void>`            | Sends a message to the specified Node.                                            |
-| `sendExpectingResponse(node: Node, freeMessage: FreeMessage, timeout?: number)` | `Promise<ReceivedMessage>` | Sends a message to the specified Node and wait `timeout` ms for a response.       |
+| Function                                                                          | Return type                | Description                                                                        |
+|-----------------------------------------------------------------------------------|----------------------------|------------------------------------------------------------------------------------|
+| `enabled()`                                                                       | `boolean`                  | Returns true if the plain message feature is enabled in the initial configuration. |
+| `registerListener(listener: PlainMessageListener)`                                | `void`                     | Registers the listener for the feature.                                            |
+| `unregisterListener()`                                                            | `void`                     | Unregisters the listener for the feature.                                          |
+| `send(node: Node, plainMessage: PlainMessage)`                                    | `Promise<void>`            | Sends a message to the specified Node.                                             |
+| `sendExpectingResponse(node: Node, plainMessage: PlainMessage, timeout?: number)` | `Promise<ReceivedMessage>` | Sends a message to the specified Node and wait `timeout` ms for a response.        |
 
-#### `FreeMessage`
+#### `PlainMessage`
 
-| Property        | Type          | Description                                                                                                                             |
-|-----------------|---------------|-----------------------------------------------------------------------------------------------------------------------------------------|
-| `message`       | `string`      | Content of the message.                                                                                                                 |
-| `inResponseTo?` | `FreeMessage` | Contains the message at which the current message is responding. `undefined` means that the message is not responding to other message. |
+| Property        | Type           | Description                                                                                                                             |
+|-----------------|----------------|-----------------------------------------------------------------------------------------------------------------------------------------|
+| `message`       | `string`       | Content of the message.                                                                                                                 |
+| `inResponseTo?` | `PlainMessage` | Contains the message at which the current message is responding. `undefined` means that the message is not responding to other message. |
 
 #### `ReceivedMessage`
 
-| Property       | Type          | Description                          |
-|----------------|---------------|--------------------------------------|
-| `senderNodeId` | `string`      | Id of the node who sent the message. |
-| `freeMessage`  | `FreeMessage` | Message received.                    |
+| Property       | Type           | Description                          |
+|----------------|----------------|--------------------------------------|
+| `senderNodeId` | `string`       | Id of the node who sent the message. |
+| `PlainMessage` | `PlainMessage` | Message received.                    |
 
-#### `FreeMessageListener`
+#### `PlainMessageListener`
 
 `(receivedMessage: ReceivedMessage) => void`
     

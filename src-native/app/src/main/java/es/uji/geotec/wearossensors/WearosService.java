@@ -1,7 +1,5 @@
 package es.uji.geotec.wearossensors;
 
-import android.util.Log;
-
 import com.google.android.gms.wearable.MessageEvent;
 import com.google.android.gms.wearable.WearableListenerService;
 
@@ -23,8 +21,8 @@ public class WearosService extends WearableListenerService {
             handleMessage(WearService.CAPABILITY, messageEvent);
         } else if (path.contains("command")) {
             handleMessage(WearService.COMMAND, messageEvent);
-        } else if (path.contains("free-message")) {
-            handleMessage(WearService.FREE_MESSAGE, messageEvent);
+        } else if (path.contains("plain-message")) {
+            handleMessage(WearService.PLAIN_MESSAGE, messageEvent);
         }
     }
 

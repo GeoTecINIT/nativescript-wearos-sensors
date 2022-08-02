@@ -17,7 +17,7 @@ export const allSensors = [
 
 export interface WearosSensorsConfig {
   sensors?: SensorType[];
-  disableFreeMessaging?: boolean;
+  disablePlainMessaging?: boolean;
   disableWearCommands?: boolean;
 }
 

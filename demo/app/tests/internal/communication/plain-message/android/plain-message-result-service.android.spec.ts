@@ -1,17 +1,17 @@
 import { Node } from "nativescript-wearos-sensors/internal/node";
 import {
-    FreeMessage,
-    FreeMessageProtocol,
+    PlainMessage,
+    PlainMessageProtocol,
     ReceivedMessage
-} from "nativescript-wearos-sensors/internal/communication/free-message";
+} from "nativescript-wearos-sensors/internal/communication/plain-message";
 import {
-    FreeMessageResultService
-} from "nativescript-wearos-sensors/internal/communication/free-message/android/free-message-result-service.android";
+    PlainMessageResultService
+} from "nativescript-wearos-sensors/internal/communication/plain-message/android/plain-message-result-service.android";
 import { buildFakeMessageEvent } from "~/tests/internal/index.spec";
 
-describe("Free message result service", () => {
+describe("Plain message result service", () => {
     const node: Node = new Node("test", "test");
-    const protocol: FreeMessageProtocol = {
+    const protocol: PlainMessageProtocol = {
         withoutResponse: "test-no-response",
         expectingResponse: "test-expecting-response",
     };
@@ -19,20 +19,20 @@ describe("Free message result service", () => {
 
     let resolutionCallback;
     let defaultListener;
-    let freeMessageResultService: FreeMessageResultService;
+    let plainMessageResultService: PlainMessageResultService;
 
     beforeEach(() => {
         resolutionCallback = jasmine.createSpy("resolutionCallbackSpy");
         defaultListener = jasmine.createSpy("defaultListenerSpy");
-        freeMessageResultService = new FreeMessageResultService();
-        freeMessageResultService.setProtocol(protocol);
-        freeMessageResultService.setDefaultListener(defaultListener);
-        freeMessageResultService.setResolutionCallbackForNode(node.id, resolutionCallback);
+        plainMessageResultService = new PlainMessageResultService();
+        plainMessageResultService.setProtocol(protocol);
+        plainMessageResultService.setDefaultListener(defaultListener);
+        plainMessageResultService.setResolutionCallbackForNode(node.id, resolutionCallback);
     });
 
     it("does nothing if receives a free message with an unknown protocol", () => {
         const messageEvent = buildFakeMessageEvent(node.id, unknownPath);
-        freeMessageResultService.onMessageReceived(messageEvent);
+        plainMessageResultService.onMessageReceived(messageEvent);
 
         expect(resolutionCallback).not.toHaveBeenCalled();
         expect(defaultListener).not.toHaveBeenCalled();
@@ -40,14 +40,14 @@ describe("Free message result service", () => {
 
     it("does nothing when receives a free message without data", () => {
         const messageEvent = buildFakeMessageEvent(node.id, protocol.withoutResponse);
-        freeMessageResultService.onMessageReceived(messageEvent);
+        plainMessageResultService.onMessageReceived(messageEvent);
 
         expect(resolutionCallback).not.toHaveBeenCalled();
         expect(defaultListener).not.toHaveBeenCalled();
     });
 
     it("receives a free message in response to other message", () => {
-        const freeMessage: FreeMessage = {
+        const plainMessage: PlainMessage = {
             message: "Hi! :)",
             inResponseTo: {
                 message: "Hey :P"
@@ -55,18 +55,18 @@ describe("Free message result service", () => {
         };
         const expectedResponse: ReceivedMessage = {
             senderNodeId: node.id,
-            freeMessage
+            plainMessage
         };
 
-        const messageEvent = buildFakeMessageEvent(node.id, protocol.withoutResponse, JSON.stringify(freeMessage));
-        freeMessageResultService.onMessageReceived(messageEvent);
+        const messageEvent = buildFakeMessageEvent(node.id, protocol.withoutResponse, JSON.stringify(plainMessage));
+        plainMessageResultService.onMessageReceived(messageEvent);
 
         expect(resolutionCallback).toHaveBeenCalledWith(expectedResponse);
         expect(defaultListener).not.toHaveBeenCalled();
     });
 
     it("receives a free message in response to other message but there are no listeners to handle it", () => {
-        const freeMessage: FreeMessage = {
+        const plainMessage: PlainMessage = {
             message: "Hi! :)",
             inResponseTo: {
                 message: "Hey :P"
@@ -74,46 +74,46 @@ describe("Free message result service", () => {
         };
         const expectedResponse: ReceivedMessage = {
             senderNodeId: node.id,
-            freeMessage
+            plainMessage
         };
-        const messageEvent = buildFakeMessageEvent(node.id, protocol.withoutResponse, JSON.stringify(freeMessage));
-        (freeMessageResultService as any).resolutionCallbacks.delete(node.id);
-        freeMessageResultService.clearDefaultListener();
+        const messageEvent = buildFakeMessageEvent(node.id, protocol.withoutResponse, JSON.stringify(plainMessage));
+        (plainMessageResultService as any).resolutionCallbacks.delete(node.id);
+        plainMessageResultService.clearDefaultListener();
 
-        expect(() => { freeMessageResultService.onMessageReceived(messageEvent) })
+        expect(() => { plainMessageResultService.onMessageReceived(messageEvent) })
             .toThrow(new Error(`received message ${JSON.stringify(expectedResponse)} but there are no callbacks set`));
         expect(resolutionCallback).not.toHaveBeenCalled();
         expect(defaultListener).not.toHaveBeenCalled();
     });
 
     it("receives a wearable-triggered message", () => {
-        const freeMessage: FreeMessage = {
+        const plainMessage: PlainMessage = {
             message: "Hi! :)",
         };
         const expectedResponse: ReceivedMessage = {
             senderNodeId: node.id,
-            freeMessage
+            plainMessage
         };
 
-        const messageEvent = buildFakeMessageEvent(node.id, protocol.withoutResponse, JSON.stringify(freeMessage));
-        freeMessageResultService.onMessageReceived(messageEvent);
+        const messageEvent = buildFakeMessageEvent(node.id, protocol.withoutResponse, JSON.stringify(plainMessage));
+        plainMessageResultService.onMessageReceived(messageEvent);
         expect(resolutionCallback).not.toHaveBeenCalled();
         expect(defaultListener).toHaveBeenCalledWith(expectedResponse);
     });
 
     it("receives a wearable-triggered message but there are no listeners set", () => {
-        const freeMessage: FreeMessage = {
+        const plainMessage: PlainMessage = {
             message: "Hi! :)",
         };
         const expectedResponse: ReceivedMessage = {
             senderNodeId: node.id,
-            freeMessage
+            plainMessage
         };
 
-        const messageEvent = buildFakeMessageEvent(node.id, protocol.withoutResponse, JSON.stringify(freeMessage));
-        freeMessageResultService.clearDefaultListener();
+        const messageEvent = buildFakeMessageEvent(node.id, protocol.withoutResponse, JSON.stringify(plainMessage));
+        plainMessageResultService.clearDefaultListener();
 
-        expect(() => { freeMessageResultService.onMessageReceived(messageEvent) })
+        expect(() => { plainMessageResultService.onMessageReceived(messageEvent) })
             .toThrow(new Error(`received message ${JSON.stringify(expectedResponse)} but there are no callbacks set`));
         expect(resolutionCallback).not.toHaveBeenCalled();
         expect(defaultListener).not.toHaveBeenCalled();

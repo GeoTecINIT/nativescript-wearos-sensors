@@ -4,19 +4,19 @@ import { getCapabilityAdvertiserResultService } from "./internal/communication/c
 import { getResultMessagingService } from "./internal/communication/messaging/android/messaging-result-service.android";
 import { getSensorRecordService } from "./internal/sensors/records-service";
 import { getCommandService } from "./internal/communication/command/command-service.android";
-import { getFreeMessageResultService } from "./internal/communication/free-message/android/free-message-result-service.android";
+import { getPlainMessageResultService } from "./internal/communication/plain-message/android/plain-message-result-service.android";
 
 import { SensorType } from "./internal/sensors/sensor-type";
 
 import { setEnabledSensors } from "./internal/collection/enabled-sensors";
-import { setFreeMessagesEnabled } from "./internal/communication/free-message";
+import { setPlainMessagesEnabled } from "./internal/communication/plain-message";
 
 import WearosSensorsCapabilityAdvertiserService = es.uji.geotec.wearossensors.capability.WearosSensorsCapabilityAdvertiserService;
 import WearableListenerServiceDelegate = es.uji.geotec.wearossensors.WearableListenerServiceDelegate;
 import WearosSensorsResultsMessagingService = es.uji.geotec.wearossensors.sensors.WearosSensorsResultsMessagingService;
 import WearosSensorsRecordsMessagingService = es.uji.geotec.wearossensors.sensors.WearosSensorsRecordsMessagingService;
 import WearosSensorsCommandService = es.uji.geotec.wearossensors.command.WearosSensorsCommandService;
-import WearosSensorsFreeMessageService = es.uji.geotec.wearossensors.freemessage.WearosSensorsFreeMessageService;
+import WearosSensorsPlainMessageService = es.uji.geotec.wearossensors.plainmessage.WearosSensorsPlainMessageService;
 import WearSensor = es.uji.geotec.wearossensors.WearSensor;
 import WearService = es.uji.geotec.wearossensors.WearService;
 
@@ -33,9 +33,9 @@ class WearosSensors extends Common {
             this.wireUpCommandService();
         }
 
-        setFreeMessagesEnabled(!config.disableFreeMessaging);
-        if (!config.disableFreeMessaging) {
-            this.wireUpFreeMessageService();
+        setPlainMessagesEnabled(!config.disablePlainMessaging);
+        if (!config.disablePlainMessaging) {
+            this.wireUpPlainMessageService();
         }
     }
 
@@ -78,12 +78,12 @@ class WearosSensors extends Common {
         );
     }
 
-    private wireUpFreeMessageService(): void {
-        WearosSensorsFreeMessageService.setServiceDelegate(
-            WearService.FREE_MESSAGE,
+    private wireUpPlainMessageService(): void {
+        WearosSensorsPlainMessageService.setServiceDelegate(
+            WearService.PLAIN_MESSAGE,
             new WearableListenerServiceDelegate({
                 onMessageReceived: (messageEvent) =>
-                    getFreeMessageResultService().onMessageReceived(messageEvent)
+                    getPlainMessageResultService().onMessageReceived(messageEvent)
             })
         );
     }

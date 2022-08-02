@@ -57,7 +57,7 @@ declare namespace es {
 					public static class: java.lang.Class<es.uji.geotec.wearossensors.WearService>;
 					public static CAPABILITY: es.uji.geotec.wearossensors.WearService;
 					public static COMMAND: es.uji.geotec.wearossensors.WearService;
-					public static FREE_MESSAGE: es.uji.geotec.wearossensors.WearService;
+					public static PLAIN_MESSAGE: es.uji.geotec.wearossensors.WearService;
 					public static values(): androidNative.Array<es.uji.geotec.wearossensors.WearService>;
 					public static valueOf(param0: string): es.uji.geotec.wearossensors.WearService;
 				}
@@ -135,9 +135,9 @@ declare namespace es {
 	export namespace uji {
 		export namespace geotec {
 			export namespace wearossensors {
-				export namespace freemessage {
-					export class WearosSensorsFreeMessageService extends es.uji.geotec.wearossensors.WearosService {
-						public static class: java.lang.Class<es.uji.geotec.wearossensors.freemessage.WearosSensorsFreeMessageService>;
+				export namespace plainmessage {
+					export class WearosSensorsPlainMessageService extends es.uji.geotec.wearossensors.WearosService {
+						public static class: java.lang.Class<es.uji.geotec.wearossensors.plainmessage.WearosSensorsPlainMessageService>;
 						public constructor();
 					}
 				}
