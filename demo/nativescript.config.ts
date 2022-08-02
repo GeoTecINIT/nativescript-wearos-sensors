@@ -1,7 +1,7 @@
 import { NativeScriptConfig } from '@nativescript/core'
 
 export default {
-  id: 'org.nativescript.demo',
+  id: 'es.uji.geotec.wearossensorsdemo',
   appPath: 'app',
   appResourcesPath: 'app/App_Resources',
   android: {
