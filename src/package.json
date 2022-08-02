@@ -1,7 +1,7 @@
 {
 	"name": "nativescript-wearos-sensors",
 	"version": "1.0.0",
-	"description": "Your awesome NativeScript plugin.",
+	"description": "Plugin to develop smartphone apps that receive sensors' data from a paired WearOS smartwatch.",
 	"main": "wearos-sensors",
 	"typings": "index.d.ts",
 	"nativescript": {
