@@ -1,6 +1,6 @@
 {
 	"name": "nativescript-wearos-sensors",
-	"version": "1.0.0",
+	"version": "1.1.0",
 	"description": "Plugin to develop smartphone apps that receive sensors' data from a paired WearOS smartwatch.",
 	"main": "wearos-sensors",
 	"typings": "index.d.ts",
@@ -29,9 +29,9 @@
 	},
 	"keywords": [
 		"NativeScript",
-		"JavaScript",
+		"TypeScript",
 		"Android",
-		"iOS"
+		"WearOS Sensors"
 	],
 	"author": {
 		"name": "Miguel Matey Sanz",
