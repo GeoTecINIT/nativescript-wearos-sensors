@@ -16,14 +16,13 @@ export class PlainMessageAndroidClient extends CommunicationClient<ReceivedMessa
     constructor(
         private protocol = plainMessageProtocol,
         private plainMessageResultService = getPlainMessageResultService(),
-        private plainMessagesEnabled = arePlainMessagesEnabled()
     ) {
         super(plainMessageResultService);
         plainMessageResultService.setProtocol(protocol);
     }
 
     public enabled(): boolean {
-        return this.plainMessagesEnabled;
+        return arePlainMessagesEnabled();
     }
 
     public registerListener(listener: PlainMessageListener): void {

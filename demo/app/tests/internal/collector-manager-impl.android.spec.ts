@@ -16,7 +16,8 @@ describe("Collector manager implementation", () => {
 
     beforeEach(() => {
         messagingClient = buildFakeMessagingClient();
-        collectorManager = new CollectorManagerImpl((_) => messagingClient, null, allSensors);
+        collectorManager = new CollectorManagerImpl((_) => messagingClient, null);
+        spyOnProperty<any>(collectorManager, "enabledSensors").and.returnValue(allSensors);
     });
 
     it("isReady returns true when a node has a determined capability and false otherwise", async() => {

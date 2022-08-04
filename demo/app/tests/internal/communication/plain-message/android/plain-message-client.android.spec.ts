@@ -5,7 +5,7 @@ import {
 import {
     PlainMessage,
     PlainMessageProtocol,
-    ReceivedMessage, setPlainMessagesEnabled
+    ReceivedMessage
 } from "nativescript-wearos-sensors/internal/communication/plain-message";
 import {
     PlainMessageResultService
@@ -25,13 +25,13 @@ describe("Plain message client", () => {
     let plainMessageResultService: PlainMessageResultService;
 
     beforeEach(() => {
-        setPlainMessagesEnabled(true);
         plainMessageResultService = new PlainMessageResultService();
         spyOn(plainMessageResultService, "onMessageReceived").and.callThrough();
         plainMessageClient = new PlainMessageAndroidClient(
             protocol,
             plainMessageResultService
         );
+        spyOn(plainMessageClient, "enabled").and.returnValue(true);
         spyOn<any>(plainMessageClient, "sendMessage").and.callFake(() => Promise.resolve());
     });
 

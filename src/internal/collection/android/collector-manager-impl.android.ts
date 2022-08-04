@@ -13,10 +13,17 @@ import { getEnabledSensors } from "../enabled-sensors";
 
 export class CollectorManagerImpl implements CollectorManager {
 
+    private _enabledSensors: SensorType[];
+    get enabledSensors() {
+        if (!this._enabledSensors) {
+            this._enabledSensors = getEnabledSensors();
+        }
+        return this._enabledSensors;
+    }
+
     constructor(
         private messagingClient = (sensor) => getMessagingClient(sensor),
         private listenerManager: SensorListenerManager = getSensorListenerManager(),
-        private enabledSensors: SensorType[] = getEnabledSensors()
     ) {
     }
 
