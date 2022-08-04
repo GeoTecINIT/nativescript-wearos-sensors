@@ -111,3 +111,4 @@ function sensorTypeToWearSensor(sensorType: SensorType): WearSensor {
 }
 
 export const wearosSensors = new WearosSensors();
+export { allSensors, defaultConfig };
