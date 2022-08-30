@@ -17,20 +17,28 @@ export class LocationRecordMessagingService extends AbstractRecordMessagingServi
     decodeSamples(messageEvent: wearOS.MessageEvent): SensorRecord<LocationSensorSample> {
         const buff = ByteBuffer.wrap(messageEvent.getData());
         const size = buff.getInt();
-        let lat, lon, alt, time;
+        let timestamp, latitude, longitude, altitude, verticalAccuracy, horizontalAccuracy, speed, direction;
 
         const samples: LocationSensorSample[] = [];
         for (let i = 0; i < size; i++) {
-            lat = buff.getDouble();
-            lon = buff.getDouble();
-            alt = buff.getDouble();
-            time = buff.getLong();
+            latitude = buff.getDouble();
+            longitude = buff.getDouble();
+            altitude = buff.getDouble();
+            verticalAccuracy = buff.getFloat();
+            horizontalAccuracy = buff.getFloat();
+            speed = buff.getFloat();
+            direction = buff.getFloat();
+            timestamp = buff.getLong();
 
             samples.push({
-                timestamp: time,
-                latitude: lat,
-                longitude: lon,
-                altitude: alt,
+                timestamp,
+                latitude,
+                longitude,
+                altitude,
+                verticalAccuracy,
+                horizontalAccuracy,
+                speed,
+                direction
             });
         }
 

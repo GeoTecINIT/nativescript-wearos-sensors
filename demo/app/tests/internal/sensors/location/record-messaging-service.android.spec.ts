@@ -37,11 +37,15 @@ function getFakeLocationData() {
         latitude: 39.9939752904,
         longitude: -0.0741332084749,
         altitude: 20,
+        verticalAccuracy: 10,
+        horizontalAccuracy: 10,
+        speed: 0,
+        direction: 90
     };
 }
 
 function buildFakeEncodedMessage(expectedSamples: LocationSensorSample[]) {
-    const bytes = Array.create("byte", (4 + (32) * expectedSamples.length));
+    const bytes = Array.create("byte", (4 + (32 + 16) * expectedSamples.length)); // Int + (4 * Double + 4 * Float) * Size
     for (let i = 0; i < bytes.length; i++) {
         bytes[i] = 0;
     }
@@ -51,6 +55,10 @@ function buildFakeEncodedMessage(expectedSamples: LocationSensorSample[]) {
         buff.putDouble(sample.latitude);
         buff.putDouble(sample.longitude);
         buff.putDouble(sample.altitude);
+        buff.putFloat(sample.verticalAccuracy);
+        buff.putFloat(sample.horizontalAccuracy);
+        buff.putFloat(sample.speed);
+        buff.putFloat(sample.direction);
         buff.putLong(sample.timestamp);
     })
 
