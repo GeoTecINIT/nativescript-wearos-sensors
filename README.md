@@ -365,11 +365,16 @@ export const defaultConfig = {
 
 #### [`LocationSensorSample`](src/internal/sensors/location/sample.ts)
 
-| Property    | Type      | Description                     |
-|-------------|-----------|---------------------------------|
-| `latitude`  | `number`  | Latitude coordinate component.  |
-| `longitude` | `number`  | Longitude coordinate component. |
-| `altitude`  | `number`  | Altitude coordinate component.  |
+| Property             | Type     | Description                                                  |
+|----------------------|----------|--------------------------------------------------------------|
+| `latitude`           | `number` | Latitude coordinate component.                               |
+| `longitude`          | `number` | Longitude coordinate component.                              |
+| `altitude`           | `number` | Altitude coordinate component.                               |
+| `verticalAccuracy`   | `number` | Estimated error in the latitude.                             |
+| `horizontalAccuracy` | `number` | Estimated error in the longitude.                            |
+| `speed`              | `number` | Estimated device's speed when the location was acquired.     |
+| `direction`          | `number` | Estimated device's direction when the location was acquired. |
+
 
 ### [`PlainMessageClient`](src/internal/communication/plain-message/android/plain-message-client.android.ts)
 
