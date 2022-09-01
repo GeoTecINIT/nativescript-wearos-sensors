@@ -23,21 +23,25 @@ export function defaultCollectionConfiguration(sensorType: SensorType): Collecti
                 sensorInterval: NativeSensorDelay.NORMAL,
                 batchSize: 50
             };
-        case SensorType.LOCATION:
         case SensorType.HEART_RATE:
             return {
                 sensorInterval: NativeSensorDelay.NORMAL,
                 batchSize: 5
             };
+        case SensorType.LOCATION:
+            return {
+                sensorInterval: 1000,
+                batchSize: 5
+            };
     }
 }
 
-export function configAsString(collectionConfiguration: CollectionConfiguration) {
-    const intervalValue = sensorIntervalToNativeValue(collectionConfiguration.sensorInterval);
+export function configAsString(sensor: SensorType, collectionConfiguration: CollectionConfiguration) {
+    const intervalValue = sensorIntervalToNativeValue(sensor, collectionConfiguration.sensorInterval);
     return `${intervalValue}#${collectionConfiguration.batchSize}`;
 }
 
-function sensorIntervalToNativeValue(sensorInterval: SensorInterval) {
+function sensorIntervalToNativeValue(sensor: SensorType, sensorInterval: SensorInterval) {
     switch (sensorInterval) {
         case NativeSensorDelay.UI:
         case NativeSensorDelay.NORMAL:
@@ -45,6 +49,8 @@ function sensorIntervalToNativeValue(sensorInterval: SensorInterval) {
         case NativeSensorDelay.FASTEST:
             return sensorInterval;
         default:
-            return sensorInterval * 1000; // Native API expects interval in microseconds
+            return sensor === SensorType.LOCATION
+                ? sensorInterval
+                : sensorInterval * 1000; // Native sensors API expects interval in microseconds
     }
 }
