@@ -7,12 +7,13 @@ The _nativescript-wearos-sensors_ is a plugin developed with the
 data from the IMU sensors (i.e., accelerometer and gyroscope), the magnetometer, the heart rate and the GPS of a paired
 Android WearOS smartwatch (if the corresponding sensor is available in the device).
 
-The Android WearOS smartwatch must run a counterpart application built using the native [_WearOSSensors_](https://github.com/GeoTecINIT/WearOSSensors) library.
+The Android WearOS smartwatch must run a counterpart application built using the native [_WearOS Sensors_](https://github.com/GeoTecINIT/WearOSSensors) library.
 Then, the smartphone application can request the smartwatch to start/stop the collection of the specified sensor, and
 the smartwatch will send the collected samples to the smartphone application.
 
-> **Warning**: An application using this plugin is completely useless if there is not a counterpart application
-> build with the _WearOSSensors_ library installed in the paired smartwatch. In other words, the smartphone can not
+> [!WARNING] 
+> An application using this plugin is completely useless if there is not a counterpart application
+> build with the _WearOS Sensors_ library installed in the paired smartwatch. In other words, the smartphone can not
 > work by itself alone. It requires a smartwatch to work.
 
 The data collection can be started both from the smartphone and from the paired smartwatch. In addition. the plugin offers
@@ -30,10 +31,11 @@ This plugin is **only supported** by Android smartphones. To use it to build an 
 
 - An Android smartphone running Android 6 (API level 23) or higher. 
 - In addition, the smartphone must be paired with a smartwatch with the counterpart application installed. To link a smartwatch 
- to the smartphone, you must also install the [Smartwatch WearOS by Google](https://play.google.com/store/apps/details?id=com.google.android.wearable.app)
- and follow the procedure to link both devices.
+ to the smartphone, you must also install the [Smartwatch WearOS by Google](https://play.google.com/store/apps/details?id=com.google.android.wearable.app) or the specific application provided 
+ by the smartwatch manufacturer (e.g., Mobvoi Health, Samsung Wearable, etc.) and follow the procedure to link both devices.
 
-> **Warning**: both applications (smartphone and smartwatch apps) must have the same application id.
+> [!IMPORTANT] 
+> Both applications (smartphone and smartwatch apps) must have the same application id.
 > If that's not the case, the applications will not be able to interact. You can change the application id of a 
 > NativeScript application in the `nativescript.config.ts`.
 
@@ -72,7 +74,8 @@ The initialization parameter is optional, and it allows specifying which sensors
 (`disablePlainMessaging`) and WearCommands (`disableWearCommands`) features are enabled. The default configuration is
 the one shown in the example above: all sensors and features enabled.
 
-> **Note**: the configuration allows conditionally wire up native components with the core of the plugin. This allows
+> [!NOTE] 
+> The configuration allows to conditionally wire up native components with the core of the plugin. This allows
 > to reduce the memory used by the application when some features are not going to be used.
 
 ### Sensor data collection
@@ -147,7 +150,8 @@ To start the data collection, we also should specify a `CollectionConfiguration`
 time between consecutive samples (`sensorDelay`), and the amount of samples to deliver each time (`batchSize`). The 
 configuration is optional, if no configuration is provided then default values apply.
 
-> **Note**: due to the smartwatch has to send the collected data via Bluetooth, we can't send individual samples when working
+> [!NOTE]
+> Due to the smartwatch has to send the collected data via Bluetooth, we can't send individual samples when working
 > with a high sampling rate. That would saturate the connection. To solve this problem, we send the samples in batches.
    
 Here is an example of this collection procedure:
@@ -195,7 +199,8 @@ async function stopCollecingFrom(node: Node, sensor: SensorType) {
 The plugin fully handles this for you. You only have to make sure to register at least a listener to receive
 the collected data.
 
-> **Warning**: the WearCommands feature must be enabled at plugin initialization.
+> [!IMPORTANT] 
+> The WearCommands feature must be enabled at plugin initialization.
 
 
 ### PlainMessaging
@@ -228,7 +233,8 @@ async function sendMessageAndWaitResponse(node: Node, message: string): void {
 }
 ```
 
-> **Warning**: the PlainMessaging feature must be enabled at plugin initialization.
+> [!IMPORTANT] 
+> The PlainMessaging feature must be enabled at plugin initialization.
 
 ## API
 
@@ -330,7 +336,8 @@ export const defaultConfig = {
 | `nodes?`   | `Node[]`       | For which nodes the related listener applies.   |
 | `sensors?` | `SensorType[]` | For which sensors the related listener applies. |
 
-> **Note**: filter works as follows:
+> [!TIP]
+> Filter works as follows:
 > ```typescript
 > { 
 >   nodes: [node1, /* OR */ node2]
@@ -409,3 +416,15 @@ export const defaultConfig = {
 Apache License 2.0
 
 See [LICENSE](LICENSE).
+
+
+## Author
+
+<a href="https://github.com/matey97" title="Miguel Matey Sanz">
+  <img src="https://avatars3.githubusercontent.com/u/25453537?s=120" alt="Miguel Matey Sanz" width="120"/>
+</a>
+
+
+## Acknowledgements
+
+The development of this library has been possible thanks to the Spanish Ministry of Universities (grant FPU19/05352).
