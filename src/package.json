@@ -1,13 +1,12 @@
 {
 	"name": "nativescript-wearos-sensors",
-	"version": "1.2.1",
+	"version": "1.3.0",
 	"description": "Plugin to develop smartphone apps that receive sensors' data from a paired WearOS smartwatch.",
 	"main": "wearos-sensors",
 	"typings": "index.d.ts",
 	"nativescript": {
 		"platforms": {
-			"android": "7.0.0",
-			"ios": "7.0.0"
+			"android": "8.6.0"
 		}
 	},
 	"repository": {
@@ -43,8 +42,7 @@
 	"license": "Apache-2.0",
 	"homepage": "https://github.com/GeoTecINIT/nativescript-wearos-sensors",
 	"devDependencies": {
-		"@nativescript/core": "~8.2.0",
-		"@nativescript/types": "~8.2.0",
+		"@nativescript/types": "~8.6.1",
 		"prompt": "^1.0.0",
 		"rimraf": "^2.6.3",
 		"semver": "^5.6.0",
@@ -52,7 +50,8 @@
 		"typescript": "~4.1.0"
 	},
 	"dependencies": {
-		"rxjs": "^7.5.5"
+		"rxjs": "^7.5.5",
+		"@nativescript/core": "~8.6.2"
 	},
 	"bootstrapper": "nativescript-plugin-seed"
 }
