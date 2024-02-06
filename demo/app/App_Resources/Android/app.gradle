@@ -12,6 +12,7 @@
 android {
   defaultConfig {
     minSdkVersion 23
+    targetSdkVersion 31
     generatedDensities = []
   }
   aaptOptions {
