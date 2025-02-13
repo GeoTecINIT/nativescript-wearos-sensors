@@ -9,10 +9,10 @@ allprojects {
 }
 
 android {
-	
+
 }
 
 dependencies {
-    def googlePlayServicesVersion = project.hasProperty('googlePlayServicesVersion') ? project.googlePlayServicesVersion : "17.0.0"
+    def googlePlayServicesVersion = project.hasProperty('googlePlayServicesVersion') ? project.googlePlayServicesVersion : "19.0.0"
     implementation "com.google.android.gms:play-services-wearable:$googlePlayServicesVersion"
 }
