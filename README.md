@@ -29,12 +29,7 @@ ns plugin add nativescript-wearos-sensors
 ## Requirements
 This plugin is **only supported** by Android smartphones. To use it to build an application, the following requirements apply:
 
-- An Android smartphone running Android 6 (API level 23) or higher. 
-
-> [!CAUTION]
-> The `targetSdkVersion` of the built application must be lower or equal than 31 (Android 12). 
-> Apps built targeting >=31 will not work due to an issue with Dynamic File Loading. 
-
+- An Android smartphone running Android 6 (API level 23) or higher.
 - In addition, the smartphone must be paired with a smartwatch with the counterpart application installed. To link a smartwatch 
  to the smartphone, you must also install the [Smartwatch WearOS by Google](https://play.google.com/store/apps/details?id=com.google.android.wearable.app) or the specific application provided 
  by the smartwatch manufacturer (e.g., Mobvoi Health, Samsung Wearable, etc.) and follow the procedure to link both devices.
